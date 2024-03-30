@@ -1,5 +1,6 @@
     <meta charset="UTF-8" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/tailwindconfig.js"></script>
   </head>
   <body class="flex justify-center">
     <div class="relative w-full max-w-[1920px] min-h-screen flex flex-col">
