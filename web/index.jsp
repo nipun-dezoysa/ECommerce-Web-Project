@@ -5,7 +5,8 @@
   </head>
     <jsp:include page="nav.jsp" />
 
-    <!-- contents start here -->
+      <!-- updated-->
+      <div></div>
 
     <div style="padding-top: 20px;">
   
