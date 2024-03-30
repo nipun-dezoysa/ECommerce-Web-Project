@@ -1,10 +1,8 @@
 <!--footer code start here-->
 
-<div class="bg-green-400 mt-auto">footer</div>
-
 <!--Footer container-->
 <footer
-  class="flex flex-col items-center bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white">
+  class="flex flex-col items-center bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white mt-auto">
   <div class="container pt-9 ">
     <!-- Social media icons container -->
     <div class="mb-6 flex justify-center space-x-2">
@@ -114,11 +112,10 @@
 
   <!--Copyright section-->
   <div class="w-full bg-black/5 p-4 text-center">
-    © 2024 Copyright:
+    ï¿½ 2024 Copyright:
     <a href="https://tw-elements.com/">SAMEERA</a>
   </div>
 </footer>
-
-    </div>
+<!--footer code end here-->
   </body>
 </html>

@@ -16,7 +16,7 @@
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-6" action="SignInServlet" method="post">
+        <form class="space-y-5" action="SignInServlet" method="post">
           <div>
             <label
               for="email"
@@ -84,5 +84,4 @@
     </div>
 
     <jsp:include page="footer.jsp" />
-  </head>
-</html>
+ 
