@@ -2,12 +2,12 @@
 <html>
   <head>
     <title>TODO supply a title</title>
-
+  </head>
     <jsp:include page="nav.jsp" />
 
     <!-- contents start here -->
 
-    <div>content</div>
+  <div><h1>Welcome To the index.jsp</h1></div>
 
     <!-- contents end here -->
 
