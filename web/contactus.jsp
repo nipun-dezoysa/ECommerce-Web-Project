@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/contactus.css">
         <title>JSP Page</title>
+        <jsp:include page="nav.jsp" />
     </head>
 <body>
     <div class="container">
@@ -110,5 +111,7 @@
         </div></section><br>
 
 
+        <jsp:include page="footer.jsp" />
 </body>
+
 </html>
