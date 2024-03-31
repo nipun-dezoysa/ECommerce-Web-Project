@@ -9,7 +9,6 @@
       <!-- updated-->
 
       <jsp:include page="hero.jsp"/>
-      
 
     <!-- contents end here -->
 
