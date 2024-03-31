@@ -32,6 +32,9 @@
   </div>
 </div>
 
+<div class="flex flex-col items-center justify-center font-bold mb-5">
+  <a class="px-5 py-2 bg-rose-900 rounded-lg text-white" href="#">Shop Now</a>
+</div>
 
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
