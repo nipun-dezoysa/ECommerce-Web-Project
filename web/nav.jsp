@@ -17,9 +17,9 @@
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <div class="border-r-2 h-[80%]"></div>
-        <a href="#" class="flex items-center gap-2 hover:text-primaryLight">
+        <a href="checkout.jsp" class="flex items-center gap-2 hover:text-primaryLight">
           <div class="text-2xl"><i class="fa-solid fa-cart-shopping"></i></div>
-          <div class="text-sm max-sm:hidden">
+           <div class="text-sm max-sm:hidden">
             <div>Cart</div>
             <div class="font-bold font-mono">Rs 13,000</div>
           </div>
