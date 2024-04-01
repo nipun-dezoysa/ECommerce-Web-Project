@@ -15,9 +15,27 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "SignInServlet", urlPatterns = {"/SignInServlet"})
-public class SignInServlet extends HttpServlet {
+public class SignInServelet extends HttpServlet {
+    
+    
+ // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //processRequest(request, response);
+        
+    }
 
 
     @Override
@@ -25,8 +43,8 @@ public class SignInServlet extends HttpServlet {
 protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
     
-      response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+      //response.setContentType("text/html");
+        /*PrintWriter out = response.getWriter();
 
         // Retrieve email and password from the request
         String email = request.getParameter("email");
@@ -57,7 +75,30 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         } catch (ClassNotFoundException | SQLException ex) {
             // Handle exceptions appropriately
             response.sendRedirect("login.jsp?error=An error occurred while processing your request");
+        }*/
+        
+        HttpSession session = request.getSession(true);
+        String email= request.getParameter("email");
+        String password= request.getParameter("password");
+        System.out.println("uname-"+email+"  passwd-"+password);
+        PrintWriter out=response.getWriter();
+        out.println("abc");
+        
+        DatabaseLogIn db1= new DatabaseLogIn();
+        db1.checkData(email, password);
+        out.print(db1.islogin());
+        if(db1.islogin()){
+            System.out.println("login Succsessful and rederect to the dash board");
+            
+            session.setAttribute("email", email);
+        
+            request.getRequestDispatcher("user.jsp").forward(request, response); 
         }
+        else{
+            response.sendRedirect("sign-in.jsp");
+            System.out.println("login faild and rederect to the dash board");
+        }
+        
 }
 
 }
