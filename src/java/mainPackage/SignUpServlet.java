@@ -25,7 +25,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html");
+        /*response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         
         out.println("Welcome to the SignUp ");
@@ -45,7 +45,22 @@ public class SignUpServlet extends HttpServlet {
            st.executeUpdate(query);
         } catch (ClassNotFoundException | SQLException ex) {
             
-        }
+        }*/
+        String email= request.getParameter("email");
+        String password= request.getParameter("password");
+        
+        PrintWriter out = response.getWriter();
+        //out.println("working" + uname+" "+passwd);
+        
+        out.println("Hello wellcome " + email +"  your password is " + password);
+        DatabaseLogIn db1= new DatabaseLogIn();
+        
+        db1.getData(email, password);
+        
+        //request.setAttribute("uname", uname);
+        
+        //request.getRequestDispatcher("Sign-in.jsp").forward(request, response);
+        response.sendRedirect("sign-in.jsp");
     }
 
 }
