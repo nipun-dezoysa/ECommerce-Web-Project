@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>test</title>
-    <meta charset="UTF-8" />
+<%-- 
+    Document   : adminHead
+    Created on : Apr 2, 2024, 2:09:41 PM
+    Author     : Nipun
+--%>
+
+<meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-    <script src="./js/tailwindconfig.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="../js/tailwindconfig.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -19,7 +21,7 @@
     <div class="flex min-h-screen">
       <div class="bg-primary w-[19%] py-5 flex flex-col">
         <div class="w-full flex flex-col items-center">
-          <img class="w-[70%]" src="./img/2.png" alt="logo" />
+          <img class="w-[70%]" src="../img/2.png" alt="logo" />
           <p class="text-white font-mono">Admin Dashboard</p>
         </div>
         <div class="px-5 text-white mt-10 flex flex-col">
@@ -75,13 +77,4 @@
             </div>
           </div>
         </div>
-
-        <!-- body strat here -->
-
-
-        <!-- body end here -->
-
-      </div>
-    </div>
-  </body>
-</html>
+          <!-- body strat here -->
