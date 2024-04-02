@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/contactus.css">
+    
         <title>Contact Us</title>
        
     </head>
@@ -20,7 +21,7 @@
           <!-- Content for left section -->
           <h1>Contact Us</h1>
           <div class="">
-            <hr>
+            <hr/>
           </div>
           <div class="feelfree">
           <p>Feel free to reach us using the below methods...</p>
