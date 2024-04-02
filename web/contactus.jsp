@@ -10,8 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/contactus.css">
-        <title>JSP Page</title>
-        
+        <title>Contact Us</title>
+       
     </head>
 <body>
     <div class="container">
@@ -72,31 +72,32 @@
 <!-- Content for right section -->
         <div class="right-section">
           
-          <form>
+          <form action="ContactFormServlet" method="post">
             <table border="0">
               <tr>
                 <td>Name <span style="color: red;">*</span></td>
                 <td>Phone Number <span style="color: red;">*</span></td>
               </tr>
               <tr>
-                <td><input type="text" style="width: 100%;" required placeholder="Name"></td>
-                <td><input type="tel" style="width: 100%;" required placeholder="Phone Number"></td>
+                <td><input type="text" name="name" style="width: 100%;" required placeholder="Name"></td>
+                <td><input type="tel" name="phone" style="width: 100%;" required placeholder="Phone Number"></td>
               </tr>
               <tr>
                 <td colspan="2">Email <span style="color: red;">*</span></td>
               </tr>
               <tr>
-                <td colspan="2"><input type="email" style="width: 100%;" required placeholder="Email Address"></td>
+                <td colspan="2"><input type="email" name="email" style="width: 100%;" required placeholder="Email Address"></td>
               </tr>
               <tr>
                 <td colspan="2">Your Message <span style="color: red;">*</span></td>
               </tr>
               <tr>
-                <td colspan="2"><textarea  rows="5" style="width: 100%;" required placeholder="Your Message..."></textarea></td>
+                <td colspan="2"><textarea name="message"  rows="5" style="width: 100%;" required placeholder="Your Message..."></textarea></td>
               </tr>
               <tr>
                 <td colspan="2"><button>Submit</button></td>
               </tr>
+              
       
             </table>
           </form>
