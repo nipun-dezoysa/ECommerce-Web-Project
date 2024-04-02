@@ -3,8 +3,8 @@
   }
   .container {
       padding-top: 70px;
-      max-width: 1200px;
-      width: 96%;
+      max-width: 1200px ;
+      width: 96% !important;
       margin: 0 auto;
       display: flex;
     }
@@ -12,13 +12,18 @@
     .left-section, .right-section {
       flex: 1;
     }
-  
+  h1{
+    font-size: 35px;
+    font-weight: bold;
+    margin-left: -5px;
+  }
     hr{
       background-color: #405270;
-      height: 5px;
-      text-align: left;
-      margin: 0;
-      width: 8%;
+      height: 5px !important;
+      text-align: left!important;
+      margin: 0px!important;
+      width: 8% !important;
+      margin-top: 15px!important;
     }
   
     .fst{
@@ -28,7 +33,7 @@
   
   .feelfree p{
     margin: 30px 0px 10px 0px;
-    font-size: 18px;
+    font-size: 18px !important;
   }
   
   .container2 {
@@ -44,33 +49,33 @@
     padding: 0px;
   }
   .icon-text {
-    margin-left: 25px;
-    font-size: 16px;
-    margin: 5px 0px 10px 8px;
+    margin-left: 25px !important;
+    font-size: 16px !important;
+    margin: 5px 0px 10px 8px!important;
   }
   p {
-    font-size: 16px;
-    font-weight: inherit;
+    font-size: 16px !important;
+    font-weight: inherit !important;
   }
   
   .icon img {
     
-    width: 30px;
-    height: auto; 
+    width: 30px!important;
+    height: auto!important; 
   }
   
   /* FORM */
   
   
   button{
-    background-color: #1B2330;
-    color: #ffffff;
-    border-radius: 5px;
-    padding: 10px 20px 10px 20px;
+    background-color: #1B2330 !important;
+    color: #ffffff !important;
+    border-radius: 5px !important;
+    padding: 10px 20px 10px 20px !important;
   }
   
   button:hover {
-    background-color: #405270;
+    background-color: #405270 !important;
   }
   table tr td {
     padding-bottom: 15px;

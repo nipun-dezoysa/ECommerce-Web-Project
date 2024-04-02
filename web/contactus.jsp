@@ -9,8 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="css/contactus.css">
-    
+          <jsp:include page="./WEB-INF/components/nav.jsp" />
+          <link rel="stylesheet" href="css/contactus.css">
         <title>Contact Us</title>
        
     </head>
@@ -117,5 +117,8 @@
 
 
 </body>
-
+   <jsp:include page="./WEB-INF/components/footer.jsp" />
 </html>
+
+
+
