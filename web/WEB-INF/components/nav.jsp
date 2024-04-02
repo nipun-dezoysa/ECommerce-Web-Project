@@ -1,7 +1,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <script src="./js/tailwindconfig.js"></script>
     <link
       rel="stylesheet"
