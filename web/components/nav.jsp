@@ -1,8 +1,15 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script src="./js/tailwindconfig.js"></script>
-    <script src="https://kit.fontawesome.com/296e3cb483.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body class="flex justify-center">
     <div class="relative w-full max-w-[1920px] min-h-screen flex flex-col">
@@ -13,7 +20,7 @@
       <a href="index.jsp"><img class="h-[30px] lg:h-[40px]" src="./img/1.png" alt=""></a>
       <div class="flex items-center gap-5 max-sm:gap-3 relative">
         <div class="block flex items-center w-[200px] rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6">
-          <input class="focus:outline-none w-full placeholder:text-gray-400" type="text" name="search" id="search" placeholder="Search Product" />
+          <input class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0 p-0" type="text" name="search" id="search" placeholder="Search Product" />
           <i class="fa-solid fa-magnifying-glass"></i>
         </div>
         <div class="border-r-2 h-[80%]"></div>

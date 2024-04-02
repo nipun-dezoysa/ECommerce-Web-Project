@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>Sign Up</title>
 
-  <jsp:include page="nav.jsp" />
+  <jsp:include page="./components/nav.jsp" />
   
 </head>
 <body>
@@ -76,5 +76,5 @@
     </div>
   </div>
 
-  <jsp:include page="footer.jsp" />
+  <jsp:include page="./components/footer.jsp" />
 
