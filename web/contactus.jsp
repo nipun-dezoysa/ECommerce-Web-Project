@@ -75,24 +75,24 @@
           <form action="ContactFormServlet" method="post">
             <table border="0">
               <tr>
-                <td>Name <span style="color: red;">*</span></td>
-                <td>Phone Number <span style="color: red;">*</span></td>
+                <td><div class="formtext">Name <span style="color: red;">*</span></div></td>
+                <td><div class="formtext">Phone Number <span style="color: red;">*</span></div></td>
               </tr>
               <tr>
-                <td><input type="text" name="name" style="width: 100%;" required placeholder="Name"></td>
-                <td><input type="tel" name="phone" style="width: 100%;" required placeholder="Phone Number"></td>
+                <td><div class="forminput"><input type="text" name="name" style="width: 100%;" required placeholder="Name"></div></td>
+                <td><div class="forminput"><input type="tel" name="phone" style="width: 100%;" required placeholder="Phone Number"></div></td>
               </tr>
               <tr>
-                <td colspan="2">Email <span style="color: red;">*</span></td>
+                <td colspan="2"><div class="formtext">Email <span style="color: red;">*</span></div></td>
               </tr>
               <tr>
-                <td colspan="2"><input type="email" name="email" style="width: 100%;" required placeholder="Email Address"></td>
+                <td colspan="2"><div class="forminput"><input type="email" name="email" style="width: 100%;" required placeholder="Email Address"></div></td>
               </tr>
               <tr>
-                <td colspan="2">Your Message <span style="color: red;">*</span></td>
+                <td colspan="2"><div class="formtext">Your Message <span style="color: red;">*</span></div></td>
               </tr>
               <tr>
-                <td colspan="2"><textarea name="message"  rows="5" style="width: 100%;" required placeholder="Your Message..."></textarea></td>
+                <td colspan="2"><div class="forminput"><textarea name="message"  rows="5" style="width: 100%;" required placeholder="Your Message..."></textarea></div></td>
               </tr>
               <tr>
                 <td colspan="2"><button>Submit</button></td>
