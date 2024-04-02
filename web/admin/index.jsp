@@ -1,7 +1,7 @@
 <%-- 
-    Document   : home
-    Created on : Mar 30, 2024, 8:12:33 AM
-    Author     : samee
+    Document   : index
+    Created on : Apr 2, 2024, 12:13:31 PM
+    Author     : Nipun
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>welcome to home</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>
