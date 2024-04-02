@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Sign In</title>
 
-    <jsp:include page="./components/nav.jsp" />
+    <jsp:include page="./WEB-INF/components/nav.jsp" />
 
     <div class="flex h-full flex-col justify-center px-6 py-12 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -83,5 +83,5 @@
       </div>
     </div>
 
-    <jsp:include page="./components/footer.jsp" />
+    <jsp:include page="./WEB-INF/components/footer.jsp" />
  

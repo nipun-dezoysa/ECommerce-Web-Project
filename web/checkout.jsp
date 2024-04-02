@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<jsp:include page="./components/nav.jsp" />
+<jsp:include page="./WEB-INF/components/nav.jsp" />
 
      <div class="container mx-auto mt-10">
     <div class="flex flex-col md:flex-row shadow-md my-10">
@@ -122,4 +122,4 @@
     </div>
 </div>
 
-<jsp:include page="./components/footer.jsp" />
+<jsp:include page="./WEB-INF/components/footer.jsp" />
