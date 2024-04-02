@@ -1,0 +1,5 @@
+@layer utilities {
+  .inputs {
+    @apply border rounded-lg p-2 outline-primary;
+  }
+}

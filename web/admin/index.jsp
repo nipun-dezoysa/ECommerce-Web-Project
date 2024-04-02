@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JSP Page</title>
+        <title>Admin Dashboard</title>
+        
         <jsp:include page="../WEB-INF/components/adminHead.jsp"/>
+        
         <jsp:include page="../WEB-INF/components/adminBottom.jsp"/>
