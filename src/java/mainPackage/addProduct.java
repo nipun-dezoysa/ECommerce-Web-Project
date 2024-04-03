@@ -27,8 +27,8 @@ public class addProduct extends HttpServlet {
         String[] colors = request.getParameterValues("colors");
         
         PrintWriter out = response.getWriter();
-        Part myloc = request.getPart("pimage");
-        String fileName = myloc.getSubmittedFileName();
+        Part cimg = request.getPart("cimage");
+        String fileName = cimg.getSubmittedFileName();
         
         if (!"".equals(fileName)) {
             String uploadDir = getServletContext().getRealPath("/img/products/");
@@ -41,7 +41,7 @@ public class addProduct extends HttpServlet {
             
             Path filePath = uploadPath.resolve(fileName);
             try {
-                Files.copy(myloc.getInputStream(), filePath);
+                Files.copy(cimg.getInputStream(), filePath);
                 out.print("<p style='text-align:center;'>Completed</p>");
             } catch (IOException e) {
                 out.print("<p style='text-align:center;color:red'>Error in Uploading your image to the target Folder</p>");
