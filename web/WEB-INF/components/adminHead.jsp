@@ -34,7 +34,7 @@
   </head>
   <body>
     <div class="flex min-h-screen">
-      <div class="bg-primary w-[19%] py-5 flex flex-col">
+      <div class="bg-primary w-[19%] py-5 flex flex-col h-screen sticky top-0">
         <div class="w-full flex flex-col items-center">
           <a class="w-[70%]" href="../"><img class="w-full" src="../img/2.png" alt="logo" /></a>
           <p class="text-white font-mono">Admin Dashboard</p>
@@ -92,5 +92,5 @@
             </div>
           </div>
         </div>
-        <div class="p-5">
+        <div class="p-5 flex flex-col gap-5">
           <!-- body strat here -->

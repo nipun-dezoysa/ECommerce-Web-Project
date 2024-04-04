@@ -82,13 +82,13 @@
               <div class="w-full">
                 <div>Sizes</div>
                 <div class="flex items-center gap-1">
-                  <input type="text" class="inputs" id="size" placeholder="type size"/>
                   <input
-                    type="button"
-                    value="Add"
-                    id="sadd"
-                    class="normal"
+                    type="text"
+                    class="inputs"
+                    id="size"
+                    placeholder="type size"
                   />
+                  <input type="button" value="Add" id="sadd" class="normal" />
                   <input
                     type="button"
                     value="Undo"
@@ -101,18 +101,14 @@
               <div class="w-full">
                 <div>Colors</div>
                 <div class="flex items-center gap-1">
-                  <input type="text" class="inputs" id="color" placeholder="type color"/>
                   <input
-                    type="button"
-                    value="Add"
-                    id="cadd"
-                    class="normal"
+                    type="text"
+                    class="inputs"
+                    id="color"
+                    placeholder="type color"
                   />
-                  <input
-                    type="button"
-                    value="Undo"
-                    id="cdelete"
-                    class="remove
+                  <input type="button" value="Add" id="cadd" class="normal" />
+                  <input type="button" value="Undo" id="cdelete" class="remove
                 </div>
                 <div class="w-full flex flex-wrap gap-1 mt-1" id="cblock"></div>
               </div>
@@ -171,6 +167,35 @@
           value="Add Product"
         />
       </form>
+    </div>
+
+    <div class="bg-white rounded-lg border flex flex-col">
+      <div class="font-bold text-xl font-mono py-2 px-5 border-b">
+        All Products
+      </div>
+      <div class="p-5 flex flex-col gap-2">
+        <div class="flex w-full font-semibold border rounded-lg">
+          <div class="w-full text-center">ID</div>
+          <div class="w-full text-center">Name</div>
+          <div class="w-full text-center">Brand</div>
+          <div class="w-full text-center">Price</div>
+          <div class="w-full text-center">Discount</div>
+          <div class="w-full text-center">Action</div>
+        </div>
+        <div class="flex w-full border rounded-lg items-center p-1">
+          <div class="w-full text-center">#2334</div>
+          <a href="#" class="w-full text-center">Air Jordan 1 Mid</a>
+          <div class="w-full text-center">Nike</div>
+          <div class="w-full text-center">LKR 6000</div>
+          <div class="w-full text-center">20%</div>
+          <div class="w-full flex justify-center gap-2">
+            <a class="normal" type="button" href="#">Edit</a>
+            <form action="#" method="POST">
+              <input class="remove" type="submit" value="Remove" />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <jsp:include page="../WEB-INF/components/adminBottom.jsp" />
