@@ -49,6 +49,7 @@ public class DatabaseLogIn {
     
     
 boolean login;
+boolean adminlogin;
     
 
   
@@ -112,4 +113,48 @@ boolean login;
     public boolean islogin(){
         return login;
     }
+    public void adminSignIn(String email, String password) {
+        
+        String driver ="com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/shoetopia";
+            String Query ="SELECT `Id`, `Email`, `Password` FROM `admin` WHERE Email = '" + email + "'";
+            System.out.println("log email: " + email);
+            System.out.println("log passwd: " + password);
+            
+            try {
+                Class.forName(driver);
+                Connection con = DriverManager.getConnection(url,"root","");
+                Statement st = con.createStatement();
+                String emailc="";
+                String passwordc="";
+                
+                ResultSet resultSet= st.executeQuery(Query);
+                if (resultSet.next()) {
+                    emailc = resultSet.getString("Email");
+                    passwordc = resultSet.getString("Password");
+                    System.out.println("Username: " + emailc);
+                    System.out.println("Password: " + passwordc);
+                    if(password.equals(passwordc) && email.equals(emailc)){
+                        adminlogin = true;
+                        System.out.println("Password correct");
+                        
+                    } 
+                    resultSet.close();
+                    st.close();
+                
+    }           else{
+                        System.out.println("This is not correct password or username");
+                       
+                }
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+     public boolean adminislogin(){
+        return adminlogin;
+    }
+    
+    
+    
 }
