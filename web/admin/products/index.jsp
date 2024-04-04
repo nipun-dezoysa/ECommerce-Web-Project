@@ -4,19 +4,21 @@
 <html>
   <head>
     <title>Products</title>
+    
+        <jsp:include page="../../WEB-INF/components/adminHead.jsp">
+            <jsp:param name="path" value="../"/>
+        </jsp:include>
 
-    <jsp:include page="../WEB-INF/components/adminHead.jsp" />
-
-    <div class="bg-white rounded-lg border flex flex-col">
-      <div class="font-bold text-xl font-mono py-2 px-5 border-b">
+    <div class="box">
+      <div class="box-title">
         New Product
       </div>
       <form
-        action="../addProduct"
+        action="../../addProduct"
         method="POST"
         id="pform"
         enctype="multipart/form-data"
-        class="p-5 flex flex-col"
+        class="box-body"
       >
         <div class="flex gap-3">
           <div class="w-[70%] flex flex-col gap-3">
@@ -162,18 +164,18 @@
           </div>
         </div>
         <input
-          class="normal mt-3 w-[200px]"
+          class="normal w-[200px]"
           type="submit"
           value="Add Product"
         />
       </form>
     </div>
 
-    <div class="bg-white rounded-lg border flex flex-col">
-      <div class="font-bold text-xl font-mono py-2 px-5 border-b">
+    <div class="box">
+      <div class="box-title">
         All Products
       </div>
-      <div class="p-5 flex flex-col gap-2">
+      <div class="box-body">
         <div class="flex w-full font-semibold border rounded-lg">
           <div class="w-full text-center">ID</div>
           <div class="w-full text-center">Name</div>
@@ -198,4 +200,4 @@
       </div>
     </div>
 
-    <jsp:include page="../WEB-INF/components/adminBottom.jsp" />
+    <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />

@@ -18,14 +18,23 @@
         .inputs {
           @apply border rounded-lg p-2 outline-primary w-full placeholder:text-gray-400;
         }
-        .image {
+        .image{
           @apply block w-full file:text-gray-400 border border-gray-200 rounded-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-2;
         }
-        .remove {
+        .remove{
           @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
         }
-        .normal {
+        .normal{
           @apply text-white bg-primary hover:bg-primaryLight focus:ring-4 focus:outline-none focus:ring-primaryLight font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
+        }
+        .box{
+          @apply bg-white rounded-lg border flex flex-col;
+        }
+        .box-title{
+          @apply font-bold text-xl font-mono py-2 px-5 border-b;
+        }
+        .box-body{
+          @apply p-5 flex flex-col gap-5;
         }
       }
     </style>
@@ -284,35 +293,6 @@
                 value="Add Product"
               />
             </form>
-          </div>
-
-          <div class="bg-white rounded-lg border flex flex-col">
-            <div class="font-bold text-xl font-mono py-2 px-5 border-b">
-              All Products
-            </div>
-            <div class="p-5 flex flex-col gap-2">
-              <div class="flex w-full font-semibold border rounded-lg">
-                <div class="w-full text-center">ID</div>
-                <div class="w-full text-center">Name</div>
-                <div class="w-full text-center">Brand</div>
-                <div class="w-full text-center">Price</div>
-                <div class="w-full text-center">Discount</div>
-                <div class="w-full text-center">Action</div>
-              </div>
-              <div class="flex w-full border rounded-lg items-center p-1">
-                <div class="w-full text-center">#2334</div>
-                <a href="#" class="w-full text-center">Air Jordan 1 Mid</a>
-                <div class="w-full text-center">Nike</div>
-                <div class="w-full text-center">LKR 6000</div>
-                <div class="w-full text-center">20%</div>
-                <div class="w-full flex justify-center gap-2">
-                  <a class="normal" type="button" href="#">Edit</a>
-                  <form action="#" method="POST">
-                    <input class="remove" type="submit" value="Remove" />
-                  </form>
-                </div>
-              </div>
-            </div>
           </div>
 
           <!-- body end here -->

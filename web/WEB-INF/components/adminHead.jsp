@@ -4,10 +4,14 @@
     Author     : Nipun
 --%>
 
+<% 
+String path = request.getParameter("path");
+%>
+
 <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../js/tailwindconfig.js"></script>
+    <script src="<%=path%>../js/tailwindconfig.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -29,18 +33,29 @@
         .normal{
           @apply text-white bg-primary hover:bg-primaryLight focus:ring-4 focus:outline-none focus:ring-primaryLight font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
         }
+        .box{
+          @apply bg-white rounded-lg border flex flex-col;
+        }
+        .box-title{
+          @apply font-bold text-xl font-mono py-2 px-5 border-b;
+        }
+        .box-body{
+          @apply p-5 flex flex-col gap-5;
+        }
       }
     </style>
   </head>
   <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="<%=path%>../js/productsAdmin.js"></script>
     <div class="flex min-h-screen">
       <div class="bg-primary w-[19%] py-5 flex flex-col h-screen sticky top-0">
         <div class="w-full flex flex-col items-center">
-          <a class="w-[70%]" href="../"><img class="w-full" src="../img/2.png" alt="logo" /></a>
+          <a class="w-[70%]" href="../"><img class="w-full" src="<%=path%>../img/2.png" alt="logo" /></a>
           <p class="text-white font-mono">Admin Dashboard</p>
         </div>
         <div class="px-5 text-white mt-10 flex flex-col">
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="./"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>index.jsp"
             ><i class="fa-solid fa-compass text-2xl w-10"></i>
             <div>Dashboard</div></a
           >
@@ -48,7 +63,7 @@
             ><i class="fa-solid fa-bag-shopping text-2xl w-10"></i>
             <div>Orders</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="./products.jsp"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>products/"
             ><i class="fa-solid fa-tags text-2xl w-10"></i>
             <div>Products</div></a
           >
@@ -83,7 +98,7 @@
           <div class="flex items-center gap-3">
             <div class="flex flex-col justify-center">
               <a class="font-semibold text-gray-500" href="#">Admin</a>
-              <a class="text-red-700 font-mono" href="../adminSignOut">Log Out</a>
+              <a class="text-red-700 font-mono" href="<%=path%>../adminSignOut">Log Out</a>
             </div>
             <div
               class="bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center text-gray-400"

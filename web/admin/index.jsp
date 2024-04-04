@@ -14,7 +14,9 @@
     <head>
         <title>Admin Dashboard</title>
         
-        <jsp:include page="../WEB-INF/components/adminHead.jsp"/>
+        <jsp:include page="../WEB-INF/components/adminHead.jsp">
+            <jsp:param name="path" value=""/>
+        </jsp:include>
         
         <jsp:include page="../WEB-INF/components/adminBottom.jsp"/>
    <% }
