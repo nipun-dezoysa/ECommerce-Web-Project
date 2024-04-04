@@ -18,14 +18,23 @@
     <style type="text/tailwindcss">
       @layer utilities {
         .inputs {
-          @apply border rounded-lg p-2 outline-primary w-full;
+          @apply border rounded-lg p-2 outline-primary w-full placeholder:text-gray-400;
+        }
+        .image{
+          @apply block w-full file:text-gray-400 border border-gray-200 rounded-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-2;
+        }
+        .remove{
+          @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
+        }
+        .normal{
+          @apply text-white bg-primary hover:bg-primaryLight focus:ring-4 focus:outline-none focus:ring-primaryLight font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
         }
       }
     </style>
   </head>
   <body>
     <div class="flex min-h-screen">
-      <div class="bg-primary w-[19%] py-5 flex flex-col">
+      <div class="bg-primary w-[19%] py-5 flex flex-col h-screen sticky top-0">
         <div class="w-full flex flex-col items-center">
           <a class="w-[70%]" href="../"><img class="w-full" src="../img/2.png" alt="logo" /></a>
           <p class="text-white font-mono">Admin Dashboard</p>
@@ -39,7 +48,7 @@
             ><i class="fa-solid fa-bag-shopping text-2xl w-10"></i>
             <div>Orders</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="./products"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="./products.jsp"
             ><i class="fa-solid fa-tags text-2xl w-10"></i>
             <div>Products</div></a
           >
@@ -61,7 +70,7 @@
       </div>
       <div class="bg-gray-200 w-[81%] flex flex-col">
         <div class="bg-white py-5 px-10 flex justify-between">
-          <div class="flex items-center">
+          <div class="flex items-center gap-2">
             <i class="fa-solid fa-magnifying-glass gap-3"></i>
             <input
               class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0"
@@ -83,5 +92,5 @@
             </div>
           </div>
         </div>
-        <div class="p-5">
+        <div class="p-5 flex flex-col gap-5">
           <!-- body strat here -->
