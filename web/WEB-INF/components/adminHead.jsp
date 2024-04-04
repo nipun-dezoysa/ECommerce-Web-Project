@@ -83,7 +83,7 @@
           <div class="flex items-center gap-3">
             <div class="flex flex-col justify-center">
               <a class="font-semibold text-gray-500" href="#">Admin</a>
-              <a class="text-red-700 font-mono" href="#">Log Out</a>
+              <a class="text-red-700 font-mono" href="../adminSignOut">Log Out</a>
             </div>
             <div
               class="bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center text-gray-400"

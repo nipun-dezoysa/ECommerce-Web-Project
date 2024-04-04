@@ -9,9 +9,9 @@
   </head>
   <body>
     <div class="flex justify-center items-center min-h-screen bg-gray-100">
-      <form class="w-[350px] flex flex-col items-center gap-3 bg-white  p-5 rounded-xl shadow-lg">
+        <form class="w-[350px] flex flex-col items-center gap-3 bg-white  p-5 rounded-xl shadow-lg" action="../adminSignIn" method="POST">
         <div class="flex flex-col items-center">
-          <img class="h-[50px]" src="./img/1.png" alt="" />
+          <img class="h-[50px]" src="../img/1.png" alt="" />
           <div class="font-mono">Admin Pannel</div>
         </div>
         <div class="w-full">
