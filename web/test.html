@@ -18,23 +18,26 @@
         .inputs {
           @apply border rounded-lg p-2 outline-primary w-full placeholder:text-gray-400;
         }
-        .image{
+        .image {
           @apply block w-full file:text-gray-400 border border-gray-200 rounded-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-2;
         }
-        .remove{
+        .remove {
           @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
         }
-        .normal{
+        .normal {
           @apply text-white bg-primary hover:bg-primaryLight focus:ring-4 focus:outline-none focus:ring-primaryLight font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
         }
-        .box{
+        .box {
           @apply bg-white rounded-lg border flex flex-col;
         }
-        .box-title{
+        .box-title {
           @apply font-bold text-xl font-mono py-2 px-5 border-b;
         }
-        .box-body{
-          @apply p-5 flex flex-col gap-5;
+        .box-body {
+          @apply p-5 flex flex-col gap-3;
+        }
+        .input-lable {
+          @apply block mb-1 text-sm font-medium text-gray-900;
         }
       }
     </style>
@@ -116,21 +119,86 @@
         <div class="p-5 flex flex-col gap-5">
           <!-- body strat here -->
 
-          <div class="bg-white rounded-lg border flex flex-col">
-            <div class="font-bold text-xl font-mono py-2 px-5 border-b">
-              New Product
-            </div>
-            <form
-              action="../addProduct"
-              method="POST"
-              id="pform"
-              enctype="multipart/form-data"
-              class="p-5 flex flex-col"
+          <nav class="flex" aria-label="Breadcrumb">
+            <ol
+              class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
             >
-              <div class="flex gap-3">
-                <div class="w-[70%] flex flex-col gap-3">
+              <li class="inline-flex items-center">
+                <a
+                  href="#"
+                  class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                >
+                  <svg
+                    class="w-3 h-3 me-2.5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
+                    />
+                  </svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <div class="flex items-center">
+                  <svg
+                    class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 6 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 9 4-4-4-4"
+                    />
+                  </svg>
+                  <a
+                    href="#"
+                    class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
+                    >Products</a
+                  >
+                </div>
+              </li>
+              <li aria-current="page">
+                <div class="flex items-center">
+                  <svg
+                    class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 6 10"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 9 4-4-4-4"
+                    />
+                  </svg>
+                  <span
+                    class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"
+                    >Nike Air 1</span
+                  >
+                </div>
+              </li>
+            </ol>
+          </nav>
+
+          <div class="flex gap-3">
+            <div class="w-[70%] flex flex-col gap-3">
+              <form action="#" method="POST" class="box w-full">
+                <div class="box-title">Product Details</div>
+                <div class="box-body">
                   <div>
-                    <div>Name</div>
+                    <div class="input-lable">Name</div>
                     <input
                       class="inputs"
                       type="text"
@@ -141,7 +209,7 @@
                     />
                   </div>
                   <div>
-                    <div>Brand</div>
+                    <div class="input-lable">Brand</div>
                     <input
                       class="inputs"
                       type="text"
@@ -153,7 +221,7 @@
                   </div>
                   <div class="flex w-full gap-3">
                     <div class="w-[50%]">
-                      <div>Price (LKR)</div>
+                      <div class="input-lable">Price (LKR)</div>
                       <input
                         class="inputs"
                         type="text"
@@ -164,7 +232,7 @@
                       />
                     </div>
                     <div class="w-[50%]">
-                      <div>Discount (%)</div>
+                      <div class="input-lable">Discount (%)</div>
                       <input
                         class="inputs"
                         type="text"
@@ -176,7 +244,7 @@
                     </div>
                   </div>
                   <div>
-                    <div>Description</div>
+                    <div class="input-lable">Description</div>
                     <textarea
                       class="inputs resize-none"
                       name="des"
@@ -187,112 +255,248 @@
                       required
                     ></textarea>
                   </div>
-                  <div class="w-full flex gap-3">
-                    <div class="w-full">
-                      <div>Sizes</div>
-                      <div class="flex items-center gap-1">
-                        <input
-                          type="text"
-                          class="inputs"
-                          id="size"
-                          placeholder="type size"
-                        />
-                        <input
-                          type="button"
-                          value="Add"
-                          id="sadd"
-                          class="normal"
-                        />
-                        <input
-                          type="button"
-                          value="Undo"
-                          id="sdelete"
-                          class="remove"
-                        />
-                      </div>
-                      <div
-                        class="w-full flex flex-wrap gap-1 mt-1"
-                        id="sblock"
-                      ></div>
-                    </div>
-                    <div class="w-full">
-                      <div>Colors</div>
-                      <div class="flex items-center gap-1">
-                        <input
-                          type="text"
-                          class="inputs"
-                          id="color"
-                          placeholder="type color"
-                        />
-                        <input
-                          type="button"
-                          value="Add"
-                          id="cadd"
-                          class="normal"
-                        />
-                        <input type="button" value="Undo" id="cdelete"
-                        class="remove
-                      </div>
-                      <div
-                        class="w-full flex flex-wrap gap-1 mt-1"
-                        id="cblock"
-                      ></div>
-                    </div>
-                  </div>
+                  <input
+                    class="normal w-[200px]"
+                    type="submit"
+                    value="Save Changes"
+                  />
                 </div>
-                <div class="w-[30%] flex flex-col gap-3">
-                  <div>
-                    <div>Cover Image</div>
-                    <input
-                      class="image"
-                      type="file"
-                      name="cimage"
-                      id="cimage"
-                      accept="image/png, image/gif, image/jpeg"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <div>Image 1</div>
-                    <input
-                      class="image"
-                      type="file"
-                      name="image1"
-                      id="image1"
-                      accept="image/png, image/gif, image/jpeg"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <div>Image 2</div>
-                    <input
-                      class="image"
-                      type="file"
-                      name="image2"
-                      id="image2"
-                      accept="image/png, image/gif, image/jpeg"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <div>Image 3</div>
-                    <input
-                      class="image"
-                      type="file"
-                      name="image3"
-                      id="image3"
-                      accept="image/png, image/gif, image/jpeg"
-                      required
-                    />
+              </form>
+              <div class="box">
+                <div class="box-title">Images</div>
+                <div class="box-body">
+                  <div class="flex gap-3">
+                    <form
+                      action="../../addProduct"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                    >
+                      <input type="hidden" name="pid" value="#" />
+                      <input type="hidden" name="choice" value="#" />
+                      <img
+                        id="1img"
+                        class="w-full h-full"
+                        src="./img/demo.jpg"
+                        alt="product"
+                      />
+                      <div
+                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                      >
+                        Select Image
+                      </div>
+                      <input
+                        required
+                        accept="image/png, image/gif, image/jpeg"
+                        type="file"
+                        name="img"
+                        class="absolute top-0 w-full h-full opacity-0"
+                        onchange="loadFile(event,'1')"
+                      />
+                      <div
+                        id="1ok"
+                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
+                      >
+                        <i class="fa-solid fa-check"></i>
+                        <input
+                          class="w-full h-full absolute opacity-0 cursor-pointer"
+                          type="submit"
+                        />
+                      </div>
+                    </form>
+
+                    <form
+                      action="../../addProduct"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                    >
+                      <input type="hidden" name="pid" value="#" />
+                      <input type="hidden" name="choice" value="#" />
+                      <img
+                        id="2img"
+                        class="w-full h-full"
+                        src="./img/demo.jpg"
+                        alt="product"
+                      />
+                      <div
+                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                      >
+                        Select Image
+                      </div>
+                      <input
+                        required
+                        accept="image/png, image/gif, image/jpeg"
+                        type="file"
+                        name="img"
+                        class="absolute top-0 w-full h-full opacity-0"
+                        onchange="loadFile(event,'2')"
+                      />
+                      <div
+                        id="2ok"
+                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
+                      >
+                        <i class="fa-solid fa-check"></i>
+                        <input
+                          class="w-full h-full absolute opacity-0 cursor-pointer"
+                          type="submit"
+                        />
+                      </div>
+                    </form>
+
+                    <form
+                      action="../../addProduct"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                    >
+                      <input type="hidden" name="pid" value="#" />
+                      <input type="hidden" name="choice" value="#" />
+                      <img
+                        id="3img"
+                        class="w-full h-full"
+                        src="./img/demo.jpg"
+                        alt="product"
+                      />
+                      <div
+                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                      >
+                        Select Image
+                      </div>
+                      <input
+                        required
+                        accept="image/png, image/gif, image/jpeg"
+                        type="file"
+                        name="img"
+                        class="absolute top-0 w-full h-full opacity-0"
+                        onchange="loadFile(event,'3')"
+                      />
+                      <div
+                        id="3ok"
+                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
+                      >
+                        <i class="fa-solid fa-check"></i>
+                        <input
+                          class="w-full h-full absolute opacity-0 cursor-pointer"
+                          type="submit"
+                        />
+                      </div>
+                    </form>
+
+                    <form
+                      action="../../addProduct"
+                      method="POST"
+                      enctype="multipart/form-data"
+                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                    >
+                      <input type="hidden" name="pid" value="#" />
+                      <input type="hidden" name="choice" value="#" />
+                      <img
+                        id="4img"
+                        class="w-full h-full"
+                        src="./img/demo.jpg"
+                        alt="product"
+                      />
+                      <div
+                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                      >
+                        Select Image
+                      </div>
+                      <input
+                        required
+                        accept="image/png, image/gif, image/jpeg"
+                        type="file"
+                        name="img"
+                        class="absolute top-0 w-full h-full opacity-0"
+                        onchange="loadFile(event,'4')"
+                      />
+                      <div
+                        id="4ok"
+                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
+                      >
+                        <i class="fa-solid fa-check"></i>
+                        <input
+                          class="w-full h-full absolute opacity-0 cursor-pointer"
+                          type="submit"
+                        />
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>
-              <input
-                class="normal mt-3 w-[200px]"
-                type="submit"
-                value="Add Product"
-              />
-            </form>
+            </div>
+
+            <div class="w-[30%] flex flex-col gap-3">
+              <div class="box">
+                <div class="box-title">Sizes</div>
+                <div class="box-body">
+                  <form action="#" method="POST">
+                    <div class="flex gap-2">
+                      <input type="hidden" name="size" value="XL" />
+                      <div
+                        class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
+                      >
+                        XL
+                      </div>
+                      <input class="remove" type="submit" value="Remove" />
+                    </div>
+                  </form>
+                  <form action="#" method="POST">
+                    <div class="flex flex-col items-center gap-1">
+                      <input
+                        type="text"
+                        class="inputs"
+                        id="size"
+                        name="size"
+                        placeholder="type size"
+                        required
+                      />
+                      <input type="submit" value="Add" class="normal w-full" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="box">
+                <div class="box-title">Colors</div>
+                <div class="box-body">
+                  <form action="#" method="POST">
+                    <div class="flex gap-2">
+                      <input type="hidden" name="color" value="Black" />
+                      <div
+                        class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
+                      >
+                        Black
+                      </div>
+                      <input class="remove" type="submit" value="Remove" />
+                    </div>
+                  </form>
+                  <form action="#" method="POST">
+                    <div class="flex gap-2">
+                      <input type="hidden" name="color" value="Black" />
+                      <div
+                        class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
+                      >
+                        White
+                      </div>
+                      <input class="remove" type="submit" value="Remove" />
+                    </div>
+                  </form>
+                  <form action="#" method="POST">
+                    <div class="flex flex-col items-center gap-1">
+                      <input
+                        type="text"
+                        class="inputs"
+                        id="color"
+                        name="color"
+                        placeholder="type color"
+                        required
+                      />
+                      <input type="submit" value="Add" class="normal w-full" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- body end here -->
@@ -301,5 +505,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="./js/productsAdmin.js"></script>
+    <script src="./js/productEdit.js"></script>
   </body>
 </html>

@@ -24,23 +24,26 @@ String path = request.getParameter("path");
         .inputs {
           @apply border rounded-lg p-2 outline-primary w-full placeholder:text-gray-400;
         }
-        .image{
+        .image {
           @apply block w-full file:text-gray-400 border border-gray-200 rounded-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-2;
         }
-        .remove{
+        .remove {
           @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
         }
-        .normal{
+        .normal {
           @apply text-white bg-primary hover:bg-primaryLight focus:ring-4 focus:outline-none focus:ring-primaryLight font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
         }
-        .box{
+        .box {
           @apply bg-white rounded-lg border flex flex-col;
         }
-        .box-title{
+        .box-title {
           @apply font-bold text-xl font-mono py-2 px-5 border-b;
         }
-        .box-body{
-          @apply p-5 flex flex-col gap-5;
+        .box-body {
+          @apply p-5 flex flex-col gap-3;
+        }
+        .input-lable {
+          @apply block mb-1 text-sm font-medium text-gray-900;
         }
       }
     </style>
