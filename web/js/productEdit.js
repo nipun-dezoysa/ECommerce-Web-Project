@@ -1,6 +1,5 @@
 //input image functions
 var loadFile = function (event, id) {
-  var input = event.target;
 document
   .getElementById(id+"ok")
   .setAttribute(
@@ -11,6 +10,6 @@ document
 
   output.src = URL.createObjectURL(event.target.files[0]);
   output.onload = function () {
-    URL.revokeObjectURL(output.src); // free memory
+    URL.revokeObjectURL(output.src); 
   };
 };
