@@ -1,25 +1,8 @@
-<!--footer code start here-->
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>footer</title>
-
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-
-<body>
-
-
-
 
 
   <footer>
-    <div class="bg-gray-800 pt-2 pb-10 text-white">
-      <div class="bg-gray-800 py-10 text-white flex flex-col items-center justify-center">
+    <div class="bg-primary pt-2 pb-10 text-white">
+      <div class="bg-primary py-10 text-white flex flex-col items-center justify-center">
         <h1 class="text-3xl font-bold mb-10">Subscribe to get our updates</h1>
         <form action="#">
           <div class="flex">
@@ -162,8 +145,6 @@
 
 
   </footer>
-
-
+</div>
 </body>
-
 </html>
