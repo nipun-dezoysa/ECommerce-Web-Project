@@ -154,6 +154,26 @@ boolean adminlogin;
      public boolean adminislogin(){
         return adminlogin;
     }
+     
+     
+     
+     public void addProduct(String name, String description ,String  brand ,int price ,int discount ,String sizes,String colors, String image) {
+        
+        String driver ="com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/shoetopia";
+            String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `sizes`, `colors`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+name+"','"+description+"','"+brand+"',"+price+","+discount+",'"+sizes+"','"+colors+"','"+image+"','null','null','null')";
+            //String query = "INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `sizes`, `colors`, `img01`, `img02`, `img03`, `img04`) VALUES ('abc','dsadasd dfadfa dafa','deded',1700,2,'dqd eded ','edwfew','fewfwef','null','null','null')";
+            
+            try {
+                Class.forName(driver);
+                Connection con = DriverManager.getConnection(url,"root","");
+                Statement st = con.createStatement();
+                st.executeUpdate(query);
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
     
     
     
