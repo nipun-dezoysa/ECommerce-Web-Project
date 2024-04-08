@@ -1,9 +1,9 @@
 
 <div
-  class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300"
+  class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 w-[200px] shrink-0 border"
 >
   <div class="w-[184px] h-[184px] relative overflow-hidden rounded-lg">
-    <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+    <img src="<%= request.getParameter("src") %>" alt="" class="w-full h-full" />
     <div
       class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
     >
