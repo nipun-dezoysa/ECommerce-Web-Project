@@ -26,7 +26,7 @@
             <input type="email" placeholder="Enter your email address..."
               class="bg-white text-white px-2 rounded-l-lg px-4 py-2 focus:outline-none w-96 mr-3 rounded-r-lg">
             <button type="submit"
-              class="bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded-r-lg focus:outline-none rounded-l-lg">Subscribe</button>
+              class="bg-rose-800 hover:bg-rose-800 font-bold py-2 px-4 rounded-r-lg focus:outline-none rounded-l-lg">Subscribe</button>
           </div>
         </form>
       </div>
