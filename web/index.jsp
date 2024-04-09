@@ -13,6 +13,8 @@
         <jsp:param name="title" value="New Arrivals"/>
     </jsp:include>
     
+    <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
+    
     <jsp:include page="./WEB-INF/components/showcase.jsp">
         <jsp:param name="title" value="NIKE"/>
     </jsp:include>
@@ -23,6 +25,4 @@
 
     
     <!-- contents end here -->
-    
-    <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
     <jsp:include page="./WEB-INF/components/footer.jsp" />
