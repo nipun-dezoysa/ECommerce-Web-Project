@@ -1,6 +1,6 @@
 
 <div
-  class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 w-[200px] shrink-0 border"
+  class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
 >
   <div class="w-[184px] h-[184px] relative overflow-hidden rounded-lg">
     <img src="<%= request.getParameter("src") %>" alt="" class="w-full h-full" />
