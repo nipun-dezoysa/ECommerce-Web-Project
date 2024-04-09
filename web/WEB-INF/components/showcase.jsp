@@ -1,5 +1,5 @@
 <div
-  class="lg:px-[100px] md:px-[50px] px-5 w-full py-5 overflow-hidden flex flex-col gap-2"
+  class="main-container py-5 overflow-hidden flex flex-col gap-2"
 >
   <div class="font-bold w-full font-mono flex justify-between px-2">
     <div class="text-2xl"><%= request.getParameter("title") %></div>
