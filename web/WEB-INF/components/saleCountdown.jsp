@@ -1,4 +1,4 @@
-<div class="bg-gray-200 text-gray-500 flex justify-center items-center font-mono p-5 gap-5">
+<div class="bg-gray-200 text-gray-500 flex justify-evenly items-center font-mono p-5 ">
   <div class="flex flex-col items-center">
     <h1 class="text-4xl font-bold">Flash Sale Ends In</h1>
     <div class="flex gap-5 font-semibold" id="countdown">
