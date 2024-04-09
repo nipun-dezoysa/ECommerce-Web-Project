@@ -10,6 +10,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
   </head>
   <body class="flex justify-center">
     <div class="relative w-full max-w-[1920px] min-h-screen flex flex-col">
