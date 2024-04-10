@@ -22,6 +22,13 @@ public class CartItem {
         this.size = size;
     }
 
+    public CartItem(int id, int color, int size) {
+        this.id = id;
+        this.quantity = quantity;
+        this.color = color;
+        this.size = size;
+    }
+    
     public int getId() {
         return id;
     }
