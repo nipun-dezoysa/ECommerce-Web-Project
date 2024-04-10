@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Product</title>
-
+    <script src="./js/quantityRange.js"></script>
     <jsp:include page="./WEB-INF/components/nav.jsp" />
 
     <div class="main-container flex p-5 h-[500px] gap-5 justify-center">
@@ -46,7 +46,19 @@
         </div>
       </div>
       <div class="w-[40%] flex flex-col gap-1">
-        <h1 class="text-4xl font-bold font-mono">Nike Air Max</h1>
+        <div class="flex items-center gap-3">
+          <h1 class="text-4xl font-bold font-mono">Nike Air Max</h1>
+          <form action="#" method="POST">
+            <input type="hidden" name="id" value="100" />
+            <button type="submit">
+              <i class="fa-regular fa-heart text-2xl"></i>
+            </button>
+          </form>
+        </div>
+        <div class="flex gap-1">
+          <div class="px-2 py-1 rounded-full text-xs border">NIKE</div>
+          <div class="px-2 py-1 rounded-full text-xs border">Men Shoe</div>
+        </div>
         <div>
           <div class="text-2xl font-mono">LKR 2,500</div>
           <div class="flex gap-2">
@@ -185,18 +197,36 @@
               </div>
             </div>
           </div>
-            <input type="hidden" name="id" value="100"/>
-            <input type="hidden" name="quantity" value="500"/>
+
+          <!-- product id no -->
+          <input type="hidden" name="id" value="100" />
+
           <div class="flex mt-1 gap-1">
+            <div
+              class="border-2 rounded-full flex items-center w-[110px] p-1 justify-between text-primary"
+            >
+              <input id="quantity" type="hidden" name="quantity" value="1" />
+              <button
+                type="button"
+                onclick="updateQuantity('rem','quantity','no')"
+              >
+                <i class="fa-solid fa-circle-minus text-3xl"></i>
+              </button>
+              <div id="no">1</div>
+              <button
+                type="button"
+                onclick="updateQuantity('add','quantity','no')"
+              >
+                <i class="fa-solid fa-circle-plus text-3xl"></i>
+              </button>
+            </div>
             <button
               class="bg-primary text-white px-5 py-2 rounded-xl"
               type="submit"
             >
+              <i class="fa-solid fa-cart-plus"></i>
               Add to Cart
             </button>
-            <a class="bg-primary text-white px-5 py-2 rounded-xl" href="#"
-              >Add to Wishlist</a
-            >
           </div>
         </form>
       </div>
