@@ -6,7 +6,7 @@
     <jsp:include page="./WEB-INF/components/Imports.jsp" />
   </head>
   <body>
-    <div class="frameBox">
+
 <jsp:include page="./WEB-INF/components/nav.jsp" />
 
 <div class="font-[sans-serif] bg-white">
@@ -110,6 +110,6 @@
 </div>
 
 <jsp:include page="./WEB-INF/components/footer.jsp" />
-</div>
+
   </body>
 </html>
