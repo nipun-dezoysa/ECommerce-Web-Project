@@ -1,4 +1,4 @@
-<footer>
+<footer class="mt-auto">
   <div class="bg-primary pt-2 pb-10 text-white">
     <div
       class="bg-primary py-10 text-white flex flex-col items-center justify-center"

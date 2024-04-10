@@ -1,8 +1,14 @@
+<%
+    String path = request.getParameter("path");
+    if(path==null){
+        path="./";
+    }
+%>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
-<script src="./js/tailwindconfig.js"></script>
+<script src="<%=path%>js/tailwindconfig.js"></script>
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -11,7 +17,7 @@
   referrerpolicy="no-referrer"
 />
 
-<link rel="icon" type="image/x-icon" href="./img/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="<%=path%>img/favicon.ico" />
 
 <style type="text/tailwindcss">
   @layer utilities {

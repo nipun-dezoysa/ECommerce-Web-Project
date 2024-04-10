@@ -1,3 +1,9 @@
+<%
+    String path = request.getParameter("path");
+    if(path==null){
+        path="./";
+    }
+%>
 <!--navbar code starts here-->
 <div class="bg-primary py-1 font-mono text-white flex justify-center z-50">
   Just arrived. Hurry up!
@@ -5,8 +11,8 @@
 <div
   class="sticky top-0 text-primary bg-white flex justify-between items-center py-3 main-container border-b z-50"
 >
-  <a href="index.jsp">
-    <img class="h-[30px] lg:h-[40px]" src="./img/1.png" alt="" />
+  <a href="<%=path%>index.jsp">
+    <img class="h-[30px] lg:h-[40px]" src="<%=path%>img/1.png" alt="" />
   </a>
   <div class="flex items-center gap-5 max-sm:gap-3 relative">
     <div
@@ -23,7 +29,7 @@
     </div>
     <div class="border-r-2 h-[80%]"></div>
     <a
-      href="cart.jsp"
+      href="<%=path%>cart.jsp"
       class="flex items-center gap-2 hover:text-primaryLight"
     >
       <div class="text-2xl"><i class="fa-solid fa-cart-shopping"></i></div>
