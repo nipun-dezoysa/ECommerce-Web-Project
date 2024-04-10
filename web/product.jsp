@@ -62,7 +62,7 @@
           visible from the exterior of the shoe and intended to provide
           cushioning to the underfoot.
         </p>
-        <form action="#" class="flex flex-col gap-1">
+        <form action="addToCart" method="post" class="flex flex-col gap-1">
           <div class="flex flex-col">
             <div class="font-semibold">Colors</div>
             <div class="mt-1 flex gap-1">
@@ -71,7 +71,7 @@
                   type="radio"
                   id="color1"
                   name="color"
-                  value="black"
+                  value="1"
                   class="hidden peer"
                 />
                 <label
@@ -85,7 +85,7 @@
                   type="radio"
                   id="color2"
                   name="color"
-                  value="white"
+                  value="2"
                   class="hidden peer"
                 />
                 <label
@@ -99,7 +99,7 @@
                   type="radio"
                   id="color3"
                   name="color"
-                  value="red"
+                  value="3"
                   class="hidden peer"
                 />
                 <label
@@ -113,7 +113,7 @@
                   type="radio"
                   id="color4"
                   name="color"
-                  value="yellow"
+                  value="4"
                   class="hidden peer"
                 />
                 <label
@@ -185,6 +185,8 @@
               </div>
             </div>
           </div>
+            <input type="hidden" name="id" value="100"/>
+            <input type="hidden" name="quantity" value="500"/>
           <div class="flex mt-1 gap-1">
             <button
               class="bg-primary text-white px-5 py-2 rounded-xl"

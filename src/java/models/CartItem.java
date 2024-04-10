@@ -12,10 +12,10 @@ package models;
 public class CartItem {
     private int id;
     private int quantity;
-    private String color;
-    private String size;
+    private int color;
+    private int size;
 
-    public CartItem(int id, int quantity, String color, String size) {
+    public CartItem(int id, int quantity, int color, int size) {
         this.id = id;
         this.quantity = quantity;
         this.color = color;
@@ -30,11 +30,11 @@ public class CartItem {
         return quantity;
     }
 
-    public String getColor() {
+    public int getColor() {
         return color;
     }
 
-    public String getSize() {
+    public int getSize() {
         return size;
     }
 
@@ -42,7 +42,13 @@ public class CartItem {
         this.quantity = quantity;
     }
 
-    
+    public boolean isEqual(CartItem a){
+      if(a.getId()==this.id && a.getColor()==this.color && a.getSize()==this.size){
+          return true;
+      }else{
+          return false;
+      }  
+    }
     
     
 }
