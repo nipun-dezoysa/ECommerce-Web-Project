@@ -10,14 +10,24 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+
+    <style type="text/tailwindcss">
+      @layer utilities {
+          .main-container{
+              @apply lg:px-[100px] md:px-[50px] px-5 w-full;
+          }
+      }
+    </style>
+
   </head>
   <body class="flex justify-center">
     <div class="relative w-full max-w-[1920px] min-h-screen flex flex-col">
       
 <!--navbar code starts here-->
     <div class="bg-primary py-1 font-mono text-white flex justify-center z-50">Just arrived. Hurry up!</div>
-    <div class="sticky top-0 text-primary bg-white flex justify-between items-center py-3 lg:px-[100px] md:px-[50px] px-5 w-full border-b z-50">
+    <div class="sticky top-0 text-primary bg-white flex justify-between items-center py-3 main-container border-b z-50">
       <a href="index.jsp"><img class="h-[30px] lg:h-[40px]" src="./img/1.png" alt=""></a>
       <div class="flex items-center gap-5 max-sm:gap-3 relative">
         <div class="block flex items-center w-[200px] rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6">
