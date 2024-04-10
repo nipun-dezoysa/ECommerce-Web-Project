@@ -1,5 +1,11 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
+<html>
+  <head>
+    <title>Shoetopia</title>
+    <jsp:include page="./WEB-INF/components/Imports.jsp" />
+  </head>
+  <body>
 
 <jsp:include page="./WEB-INF/components/nav.jsp" />
 
@@ -104,3 +110,6 @@
 </div>
 
 <jsp:include page="./WEB-INF/components/footer.jsp" />
+
+  </body>
+</html>

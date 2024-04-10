@@ -3,6 +3,9 @@
   <head>
     <title>Product</title>
     <script src="./js/quantityRange.js"></script>
+    <jsp:include page="./WEB-INF/components/Imports.jsp" />
+  </head>
+  <body>
     <jsp:include page="./WEB-INF/components/nav.jsp" />
 
     <div class="main-container flex p-5 h-[500px] gap-5 justify-center">
@@ -237,3 +240,5 @@
     </jsp:include>
 
     <jsp:include page="./WEB-INF/components/footer.jsp" />
+  </body>
+</html>
