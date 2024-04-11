@@ -88,39 +88,27 @@
       <!--navbar code end here-->
       <!-- clear all the lines after this -->
 
-      <div class="main-container flex justify-between py-5">
-        <div class="w-[70%] flex flex-col gap-5">
+      <div class="main-container flex justify-evenly py-5">
+        <div class="w-[60%] flex flex-col gap-3">
           <div
-            class="w-full border shadow border-gray-300 rounded-lg flex items-center p-5 justify-between text-sm"
+            class="w-full font-semibold border shadow border-gray-300 rounded-lg flex items-center p-5 justify-between text-sm"
           >
-            <div class="flex items-center gap-5">
-              <input
-                class="rounded border-2"
-                type="checkbox"
-                name="all"
-                id="all"
-              />
-              <label for="all" class="font-bold">Select All</label>
+            <div class="flex items-center gap-5 text-lg">
+              My Cart
             </div>
-            <div class="font-bold">
+            <div class=" flex">
               <a class="text-primary pr-5 border-r-2" href="#">UPDATE CART</a>
-              <button class="text-red-500 pl-5" type="submit">REMOVE</button>
+              <div class="text-primary pl-5" type="submit">1 Items</div>
             </div>
           </div>
           <div
-            class="w-full border shadow border-gray-300 rounded-lg flex items-center p-5 gap-5"
+            class="w-full border shadow border-gray-300 rounded-lg flex items-center py-2 px-4 gap-5"
           >
-            <input
-              class="rounded border-2"
-              type="checkbox"
-              name="all"
-              id="all"
-            />
             <img class="w-[100px] rounded-lg" src="./img/demo.jpg" alt="" />
             <div class="w-full h-full flex flex-col">
               <div class="flex justify-between font-semibold text-xl">
-                <h1>Nike Air Jordan 2</h1>
-                <div class="text-gray-400">SKU 12</div>
+                <h1 class="text-gray-600">Nike Air Jordan 2</h1>
+                <div class="text-gray-300">SKU 12</div>
               </div>
               <div class="flex w-full h-full justify-between">
                 <div class="flex flex-col justify-end">
@@ -130,20 +118,20 @@
                       >15%</span
                     >
                   </div>
-                  <div class="text-xl font-mono">LKR 2,500</div>
+                  <div class="text-xl font-mono text-gray-700">LKR 2,500</div>
                 </div>
                 <div class="flex flex-col justify-end">
                   <div>
-                    Color: <span class="font-semibold font-mono">Black</span>
+                    Color: <span class="font-semibold font-mono text-gray-600">Black</span>
                   </div>
                   <div>
-                    Size: <span class="font-semibold font-mono">44</span>
+                    Size: <span class="font-semibold font-mono text-gray-600">44</span>
                   </div>
                 </div>
                 <div class="flex flex-col justify-end">
                   <div class="flex items-center gap-2">
                     <div
-                      class="border-2 rounded-full flex items-center w-[110px] h-[40px] px-1 justify-between text-primary"
+                      class="border-2 rounded-lg flex items-center w-[110px] h-[40px] px-2 justify-between text-gray-500"
                     >
                       <input
                         id="quantity"
@@ -155,25 +143,25 @@
                         type="button"
                         onclick="updateQuantity('rem','quantity','no')"
                       >
-                        <i class="fa-solid fa-circle-minus text-3xl"></i>
+                        <i class="fa-solid fa-minus"></i>
                       </button>
                       <div id="no">1</div>
                       <button
                         type="button"
                         onclick="updateQuantity('add','quantity','no')"
                       >
-                        <i class="fa-solid fa-circle-plus text-3xl"></i>
+                        <i class="fa-solid fa-plus"></i>
                       </button>
                     </div>
                     <button
                       type="button"
-                      class="w-[40px] h-[40px] bg-primary rounded-full text-white"
+                      class="w-[40px] h-[40px] bg-red-500 rounded-lg text-white"
                     >
                       <i class="fa-solid fa-trash"></i>
                     </button>
                     <button
                       type="button"
-                      class="w-[40px] h-[40px] border-2 border-primary rounded-full text-primary"
+                      class="w-[40px] h-[40px] border-2 rounded-lg text-gray-500"
                     >
                       <i class="fa-solid fa-heart"></i>
                     </button>
