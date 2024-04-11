@@ -32,10 +32,12 @@ public class dblogin {
             Logger.getLogger(dblogin.class.getName()).log(Level.SEVERE, null, ex);
         }
         */
-        //dblogin db1= new dblogin();
+        dblogin db1= new dblogin();
         
         //db1.getData("kalpa", "dklsajk");
         //db1.checkData("sanju", "123");
+        db1.connect();
+        
         
         
     }
@@ -107,5 +109,26 @@ public class dblogin {
         return login;
     }
     
+    void connect(){
+        String driver ="com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/login";
+            String queryx="SELECT * FROM `std` WHERE 1";
+            try {
+                Class.forName(driver);
+                Connection con = DriverManager.getConnection(url,"root","");
+                Statement st = con.createStatement();
+                ResultSet rs1= st.executeQuery(queryx);
+                while(rs1.next()){
+                System.out.println(rs1.getString("uname") + "   "+rs1.getString("passwd"));
+                }
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(dblogin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    void view(){
+        
+    }
     
 }
