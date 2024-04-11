@@ -30,49 +30,23 @@ public class addProduct extends HttpServlet {
         
         int priceint = Integer.parseInt(price);
         int discountint = Integer.parseInt(discount);
-        String sisesstr= Arrays.toString(sizes);
-        String colorsstr =Arrays.toString(colors);
-        
-        
         
         PrintWriter out = response.getWriter();
-        out.println(sizes + " " + colors );
         
         Part cimg = request.getPart("cimage");
         String fileName = cimg.getSubmittedFileName();
         
-        /*out.println(name);
-        out.println(description);
-        out.println(brand);
-        out.println(price);
-        out.println(discount);
-        out.println(Arrays.toString(sizes));
-        out.println(Arrays.toString(colors));
-        out.println(fileName);
-        */
-        int[] intSizes = new int[sizes.length];
-        
-
-        
         DatabaseLogIn db5= new DatabaseLogIn();
         
-        db5.addProduct(name, description, brand, priceint, discountint, colorsstr, sisesstr, fileName);
-        for (int i = 0; i < sizes.length; i++) {
-            intSizes[i] = Integer.parseInt(sizes[i]);
-            out.print(intSizes[i]);
-        }
-        
+        db5.addProduct(name, description, brand, priceint, discountint,1,1, fileName,fileName,fileName,fileName);
+       
         int pid = db5.getpid(name);
         
-        out.print(pid);
-        
         for(int x=0;x<sizes.length;x++){
-            out.print(intSizes[x]);
-            db5.addSizes(intSizes[x], pid, x, x);
+            db5.addSizes(Integer.parseInt(sizes[x]), pid);
         }
         
-        for(int x=0;x<sizes.length;x++){
-            out.print(colors[x]);
+        for(int x=0;x<colors.length;x++){
             db5.addColors(pid, colors[x]);
         }
         
