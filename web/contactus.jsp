@@ -1,14 +1,12 @@
-<%-- Document : contactus Created on : Mar 30, 2024, 2:24:44 PM Author : chith
---%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <jsp:include page="./WEB-INF/components/nav.jsp" />
-    <link rel="stylesheet" href="css/contactus.css" />
     <title>Contact Us</title>
+    <link rel="stylesheet" href="css/contactus.css" />
+    <jsp:include page="./WEB-INF/components/Imports.jsp" />
   </head>
   <body>
+    <jsp:include page="./WEB-INF/components/nav.jsp" />
     <div class="container">
       <div class="left-section">
         <div class="fst">
@@ -191,6 +189,6 @@
       </div>
     </section>
     <br />
+    <jsp:include page="./WEB-INF/components/footer.jsp" />
   </body>
-  <jsp:include page="./WEB-INF/components/footer.jsp" />
 </html>

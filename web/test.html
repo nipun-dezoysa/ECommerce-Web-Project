@@ -13,6 +13,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <style type="text/tailwindcss">
       @layer utilities {
         .inputs {
@@ -42,467 +43,50 @@
       }
     </style>
   </head>
-  <body>
-    <div class="flex min-h-screen">
-      <div class="bg-primary w-[19%] py-5 flex flex-col h-screen sticky top-0">
-        <div class="w-full flex flex-col items-center">
-          <a class="w-[70%]" href="../"
-            ><img class="w-full" src="./img/2.png" alt="logo"
-          /></a>
-          <p class="text-white font-mono">Admin Dashboard</p>
-        </div>
-        <div class="px-5 text-white mt-10 flex flex-col">
-          <a
-            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
-            href="./"
-            ><i class="fa-solid fa-compass text-2xl w-10"></i>
-            <div>Dashboard</div></a
+  <body class="bg-gray-200">
+    <div class="w-full flex p-10">
+      <div
+        class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300"
+      >
+        <div class="w-[184px] h-[184px] relative overflow-hidden rounded-lg">
+          <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+          <div
+            class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
           >
-          <a
-            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
-            href="#"
-            ><i class="fa-solid fa-bag-shopping text-2xl w-10"></i>
-            <div>Orders</div></a
-          >
-          <a
-            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
-            href="./products.jsp"
-            ><i class="fa-solid fa-tags text-2xl w-10"></i>
-            <div>Products</div></a
-          >
-          <a
-            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
-            href="#"
-            ><i class="fa-solid fa-person text-2xl w-10"></i>
-            <div>Customers</div></a
-          >
-          <a
-            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
-            href="#"
-            ><i class="fa-solid fa-user-tie text-2xl w-10"></i>
-            <div>Administration</div></a
-          >
-        </div>
-        <div class="px-5 text-white mt-auto flex flex-col">
-          <a
-            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
-            href="#"
-            ><i class="fa-solid fa-circle-info text-2xl w-10"></i>
-            <div>Admin Pannel v 1.0</div></a
-          >
-        </div>
-      </div>
-      <div class="bg-gray-200 w-[81%] flex flex-col">
-        <div class="bg-white py-5 px-10 flex justify-between">
-          <div class="flex items-center gap-2">
-            <i class="fa-solid fa-magnifying-glass gap-3"></i>
-            <input
-              class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0"
-              type="text"
-              name="search"
-              id="search"
-              placeholder="Search..."
-            />
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="flex flex-col justify-center">
-              <a class="font-semibold text-gray-500" href="#">Admin</a>
-              <a class="text-red-700 font-mono" href="#">Log Out</a>
-            </div>
+            <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
             <div
-              class="bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center text-gray-400"
+              class="absolute invisible group-hover:visible text-sm text-gray-400"
             >
-              <i class="fa-regular fa-user"></i>
+              <div class="font-semibold">Colors</div>
+              <div>White</div>
+              <div>Black</div>
+              <div>Brown</div>
             </div>
           </div>
         </div>
-        <div class="p-5 flex flex-col gap-5">
-          <!-- body strat here -->
-
-          <nav class="flex" aria-label="Breadcrumb">
-            <ol
-              class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
-            >
-              <li class="inline-flex items-center">
-                <a
-                  href="#"
-                  class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-                >
-                  <svg
-                    class="w-3 h-3 me-2.5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                  >
-                    <path
-                      d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"
-                    />
-                  </svg>
-                  Dashboard
-                </a>
-              </li>
-              <li>
-                <div class="flex items-center">
-                  <svg
-                    class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 9 4-4-4-4"
-                    />
-                  </svg>
-                  <a
-                    href="#"
-                    class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
-                    >Products</a
-                  >
-                </div>
-              </li>
-              <li aria-current="page">
-                <div class="flex items-center">
-                  <svg
-                    class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 6 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 9 4-4-4-4"
-                    />
-                  </svg>
-                  <span
-                    class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"
-                    >Nike Air 1</span
-                  >
-                </div>
-              </li>
-            </ol>
-          </nav>
-
-          <div class="flex gap-3">
-            <div class="w-[70%] flex flex-col gap-3">
-              <form action="#" method="POST" class="box w-full">
-                <div class="box-title">Product Details</div>
-                <div class="box-body">
-                  <div>
-                    <div class="input-lable">Name</div>
-                    <input
-                      class="inputs"
-                      type="text"
-                      name="name"
-                      id="name"
-                      placeholder="Product Name"
-                      required
-                    />
-                  </div>
-                  <div>
-                    <div class="input-lable">Brand</div>
-                    <input
-                      class="inputs"
-                      type="text"
-                      name="brand"
-                      id="brand"
-                      placeholder="Brand Name"
-                      required
-                    />
-                  </div>
-                  <div class="flex w-full gap-3">
-                    <div class="w-[50%]">
-                      <div class="input-lable">Price (LKR)</div>
-                      <input
-                        class="inputs"
-                        type="text"
-                        name="price"
-                        id="price"
-                        placeholder="Product Price"
-                        required
-                      />
-                    </div>
-                    <div class="w-[50%]">
-                      <div class="input-lable">Discount (%)</div>
-                      <input
-                        class="inputs"
-                        type="text"
-                        name="discount"
-                        id="discount"
-                        placeholder="Discount Percentage"
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div class="input-lable">Description</div>
-                    <textarea
-                      class="inputs resize-none"
-                      name="des"
-                      id="description"
-                      cols="30"
-                      rows="5"
-                      placeholder="Product Description"
-                      required
-                    ></textarea>
-                  </div>
-                  <input
-                    class="normal w-[200px]"
-                    type="submit"
-                    value="Save Changes"
-                  />
-                </div>
-              </form>
-              <div class="box">
-                <div class="box-title">Images</div>
-                <div class="box-body">
-                  <div class="flex gap-3">
-                    <form
-                      action="../../addProduct"
-                      method="POST"
-                      enctype="multipart/form-data"
-                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
-                    >
-                      <input type="hidden" name="pid" value="#" />
-                      <input type="hidden" name="choice" value="#" />
-                      <img
-                        id="1img"
-                        class="w-full h-full"
-                        src="./img/demo.jpg"
-                        alt="product"
-                      />
-                      <div
-                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
-                      >
-                        Select Image
-                      </div>
-                      <input
-                        required
-                        accept="image/png, image/gif, image/jpeg"
-                        type="file"
-                        name="img"
-                        class="absolute top-0 w-full h-full opacity-0"
-                        onchange="loadFile(event,'1')"
-                      />
-                      <div
-                        id="1ok"
-                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
-                      >
-                        <i class="fa-solid fa-check"></i>
-                        <input
-                          class="w-full h-full absolute opacity-0 cursor-pointer"
-                          type="submit"
-                        />
-                      </div>
-                    </form>
-
-                    <form
-                      action="../../addProduct"
-                      method="POST"
-                      enctype="multipart/form-data"
-                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
-                    >
-                      <input type="hidden" name="pid" value="#" />
-                      <input type="hidden" name="choice" value="#" />
-                      <img
-                        id="2img"
-                        class="w-full h-full"
-                        src="./img/demo.jpg"
-                        alt="product"
-                      />
-                      <div
-                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
-                      >
-                        Select Image
-                      </div>
-                      <input
-                        required
-                        accept="image/png, image/gif, image/jpeg"
-                        type="file"
-                        name="img"
-                        class="absolute top-0 w-full h-full opacity-0"
-                        onchange="loadFile(event,'2')"
-                      />
-                      <div
-                        id="2ok"
-                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
-                      >
-                        <i class="fa-solid fa-check"></i>
-                        <input
-                          class="w-full h-full absolute opacity-0 cursor-pointer"
-                          type="submit"
-                        />
-                      </div>
-                    </form>
-
-                    <form
-                      action="../../addProduct"
-                      method="POST"
-                      enctype="multipart/form-data"
-                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
-                    >
-                      <input type="hidden" name="pid" value="#" />
-                      <input type="hidden" name="choice" value="#" />
-                      <img
-                        id="3img"
-                        class="w-full h-full"
-                        src="./img/demo.jpg"
-                        alt="product"
-                      />
-                      <div
-                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
-                      >
-                        Select Image
-                      </div>
-                      <input
-                        required
-                        accept="image/png, image/gif, image/jpeg"
-                        type="file"
-                        name="img"
-                        class="absolute top-0 w-full h-full opacity-0"
-                        onchange="loadFile(event,'3')"
-                      />
-                      <div
-                        id="3ok"
-                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
-                      >
-                        <i class="fa-solid fa-check"></i>
-                        <input
-                          class="w-full h-full absolute opacity-0 cursor-pointer"
-                          type="submit"
-                        />
-                      </div>
-                    </form>
-
-                    <form
-                      action="../../addProduct"
-                      method="POST"
-                      enctype="multipart/form-data"
-                      class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
-                    >
-                      <input type="hidden" name="pid" value="#" />
-                      <input type="hidden" name="choice" value="#" />
-                      <img
-                        id="4img"
-                        class="w-full h-full"
-                        src="./img/demo.jpg"
-                        alt="product"
-                      />
-                      <div
-                        class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
-                      >
-                        Select Image
-                      </div>
-                      <input
-                        required
-                        accept="image/png, image/gif, image/jpeg"
-                        type="file"
-                        name="img"
-                        class="absolute top-0 w-full h-full opacity-0"
-                        onchange="loadFile(event,'4')"
-                      />
-                      <div
-                        id="4ok"
-                        class="absolute invisible top-2 right-2 p-1 bg-gray-200 rounded-full w-7 h-7 flex items-center justify-center hover:bg-green-500 hover:text-white"
-                      >
-                        <i class="fa-solid fa-check"></i>
-                        <input
-                          class="w-full h-full absolute opacity-0 cursor-pointer"
-                          type="submit"
-                        />
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
+        <div class="font-semibold font-mono mt-1">Nike Air 2 Jordan</div>
+        <div class="flex justify-between items-center mt-1">
+          <div>
+            <div class="flex text-xs gap-1">
+              <div class="text-gray-600 line-through">LKR 2,500</div>
+              <div class="bg-green-200 px-1 rounded-lg text-green-600">15%</div>
             </div>
-
-            <div class="w-[30%] flex flex-col gap-3">
-              <div class="box">
-                <div class="box-title">Sizes</div>
-                <div class="box-body">
-                  <form action="#" method="POST">
-                    <div class="flex gap-2">
-                      <input type="hidden" name="size" value="XL" />
-                      <div
-                        class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
-                      >
-                        XL
-                      </div>
-                      <input class="remove" type="submit" value="Remove" />
-                    </div>
-                  </form>
-                  <form action="#" method="POST">
-                    <div class="flex flex-col items-center gap-1">
-                      <input
-                        type="text"
-                        class="inputs"
-                        id="size"
-                        name="size"
-                        placeholder="type size"
-                        required
-                      />
-                      <input type="submit" value="Add" class="normal w-full" />
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <div class="box">
-                <div class="box-title">Colors</div>
-                <div class="box-body">
-                  <form action="#" method="POST">
-                    <div class="flex gap-2">
-                      <input type="hidden" name="color" value="Black" />
-                      <div
-                        class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
-                      >
-                        Black
-                      </div>
-                      <input class="remove" type="submit" value="Remove" />
-                    </div>
-                  </form>
-                  <form action="#" method="POST">
-                    <div class="flex gap-2">
-                      <input type="hidden" name="color" value="Black" />
-                      <div
-                        class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
-                      >
-                        White
-                      </div>
-                      <input class="remove" type="submit" value="Remove" />
-                    </div>
-                  </form>
-                  <form action="#" method="POST">
-                    <div class="flex flex-col items-center gap-1">
-                      <input
-                        type="text"
-                        class="inputs"
-                        id="color"
-                        name="color"
-                        placeholder="type color"
-                        required
-                      />
-                      <input type="submit" value="Add" class="normal w-full" />
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+            <div class="text-lg font-semibold">LKR 2,000</div>
           </div>
-
-          <!-- body end here -->
+          <div
+            class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+          >
+            <i
+              class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
+            ></i>
+          </div>
         </div>
       </div>
     </div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="./js/productsAdmin.js"></script>
     <script src="./js/productEdit.js"></script>
