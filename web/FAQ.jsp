@@ -1,25 +1,21 @@
-<%-- 
-    Document   : FAQ
-    Created on : Apr 11, 2024, 3:48:57 PM
-    Author     : user
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>FAQ</title>
-    </head>
-    <body>
-            <div class="container my-24 mx-auto md:px-2">
+  <head>
+    <title>Shoetopia</title>
+    <jsp:include page="./WEB-INF/components/Imports.jsp" />
+  </head>
+  <body>
+    <jsp:include page="./WEB-INF/components/nav.jsp" />
 
-        <section class="mb-32">
-            <h1 class="mb-2 text-center text-4xl font-bold">
+    <!-- content starts here-->
+            <div class="main-container">
+
+        <section class="my-5">
+            <h1 class="mb-2 text-center text-2xl md:text-4xl font-bold">
                 Frequently asked questions.
             </h1>
-            <div class="mr-20 ml-20 px-8">
-                <p class="text-center text-lg text-neutral-500 dark:text-neutral-300 mb-16">Below you'll find answers to
+            <div class="lg:px-28">
+                <p class="text-center test-sm md:text-lg text-neutral-500 mb-16">Below you'll find answers to
                     the most common
                     questions you may have on our footwares. Also, please feel free to check out our <a href="#"
                         class="text-blue-700 hover:underline">Facebook</a>,
@@ -34,7 +30,7 @@
                 <div class="grid gap-6 lg:grid-cols-3">
                     <div class="mb-6 md:mb-8 lg:mb-12">
                         <p class="mb-11 font-bold text-lg">How do I find my shoe size?</p>
-                        <p class="text-neutral-500 dark:text-neutral-300 ">
+                        <p class="text-neutral-500 ">
                             To find your shoe size, measure your foot length in centimeters
                             or inches and refer to our size guide. You can also use our size
                             conversion chart to convert between different sizing standards.
@@ -43,7 +39,7 @@
 
                     <div class="mb-6 md:mb-8 lg:mb-12">
                         <p class="mb-11 font-bold text-lg">What is your return policy for shoes?</p>
-                        <p class="text-neutral-500 dark:text-neutral-300">
+                        <p class="text-neutral-500">
                             We offer a hassle-free return policy for shoes. If you're not satisfied
                             with your purchase, you can return it within 30 days for a full refund
                             or exchange. Please ensure the shoes are in their original condition
@@ -55,7 +51,7 @@
                         <p class="mb-4 font-bold text-lg">
                             Are your shoes made from sustainable materials?
                         </p>
-                        <p class="text-neutral-500 dark:text-neutral-300">
+                        <p class="text-neutral-500">
                             Yes, we are committed to sustainability. Our shoes
                             are made from eco-friendly materials such as recycled
                             plastic bottles, organic cotton, and natural rubber.
@@ -68,7 +64,7 @@
                         <p class="mb-4 font-bold text-lg">
                             How do I care for my shoes to prolong their lifespan?
                         </p>
-                        <p class="text-neutral-500 dark:text-neutral-300">
+                        <p class="text-neutral-500">
                             Proper care is essential for maintaining the quality
                             of your shoes. We recommend cleaning them regularly
                             with a soft brush or cloth and using a mild detergent
@@ -80,7 +76,7 @@
 
                     <div class="mb-6 md:mb-8 lg:mb-12">
                         <p class="mb-4 font-bold text-lg"> Do you offer wide-width or narrow-width shoes?</p>
-                        <p class="text-neutral-500 dark:text-neutral-300">
+                        <p class="text-neutral-500">
                             Yes, we offer a range of shoe widths to accommodate different foot shapes and sizes.
                             You can filter our shoe selection by width on our website to find the perfect fit for your
                             feet.
@@ -91,7 +87,7 @@
                         <p class="mb-10 font-bold text-lg">
                             Can I track my order after purchase?
                         </p>
-                        <p class="text-neutral-500 dark:text-neutral-300">
+                        <p class="text-neutral-500">
                             Absolutely! Once your order is processed and shipped,
                             you'll receive a tracking number via email. You can use
                             this tracking number to monitor the status of your
@@ -105,5 +101,8 @@
         </section>
 
     </div>
-    </body>
+    <!-- contents end here -->
+
+    <jsp:include page="./WEB-INF/components/footer.jsp" />
+  </body>
 </html>
