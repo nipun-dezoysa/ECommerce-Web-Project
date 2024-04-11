@@ -115,9 +115,9 @@ static void connectToDb(){
      
      
      
-     public void addProduct(String name, String description ,String  brand ,int price ,int discount ,int type,int ava, String img1,String img2,String img3,String img4) {
+     public void addProduct(String name, String description ,String  brand ,int price ,int discount ,int type, String img1,String img2,String img3,String img4) {
          connectToDb();
-            String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+name+"','"+description+"','"+brand+"',"+price+","+discount+","+type+","+ava+",'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
+            String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+name+"','"+description+"','"+brand+"',"+price+","+discount+","+type+",1,'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
             try {
                 st.executeUpdate(query);
                 st.close();
