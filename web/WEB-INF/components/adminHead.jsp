@@ -3,8 +3,7 @@
 String path = request.getParameter("path");
 %>
   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="<%=path%>../js/productsAdmin.js"></script>
+    
     <div class="flex min-h-screen">
       <div class="bg-primary w-[19%] py-5 flex flex-col h-screen sticky top-0">
         <div class="w-full flex flex-col items-center">
