@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cart</title>
+    <title>Product</title>
+    <script src="./js/quantityRange.js"></script>
 
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -88,100 +89,530 @@
       <!--navbar code end here-->
       <!-- clear all the lines after this -->
 
-      <div class="main-container flex justify-evenly py-5">
-        <div class="w-[60%] flex flex-col gap-3">
-          <div
-            class="w-full font-semibold border shadow border-gray-300 rounded-lg flex items-center p-5 justify-between text-sm"
-          >
-            <div class="flex items-center gap-5 text-lg">
-              My Cart
+      <div class="main-container flex p-5 h-[500px] gap-5 justify-center">
+        <div class="flex h-full gap-1 shrink-0">
+          <div class="flex h-full flex-col justify-between">
+            <div class="h-[24%] relative group" onclick="chnge(0)">
+              <input type="radio" name="imggroup" class="peer h-full w-full absolute opacity-0 cursor-pointer" checked>
+              <img
+                class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
             </div>
-            <div class=" flex">
-              <a class="text-primary pr-5 border-r-2" href="#">UPDATE CART</a>
-              <div class="text-primary pl-5" type="submit">1 Items</div>
+            <div class="h-[24%] relative group" onclick="chnge(1)">
+              <input type="radio" name="imggroup" class="peer h-full w-full absolute opacity-0 cursor-pointer">
+              <img
+                class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
+            </div>
+            <div class="h-[24%] relative group" onclick="chnge(2)">
+              <input type="radio" name="imggroup" class="peer h-full w-full absolute opacity-0 cursor-pointer">
+              <img
+                class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
+            </div>
+            <div class="h-[24%] relative group" onclick="chnge(3)">
+              <input type="radio" name="imggroup" class="peer h-full w-full absolute opacity-0 cursor-pointer">
+              <img
+                class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
             </div>
           </div>
-          <div
-            class="w-full border shadow border-gray-300 rounded-lg flex items-center py-2 px-4 gap-5"
-          >
-            <img class="w-[100px] rounded-lg" src="./img/demo.jpg" alt="" />
-            <div class="w-full h-full flex flex-col">
-              <div class="flex justify-between font-semibold text-xl">
-                <h1 class="text-gray-600">Nike Air Jordan 2</h1>
-                <div class="text-gray-300">SKU 12</div>
-              </div>
-              <div class="flex w-full h-full justify-between">
-                <div class="flex flex-col justify-end">
-                  <div class="text-sm">
-                    LKR 3,000
-                    <span class="bg-green-200 rounded-full px-2 text-green-600"
-                      >15%</span
-                    >
-                  </div>
-                  <div class="text-xl font-mono text-gray-700">LKR 2,500</div>
-                </div>
-                <div class="flex flex-col justify-end">
-                  <div>
-                    Color: <span class="font-semibold font-mono text-gray-600">Black</span>
-                  </div>
-                  <div>
-                    Size: <span class="font-semibold font-mono text-gray-600">44</span>
-                  </div>
-                </div>
-                <div class="flex flex-col justify-end">
-                  <div class="flex items-center gap-2">
-                    <div
-                      class="border-2 rounded-lg flex items-center w-[110px] h-[40px] px-2 justify-between text-gray-500"
-                    >
-                      <input
-                        id="quantity"
-                        type="hidden"
-                        name="quantity"
-                        value="1"
-                      />
-                      <button
-                        type="button"
-                        onclick="updateQuantity('rem','quantity','no')"
-                      >
-                        <i class="fa-solid fa-minus"></i>
-                      </button>
-                      <div id="no">1</div>
-                      <button
-                        type="button"
-                        onclick="updateQuantity('add','quantity','no')"
-                      >
-                        <i class="fa-solid fa-plus"></i>
-                      </button>
-                    </div>
-                    <button
-                      type="button"
-                      class="w-[40px] h-[40px] bg-red-500 rounded-lg text-white"
-                    >
-                      <i class="fa-solid fa-trash"></i>
-                    </button>
-                    <button
-                      type="button"
-                      class="w-[40px] h-[40px] border-2 rounded-lg text-gray-500"
-                    >
-                      <i class="fa-solid fa-heart"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+          <script>
+            function chnge(a){
+              var slider = document.getElementById("slider");
+              slider.style.transform = `translateY(-${a*25}%)`;
+            }
+          </script>
+          <div class="h-full overflow-hidden  rounded-xl">
+            <div id="slider" class="h-[400%] w-full duration-700 ease-in-out">
+              <img
+                class="h-[25%]"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
+              <img
+                class="h-[25%]"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
+              <img
+                class="h-[25%]"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
+              <img
+                class="h-[25%]"
+                src="./img/demo.jpg"
+                alt="product image"
+              />
             </div>
           </div>
         </div>
-        <div class="w-[25%]">
-          <div
-            class="w-full border shadow border-gray-300 rounded-lg flex flex-col gap-3 p-5"
-          >
-            <h1 class="font-semibold">Shopping Summary</h1>
-            <div class="flex items-center justify-between">
-              <div class="font-semibold">Total</div>
-              <div class="font-bold text-xl font-mono">LKR 13,000</div>
+        <div class="w-[40%] flex flex-col gap-1">
+          <div class="flex items-center gap-3">
+            <h1 class="text-4xl font-bold font-mono">Nike Air Max</h1>
+            <form action="#" method="POST">
+              <input type="hidden" name="id" value="100" />
+              <button type="submit">
+                <i class="fa-regular fa-heart text-2xl"></i>
+              </button>
+            </form>
+          </div>
+          <div class="flex gap-1">
+            <div class="px-2 py-1 rounded-full text-xs border">NIKE</div>
+            <div class="px-2 py-1 rounded-full text-xs border">Men Shoe</div>
+          </div>
+          <div>
+            <div class="text-2xl font-mono">LKR 2,500</div>
+            <div class="flex gap-2">
+              <div class="text-gray-500 line-through">LKR 3,000</div>
+              <div class="bg-green-200 px-2 rounded-full text-green-500">
+                15%
+              </div>
             </div>
-            <button class="py-3 bg-primary rounded-lg text-white font-semibold" type="submit">CHECKOUT</button>
-            <a href="#" class="font-semibold text-sm text-center">Back to Shopping</a>
+          </div>
+
+          <p class="font-mono text-sm">
+            Nike Air Max is a line of shoes produced by Nike, Inc., with the
+            first model released in 1987. Air Max shoes are identified by their
+            midsoles incorporating flexible urethane pouches filled with
+            pressurized gas, visible from the exterior of the shoe and intended
+            to provide cushioning to the underfoot.
+          </p>
+          <form action="addToCart" method="post" class="flex flex-col gap-1">
+            <div class="flex flex-col">
+              <div class="font-semibold">Colors</div>
+              <div class="mt-1 flex gap-1">
+                <div>
+                  <input
+                    type="radio"
+                    id="color1"
+                    name="color"
+                    value="1"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="color1"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >Black</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="color2"
+                    name="color"
+                    value="2"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="color2"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >White</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="color3"
+                    name="color"
+                    value="3"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="color3"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >Red</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="color4"
+                    name="color"
+                    value="4"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="color4"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >Yellow</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="font-semibold">Sizes</div>
+              <div class="mt-1 flex gap-1">
+                <div>
+                  <input
+                    type="radio"
+                    id="size1"
+                    name="size"
+                    value="35"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="size1"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >35</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="size2"
+                    name="size"
+                    value="36"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="size2"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >36</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="size3"
+                    name="size"
+                    value="37"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="size3"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >37</label
+                  >
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="size4"
+                    name="size"
+                    value="38"
+                    class="hidden peer"
+                  />
+                  <label
+                    for="size4"
+                    class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
+                    >38</label
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- product id no -->
+            <input type="hidden" name="id" value="100" />
+
+            <div class="flex mt-1 gap-1">
+              <div
+                class="border-2 rounded-full flex items-center w-[110px] p-1 justify-between "
+              >
+                <input id="quantity" type="hidden" name="quantity" value="1" />
+                <button
+                  type="button"
+                  onclick="updateQuantity('rem','quantity','no')"
+                >
+                  <i class="fa-solid fa-circle-minus text-3xl text-primary hover:text-primaryLight"></i>
+                </button>
+                <div id="no" class="text-primary font-mono font-semibold">1</div>
+                <button
+                  type="button"
+                  onclick="updateQuantity('add','quantity','no')"
+                >
+                  <i class="fa-solid fa-circle-plus text-3xl text-primary hover:text-primaryLight"></i>
+                </button>
+              </div>
+              <button
+                class="bg-primary hover:bg-primaryLight text-white px-5 py-2 rounded-xl"
+                type="submit"
+              >
+                <i class="fa-solid fa-cart-plus"></i>
+                Add to Cart
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="main-container py-5 overflow-hidden flex flex-col gap-2">
+        <div class="font-bold w-full font-mono flex justify-between px-2">
+          <div class="text-2xl">You may also like</div>
+          <a href="#" class="text-md">View all</a>
+        </div>
+        <div class="flex flex-wrap gap-2 justify-between">
+          <div
+            class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
+          >
+            <div
+              class="w-[184px] h-[184px] relative overflow-hidden rounded-lg"
+            >
+              <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+              <div
+                class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
+              >
+                <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
+                <div
+                  class="absolute invisible group-hover:visible text-sm text-gray-400"
+                >
+                  <div class="font-semibold">Colors</div>
+                  <div>White</div>
+                  <div>Black</div>
+                  <div>Brown</div>
+                </div>
+              </div>
+            </div>
+            <div class="max-md:text-sm font-semibold font-mono mt-1">
+              Nike Air 2 Jordan
+            </div>
+            <div class="flex justify-between items-center mt-1">
+              <div>
+                <div class="flex text-xs gap-1">
+                  <div class="text-gray-600 line-through">LKR 2,500</div>
+                  <div class="bg-green-200 px-1 rounded-lg text-green-600">
+                    15%
+                  </div>
+                </div>
+                <div class="md:text-lg font-semibold">LKR 2,000</div>
+              </div>
+              <div
+                class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+              >
+                <i
+                  class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
+          >
+            <div
+              class="w-[184px] h-[184px] relative overflow-hidden rounded-lg"
+            >
+              <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+              <div
+                class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
+              >
+                <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
+                <div
+                  class="absolute invisible group-hover:visible text-sm text-gray-400"
+                >
+                  <div class="font-semibold">Colors</div>
+                  <div>White</div>
+                  <div>Black</div>
+                  <div>Brown</div>
+                </div>
+              </div>
+            </div>
+            <div class="max-md:text-sm font-semibold font-mono mt-1">
+              Nike Air 2 Jordan
+            </div>
+            <div class="flex justify-between items-center mt-1">
+              <div>
+                <div class="flex text-xs gap-1">
+                  <div class="text-gray-600 line-through">LKR 2,500</div>
+                  <div class="bg-green-200 px-1 rounded-lg text-green-600">
+                    15%
+                  </div>
+                </div>
+                <div class="md:text-lg font-semibold">LKR 2,000</div>
+              </div>
+              <div
+                class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+              >
+                <i
+                  class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
+          >
+            <div
+              class="w-[184px] h-[184px] relative overflow-hidden rounded-lg"
+            >
+              <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+              <div
+                class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
+              >
+                <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
+                <div
+                  class="absolute invisible group-hover:visible text-sm text-gray-400"
+                >
+                  <div class="font-semibold">Colors</div>
+                  <div>White</div>
+                  <div>Black</div>
+                  <div>Brown</div>
+                </div>
+              </div>
+            </div>
+            <div class="max-md:text-sm font-semibold font-mono mt-1">
+              Nike Air 2 Jordan
+            </div>
+            <div class="flex justify-between items-center mt-1">
+              <div>
+                <div class="flex text-xs gap-1">
+                  <div class="text-gray-600 line-through">LKR 2,500</div>
+                  <div class="bg-green-200 px-1 rounded-lg text-green-600">
+                    15%
+                  </div>
+                </div>
+                <div class="md:text-lg font-semibold">LKR 2,000</div>
+              </div>
+              <div
+                class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+              >
+                <i
+                  class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
+          >
+            <div
+              class="w-[184px] h-[184px] relative overflow-hidden rounded-lg"
+            >
+              <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+              <div
+                class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
+              >
+                <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
+                <div
+                  class="absolute invisible group-hover:visible text-sm text-gray-400"
+                >
+                  <div class="font-semibold">Colors</div>
+                  <div>White</div>
+                  <div>Black</div>
+                  <div>Brown</div>
+                </div>
+              </div>
+            </div>
+            <div class="max-md:text-sm font-semibold font-mono mt-1">
+              Nike Air 2 Jordan
+            </div>
+            <div class="flex justify-between items-center mt-1">
+              <div>
+                <div class="flex text-xs gap-1">
+                  <div class="text-gray-600 line-through">LKR 2,500</div>
+                  <div class="bg-green-200 px-1 rounded-lg text-green-600">
+                    15%
+                  </div>
+                </div>
+                <div class="md:text-lg font-semibold">LKR 2,000</div>
+              </div>
+              <div
+                class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+              >
+                <i
+                  class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
+          >
+            <div
+              class="w-[184px] h-[184px] relative overflow-hidden rounded-lg"
+            >
+              <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+              <div
+                class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
+              >
+                <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
+                <div
+                  class="absolute invisible group-hover:visible text-sm text-gray-400"
+                >
+                  <div class="font-semibold">Colors</div>
+                  <div>White</div>
+                  <div>Black</div>
+                  <div>Brown</div>
+                </div>
+              </div>
+            </div>
+            <div class="max-md:text-sm font-semibold font-mono mt-1">
+              Nike Air 2 Jordan
+            </div>
+            <div class="flex justify-between items-center mt-1">
+              <div>
+                <div class="flex text-xs gap-1">
+                  <div class="text-gray-600 line-through">LKR 2,500</div>
+                  <div class="bg-green-200 px-1 rounded-lg text-green-600">
+                    15%
+                  </div>
+                </div>
+                <div class="md:text-lg font-semibold">LKR 2,000</div>
+              </div>
+              <div
+                class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+              >
+                <i
+                  class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
+                ></i>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
+          >
+            <div
+              class="w-[184px] h-[184px] relative overflow-hidden rounded-lg"
+            >
+              <img src="./img/demo.jpg" alt="" class="w-full h-full" />
+              <div
+                class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
+              >
+                <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
+                <div
+                  class="absolute invisible group-hover:visible text-sm text-gray-400"
+                >
+                  <div class="font-semibold">Colors</div>
+                  <div>White</div>
+                  <div>Black</div>
+                  <div>Brown</div>
+                </div>
+              </div>
+            </div>
+            <div class="max-md:text-sm font-semibold font-mono mt-1">
+              Nike Air 2 Jordan
+            </div>
+            <div class="flex justify-between items-center mt-1">
+              <div>
+                <div class="flex text-xs gap-1">
+                  <div class="text-gray-600 line-through">LKR 2,500</div>
+                  <div class="bg-green-200 px-1 rounded-lg text-green-600">
+                    15%
+                  </div>
+                </div>
+                <div class="md:text-lg font-semibold">LKR 2,000</div>
+              </div>
+              <div
+                class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+              >
+                <i
+                  class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
+                ></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>

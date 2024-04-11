@@ -8,46 +8,83 @@
   <body>
     <jsp:include page="./WEB-INF/components/nav.jsp" />
 
+    <!-- product images -->
     <div class="main-container flex p-5 h-[500px] gap-5 justify-center">
       <div class="flex h-full gap-1 shrink-0">
+
+        <!-- side pics -->
         <div class="flex h-full flex-col justify-between">
-          <div class="h-[24%]">
+          <div class="h-[24%] relative group" onclick="chnge(0)">
+            <input
+              type="radio"
+              name="imggroup"
+              class="peer h-full w-full absolute opacity-0 cursor-pointer"
+              checked
+            />
             <img
-              class="h-full rounded-xl"
+              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
               src="./img/demo.jpg"
               alt="product image"
             />
           </div>
-          <div class="h-[24%]">
+          <div class="h-[24%] relative group" onclick="chnge(1)">
+            <input
+              type="radio"
+              name="imggroup"
+              class="peer h-full w-full absolute opacity-0 cursor-pointer"
+            />
             <img
-              class="h-full rounded-xl"
+              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
               src="./img/demo.jpg"
               alt="product image"
             />
           </div>
-          <div class="h-[24%]">
+          <div class="h-[24%] relative group" onclick="chnge(2)">
+            <input
+              type="radio"
+              name="imggroup"
+              class="peer h-full w-full absolute opacity-0 cursor-pointer"
+            />
             <img
-              class="h-full rounded-xl"
+              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
               src="./img/demo.jpg"
               alt="product image"
             />
           </div>
-          <div class="h-[24%]">
+          <div class="h-[24%] relative group" onclick="chnge(3)">
+            <input
+              type="radio"
+              name="imggroup"
+              class="peer h-full w-full absolute opacity-0 cursor-pointer"
+            />
             <img
-              class="h-full rounded-xl"
+              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
               src="./img/demo.jpg"
               alt="product image"
             />
           </div>
         </div>
-        <div class="h-full">
-          <img
-            class="h-full rounded-xl"
-            src="./img/demo.jpg"
-            alt="product image"
-          />
+
+        <!-- slider script -->
+        <script>
+          function chnge(a) {
+            var slide = document.getElementById("sl");
+            slide.style.transform = "translateY(-"+(a * 25)+"%)";
+          }
+        </script>
+
+        <!-- cover pics -->
+        <div class="h-full overflow-hidden rounded-xl">
+          <div id="sl" class="h-[400%] w-full duration-700 ease-in-out">
+            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
+            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
+            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
+            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
+          </div>
         </div>
       </div>
+
+      <!-- product details -->
       <div class="w-[40%] flex flex-col gap-1">
         <div class="flex items-center gap-3">
           <h1 class="text-4xl font-bold font-mono">Nike Air Max</h1>
@@ -91,7 +128,7 @@
                 />
                 <label
                   for="color1"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >Black</label
                 >
               </div>
@@ -105,7 +142,7 @@
                 />
                 <label
                   for="color2"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >White</label
                 >
               </div>
@@ -119,7 +156,7 @@
                 />
                 <label
                   for="color3"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >Red</label
                 >
               </div>
@@ -133,7 +170,7 @@
                 />
                 <label
                   for="color4"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >Yellow</label
                 >
               </div>
@@ -152,7 +189,7 @@
                 />
                 <label
                   for="size1"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >35</label
                 >
               </div>
@@ -166,7 +203,7 @@
                 />
                 <label
                   for="size2"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >36</label
                 >
               </div>
@@ -180,7 +217,7 @@
                 />
                 <label
                   for="size3"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >37</label
                 >
               </div>
@@ -194,7 +231,7 @@
                 />
                 <label
                   for="size4"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white"
+                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
                   >38</label
                 >
               </div>
@@ -206,25 +243,29 @@
 
           <div class="flex mt-1 gap-1">
             <div
-              class="border-2 rounded-full flex items-center w-[110px] p-1 justify-between text-primary"
+              class="border-2 rounded-full flex items-center w-[110px] p-1 justify-between"
             >
               <input id="quantity" type="hidden" name="quantity" value="1" />
               <button
                 type="button"
                 onclick="updateQuantity('rem','quantity','no')"
               >
-                <i class="fa-solid fa-circle-minus text-3xl"></i>
+                <i
+                  class="fa-solid fa-circle-minus text-3xl text-primary hover:text-primaryLight"
+                ></i>
               </button>
-              <div id="no">1</div>
+              <div id="no" class="text-primary font-mono font-semibold">1</div>
               <button
                 type="button"
                 onclick="updateQuantity('add','quantity','no')"
               >
-                <i class="fa-solid fa-circle-plus text-3xl"></i>
+                <i
+                  class="fa-solid fa-circle-plus text-3xl text-primary hover:text-primaryLight"
+                ></i>
               </button>
             </div>
             <button
-              class="bg-primary text-white px-5 py-2 rounded-xl"
+              class="bg-primary hover:bg-primaryLight text-white px-5 py-2 rounded-xl"
               type="submit"
             >
               <i class="fa-solid fa-cart-plus"></i>
