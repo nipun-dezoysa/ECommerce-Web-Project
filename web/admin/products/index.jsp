@@ -4,7 +4,11 @@
 <html>
   <head>
     <title>Products</title>
-
+    <jsp:include page="../../WEB-INF/components/adminImports.jsp">
+      <jsp:param name="path" value="../" />
+    </jsp:include>
+  </head>
+  <body>
     <jsp:include page="../../WEB-INF/components/adminHead.jsp">
       <jsp:param name="path" value="../" />
     </jsp:include>
@@ -313,3 +317,5 @@
     </div>
 
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
+  </body>
+</html>

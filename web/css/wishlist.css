@@ -1,0 +1,53 @@
+h1{
+  font-size: 35px !important;
+  font-weight: bold !important;
+  margin-top: 10px;
+   font-family: Verdana, Tahoma, sans-serif !important;
+  box-sizing: border-box;
+}
+
+.max-container {
+max-width: 1200px;
+width: 96%;
+margin: 0 auto;
+}
+
+.wishlist-header {
+margin-bottom: 20px;
+}
+
+.wishlist-items {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 20px;
+}
+
+.wishlist-item {
+border: 1px solid #ccc;
+padding: 10px;
+border-radius: 5px;
+}
+
+.product-image img {
+width: 100%;
+height: auto;
+border-radius: 5px;
+}
+
+.product-details {
+text-align: center;
+}
+
+.remove-button {
+background-color: #ff6b6b;
+color: #fff;
+border: none;
+padding: 5px 10px;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.remove-button:hover {
+background-color: #ff5252;
+}
