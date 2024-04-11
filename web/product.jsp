@@ -3,6 +3,7 @@
   <head>
     <title>Product</title>
     <script src="./js/quantityRange.js"></script>
+    <script src="./js/productPageSlider.js"></script>
     <jsp:include page="./WEB-INF/components/Imports.jsp" />
   </head>
   <body>
@@ -64,14 +65,6 @@
             />
           </div>
         </div>
-
-        <!-- slider script -->
-        <script>
-          function chnge(a) {
-            var slide = document.getElementById("sl");
-            slide.style.transform = "translateY(-"+(a * 25)+"%)";
-          }
-        </script>
 
         <!-- cover pics -->
         <div class="h-full overflow-hidden rounded-xl">
