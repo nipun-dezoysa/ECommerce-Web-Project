@@ -18,8 +18,8 @@
 
 
     <footer>
-    <div class="bg-gray-950 pt-2 pb-10 text-white">
-      <div class="bg-gray-950 py-10 text-white flex flex-col items-center justify-center">
+    <div class="bg-slate-800 pt-2 pb-10 text-white">
+      <div class="bg-slate-800 py-10 text-white flex flex-col items-center justify-center">
         <h1 class="text-3xl font-bold mb-10">Subscribe to get our updates</h1>
         <form action="#">
           <div class="flex">
