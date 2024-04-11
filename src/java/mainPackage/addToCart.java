@@ -46,10 +46,7 @@ public class addToCart extends HttpServlet {
             if(!isExist)cart.add(item);
         }
         session.setAttribute("cart", cart);
-        PrintWriter out = response.getWriter();
-        for(int i=0;i<cart.size();i++){
-            out.println("<h1>"+cart.get(i).getId()+" color="+cart.get(i).getColor()+" size="+cart.get(i).getSize()+" quantity="+cart.get(i).getQuantity()+"</h1>" );
-        }
+        response.sendRedirect(request.getHeader("referer"));
         
     }
 
