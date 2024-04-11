@@ -25,6 +25,7 @@
         <div class="px-2 my-4 w-full sm:w-auto">
           <div>
             <h2 class="inline-block text-2xl font-bold mb-3">Contact Us</h2>
+
           </div>
           <ul class="leading-8">
             <li class="flex items-center">
