@@ -50,12 +50,31 @@ public class addProduct extends HttpServlet {
         out.println(Arrays.toString(colors));
         out.println(fileName);
         */
+        int[] intSizes = new int[sizes.length];
         
+
         
         DatabaseLogIn db5= new DatabaseLogIn();
         
         db5.addProduct(name, description, brand, priceint, discountint, colorsstr, sisesstr, fileName);
+        for (int i = 0; i < sizes.length; i++) {
+            intSizes[i] = Integer.parseInt(sizes[i]);
+            out.print(intSizes[i]);
+        }
         
+        int pid = db5.getpid(name);
+        
+        out.print(pid);
+        
+        for(int x=0;x<sizes.length;x++){
+            out.print(intSizes[x]);
+            db5.addSizes(intSizes[x], pid, x, x);
+        }
+        
+        for(int x=0;x<sizes.length;x++){
+            out.print(colors[x]);
+            db5.addColors(pid, colors[x]);
+        }
         
         /*if (!"".equals(fileName)) {
             String uploadDir = getServletContext().getRealPath("/img/products/");

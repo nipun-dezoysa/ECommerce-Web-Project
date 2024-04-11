@@ -39,11 +39,13 @@ public class DatabaseLogIn {
         
         //db1.getData("kalpa", "dklsajk");
         //db1.checkData("sanju", "123");
-        //DatabaseLogIn db1=new DatabaseLogIn();
+        DatabaseLogIn db1=new DatabaseLogIn();
         //db1.getData();
         
         //db1.checkData("abc2.@gmail.com", "1234");
         //System.out.println(db1.islogin());
+        //db1.addSizes(20, 5, 0, 0);
+        db1.getpid("sas");
         
     }
     
@@ -174,6 +176,73 @@ boolean adminlogin;
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+     
+     public void addSizes(int size, int pid,int ave,int type ) {
+        
+        String driver ="com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/shoetopia";
+            String query="INSERT INTO `sizes`(`size`, `pid`, `availability`, `type`) VALUES ("+size+","+pid+",1,1)";
+            try {
+                Class.forName(driver);
+                Connection con = DriverManager.getConnection(url,"root","");
+                Statement st = con.createStatement();
+                st.executeUpdate(query);
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+     
+    public void addColors(int pid,String ccode ) {
+        
+        String driver ="com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/shoetopia";
+            String query="INSERT INTO `colors`(`pid`, `ccode`) VALUES ('"+pid+"','"+ccode+"')";
+            try {
+                Class.forName(driver);
+                Connection con = DriverManager.getConnection(url,"root","");
+                Statement st = con.createStatement();
+                st.executeUpdate(query);
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }
+    
+    
+      public int getpid(String name) {
+        
+        String driver ="com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/shoetopia";
+            String Query ="SELECT `Id` FROM `products` WHERE name = '"+name+"'";
+            int pid=-1;
+           
+            
+            try {
+                Class.forName(driver);
+                Connection con = DriverManager.getConnection(url,"root","");
+                Statement st = con.createStatement();
+                
+                
+                ResultSet resultSet= st.executeQuery(Query);
+                if (resultSet.next()) {
+                    
+                
+                pid=resultSet.getInt("id");
+                
+                }
+                
+                
+              
+            
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            System.out.println(pid);
+            return pid;
+    }
+
     
     
     
