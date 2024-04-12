@@ -1,3 +1,20 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<% 
+    String id = request.getParameter("id");
+    if(id==null) response.sendRedirect("./index.jsp");
+    try { 
+        Integer.parseInt(id); 
+	}  
+    catch (NumberFormatException e)  
+	{ %>
+        <jsp:forward page="index.jsp"/>
+        
+<%	}
+    DatabaseLogIn db = new DatabaseLogIn();
+    Product pr = db.getProduct(id);
+    if(pr==null)response.sendRedirect("./index.jsp");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,8 +40,8 @@
               checked
             />
             <img
-              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
-              src="./img/demo.jpg"
+              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+              src="./img/products/<%= pr.getImg1() %>"
               alt="product image"
             />
           </div>
@@ -35,8 +52,8 @@
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
             <img
-              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
-              src="./img/demo.jpg"
+              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+              src="./img/products/<%= pr.getImg2() %>"
               alt="product image"
             />
           </div>
@@ -47,8 +64,8 @@
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
             <img
-              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
-              src="./img/demo.jpg"
+              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+              src="./img/products/<%= pr.getImg3() %>"
               alt="product image"
             />
           </div>
@@ -59,8 +76,8 @@
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
             <img
-              class="h-full rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
-              src="./img/demo.jpg"
+              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+              src="./img/products/<%= pr.getImg4() %>"
               alt="product image"
             />
           </div>
@@ -69,10 +86,10 @@
         <!-- cover pics -->
         <div class="h-full overflow-hidden rounded-xl">
           <div id="sl" class="h-[400%] w-full duration-700 ease-in-out">
-            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
-            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
-            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
-            <img class="h-[25%]" src="./img/demo.jpg" alt="product image" />
+            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg1() %>" alt="product image" />
+            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg2() %>" alt="product image" />
+            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg3() %>" alt="product image" />
+            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg4() %>" alt="product image" />
           </div>
         </div>
       </div>
@@ -80,7 +97,7 @@
       <!-- product details -->
       <div class="w-[40%] flex flex-col gap-1">
         <div class="flex items-center gap-3">
-          <h1 class="text-4xl font-bold font-mono">Nike Air Max</h1>
+          <h1 class="text-4xl font-bold font-mono"><%= pr.getName() %></h1>
           <form action="#" method="POST">
             <input type="hidden" name="id" value="100" />
             <button type="submit">
@@ -89,145 +106,83 @@
           </form>
         </div>
         <div class="flex gap-1">
-          <div class="px-2 py-1 rounded-full text-xs border">NIKE</div>
-          <div class="px-2 py-1 rounded-full text-xs border">Men Shoe</div>
-        </div>
-        <div>
-          <div class="text-2xl font-mono">LKR 2,500</div>
-          <div class="flex gap-2">
-            <div class="text-gray-500 line-through">LKR 3,000</div>
-            <div class="bg-green-200 px-2 rounded-full text-green-500">15%</div>
+          <div class="px-2 py-1 rounded-full text-xs border"><%= pr.getBrand() %></div>
+          <div class="px-2 py-1 rounded-full text-xs border">
+              <% if(pr.getType()==1){ %>
+              Men Shoes
+              <%}else if(pr.getType()==2){ %>
+              Women Shoes
+              <%}else{ %>
+              Kid Shoes
+              <%}%>
           </div>
+        </div>
+          
+        <%
+            double price = (double)pr.getPrice();
+            
+        %>  
+          
+        <div>
+          <% if(pr.getDiscount()>0 && pr.getDiscount()<=100){%>  
+          <div class="text-2xl font-mono">LKR <%= pr.getformatDis() %></div>
+          <div class="flex gap-2">
+            <div class="text-gray-500 line-through">LKR <%= pr.getformatPrice() %></div>
+            <div class="bg-green-200 px-2 rounded-full text-green-500"><%= pr.getDiscount() %>%</div>
+          </div>
+          <% }else{ %>
+          <div class="text-2xl font-mono">LKR <%= pr.getformatPrice() %></div>
+          <% } %>
         </div>
 
         <p class="font-mono text-sm">
-          Nike Air Max is a line of shoes produced by Nike, Inc., with the first
-          model released in 1987. Air Max shoes are identified by their midsoles
-          incorporating flexible urethane pouches filled with pressurized gas,
-          visible from the exterior of the shoe and intended to provide
-          cushioning to the underfoot.
+          <%= pr.getDes() %>
         </p>
-        <form action="addToCart" method="post" class="flex flex-col gap-1">
+        <form id="cartform" class="flex flex-col gap-1">
           <div class="flex flex-col">
             <div class="font-semibold">Colors</div>
             <div class="mt-1 flex gap-1">
+                
+              <% for(int i=0;i<pr.getColors().size();i++){ %>  
               <div>
                 <input
                   type="radio"
-                  id="color1"
+                  id="color<%= i %>"
                   name="color"
-                  value="1"
+                  value="<%= pr.getColors().get(i).getId() %>"
                   class="hidden peer"
                 />
                 <label
-                  for="color1"
+                  for="color<%= i %>"
                   class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >Black</label
+                  ><%= pr.getColors().get(i).getValue() %></label
                 >
               </div>
-              <div>
-                <input
-                  type="radio"
-                  id="color2"
-                  name="color"
-                  value="2"
-                  class="hidden peer"
-                />
-                <label
-                  for="color2"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >White</label
-                >
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="color3"
-                  name="color"
-                  value="3"
-                  class="hidden peer"
-                />
-                <label
-                  for="color3"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >Red</label
-                >
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="color4"
-                  name="color"
-                  value="4"
-                  class="hidden peer"
-                />
-                <label
-                  for="color4"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >Yellow</label
-                >
-              </div>
+              <% } %>
+              
             </div>
           </div>
           <div class="flex flex-col">
             <div class="font-semibold">Sizes</div>
             <div class="mt-1 flex gap-1">
+                
+              <% for(int i=0;i<pr.getSizes().size();i++){ %>  
               <div>
                 <input
                   type="radio"
-                  id="size1"
+                  id="size<%= i %>"
                   name="size"
-                  value="35"
+                  value="<%= pr.getSizes().get(i).getId() %>"
                   class="hidden peer"
                 />
                 <label
-                  for="size1"
+                  for="size<%= i %>"
                   class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >35</label
+                  ><%= pr.getSizes().get(i).getValue() %></label
                 >
               </div>
-              <div>
-                <input
-                  type="radio"
-                  id="size2"
-                  name="size"
-                  value="36"
-                  class="hidden peer"
-                />
-                <label
-                  for="size2"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >36</label
-                >
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="size3"
-                  name="size"
-                  value="37"
-                  class="hidden peer"
-                />
-                <label
-                  for="size3"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >37</label
-                >
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  id="size4"
-                  name="size"
-                  value="38"
-                  class="hidden peer"
-                />
-                <label
-                  for="size4"
-                  class="block px-5 py-2 border-2 rounded-full peer-checked:bg-primary peer-checked:text-white hover:bg-primaryLight cursor-pointer hover:text-white"
-                  >38</label
-                >
-              </div>
+              <% } %>
+              
             </div>
           </div>
 
@@ -274,5 +229,28 @@
     </jsp:include>
 
     <jsp:include page="./WEB-INF/components/footer.jsp" />
+    
+    <script>
+      $(document).ready(function () {
+        $("#cartform").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "addToCart",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                alert(response);
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+        });
+      });
+    </script>
   </body>
 </html>
