@@ -1,5 +1,5 @@
-<%-- Document : products Created on : Apr 2, 2024, 11:53:55 PM Author : Nipun
---%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="mainPackage.DatabaseLogIn, models.Product, java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -92,7 +92,7 @@
               </div>
               <div class="w-[50%]">
                 <div class="input-lable">Type</div>
-                <select class="inputs" name="type" id="type">
+                <select class="inputs pr-5" name="type" id="type">
                   <option value="1">Men Shoe</option>
                   <option value="2">Women Shoe</option>
                   <option value="3">Kid Shoe</option>
@@ -290,34 +290,52 @@
       <div class="box-title">All Products</div>
       <div class="box-body">
         <div class="flex w-full font-semibold rounded-lg">
-          <div class="w-full text-center">Image</div>
-          <div class="w-full text-center">ID</div>
-          <div class="w-full text-center">Name</div>
-          <div class="w-full text-center">Brand</div>
-          <div class="w-full text-center">Price</div>
-          <div class="w-full text-center">Discount</div>
-          <div class="w-full text-center">Action</div>
+          
+          <div class="w-[25%]  text-center"></div>
+          <div class="w-[65%] flex gap-2">
+          <div class="w-[25%] text-center">Brand</div>
+          <div class="w-[25%] text-center">Price</div>
+          <div class="w-[25%] text-center">Discount</div> 
+          <div class="w-[25%] text-center">Availability</div>
+          </div>
+          
+          <div class="w-[20%] text-center"></div>
         </div>
+        
+          <!--all product item-->
+        <% 
+            DatabaseLogIn db = new DatabaseLogIn();
+            ArrayList<Product> prods = db.getAllProducts();
+            for(int i=0;i<prods.size();i++){
+        %>
         <div class="flex w-full border rounded-lg items-center p-1">
-          <div class="w-full flex justify-center">
+          <div class="w-[25%] flex gap-1 items-center">
             <img
-              class="w-[70px] h-[70px] rounded-lg"
-              src="../../img/demo.jpg"
+              class="w-[70px] aspect-square block rounded-lg"
+              src="../../img/products/<%= prods.get(i).getImg1() %>"
               alt="product"
             />
+            <div >
+                <a href="#"class="font-semibold"><%= prods.get(i).getName() %></a>
+              <div class="text-gray-400 text-sm">#<%= prods.get(i).getId() %></div>
+            </div>
           </div>
-          <div class="w-full text-center">#2334</div>
-          <a href="#" class="w-full text-center">Air Jordan 1 Mid</a>
-          <div class="w-full text-center">Nike</div>
-          <div class="w-full text-center">LKR 6000</div>
-          <div class="w-full text-center">20%</div>
-          <div class="w-full flex justify-center gap-2">
-            <a class="normal" type="button" href="edit.jsp">Edit</a>
-            <form action="#" method="POST">
-              <input class="remove" type="submit" value="Remove" />
+          <div class="flex gap-2 w-[65%]">
+            <div class="w-[25%] text-center"><%= prods.get(i).getBrand() %></div>
+            <div class="w-[25%] text-center">LKR <%= prods.get(i).getPrice() %></div>
+            <div class="w-[25%] text-center"><%= prods.get(i).getDiscount() %>%</div>
+            <div class="w-[25%] text-center">available</div>
+          </div>
+          <div class="flex justify-end gap-2 w-[20%]">
+            <a class="normal" type="button" href="edit.jsp?id=<%= prods.get(i).getId() %>"><i class="fa-solid fa-pen-to-square"></i></a>
+            <form class="dform" id="d<%= prods.get(i).getId() %>" action="deleteProduct" method="POST">
+                <input type="hidden" name="id" value="<%= prods.get(i).getId() %>"/>
+                <button type="submit" class="remove"><i class="fa-solid fa-trash"></i></button>
             </form>
           </div>
         </div>
+        <% } %>  
+          
       </div>
     </div>
 
@@ -345,13 +363,34 @@
               contentType: false,
               success: function (response) {
                 console.log(response);
-                alert(response);
+//                alert(response);
+                location.reload();
               },
               error: function (xhr, status, error) {
                 console.error(xhr.responseText);
               },
             });
           }
+        });
+        
+        $(".dform").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../deleteProduct",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
         });
       });
     </script>
