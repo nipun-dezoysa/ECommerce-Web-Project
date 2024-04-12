@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +14,11 @@ import javax.servlet.http.HttpSession;
 import models.CartItem;
 
 @WebServlet(name = "removeFromCart", urlPatterns = {"/removeFromCart"})
+@MultipartConfig(
+    fileSizeThreshold = 1024 * 1024,  // 1 MB
+    maxFileSize = 1024 * 1024 * 10,   // 10 MB
+    maxRequestSize = 1024 * 1024 * 50 // 50 MB
+)
 public class removeFromCart extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -27,7 +33,7 @@ public class removeFromCart extends HttpServlet {
             session.setAttribute("cart", cart);
         }
         
-        response.sendRedirect("./cart.jsp");
+        response.getWriter().print("removed from cart");
         
     }
     @Override

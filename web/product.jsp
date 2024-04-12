@@ -187,7 +187,7 @@
           </div>
 
           <!-- product id no -->
-          <input type="hidden" name="id" value="100" />
+          <input type="hidden" name="id" value="<%= id %>" />
 
           <div class="flex mt-1 gap-1">
             <div

@@ -179,15 +179,22 @@ public class Product {
     
     public String getformatPrice(){
         double price = (double)this.Price;
-        DecimalFormat formatter = new DecimalFormat("#,###.00");
-        return formatter.format(price);
+        return currFormat(price);
     }
     
     public String getformatDis(){
+        double dis = getDisPrice();
+        return currFormat(dis);
+    }
+    
+    public double getDisPrice(){
         double price = (double)this.Price;
-        double dis = price - (price*this.discount/100);
+        return price - (price*this.discount/100);
+    }
+    
+    public String currFormat(double a){
         DecimalFormat formatter = new DecimalFormat("#,###.00");
-        return formatter.format(dis);
+        return formatter.format(a);
     }
     
     

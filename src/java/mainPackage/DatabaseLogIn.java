@@ -220,6 +220,31 @@ static void basicExecute(String query){
       public void changeImg(String pid,String choice,String img){
           basicExecute("UPDATE products SET "+choice+"= '"+img+"' WHERE id="+pid);
       }
+      
+      public String[] getColorSize(int c , int s){
+          String[] result = new String[2];
+          connectToDb();
+          try {
+              ResultSet crs = st.executeQuery("SELECT * FROM colors WHERE cid="+c);
+              if(crs.next()){
+                  result[0] = crs.getString("ccode");
+              }else{
+                  result[0] = "demo";
+              }
+              
+              ResultSet srs = st.executeQuery("SELECT *FROM sizes WHERE sid="+s);
+              if(srs.next()){
+                  result[1] = srs.getString("size");
+              }else{
+                  result[1] = "demo";
+              }
+                st.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
+          return result;
+      }
     
     
       
