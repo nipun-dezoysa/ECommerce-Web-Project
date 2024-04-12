@@ -65,6 +65,16 @@
             <button class="remove-button">Remove</button>
           </div>
         </div>
+        <div class="wishlist-item">
+          <div class="product-image">
+            <img src="./img/demo.jpg" alt="Product 1" />
+          </div>
+          <div class="product-details">
+            <h2>Product 5</h2>
+            <p>Price: $XX.XX</p>
+            <button class="remove-button">Remove</button>
+          </div>
+        </div>
       </div>
     </div>
     <br /><br />
