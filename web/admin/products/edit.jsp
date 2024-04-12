@@ -93,7 +93,7 @@
             </svg>
             <span
               class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"
-              ><%= id%></span
+              >#<%= id%></span
             >
           </div>
         </li>
@@ -102,7 +102,8 @@
 
     <div class="flex gap-3">
       <div class="w-[70%] flex flex-col gap-3">
-        <form action="#" method="POST" class="box w-full">
+          <form id="mainform"  method="POST" class="box w-full">
+          <input type="hidden" name="pid" value="<%= id %>"/>
           <div class="box-title">Product Details</div>
           <div class="box-body">
             <div>
@@ -113,29 +114,42 @@
                 name="name"
                 id="name"
                 placeholder="Product Name"
+                value="<%= pr.getName() %>"
                 required
               />
             </div>
-            <div>
-              <div class="input-lable">Brand</div>
-              <input
-                class="inputs"
-                type="text"
-                name="brand"
-                id="brand"
-                placeholder="Brand Name"
-                required
-              />
+            <div class="flex w-full gap-3">
+              <div class="w-[50%]">
+                <div class="input-lable">Brand</div>
+                <input
+                  class="inputs"
+                  type="text"
+                  name="brand"
+                  id="brand"
+                  value="<%= pr.getBrand() %>"
+                  placeholder="Brand Name"
+                  required
+                />
+              </div>
+              <div class="w-[50%]">
+                <div class="input-lable">Type</div>
+                <select class="inputs pr-5" name="type" id="type">
+                  <option value="1" <%= pr.getType()==1? "selected" : "" %>>Men Shoe</option>
+                  <option value="2" <%= pr.getType()==2? "selected" : "" %>>Women Shoe</option>
+                  <option value="3" <%= pr.getType()==3? "selected" : "" %>>Kid Shoe</option>
+                </select>
+              </div>
             </div>
             <div class="flex w-full gap-3">
               <div class="w-[50%]">
                 <div class="input-lable">Price (LKR)</div>
                 <input
                   class="inputs"
-                  type="text"
+                  type="number"
                   name="price"
                   id="price"
                   placeholder="Product Price"
+                  value="<%= pr.getPrice() %>"
                   required
                 />
               </div>
@@ -143,10 +157,11 @@
                 <div class="input-lable">Discount (%)</div>
                 <input
                   class="inputs"
-                  type="text"
+                  type="number"
                   name="discount"
                   id="discount"
                   placeholder="Discount Percentage"
+                  value="<%= pr.getDiscount() %>"
                   required
                 />
               </div>
@@ -161,7 +176,7 @@
                 rows="5"
                 placeholder="Product Description"
                 required
-              ></textarea>
+              ><%= pr.getDes() %></textarea>
             </div>
             <input
               class="normal w-[200px]"
@@ -178,14 +193,14 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
               >
-                <input type="hidden" name="pid" value="#" />
-                <input type="hidden" name="choice" value="#" />
+                <input type="hidden" name="pid" value="<%= id %>" />
+                <input type="hidden" name="choice" value="img01" />
                 <img
                   id="1img"
                   class="w-full h-full"
-                  src="../../img/demo.jpg"
+                  src="../../img/products/<%= pr.getImg1() %>"
                   alt="product"
                 />
                 <div
@@ -217,14 +232,14 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
               >
-                <input type="hidden" name="pid" value="#" />
-                <input type="hidden" name="choice" value="#" />
+                <input type="hidden" name="pid" value="<%= id %>" />
+                <input type="hidden" name="choice" value="img02" />
                 <img
                   id="2img"
                   class="w-full h-full"
-                  src="../../img/demo.jpg"
+                  src="../../img/products/<%= pr.getImg2() %>"
                   alt="product"
                 />
                 <div
@@ -256,14 +271,14 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
               >
-                <input type="hidden" name="pid" value="#" />
-                <input type="hidden" name="choice" value="#" />
+                <input type="hidden" name="pid" value="<%= id %>" />
+                <input type="hidden" name="choice" value="img03" />
                 <img
                   id="3img"
                   class="w-full h-full"
-                  src="../../img/demo.jpg"
+                  src="../../img/products/<%= pr.getImg3() %>"
                   alt="product"
                 />
                 <div
@@ -295,14 +310,14 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
               >
-                <input type="hidden" name="pid" value="#" />
-                <input type="hidden" name="choice" value="#" />
+                <input type="hidden" name="pid" value="<%= id %>" />
+                <input type="hidden" name="choice" value="img04" />
                 <img
                   id="4img"
                   class="w-full h-full"
-                  src="../../img/demo.jpg"
+                  src="../../img/products/<%= pr.getImg4() %>"
                   alt="product"
                 />
                 <div
@@ -338,24 +353,29 @@
         <div class="box">
           <div class="box-title">Sizes</div>
           <div class="box-body">
-            <form action="#" method="POST">
+              
+            <% for(int i=0;i<pr.getSizes().size();i++){ %>  
+            <form class="ssforms" method="POST">
               <div class="flex gap-2">
-                <input type="hidden" name="size" value="XL" />
+                <input type="hidden" name="value" value="<%= pr.getSizes().get(i).getId() %>" />
                 <div
                   class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
                 >
-                  XL
+                    <%= pr.getSizes().get(i).getValue() %>
                 </div>
                 <input class="remove" type="submit" value="Remove" />
               </div>
             </form>
-            <form action="#" method="POST">
+            <%}%>  
+              
+            <form id="sizeadd" action="#" method="POST">
               <div class="flex flex-col items-center gap-1">
+                <input type="hidden" name="pid" value="<%= id %>" />
                 <input
-                  type="text"
+                  type="number"
                   class="inputs"
-                  id="size"
-                  name="size"
+                  id="id"
+                  name="value"
                   placeholder="type size"
                   required
                 />
@@ -367,35 +387,28 @@
         <div class="box">
           <div class="box-title">Colors</div>
           <div class="box-body">
-            <form action="#" method="POST">
+            
+            <% for(int i=0;i<pr.getColors().size();i++){ %>  
+            <form class="ccforms" method="POST">
               <div class="flex gap-2">
-                <input type="hidden" name="color" value="Black" />
+                <input type="hidden" name="value" value="<%= pr.getColors().get(i).getId() %>" />
                 <div
                   class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
                 >
-                  Black
+                    <%= pr.getColors().get(i).getValue() %>
                 </div>
                 <input class="remove" type="submit" value="Remove" />
               </div>
             </form>
-            <form action="#" method="POST">
-              <div class="flex gap-2">
-                <input type="hidden" name="color" value="Black" />
-                <div
-                  class="py-2.5 px-5 w-full bg-gray-200 rounded-lg font-semibold"
-                >
-                  White
-                </div>
-                <input class="remove" type="submit" value="Remove" />
-              </div>
-            </form>
-            <form action="#" method="POST">
+            <%}%>
+            <form id="coloradd" method="POST">
               <div class="flex flex-col items-center gap-1">
+                <input type="hidden" name="pid" value="<%= id %>" />
                 <input
                   type="text"
                   class="inputs"
                   id="color"
-                  name="color"
+                  name="value"
                   placeholder="type color"
                   required
                 />
@@ -407,6 +420,131 @@
       </div>
     </div>
     <script src="../../js/productEdit.js"></script>
+    <script>
+        $(document).ready(function () {
+        
+        $(".ssforms").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../productSize",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
+        });
+        
+        $("#sizeadd").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../productSize",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
+        });
+        
+        $(".ccforms").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../productColor",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
+        });
+        
+        $("#coloradd").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../productColor",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
+        });
+        
+        $("#mainform").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../productDetails",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
+        });
+        
+        $(".imgclass").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../changeImg",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                alert(response);
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
+        });
+        
+      });
+    </script>
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
   </body>
 </html>

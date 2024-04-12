@@ -13,3 +13,4 @@ document
     URL.revokeObjectURL(output.src); 
   };
 };
+

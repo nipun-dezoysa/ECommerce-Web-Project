@@ -125,14 +125,24 @@ static void basicExecute(String query){
         basicExecute(query);
     }
      
+    public void productDetails(String pid, String name, String description ,String  brand ,String price ,String discount ,String type) {
+        basicExecute("UPDATE products SET name='"+name+"' , description='"+description+"' , brand='"+brand+"' , price="+price+" , discount="+discount+" , type="+type+"  WHERE id="+pid);
+    }
+     
      public void addSizes(int size, int pid) {
             String query="INSERT INTO `sizes`(`pid`,`size`) VALUES ("+pid+","+size+")";
             basicExecute(query);
     }
+    public void removeSize(String id){
+          basicExecute("DELETE FROM `sizes` WHERE sid="+id+";");
+    }
      
-    public void addColors(int pid,String ccode ) {
+    public void addColors(int pid, String ccode ) {
             String query="INSERT INTO `colors`(`pid`, `ccode`) VALUES ('"+pid+"','"+ccode+"')";
             basicExecute(query);
+    }
+    public void removeColor(String id){
+          basicExecute("DELETE FROM `colors` WHERE cid="+id+";");
     }
     
     
@@ -189,12 +199,13 @@ static void basicExecute(String query){
                         sizes.add(new Size(srs.getString("sid"),srs.getString("pid"),srs.getString("size")));
                     }
                     product.setSizes(sizes);
-                    ResultSet crs= st.executeQuery("SELECT * FROM `sizes` WHERE pid="+id+";");
+                    
+                    ResultSet crs= st.executeQuery("SELECT * FROM `colors` WHERE pid="+id+";");
                     ArrayList<Color> colors = new ArrayList<>();
                     while(crs.next()){
                         colors.add(new Color(crs.getString("cid"),crs.getString("pid"),crs.getString("ccode")));
                     }
-                  product.setColors(colors);
+                    product.setColors(colors);
 //                    return new Product(rs.getInt("id"),rs.getString("name"),rs.getString("description"),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"),colors,sizes);
                     return product;
                 }
@@ -205,8 +216,12 @@ static void basicExecute(String query){
             }
         return null;
       }
-
+      
+      public void changeImg(String pid,String choice,String img){
+          basicExecute("UPDATE products SET "+choice+"= '"+img+"' WHERE id="+pid);
+      }
     
     
+      
     
 }
