@@ -125,6 +125,10 @@ static void basicExecute(String query){
         basicExecute(query);
     }
      
+    public void productDetails(String pid, String name, String description ,String  brand ,String price ,String discount ,String type) {
+        basicExecute("UPDATE products SET name='"+name+"' , description='"+description+"' , brand='"+brand+"' , price="+price+" , discount="+discount+" , type="+type+"  WHERE id="+pid);
+    }
+     
      public void addSizes(int size, int pid) {
             String query="INSERT INTO `sizes`(`pid`,`size`) VALUES ("+pid+","+size+")";
             basicExecute(query);

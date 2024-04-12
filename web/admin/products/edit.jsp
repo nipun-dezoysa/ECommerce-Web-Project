@@ -93,7 +93,7 @@
             </svg>
             <span
               class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"
-              ><%= id%></span
+              >#<%= id%></span
             >
           </div>
         </li>
@@ -102,7 +102,8 @@
 
     <div class="flex gap-3">
       <div class="w-[70%] flex flex-col gap-3">
-        <form action="#" method="POST" class="box w-full">
+          <form id="mainform"  method="POST" class="box w-full">
+          <input type="hidden" name="pid" value="<%= id %>"/>
           <div class="box-title">Product Details</div>
           <div class="box-body">
             <div>
@@ -117,17 +118,27 @@
                 required
               />
             </div>
-            <div>
-              <div class="input-lable">Brand</div>
-              <input
-                class="inputs"
-                type="text"
-                name="brand"
-                id="brand"
-                placeholder="Brand Name"
-                value="<%= pr.getBrand() %>"
-                required
-              />
+            <div class="flex w-full gap-3">
+              <div class="w-[50%]">
+                <div class="input-lable">Brand</div>
+                <input
+                  class="inputs"
+                  type="text"
+                  name="brand"
+                  id="brand"
+                  value="<%= pr.getBrand() %>"
+                  placeholder="Brand Name"
+                  required
+                />
+              </div>
+              <div class="w-[50%]">
+                <div class="input-lable">Type</div>
+                <select class="inputs pr-5" name="type" id="type">
+                  <option value="1" <%= pr.getType()==1? "selected" : "" %>>Men Shoe</option>
+                  <option value="2" <%= pr.getType()==2? "selected" : "" %>>Women Shoe</option>
+                  <option value="3" <%= pr.getType()==3? "selected" : "" %>>Kid Shoe</option>
+                </select>
+              </div>
             </div>
             <div class="flex w-full gap-3">
               <div class="w-[50%]">
@@ -478,6 +489,26 @@
             $.ajax({
               type: "POST",
               url: "../../productColor",
+              data: formData,
+              
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            
+        });
+        
+        $("#mainform").submit(function(e){
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../productDetails",
               data: formData,
               
               processData: false,
