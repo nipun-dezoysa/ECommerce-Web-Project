@@ -64,13 +64,7 @@
 
     <div class="box">
       <div class="box-title">New Product</div>
-      <form
-        action="../../addProduct"
-        method="POST"
-        id="pform"
-        enctype="multipart/form-data"
-        class="box-body"
-      >
+      <form id="pform" class="box-body" enctype="multipart/form-data">
         <div class="flex gap-3">
           <div class="w-[70%] flex flex-col gap-3">
             <div>
@@ -84,23 +78,34 @@
                 required
               />
             </div>
-            <div>
-              <div class="input-lable">Brand</div>
-              <input
-                class="inputs"
-                type="text"
-                name="brand"
-                id="brand"
-                placeholder="Brand Name"
-                required
-              />
+            <div class="flex w-full gap-3">
+              <div class="w-[50%]">
+                <div class="input-lable">Brand</div>
+                <input
+                  class="inputs"
+                  type="text"
+                  name="brand"
+                  id="brand"
+                  placeholder="Brand Name"
+                  required
+                />
+              </div>
+              <div class="w-[50%]">
+                <div class="input-lable">Type</div>
+                <select class="inputs" name="type" id="type">
+                  <option value="1">Men Shoe</option>
+                  <option value="2">Women Shoe</option>
+                  <option value="3">Kid Shoe</option>
+                </select>
+              </div>
             </div>
+
             <div class="flex w-full gap-3">
               <div class="w-[50%]">
                 <div class="input-lable">Price (LKR)</div>
                 <input
                   class="inputs"
-                  type="text"
+                  type="number"
                   name="price"
                   id="price"
                   placeholder="Product Price"
@@ -111,7 +116,7 @@
                 <div class="input-lable">Discount (%)</div>
                 <input
                   class="inputs"
-                  type="text"
+                  type="number"
                   name="discount"
                   id="discount"
                   placeholder="Discount Percentage"
@@ -241,7 +246,7 @@
               <div class="input-lable">Sizes</div>
               <div class="w-full flex flex-wrap gap-1" id="sblock"></div>
               <input
-                type="text"
+                type="number"
                 class="inputs"
                 id="size"
                 placeholder="type size"
@@ -317,5 +322,38 @@
     </div>
 
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
+    <script src="../../js/productsAdmin.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#pform").submit(function (e) {
+          e.preventDefault();
+          var ss = document.getElementById("sc1");
+          var cc = document.getElementById("cc1");
+          if (ss == null) {
+            alert("Please add sizes");
+            return;
+          } else if (cc == null) {
+            alert("Please add colors");
+            return;
+          } else {
+            var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "../../addProduct",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                console.log(response);
+                alert(response);
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
