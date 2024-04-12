@@ -4,42 +4,42 @@ String path = request.getParameter("path");
 %>
   
     
-    <div class="flex min-h-screen">
-      <div class="bg-primary w-[19%] py-5 flex flex-col h-screen sticky top-0">
+    <div class="flex flex-col lg:flex-row min-h-screen">
+      <div class="bg-primary w-full lg:w-[19%] py-5 flex lg:flex-col lg:h-screen max-lg:items-center sticky top-0">
         <div class="w-full flex flex-col items-center">
-          <a class="w-[70%]" href="../"><img class="w-full" src="<%=path%>../img/2.png" alt="logo" /></a>
-          <p class="text-white font-mono">Admin Dashboard</p>
+          <a class="w-[70%]" href="../"><img class="w-[200px] lg:w-full" src="<%=path%>../img/2.png" alt="logo" /></a>
+          <p class="text-white font-mono max-lg:text-sm">Admin Dashboard</p>
         </div>
-        <div class="px-5 text-white mt-10 flex flex-col">
+        <div class="px-5 text-white lg:mt-10 flex lg:flex-col">
           <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>index.jsp"
             ><i class="fa-solid fa-compass text-2xl w-10"></i>
-            <div>Dashboard</div></a
+            <div class="max-lg:hidden">Dashboard</div></a
           >
           <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
             ><i class="fa-solid fa-bag-shopping text-2xl w-10"></i>
-            <div>Orders</div></a
+            <div class="max-lg:hidden">Orders</div></a
           >
           <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>products/"
             ><i class="fa-solid fa-tags text-2xl w-10"></i>
-            <div>Products</div></a
+            <div class="max-lg:hidden">Products</div></a
           >
           <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
             ><i class="fa-solid fa-person text-2xl w-10"></i>
-            <div>Customers</div></a
+            <div class="max-lg:hidden">Customers</div></a
           >
           <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
             ><i class="fa-solid fa-user-tie text-2xl w-10"></i>
-            <div>Administration</div></a
+            <div class="max-lg:hidden">Administration</div></a
           >
         </div>
-        <div class="px-5 text-white mt-auto flex flex-col">
+        <div class="px-5 text-white lg:mt-auto flex flex-col max-lg:hidden">
           <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
             ><i class="fa-solid fa-circle-info text-2xl w-10"></i>
-            <div>Admin Pannel v 1.0</div></a
+              <div>Admin Pannel v 1.0</div></a
           >
         </div>
       </div>
-      <div class="bg-gray-200 w-[81%] flex flex-col">
+      <div class="bg-gray-200 w-full lg:w-[81%] flex flex-col">
         <div class="bg-white py-5 px-10 flex justify-between">
           <div class="flex items-center gap-2">
             <i class="fa-solid fa-magnifying-glass gap-3"></i>

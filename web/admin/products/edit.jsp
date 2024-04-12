@@ -1,5 +1,19 @@
-<%-- Document : products Created on : Apr 2, 2024, 11:53:55 PM Author : Nipun
---%> <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%
+    String id = request.getParameter("id");
+    if(id==null) response.sendRedirect("./index.jsp");
+    try { 
+        Integer.parseInt(id); 
+	}  
+    catch (NumberFormatException e)  
+	{ 
+	response.sendRedirect("./index.jsp");		
+	}
+    DatabaseLogIn db = new DatabaseLogIn();
+    Product pr = db.getProduct(id);
+    if(pr==null)response.sendRedirect("./index.jsp");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -79,7 +93,7 @@
             </svg>
             <span
               class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"
-              >Nike Air 1</span
+              ><%= id%></span
             >
           </div>
         </li>
