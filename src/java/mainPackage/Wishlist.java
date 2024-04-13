@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author chith
  */
 @WebServlet(name = "addToWishlist", urlPatterns = {"/addToWishlist"})
-public class addToWishlist extends HttpServlet {
+public class Wishlist extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
