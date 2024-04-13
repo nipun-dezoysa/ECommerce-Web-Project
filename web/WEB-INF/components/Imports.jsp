@@ -19,6 +19,8 @@
 
 <link rel="icon" type="image/x-icon" href="<%=path%>img/favicon.ico" />
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style type="text/tailwindcss">
   @layer utilities {
     body {
