@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Product {
@@ -176,7 +177,25 @@ public class Product {
         this.sizes = sizes;
     }
     
+    public String getformatPrice(){
+        double price = (double)this.Price;
+        return currFormat(price);
+    }
     
+    public String getformatDis(){
+        double dis = getDisPrice();
+        return currFormat(dis);
+    }
+    
+    public double getDisPrice(){
+        double price = (double)this.Price;
+        return price - (price*this.discount/100);
+    }
+    
+    public String currFormat(double a){
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        return formatter.format(a);
+    }
     
     
 }

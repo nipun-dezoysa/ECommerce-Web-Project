@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,11 @@ import models.CartItem;
  * @author Nipun
  */
 @WebServlet(name = "addToCart", urlPatterns = {"/addToCart"})
+@MultipartConfig(
+    fileSizeThreshold = 1024 * 1024,  // 1 MB
+    maxFileSize = 1024 * 1024 * 10,   // 10 MB
+    maxRequestSize = 1024 * 1024 * 50 // 50 MB
+)
 public class addToCart extends HttpServlet {
 
     @Override
@@ -33,20 +39,25 @@ public class addToCart extends HttpServlet {
         
         if(session.getAttribute("cart")==null){
             cart.add(item);
+            response.getWriter().print("Item Added to the Cart");
         }else{
             cart = (ArrayList<CartItem>)session.getAttribute("cart");
             boolean isExist = false;
             for(int i=0;i<cart.size();i++){
                 if(item.isEqual(cart.get(i))){
                     cart.get(i).setQuantity(item.getQuantity());
+                    response.getWriter().print("Item quentity updated");
                     isExist = true;
                     break;
                 }
             }
-            if(!isExist)cart.add(item);
+            if(!isExist){
+                cart.add(item);
+                response.getWriter().print("Item Added to the Cart");
+            }
         }
         session.setAttribute("cart", cart);
-        response.sendRedirect(request.getHeader("referer"));
+        
         
     }
 

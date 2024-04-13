@@ -1,4 +1,5 @@
-<%@page import="models.CartItem, java.util.ArrayList" %>
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
 <% 
     ArrayList<CartItem> cart;
          if(session.getAttribute("cart")==null){
@@ -6,6 +7,8 @@
          }else{
              cart = (ArrayList<CartItem>)session.getAttribute("cart");
          }
+    DatabaseLogIn db = new DatabaseLogIn();   
+    DecimalFormat formatter = new DecimalFormat("#,###.00");
 %>
 <!DOCTYPE html>
 <html>
@@ -27,36 +30,50 @@
             <div class="text-primary pl-5" type="submit"><%=cart.size()%> Items</div>
           </div>
         </div>
-<% for(int i=0;i<cart.size();i++){ %>
+<%
+    double total = 0;
+    for(int i=0;i<cart.size();i++){ 
+    Product product = db.getProduct(cart.get(i).getId()+"");
+    total+= product.getDisPrice() * cart.get(i).getQuantity();
+%>
         <div
           class="w-full border shadow border-gray-300 rounded-lg flex items-center py-2 px-4 gap-5"
         >
-          <img class="w-[100px] rounded-lg" src="./img/demo.jpg" alt="" />
+          <img class="w-[100px] rounded-lg aspect-square" src="./img/products/<%= product.getImg1() %>" alt="" />
           <div class="w-full h-full flex flex-col">
             <div class="flex justify-between font-semibold text-xl">
-              <h1 class="text-gray-600">Nike Air Jordan 2</h1>
-              <div class="text-gray-300">SKU 12</div>
+              <h1 class="text-gray-600"><%= product.getName() %></h1>
+              <div class="text-gray-300">SKU <%= product.getId() %></div>
             </div>
             <div class="flex w-full h-full justify-between">
               <div class="flex flex-col justify-end">
-                <div class="text-sm">
-                  LKR 3,000
-                  <span class="bg-green-200 rounded-full px-2 text-green-600"
-                    >15%</span
-                  >
+                
+                <% if(product.getDiscount()>0 && product.getDiscount()<=100){ %>  
+                <div class="text-sm flex gap-1">
+                    <div class="line-through text-gray-700">LKR <%= product.getformatPrice() %></div>
+                  <div class="bg-green-200 rounded-full px-2 text-green-600"><%= product.getDiscount() %>%</div>
                 </div>
-                <div class="text-xl font-mono text-gray-700">LKR 2,500</div>
+                <div class="text-xl font-mono text-gray-700">LKR <%= product.getformatDis() %></div>
+                <%}else{%>
+                <div class="text-xl font-mono text-gray-700">LKR <%= product.getformatPrice() %></div>
+                <%}%>
+                
               </div>
               <div class="flex flex-col justify-end">
+                 
+                <%
+                    String[] res = db.getColorSize(cart.get(i).getColor(), cart.get(i).getSize());
+                %>  
+                  
                 <div>
                   Color:
                   <span class="font-semibold font-mono text-gray-600"
-                    >Black</span
+                    ><%= res[0] %></span
                   >
                 </div>
                 <div>
                   Size:
-                  <span class="font-semibold font-mono text-gray-600">44</span>
+                  <span class="font-semibold font-mono text-gray-600"><%= res[1] %></span>
                 </div>
               </div>
               <div class="flex flex-col justify-end">
@@ -64,27 +81,33 @@
                   <div
                     class="border-2 rounded-lg flex items-center w-[110px] h-[40px] px-2 justify-between text-gray-500"
                   >
-                    <input
-                      id="quantity"
-                      type="hidden"
-                      name="quantity"
-                      value="1"
-                    />
-                    <button
-                      type="button"
-                      onclick="updateQuantity('rem','quantity','no')"
+                    <form class="quentforms">
+                        <input type="hidden" name="quantity" value="<%= (cart.get(i).getQuantity()-1) %>"/>
+                        <input type="hidden" name="id" value="<%= cart.get(i).getId() %>"/>
+                        <input type="hidden" name="color" value="<%= cart.get(i).getColor() %>"/>
+                        <input type="hidden" name="size" value="<%= cart.get(i).getSize() %>"/>
+                        <button
+                      type="<%= cart.get(i).getQuantity()>1? "submit" : "button" %>"
+                      onclick="updateQuantity('add','quantity','no')"
                     >
                       <i class="fa-solid fa-minus"></i>
                     </button>
+                    </form>
                     <div id="no"><%= cart.get(i).getQuantity() %></div>
-                    <button
-                      type="button"
+                    <form class="quentforms">
+                        <input type="hidden" name="quantity" value="<%= (cart.get(i).getQuantity()+1) %>"/>
+                        <input type="hidden" name="id" value="<%= cart.get(i).getId() %>"/>
+                        <input type="hidden" name="color" value="<%= cart.get(i).getColor() %>"/>
+                        <input type="hidden" name="size" value="<%= cart.get(i).getSize() %>"/>
+                        <button
+                      type="submit"
                       onclick="updateQuantity('add','quantity','no')"
                     >
                       <i class="fa-solid fa-plus"></i>
                     </button>
+                    </form>
                   </div>
-                  <form action="removeFromCart" method="POST">
+                    <form class="remforms" action="removeFromCart" method="POST">
                     <input type="hidden" name="id" value="<%= i %>">
                     <button
                     type="submit"
@@ -114,7 +137,7 @@
           <h1 class="font-semibold">Shopping Summary</h1>
           <div class="flex items-center justify-between">
             <div class="font-semibold">Total</div>
-            <div class="font-bold text-xl font-mono">LKR 13,000</div>
+            <div class="font-bold text-xl font-mono">LKR <%= formatter.format(total) %></div>
           </div>
           <button
             class="py-3 bg-primary rounded-lg text-white font-semibold"
@@ -130,5 +153,47 @@
     </div>
 
     <jsp:include page="./WEB-INF/components/footer.jsp" />
+    
+    <script>
+      $(document).ready(function () {
+        $(".remforms").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "removeFromCart",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                alert(response);
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+        });
+        
+        $(".quentforms").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "addToCart",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+        });
+      });
+      
+    </script>
   </body>
 </html>
