@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 11, 2024 at 10:02 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 13, 2024 at 09:53 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -111,6 +111,19 @@ INSERT INTO `users` (`Id`, `Email`, `Password`) VALUES
 (7, 'abc2.@gmail.com', '5656'),
 (8, 'yo11123@gmail.com', '1234');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `price` int(100) NOT NULL,
+  `img01` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -146,6 +159,12 @@ ALTER TABLE `sizes`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
