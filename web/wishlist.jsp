@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page import="java.util.List" %>
+<%@ page import="mainPackage.wishlist" %>
+<%@ page import="mainPackage.Wishlist" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,14 +18,17 @@
         <hr />
       </div>
       <div class="wishlist-items">
-          
+    <% 
+    List<Wishlist> userList = wishlist.getAllWishlist();
+    for (Wishlist user : wishList) {
+    %>          
           
         <div class="wishlist-item">
           <div class="product-image">
             <img src="./img/demo.jpg" alt="Product 1" />
           </div>
           <div class="product-details">
-            <h2>Product Name 1</h2>
+            <h2>User Name: <%= user.getUname() %></h2>
             <p>Price: $XX.XX</p>
             <button class="remove-button">Remove</button>
           </div>
