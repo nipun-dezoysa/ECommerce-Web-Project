@@ -127,6 +127,15 @@ CREATE TABLE `products` (
   `img04` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`Id`, `name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES
+(23, 'rata', 'des1', 'nike', 25, 10, 2, 5, '1.png', '2.png', '3.png', '4.png'),
+(24, 'neta', 'des2', 'adidas', 30, 15, 2, 5, '1.png', '2.png', '3.png', '4.png'),
+(25, 'aluth', 'des3', 'jordan', 25, 10, 2, 5, '1.png', '2.png', '3.png', '4.png');
+
 -- --------------------------------------------------------
 
 --
@@ -170,6 +179,14 @@ CREATE TABLE `wishlist` (
   `price` int(100) NOT NULL,
   `img01` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`id`, `name`, `price`, `img01`) VALUES
+(23, 'rata', 25, 'demo.jpg'),
+(25, 'neta', 25, 'demo.jpg');
 
 --
 -- Indexes for dumped tables
