@@ -1,3 +1,15 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<% 
+    ArrayList<CartItem> cart;
+         if(session.getAttribute("cart")==null){
+             cart = new ArrayList<CartItem>();
+         }else{
+             cart = (ArrayList<CartItem>)session.getAttribute("cart");
+         }
+    DatabaseLogIn db = new DatabaseLogIn();   
+    DecimalFormat formatter = new DecimalFormat("#,###.00");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -124,21 +136,32 @@
           class="border shadow border-gray-300 rounded-lg flex flex-col gap-3 p-5"
         >
           <h1>My Orders</h1>
+
+          <%
+            double total = 0;
+            for(int i=0;i<cart.size();i++){ 
+            Product product = db.getProduct(cart.get(i).getId()+"");
+            total+= product.getDisPrice() * cart.get(i).getQuantity();
+            String[] res = db.getColorSize(cart.get(i).getColor(), cart.get(i).getSize());
+          %>
           <div class="flex text-sm">
-            <div class="w-[10%] font-semibold font-mono">1x</div>
-            <div class="w-[60%] text-gray-400 font-semibold">
-              Nike Air Force 1 Wild
+            <div class="w-[10%] font-semibold font-mono"><%= cart.get(i).getQuantity() %>x</div>
+            <div class="w-[50%] text-gray-400 font-semibold">
+                <%= product.getName() %> <br>
+                <%= res[0]+" "+res[1] %>
             </div>
-            <div class="w-[30%] text-end font-semibold font-mono">
-              LKR 6,800.00
+            <div class="w-[40%] text-end font-semibold font-mono">
+                LKR <%= formatter.format(product.getDisPrice()*cart.get(i).getQuantity()) %>
             </div>
           </div>
+          <% } %>
+
           <div
             class="text-sm border-t border-b py-3 flex flex-col gap-3 font-semibold"
           >
             <div class="flex justify-between">
               <div class="text-gray-400">Subtotal</div>
-              <div class="font-mono">LKR 6,800.00</div>
+              <div class="font-mono">LKR <%= formatter.format(total) %></div>
             </div>
             <div class="flex justify-between">
               <div class="text-gray-400">Shipping</div>
@@ -148,7 +171,7 @@
           <div class="flex justify-between items-center">
             <div class="font-semibold">Order Total</div>
             <div class="font-bold text-xl text-primary font-mono">
-              LKR 6,800.00
+              LKR <%= formatter.format(total+30) %>
             </div>
           </div>
           <button
@@ -157,6 +180,7 @@
           >
             PLACE ORDER
           </button>
+            <a href="./cart.jsp" class="text-sm w-full text-center font-semibold">back to cart</a>  
         </div>
       </div>
     </form>

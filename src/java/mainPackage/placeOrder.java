@@ -21,10 +21,19 @@ public class placeOrder extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("firstname");
+        String fname = request.getParameter("firstname");
+        String lname = request.getParameter("lastname");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String address = request.getParameter("address");
+        String city = request.getParameter("city");
+        String province = request.getParameter("province");
+        String note = request.getParameter("note");
+        String add = request.getParameter("add");
+        
         DatabaseLogIn db = new DatabaseLogIn();
         PrintWriter out = response.getWriter();
-        out.print(id);
+        out.print("ok");
         
     }
 
