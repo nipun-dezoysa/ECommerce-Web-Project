@@ -70,6 +70,7 @@
       >
         <div class="text-2xl"><i class="fa-solid fa-user"></i></div>
         <div class="text-sm max-sm:hidden">
+            <div>Account</div>
           <div class="font-bold font-mono">Sign In</div>
         </div>
       </a>

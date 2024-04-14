@@ -42,7 +42,7 @@
           <img class="w-[100px] rounded-lg aspect-square" src="./img/products/<%= product.getImg1() %>" alt="" />
           <div class="w-full h-full flex flex-col">
             <div class="flex justify-between font-semibold text-xl">
-                <a href="./product?id=<%= cart.get(i).getId() %>" class="text-gray-600"><%= product.getName() %></a>
+                <a href="./product.jsp?id=<%= cart.get(i).getId() %>" class="text-gray-600 hover:text-gray-800"><%= product.getName() %></a>
               <div class="text-gray-300">SKU <%= product.getId() %></div>
             </div>
             <div class="flex w-full h-full justify-between">
@@ -90,7 +90,7 @@
                       type="<%= cart.get(i).getQuantity()>1? "submit" : "button" %>"
                       onclick="updateQuantity('add','quantity','no')"
                     >
-                      <i class="fa-solid fa-minus"></i>
+                      <i class="fa-solid fa-minus duration-300 ease-in-out hover:text-gray-800"></i>
                     </button>
                     </form>
                     <div id="no"><%= cart.get(i).getQuantity() %></div>
@@ -103,7 +103,7 @@
                       type="submit"
                       onclick="updateQuantity('add','quantity','no')"
                     >
-                      <i class="fa-solid fa-plus"></i>
+                      <i class="fa-solid fa-plus duration-300 ease-in-out hover:text-gray-800"></i>
                     </button>
                     </form>
                   </div>
@@ -111,14 +111,14 @@
                     <input type="hidden" name="id" value="<%= i %>">
                     <button
                     type="submit"
-                    class="w-[40px] h-[40px] bg-red-500 rounded-lg text-white"
+                    class="w-[40px] h-[40px] bg-red-500 rounded-lg text-white duration-300 ease-in-out hover:bg-red-800"
                   >
                     <i class="fa-solid fa-trash"></i>
                   </button>
                   </form>
                   <button
                     type="button"
-                    class="w-[40px] h-[40px] border-2 rounded-lg text-gray-500"
+                    class="w-[40px] h-[40px] border-2 rounded-lg text-gray-500 duration-300 ease-in-out hover:text-gray-800 hover:border-gray-400"
                   >
                     <i class="fa-solid fa-heart"></i>
                   </button>
@@ -130,7 +130,7 @@
 
 <% } %>
       </div>
-      <div class="w-[25%]">
+      <div class="w-[30%]">
         <form
           action="./placeorder.jsp"  
           method="POST"
