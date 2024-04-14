@@ -21,6 +21,8 @@
         <% String name = (String)session.getAttribute("email"); %>
         <h1>Hello Wellcome <%=name%></h1>
     <jsp:include page="../WEB-INF/components/footer.jsp" />
+    
+     <jsp:include page="./WEB-INF/components/notfound.jsp" />
     </div>
   </body>
 </html>

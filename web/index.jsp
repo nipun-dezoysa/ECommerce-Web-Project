@@ -26,7 +26,7 @@
     </jsp:include>
 
     <!-- contents end here -->
-
+   
     <jsp:include page="./WEB-INF/components/footer.jsp" />
   </body>
 </html>

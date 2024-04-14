@@ -30,7 +30,7 @@
 </div>
 
 <script>
-  var flashSaleEndTime = new Date("2024-05-10T00:00:00Z").getTime();
+  var flashSaleEndTime = new Date("2024-04-12T00:00:00Z").getTime();
 
   var countdownInterval = setInterval(function () {
     var now = new Date().getTime();
