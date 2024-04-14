@@ -40,47 +40,44 @@ static void basicExecute(String query){
 
     
     
-    public void getData(String email, String password ) {
-            String query="INSERT INTO `users`(`Email`, `Password`) VALUES  ('" + email + "','" + password + "')";
-            basicExecute(query);
+    public int signUp(String email, String password ) {
+        connectToDb();
+    try {
+        ResultSet rs = st.executeQuery("SELECT * FROM `users` WHERE Email = '" + email + "'");
+        if(!rs.next()){
+            basicExecute("INSERT INTO `users`(`Email`, `Password`) VALUES  ('" + email + "','" + password + "')");
+            return 1;
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+    }
+      return -1;
     }
     
     
     
-    public void checkData(String email, String password) {
-        connectToDb();
-            String Query ="SELECT `Id`, `Email`, `Password` FROM `users` WHERE Email = '" + email + "'";
-            
+    public User signIn(String email, String password) {
+            connectToDb();
+            String Query ="SELECT * FROM `users` WHERE Email = '" + email + "'";
+            User user = new User(-1,"null");
             try {
-                String emailc="";
-                String passwordc="";
-                
+                String passwordc;
                 ResultSet resultSet= st.executeQuery(Query);
                 if (resultSet.next()) {
-                    emailc = resultSet.getString("Email");
                     passwordc = resultSet.getString("Password");
-                    System.out.println("Username: " + emailc);
-                    System.out.println("Password: " + passwordc);
-                    if(password.equals(passwordc) && email.equals(emailc)){
-                        login = true;
-                        System.out.println("Password correct");
-                        
+                    if(password.equals(passwordc)){
+                        user = new User(resultSet.getInt("Id"),email) ;
                     } 
                     resultSet.close();
-                    st.close();
-                
-    }           else{
-                        System.out.println("This is not correct password or username");
-                       
                 }
+                st.close();
             
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
             }
+            return user;
     }
-    public boolean islogin(){
-        return login;
-    }
+    
     public void adminSignIn(String email, String password) {
         connectToDb();
             String Query ="SELECT `Id`, `Email`, `Password` FROM `admin` WHERE Email = '" + email + "'";

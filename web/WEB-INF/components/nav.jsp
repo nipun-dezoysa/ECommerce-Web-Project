@@ -39,13 +39,25 @@
         </div>
       </a>
       <div class="border-r-2 h-[80%]"></div>
-      <a href="#" class="flex items-center gap-2 hover:text-primaryLight">
+      <%
+          if(session.getAttribute("user")==null){
+      %>
+      <a href="signin.jsp" class="flex items-center gap-2 hover:text-primaryLight">
         <div class="text-2xl"><i class="fa-solid fa-user"></i></div>
         <div class="text-sm max-sm:hidden">
           <div>User</div>
           <div class="font-bold font-mono">Account</div>
         </div>
       </a>
+      <% }else{ %>
+      <div class="flex items-center gap-2">
+        <div class="text-2xl"><i class="fa-solid fa-user"></i></div>
+        <div class="text-sm flex flex-col max-sm:hidden">
+            <a class="hover:text-primaryLight" href="./user">Account</a>
+          <a class="hover:text-primaryLight" href="#" class="font-bold font-mono">logout</a>
+        </div>
+      </div>
+      <% } %>
     </div>
   </div>
   <!--navbar code end here-->
