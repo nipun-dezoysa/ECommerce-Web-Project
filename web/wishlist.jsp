@@ -29,7 +29,10 @@
                 <div class="product-details">
                     <h2><%= item.getName() %></h2>
                     <p>Price: $<%= item.getPrice() %></p>
-                    <button class="remove-button">Remove</button>
+                    <form action="WishlistServlet" method="post">
+                    <input type="hidden" name="id" value="<%= item.getId() %>">
+                    <button class="remove-button" type="submit" name="action" value="remove">Remove</button>
+        </form>
                 </div>
             </div>
             <% } %>
