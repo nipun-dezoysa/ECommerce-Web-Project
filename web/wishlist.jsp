@@ -1,3 +1,4 @@
+<%@page import="mainPackage.wishlist"%>
 <%@page import="mainPackage.WishlistItem"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -6,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My Wishlist</title>
-    <link rel="stylesheet" type="text/css" href="wishlist.css">
+   <link rel="stylesheet" type="text/css" href="css/wishlist.css">
 </head>
 <body>
     <div class="max-container">
@@ -16,7 +17,7 @@
         </div>
         <div class="wishlist-items">
             <% 
-                List<WishlistItem> wishlistItems = (List<WishlistItem>) request.getAttribute("wishlistItems");
+                List<WishlistItem> wishlistItems = wishlist.getAllItems();
                 for (WishlistItem item : wishlistItems) { 
             %>
             <div class="wishlist-item">

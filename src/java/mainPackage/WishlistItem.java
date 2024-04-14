@@ -8,9 +8,6 @@ public class WishlistItem {
 
     // Constructors, getters, and setters
 
-    public WishlistItem() {
-    }
-
     public WishlistItem(int id, String name, int price, String img) {
         this.id = id;
         this.name = name;
