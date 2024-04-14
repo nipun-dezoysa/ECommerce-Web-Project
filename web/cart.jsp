@@ -42,7 +42,7 @@
           <img class="w-[100px] rounded-lg aspect-square" src="./img/products/<%= product.getImg1() %>" alt="" />
           <div class="w-full h-full flex flex-col">
             <div class="flex justify-between font-semibold text-xl">
-              <h1 class="text-gray-600"><%= product.getName() %></h1>
+                <a href="./product?id=<%= cart.get(i).getId() %>" class="text-gray-600"><%= product.getName() %></a>
               <div class="text-gray-300">SKU <%= product.getId() %></div>
             </div>
             <div class="flex w-full h-full justify-between">
@@ -131,7 +131,9 @@
 <% } %>
       </div>
       <div class="w-[25%]">
-        <div
+        <form
+          action="./placeorder.jsp"  
+          method="POST"
           class="w-full border shadow border-gray-300 rounded-lg flex flex-col gap-3 p-5"
         >
           <h1 class="font-semibold">Shopping Summary</h1>
@@ -145,34 +147,46 @@
           >
             CHECKOUT
           </button>
-          <a href="#" class="font-semibold text-sm text-center"
+          <a href="./" class="font-semibold text-sm text-center"
             >Back to Shopping</a
           >
-        </div>
+        </form>
       </div>
     </div>
 
     <jsp:include page="./WEB-INF/components/footer.jsp" />
     
-    <script>
+    <script>    
       $(document).ready(function () {
         $(".remforms").submit(function (e) {
           e.preventDefault();
           var formData = new FormData(this);
-            $.ajax({
+          Swal.fire({
+            title: "Are you sure?",
+            text: "Are you sure you want to remove the following product from the cart?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, remove it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
               type: "POST",
               url: "removeFromCart",
               data: formData,
               processData: false,
               contentType: false,
               success: function (response) {
-                alert(response);
                 location.reload();
               },
               error: function (xhr, status, error) {
                 console.error(xhr.responseText);
               },
-            });
+              });
+            }
+          });
+            
         });
         
         $(".quentforms").submit(function (e) {

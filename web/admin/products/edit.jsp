@@ -1,19 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
-<%
+<% 
     String id = request.getParameter("id");
     if(id==null) response.sendRedirect("./index.jsp");
+    else{
     try { 
         Integer.parseInt(id); 
-	}  
-    catch (NumberFormatException e)  
-	{ 
-	response.sendRedirect("./index.jsp");		
-	}
-    DatabaseLogIn db = new DatabaseLogIn();
-    Product pr = db.getProduct(id);
-    if(pr==null)response.sendRedirect("./index.jsp");
-%>
+        DatabaseLogIn db = new DatabaseLogIn();
+        Product pr = db.getProduct(id);
+        if(pr==null)response.sendRedirect("./index.jsp");
+        else{
+%> 
 <!DOCTYPE html>
 <html>
   <head>
@@ -426,7 +423,17 @@
         $(".ssforms").submit(function(e){
             e.preventDefault();
             var formData = new FormData(this);
-            $.ajax({
+            Swal.fire({
+  title: "Are you sure?",
+  text: "Are you sure you want to remove the following Size from the product?",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, remove it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    $.ajax({
               type: "POST",
               url: "../../productSize",
               data: formData,
@@ -440,6 +447,9 @@
                 console.error(xhr.responseText);
               },
             });
+  }
+});
+            
             
         });
         
@@ -466,7 +476,17 @@
         $(".ccforms").submit(function(e){
             e.preventDefault();
             var formData = new FormData(this);
-            $.ajax({
+             Swal.fire({
+  title: "Are you sure?",
+  text: "Are you sure you want to remove the following Color from the product?",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, remove it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    $.ajax({
               type: "POST",
               url: "../../productColor",
               data: formData,
@@ -480,6 +500,8 @@
                 console.error(xhr.responseText);
               },
             });
+  }
+});
             
         });
         
@@ -506,7 +528,17 @@
         $("#mainform").submit(function(e){
             e.preventDefault();
             var formData = new FormData(this);
-            $.ajax({
+            Swal.fire({
+  title: "Are you sure?",
+  text: "Are you want to save the following details to the product?",
+  icon: "question",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Save changes"
+}).then((result) => {
+  if (result.isConfirmed) {
+    $.ajax({
               type: "POST",
               url: "../../productDetails",
               data: formData,
@@ -520,13 +552,26 @@
                 console.error(xhr.responseText);
               },
             });
+  }
+});
+           
             
         });
         
         $(".imgclass").submit(function(e){
             e.preventDefault();
             var formData = new FormData(this);
-            $.ajax({
+            Swal.fire({
+  title: "Are you sure?",
+  text: "Are you want to upload the following image to the product?",
+  icon: "question",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Upload the image"
+}).then((result) => {
+  if (result.isConfirmed) {
+    $.ajax({
               type: "POST",
               url: "../../changeImg",
               data: formData,
@@ -534,12 +579,15 @@
               processData: false,
               contentType: false,
               success: function (response) {
-                alert(response);
+                location.reload();
               },
               error: function (xhr, status, error) {
                 console.error(xhr.responseText);
               },
             });
+  }
+});
+            
             
         });
         
@@ -548,3 +596,14 @@
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
   </body>
 </html>
+
+<%        }
+	}  
+    catch (NumberFormatException e)  
+	{
+        response.sendRedirect("./index.jsp");
+        
+	}
+    
+    }
+%> 

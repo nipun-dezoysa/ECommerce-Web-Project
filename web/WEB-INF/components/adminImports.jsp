@@ -15,6 +15,9 @@ String path = request.getParameter("path");
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style type="text/tailwindcss">
       @layer utilities {
         .inputs {
