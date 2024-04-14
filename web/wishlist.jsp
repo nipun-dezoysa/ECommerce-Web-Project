@@ -8,8 +8,10 @@
     <meta charset="UTF-8">
     <title>My Wishlist</title>
    <link rel="stylesheet" type="text/css" href="css/wishlist.css">
+   <jsp:include page="./WEB-INF/components/Imports.jsp" />
 </head>
 <body>
+    <jsp:include page="./WEB-INF/components/nav.jsp" />
     <div class="max-container">
         <div class="wishlist-header">
             <h1>My Wishlist</h1>
@@ -33,5 +35,7 @@
             <% } %>
         </div>
     </div>
+        <br><br>
+        <jsp:include page="./WEB-INF/components/footer.jsp" />
 </body>
 </html>
