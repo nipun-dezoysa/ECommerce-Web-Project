@@ -5,13 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import models.*;
 
 public class DatabaseLogIn {
-boolean login;
 boolean adminlogin;
 static Statement st;
 
@@ -32,7 +33,6 @@ static void basicExecute(String query){
     connectToDb();
     try {
         st.executeUpdate(query);
-        st.close();
     } catch (SQLException ex) {
         Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -235,7 +235,6 @@ static void basicExecute(String query){
               }else{
                   result[1] = "demo";
               }
-                st.close();
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -243,7 +242,33 @@ static void basicExecute(String query){
           return result;
       }
     
+    public boolean addOrder(int uid,String name,String email,String phone,String address,String note, ArrayList<CartItem> items){
+        Date date = new Date();
+        Timestamp time = new Timestamp(date.getTime());
+        basicExecute("INSERT INTO orders (uid, name, email, phone, address, note, status, date) VALUES ("+uid+", '"+name+"', '"+email+"', '"+phone+"', '"+address+"', '"+note+"', 1, '"+time+"')");
+        
+        try {
+               ResultSet rs = st.executeQuery("SELECT * FROM orders WHERE uid="+uid+" ORDER BY oid DESC");
+               rs.next();
+               int oid = rs.getInt("oid");
+                for(int i=0;i<items.size();i++){
+                    Product pr = getProduct(items.get(i).getId()+"");
+                    String[] gg = getColorSize(items.get(i).getColor(),items.get(i).getSize());
+                    System.out.print(gg[0]+" "+gg[1]);
+                    basicExecute("INSERT INTO items (oid, pid, name, size, color, price, discount, quantity) VALUES ("+oid+", "+pr.getId()+", '"+pr.getName()+"', "+gg[1]+" ,'"+gg[0]+"', "+pr.getPrice()+", "+pr.getDiscount()+", "+items.get(i).getQuantity()+")");
+            
+                 }
+               return true; 
+            } catch (SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        return false;
+    }
     
+    public void addAddress(int uid,String fname,String lname,String email,String phone,String address,String town, String province){
+        basicExecute("INSERT INTO abook (uid,fname,lname,email,phone,address,town,province) VALUES ("+uid+", '"+fname+"','"+lname+"','"+email+"','"+phone+"','"+address+"','"+town+"','"+province+"')");
+    }
       
     
 }

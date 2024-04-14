@@ -2,7 +2,7 @@
 
 <!-- ----dont delete below line---- -->
 <div class="frameBox">
-<!-- ----dont delete above line---- -->
+  <!-- ----dont delete above line---- -->
 
   <!--navbar code starts here-->
   <div class="bg-primary py-1 font-mono text-white flex justify-center z-50">
@@ -39,10 +39,11 @@
         </div>
       </a>
       <div class="border-r-2 h-[80%]"></div>
-      <%
-          if(session.getAttribute("user")==null){
-      %>
-      <a href="signin.jsp" class="flex items-center gap-2 hover:text-primaryLight">
+      <% if(session.getAttribute("user")==null){ %>
+      <a
+        href="signin.jsp"
+        class="flex items-center gap-2 hover:text-primaryLight"
+      >
         <div class="text-2xl"><i class="fa-solid fa-user"></i></div>
         <div class="text-sm max-sm:hidden">
           <div>User</div>
@@ -53,8 +54,13 @@
       <div class="flex items-center gap-2">
         <div class="text-2xl"><i class="fa-solid fa-user"></i></div>
         <div class="text-sm flex flex-col max-sm:hidden">
-            <a class="hover:text-primaryLight" href="./user">Account</a>
-          <a class="hover:text-primaryLight" href="#" class="font-bold font-mono">logout</a>
+          <a class="hover:text-primaryLight" href="./user">Account</a>
+          <button
+            id="logout"
+            class="font-bold font-mono hover:text-primaryLight"
+          >
+            logout
+          </button>
         </div>
       </div>
       <% } %>

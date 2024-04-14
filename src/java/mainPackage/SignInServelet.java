@@ -32,7 +32,12 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         User user = db1.signIn(email, password);
         if(user.getId()>0){
             session.setAttribute("user", user);
-            out.print("ok");
+            if(session.getAttribute("logreq")==null){
+                out.print("ok");
+            }else{
+                out.print(session.getAttribute("logreq"));
+                session.removeAttribute("logreq");
+            }
         }
         else{
             out.print("bad");
