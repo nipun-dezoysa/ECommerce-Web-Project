@@ -1,8 +1,4 @@
-
-package mainPackage;
-
-import java.io.IOException;
-import java.io.PrintWriter;
+import mainPackage.WishlistItem;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,89 +6,44 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 public class wishlist {
- // Insert data into wishlist table
-    public static void insertWishlist(String id, String name, String price, String img) {
-        String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/login";
-        String query = "INSERT INTO `wishlist`(`id`, `name`, `price`, `img`) VALUES (?, ?, ?, ?)";
-
-        try {
-            Class.forName(driver);
-            try (Connection con = DriverManager.getConnection(url, "root", "");
-                 PreparedStatement pst = con.prepareStatement(query)) {
-                pst.setString(1, id);
-                pst.setString(2, name);
-                pst.setString(3, price);
-                pst.setString(4, img);
-                pst.executeUpdate();
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(wishlist.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    private String jdbcURL = "jdbc:mysql://localhost:3306/shouetopia";
+    private String jdbcUsername = "root";
+    private String jdbcPassword = "";
     
+    private static final String SELECT_ALL_ITEMS = "SELECT * FROM wishlist";
+
+    protected Connection getConnection() throws SQLException {
+        Connection connection = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
     
-    // Retrieve all product from to wishlist table
-    public static List<wishlist> getAllWishlist() {
-        List<wishlist> wishList = new ArrayList<>();
-
-        String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/login";
-        String query = "SELECT * FROM wishlist";
-
-        try {
-            Class.forName(driver);
-            try (Connection con = DriverManager.getConnection(url, "root", "");
-                 PreparedStatement pst = con.prepareStatement(query);
-                 ResultSet rs = pst.executeQuery()) {
-
-                while (rs.next()) {
-                    int id = rs.getInt("id");
-                    String name = rs.getString("name");
-                    String price = rs.getString("price");
-                    String img = rs.getString("img");
-
-                    wishlist wishlist = new wishlist(id, name, price, img);
-                    wishList.add(wishlist);
-                }
+    public List<WishlistItem> getAllItems() {
+        List<WishlistItem> items = new ArrayList<>();
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_ITEMS)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                // Assuming WishlistItem is a class representing a single item in the wishlist
+                WishlistItem item = new WishlistItem();
+                // Populate item fields from resultSet
+                item.setId(resultSet.getInt("id"));
+                item.setName(resultSet.getString("name"));
+                item.setPrice(resultSet.getInt("price"));
+                item.setImg(resultSet.getString("img"));
+                
+                items.add(item);
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(wishlist.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return wishList;
+        return items;
     }
-
-    // Remove data from wishlist table
-    public static void removeWishlist(String id, String name, String price, String img) {
-        String driver = "com.mysql.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/login";
-        String query = "DELETE FROM wishlist WHERE id = ? AND name = ? AND price = ? AND img = ?";
-
-        try {
-            Class.forName(driver);
-            try (Connection con = DriverManager.getConnection(url, "root", "");
-                 PreparedStatement pst = con.prepareStatement(query)) {
-                pst.setString(1, id);
-                pst.setString(2, name);
-                pst.setString(3, price);
-                pst.setString(4, img);
-                pst.executeUpdate();
-            }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(wishlist.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
-
-
 }

@@ -1,28 +1,35 @@
+package mainPackage;
 
-package models;
-
-
-public class Wishlist{
+public class WishlistItem {
     private int id;
     private String name;
-    private String price;
+    private int price;
     private String img;
 
+    // Constructors, getters, and setters
 
-    public Wishlist(int id, String name, String price, String img) {
+    public WishlistItem() {
+    }
+
+    public WishlistItem(int id, String name, int price, String img) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.img = img;
     }
+
+    // Getters and Setters for id, name, price, and img
+
+    // Getter and Setter for id
     public int getId() {
         return id;
     }
 
-    public void setUname(int id) {
+    public void setId(int id) {
         this.id = id;
-    }    
-    
+    }
+
+    // Getter and Setter for name
     public String getName() {
         return name;
     }
@@ -31,14 +38,16 @@ public class Wishlist{
         this.name = name;
     }
 
-    public String getPrice() {
+    // Getter and Setter for price
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
+    // Getter and Setter for img
     public String getImg() {
         return img;
     }
