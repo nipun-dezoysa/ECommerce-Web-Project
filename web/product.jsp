@@ -138,7 +138,7 @@
         <form id="cartform" class="flex flex-col gap-1">
           <div class="flex flex-col">
             <div class="font-semibold">Colors</div>
-            <div class="mt-1 flex gap-1">
+            <div class="mt-1 flex gap-1 flex-wrap">
                 
               <% for(int i=0;i<pr.getColors().size();i++){ %>  
               <div>
@@ -161,7 +161,7 @@
           </div>
           <div class="flex flex-col">
             <div class="font-semibold">Sizes</div>
-            <div class="mt-1 flex gap-1">
+            <div class="mt-1 flex gap-1 flex-wrap">
                 
               <% for(int i=0;i<pr.getSizes().size();i++){ %>  
               <div>

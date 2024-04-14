@@ -1,14 +1,20 @@
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
 <% 
-    ArrayList<CartItem> cart;
+    if(session.getAttribute("cart")==null){
+        response.sendRedirect("./cart.jsp");
+    }else if(session.getAttribute("user")==null){
+        session.setAttribute("logreq", "./placeorder.jsp");
+        response.sendRedirect("./signin.jsp");
+    }else{
+        ArrayList<CartItem> cart;
          if(session.getAttribute("cart")==null){
              cart = new ArrayList<CartItem>();
          }else{
              cart = (ArrayList<CartItem>)session.getAttribute("cart");
          }
-    DatabaseLogIn db = new DatabaseLogIn();   
-    DecimalFormat formatter = new DecimalFormat("#,###.00");
+        DatabaseLogIn db = new DatabaseLogIn();   
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
 %>
 <!DOCTYPE html>
 <html>
@@ -217,7 +223,7 @@
                     icon: "success",
                   }).then((result) => {
                     if (result.isConfirmed) {
-                      location.reload();
+                      window.location.replace("./",);
                     }
                   });
                 },
@@ -232,3 +238,4 @@
     </script>
   </body>
 </html>
+<% } %>
