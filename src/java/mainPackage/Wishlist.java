@@ -19,6 +19,7 @@ public class wishlist {
     String driver = "com.mysql.jdbc.Driver";
     String url = "jdbc:mysql://localhost:3306/shoetopia";
     String query = "SELECT * FROM wishlist";
+    String count = "SELECT COUNT(*) AS row_count FROM wishlist";
 
     try {
       Class.forName(driver);

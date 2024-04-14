@@ -17,6 +17,10 @@
             <h1>My Wishlist</h1>
             <hr />
         </div>
+        <!-- Display total number of items -->
+        <div class="wishlist-summary">
+            <p>Total Items in Wishlist:</p>
+        </div>
         <div class="wishlist-items">
             <% 
                 List<WishlistItem> wishlistItems = wishlist.getAllItems();
@@ -30,15 +34,15 @@
                     <h2><%= item.getName() %></h2>
                     <p>Price: $<%= item.getPrice() %></p>
                     <form action="WishlistServlet" method="post">
-                    <input type="hidden" name="id" value="<%= item.getId() %>">
-                    <button class="remove-button" type="submit" name="action" value="remove">Remove</button>
-        </form>
+                        <input type="hidden" name="id" value="<%= item.getId() %>">
+                        <button class="remove-button" type="submit" name="action" value="remove">Remove</button>
+                    </form>
                 </div>
             </div>
             <% } %>
         </div>
     </div>
-        <br><br>
-        <jsp:include page="./WEB-INF/components/footer.jsp" />
+    <br><br>
+    <jsp:include page="./WEB-INF/components/footer.jsp" />
 </body>
 </html>
