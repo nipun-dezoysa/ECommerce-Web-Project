@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 14, 2024 at 11:41 PM
+-- Generation Time: Apr 15, 2024 at 11:50 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -127,15 +127,6 @@ CREATE TABLE `products` (
   `img04` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`Id`, `name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES
-(23, 'rata', 'des1', 'nike', 25, 10, 2, 5, '1.png', '2.png', '3.png', '4.png'),
-(24, 'neta', 'des2', 'adidas', 30, 15, 2, 5, '1.png', '2.png', '3.png', '4.png'),
-(25, 'aluth', 'des3', 'jordan', 25, 10, 2, 5, '1.png', '2.png', '3.png', '4.png');
-
 -- --------------------------------------------------------
 
 --
@@ -181,14 +172,6 @@ CREATE TABLE `wishlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `wishlist`
---
-
-INSERT INTO `wishlist` (`id`, `name`, `price`, `img01`) VALUES
-(23, 'rata', 25, 'demo.jpg'),
-(25, 'neta', 25, 'demo.jpg');
-
---
 -- Indexes for dumped tables
 --
 
@@ -206,12 +189,19 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `colors`
+--
+ALTER TABLE `colors`
+  ADD PRIMARY KEY (`cid`),
+  ADD KEY `fk_pidoncolors` (`pid`);
+
+--
 -- Indexes for table `items`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`),
   ADD KEY `oid` (`oid`),
-  ADD KEY `pid` (`pid`);
+  ADD KEY `items_ibfk_2` (`pid`);
 
 --
 -- Indexes for table `orders`
@@ -225,6 +215,13 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `sizes`
+--
+ALTER TABLE `sizes`
+  ADD PRIMARY KEY (`sid`),
+  ADD KEY `fk_pidonsizes` (`pid`);
 
 --
 -- Indexes for table `users`
@@ -255,6 +252,12 @@ ALTER TABLE `admin`
   MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `colors`
+--
+ALTER TABLE `colors`
+  MODIFY `cid` int(100) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
@@ -270,7 +273,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `sizes`
+--
+ALTER TABLE `sizes`
+  MODIFY `sid` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -289,17 +298,29 @@ ALTER TABLE `abook`
   ADD CONSTRAINT `fk_uidofabook` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `colors`
+--
+ALTER TABLE `colors`
+  ADD CONSTRAINT `fk_pidoncolors` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `items`
 --
 ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`oid`) REFERENCES `orders` (`oid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`);
+  ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE NO ACTION;
 
 --
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `uid` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`);
+  ADD CONSTRAINT `uid` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `sizes`
+--
+ALTER TABLE `sizes`
+  ADD CONSTRAINT `fk_pidonsizes` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
