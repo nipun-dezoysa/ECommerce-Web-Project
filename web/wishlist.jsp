@@ -19,11 +19,12 @@
         </div>
         <!-- Display total number of items -->
         <div class="wishlist-summary">
-            <p>Total Items in Wishlist:</p>
-        </div>
+            <% List<WishlistItem> wishlistItems = wishlist.getAllItems(); %>
+            <h3><%= wishlistItems.size() %> Items in Your Wishlist</h3>
+        </div><br>
         <div class="wishlist-items">
             <% 
-                List<WishlistItem> wishlistItems = wishlist.getAllItems();
+                
                 for (WishlistItem item : wishlistItems) { 
             %>
             <div class="wishlist-item">

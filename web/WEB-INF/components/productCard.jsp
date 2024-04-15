@@ -29,12 +29,9 @@
       </div>
       <div class="md:text-lg font-semibold">LKR 2,000</div>
     </div>
-    <div
-      class="w-10 h-10 flex justify-center items-center p-2 bg-blue-600 rounded-lg text-white group cursor-pointer hover:bg-blue-800 duration-300 ease-in-out"
+    <div class="w-10 h-10 flex justify-center items-center p-2  rounded-full text-black group cursor-pointer hover:bg-gray-100  duration-300 ease-in-out"
     >
-      <i
-        class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"
-      ></i>
+      <i class="fa-regular fa-heart group-hover:text-black group-hover:mb-2 duration-300 ease-in-out"></i>
     </div>
   </div>
 </div>
