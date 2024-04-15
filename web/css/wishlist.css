@@ -37,6 +37,7 @@ border-radius: 5px;
 
 .product-details {
 text-align: center;
+border: 1px solid;
 }
 
 .remove-button {
