@@ -314,12 +314,12 @@ static void basicExecute(String query){
         connectToDb();
         String query;
         if(type==0){
-            query = "SELECT * FROM orders WHERE uid="+uid;
+            query = "SELECT * FROM orders WHERE uid="+uid+" ORDER BY oid DESC";
         }else if(type==6){
-            query = "SELECT * FROM orders";
+            query = "SELECT * FROM orders ORDER BY oid DESC";
         }
         else{
-            query = "SELECT * FROM orders WHERE status="+type;
+            query = "SELECT * FROM orders WHERE status="+type+" ORDER BY oid DESC";
         }
         try{
             ResultSet rs = st.executeQuery(query);
@@ -335,6 +335,10 @@ static void basicExecute(String query){
         }
         return null;
     }
+ 
+ public void changeStatus(int st,int id){
+     basicExecute("UPDATE orders SET status="+st+" WHERE oid="+id);
+ }
       
     
 }

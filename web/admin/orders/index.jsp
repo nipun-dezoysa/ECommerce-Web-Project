@@ -124,6 +124,25 @@
                    
                    if(acc.size()>0){
                    for(int i=0;i<acc.size();i++){
+                       
+                   String c="";
+                  String stt = "";
+                  if(acc.get(i).getStatus()==1){
+                      c="text-xs rounded-full bg-yellow-200 text-yellow-400 px-2 py-1";
+                      stt="New";
+                  }else if(acc.get(i).getStatus()==2){
+                      c="text-xs rounded-full bg-purple-200 text-purple-400 px-2 py-1";
+                      stt="Inprogress";
+                  }else if(acc.get(i).getStatus()==3){
+                      c="text-xs rounded-full bg-blue-200 text-blue-400 px-2 py-1";
+                      stt="Shipped";
+                  }else if(acc.get(i).getStatus()==4){
+                      c="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1";
+                      stt="Completed";
+                  }else{
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Canceled";
+                  }
                %>
                <a href="./order.jsp?id=<%= acc.get(i).getId() %>"  class="list-item justify-between">
                   <div class="item-width">#<%= acc.get(i).getId() %></div>
@@ -132,7 +151,7 @@
                 <div class="item-width max-md:hidden"><%= acc.get(i).getDate().substring(10,16) %></div>
                 <div class="item-width max-md:hidden">5</div>
                 <div class="item-width">LKR <%= acc.get(i).getTotal() %></div>
-                <div class="item-width flex items-center justify-center"><div class="bg-green-200 text-green-400 py-1 px-2 rounded-full">Completed</div></div>
+                <div class="item-width flex items-center justify-center"><div class="<%=c%>"><%=stt%></div></div>
               </a>
               <%}}else{%>
               <div class="list-item justify-center">No Records Found</div>
