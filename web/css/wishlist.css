@@ -6,6 +6,7 @@ h1{
   box-sizing: border-box;
 }
 
+
 .max-container {
 max-width: 1200px;
 width: 96%;
@@ -36,6 +37,7 @@ border-radius: 5px;
 
 .product-details {
 text-align: center;
+border: 1px solid;
 }
 
 .remove-button {

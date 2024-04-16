@@ -1,9 +1,4 @@
-<%
-    String path = request.getParameter("path");
-    if(path==null){
-        path="./";
-    }
-%>
+<% String path = request.getParameter("path"); if(path==null){ path="./"; } %>
 <meta charset="UTF-8" />
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.tailwindcss.com"></script>
@@ -19,6 +14,8 @@
 
 <link rel="icon" type="image/x-icon" href="<%=path%>img/favicon.ico" />
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style type="text/tailwindcss">
   @layer utilities {
     body {
@@ -29,6 +26,15 @@
     }
     .main-container {
       @apply lg:px-[100px] md:px-[50px] px-5 w-full;
+    }
+    .inputs {
+      @apply border rounded-lg p-2 outline-primary w-full placeholder:text-gray-400;
+    }
+    .input-lable {
+      @apply block mb-1 text-sm font-medium text-gray-900;
+    }
+    .input-row {
+      @apply flex gap-2;
     }
   }
 </style>

@@ -202,3 +202,20 @@
 <!-- dont delete below line -->
 </div>
 <!-- dont delete above line -->
+
+<script>
+    $(document).ready(function () {
+      $("#logout").click(function () {
+        $.ajax({
+          type: "GET",
+          url: "SignOutServelet",
+          success: function (response) {
+            location.reload();
+          },
+          error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+          },
+        });
+      });
+    });
+  </script>

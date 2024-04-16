@@ -3,18 +3,15 @@
 <% 
     String id = request.getParameter("id");
     if(id==null) response.sendRedirect("./index.jsp");
+    else{
     try { 
         Integer.parseInt(id); 
-	}  
-    catch (NumberFormatException e)  
-	{ %>
-        <jsp:forward page="index.jsp"/>
-        
-<%	}
-    DatabaseLogIn db = new DatabaseLogIn();
-    Product pr = db.getProduct(id);
-    if(pr==null)response.sendRedirect("./index.jsp");
-%>
+        DatabaseLogIn db = new DatabaseLogIn();
+        Product pr = db.getProduct(id);
+        if(pr==null)response.sendRedirect("./index.jsp");
+        else{
+%>       
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -141,7 +138,7 @@
         <form id="cartform" class="flex flex-col gap-1">
           <div class="flex flex-col">
             <div class="font-semibold">Colors</div>
-            <div class="mt-1 flex gap-1">
+            <div class="mt-1 flex gap-1 flex-wrap">
                 
               <% for(int i=0;i<pr.getColors().size();i++){ %>  
               <div>
@@ -164,7 +161,7 @@
           </div>
           <div class="flex flex-col">
             <div class="font-semibold">Sizes</div>
-            <div class="mt-1 flex gap-1">
+            <div class="mt-1 flex gap-1 flex-wrap">
                 
               <% for(int i=0;i<pr.getSizes().size();i++){ %>  
               <div>
@@ -231,6 +228,19 @@
     <jsp:include page="./WEB-INF/components/footer.jsp" />
     
     <script>
+        
+        const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 700,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+        
       $(document).ready(function () {
         $("#cartform").submit(function (e) {
           e.preventDefault();
@@ -242,8 +252,11 @@
               processData: false,
               contentType: false,
               success: function (response) {
-                alert(response);
-                location.reload();
+               Toast.fire({
+  icon: "success",
+  title: "Item added successfully"
+}).then(()=> location.reload());
+                
               },
               error: function (xhr, status, error) {
                 console.error(xhr.responseText);
@@ -254,3 +267,14 @@
     </script>
   </body>
 </html>
+
+<%        }
+	}  
+    catch (NumberFormatException e)  
+	{
+        response.sendRedirect("./index.jsp");
+        
+	}
+    
+    }
+%>      

@@ -16,11 +16,14 @@
   <body>
     <div class="frameBox">
       <jsp:include page="../WEB-INF/components/nav.jsp" >
-      <jsp:param name="path" value="../"/>
-        </jsp:include>
-        <% String name = (String)session.getAttribute("email"); %>
-        <h1>Hello Wellcome <%=name%></h1>
+        <jsp:param name="path" value="../"/>
+      </jsp:include>
+        
+    <jsp:include page="../WEB-INF/components/notfound.jsp" />    
+        
     <jsp:include page="../WEB-INF/components/footer.jsp" />
+    
+     
     </div>
   </body>
 </html>

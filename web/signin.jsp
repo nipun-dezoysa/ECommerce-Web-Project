@@ -17,7 +17,12 @@
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form class="space-y-5" action="SignInServlet" method="post">
+        <form
+          id="signin"
+          class="space-y-5"
+          action="SignInServlet"
+          method="post"
+        >
           <div>
             <label
               for="email"
@@ -55,7 +60,7 @@
               <input
                 id="password"
                 name="password"
-                type="text"
+                type="password"
                 autocomplete="current-password"
                 required
                 class="block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6"
@@ -85,5 +90,47 @@
     </div>
 
     <jsp:include page="./WEB-INF/components/footer.jsp" />
+
+    <script>
+      $(document).ready(function () {
+        $("#signin").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+          $.ajax({
+            type: "POST",
+            url: "SignInServlet",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+              if(response == "bad") {
+                Swal.fire({
+                  title: "Oops!",
+                  text: "It seems like the username you entered is incorrect. Please double-check and try again.",
+                  icon: "error",
+                  confirmButtonColor: "#1b2330",
+                });
+              }else{
+                  Swal.fire({
+                  title: "Welcome back!",
+                  text: "You're now signed in to your account.",
+                  icon: "success",
+                  confirmButtonColor: "#1b2330",
+                }).then(()=>{
+                    if(response == "ok"){
+                       location.replace("index.jsp")
+                    }else{
+                       location.replace(response);
+                    }
+                });
+              }
+            },
+            error: function (xhr, status, error) {
+              console.error(xhr.responseText);
+            },
+          });
+        });
+      });
+    </script>
   </body>
 </html>

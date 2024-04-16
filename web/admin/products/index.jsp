@@ -342,16 +342,35 @@
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
     <script src="../../js/productsAdmin.js"></script>
     <script>
+        
+          const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+        
       $(document).ready(function () {
         $("#pform").submit(function (e) {
           e.preventDefault();
           var ss = document.getElementById("sc1");
           var cc = document.getElementById("cc1");
           if (ss == null) {
-            alert("Please add sizes");
+            Toast.fire({
+  icon: "warning",
+  title: "Please add sizes"
+});  
             return;
           } else if (cc == null) {
-            alert("Please add colors");
+               Toast.fire({
+  icon: "warning",
+  title: "Please add colors"
+});
             return;
           } else {
             var formData = new FormData(this);
@@ -376,7 +395,17 @@
         $(".dform").submit(function(e){
             e.preventDefault();
             var formData = new FormData(this);
-            $.ajax({
+            Swal.fire({
+  title: "Are you sure?",
+  text: "Are you sure you want to delete the following product?",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, Delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    $.ajax({
               type: "POST",
               url: "../../deleteProduct",
               data: formData,
@@ -390,6 +419,9 @@
                 console.error(xhr.responseText);
               },
             });
+  }
+});
+            
             
         });
       });
