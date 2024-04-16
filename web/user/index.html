@@ -1,16 +1,114 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="userstyle.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css"
+    integrity="sha512-U9Y1sGB3sLIpZm3ePcrKbXVhXlnQNcuwGQJ2WjPjnp6XHqVTdgIlbaDzJXJIAuCTp3y22t+nhI4B88F/5ldjFA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="sidebar">
+      <h2>My Account</h2>
+      <ul>
+        <li><a href="#"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
+        <li><a href="#"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
+        <li><a href="#"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
+        <li><a href="#"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
+      </ul>
+    </div>
+    <div class="my_details">
+      <h1>My Details</h1>
+      <div class="personal_information">
+        <h2>Personal Information</h2>
+        <hr>
+        <br>
+        <div class="row">
+          <div class="column">
+            <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
+          </div>
+          <div class="column">
+            <p>First Name<br>
+              <input type="text" class="txt">
+            </p>
+            <br>
+            <p>Birth Date<br>
+              <input type="date" class="txt">
+            </p>
+            <br>
+            <p>Phone Number<br>
+              <input type="number" class="txt"><br>
+              <p class="stxt">Keep 9-digit format with no spaces and dashes.</p>
+            </p>
+            <br>
+            <p><input type="submit" class="btn" value="SAVE"></p>
+          </div>
+          <div class="column">
+            <p>Last Name<br>
+              <input type="text" class="txt">
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="email_address">
+        <h2>E-mail Address</h2>
+        <hr>
+        <br>
+        <div class="row">
+          <div class="column">
+            <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
+          </div>
+          <div class="column">
+            <p>Email Address<br>
+              <input type="text" class="txt">
+            </p>
+            <br>
+            <p>Password<br>
+              <input type="password" class="txt">
+            </p>
+            <br>
+            <p><input type="submit" class="btn" value="SAVE"></p>
+          </div>
+          <div class="column">
+          </div>
+        </div>
+      </div>
+
+      <div class="password">
+        <h2>Password</h2>
+        <hr>
+        <br>
+        <div class="row">
+          <div class="column">
+            <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
+          </div>
+          <div class="column">
+            <p>Current Password<br>
+              <input type="password" class="txt">
+            </p>
+            <br>
+            <p>New Password<br>
+              <input type="password" class="txt"><br>
+              <p class="stxt">Make sure your password is 8 characters long and contains letters and numbers.</p>
+            </p>
+            <br>
+            <p>Confirm Password<br>
+              <input type="password" class="txt">
+            </p>
+            <br>
+            <p><input type="submit" class="btn" value="SAVE"></p>
+          </div>
+          <div class="column">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
