@@ -319,7 +319,7 @@ static public ArrayList<Order> getOrders(int type,String uid){
             query = "SELECT * FROM orders WHERE status="+type;
         }
         try{
-            ResultSet rs = st.executeQuery("SELECT * FROM orders");
+            ResultSet rs = st.executeQuery(query);
             ArrayList<Order> orders = new ArrayList<Order>();
             while(rs.next()){
                 Order o = getOrder(rs.getInt(1));

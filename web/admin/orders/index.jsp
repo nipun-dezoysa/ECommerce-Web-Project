@@ -80,6 +80,7 @@
 
     <div class="flex flex-col lg:flex-row gap-5">
       <div class="lg:w-[50%] flex flex-col gap-5">
+
         <div class="box">
           <div class="box-title">New Orders</div>
           <div class="box-body">
@@ -109,8 +110,99 @@
             </div>
           </div>
         </div>
+            
+       <div class="box">
+          <div class="box-title">Accepted Orders</div>
+          <div class="box-body">
+            <div class="list-header">
+              <div class="item-width">Order ID</div>
+              <div class="item-width">User</div>
+              <div class="item-width">Date</div>
+              <div class="item-width">Time</div>
+              <div class="item-width">Amount</div>
+            </div>
+            <div class="flex flex-col gap-1">
+               <%
+                   ArrayList<Order> acc = db.getOrders(2,"no");
+                   if(acc.size()>0){
+                   for(int i=0;i<acc.size();i++){
+               %>
+              <a href="#"  class="list-item justify-between">
+                  <div class="item-width">#<%= acc.get(i).getId() %></div>
+                <div class="item-width line-clamp-1"><%= acc.get(i).getUser().getEmail() %></div>
+                <div class="item-width"><%= acc.get(i).getDate().substring(0,10) %></div>
+                <div class="item-width"><%= acc.get(i).getDate().substring(10,16) %></div>
+                <div class="item-width">LKR <%= acc.get(i).getTotal() %></div>
+              </a>
+              <%}}else{%>
+              <div class="list-item justify-center">No Records found</div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+            
       </div>
-      <div class="lg:w-[50%] flex flex-col gap-5"></div>
+            <div class="lg:w-[50%] flex flex-col gap-5">
+                <div class="box">
+          <div class="box-title">Shpped Orders</div>
+          <div class="box-body">
+            <div class="list-header">
+              <div class="item-width">Order ID</div>
+              <div class="item-width">User</div>
+              <div class="item-width">Date</div>
+              <div class="item-width">Time</div>
+              <div class="item-width">Amount</div>
+            </div>
+            <div class="flex flex-col gap-1">
+               <%
+                   ArrayList<Order> ship = db.getOrders(3,"no");
+                   if(ship.size()>0){
+                   for(int i=0;i<ship.size();i++){
+               %>
+              <a href="#"  class="list-item justify-between">
+                  <div class="item-width">#<%= ship.get(i).getId() %></div>
+                <div class="item-width line-clamp-1"><%= ship.get(i).getUser().getEmail() %></div>
+                <div class="item-width"><%= ship.get(i).getDate().substring(0,10) %></div>
+                <div class="item-width"><%= ship.get(i).getDate().substring(10,16) %></div>
+                <div class="item-width">LKR <%= ship.get(i).getTotal() %></div>
+              </a>
+              <%}}else{%>
+              <div class="list-item justify-center">No Records found</div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+            <div class="box">
+          <div class="box-title">Cancelled Orders</div>
+          <div class="box-body">
+            <div class="list-header">
+              <div class="item-width">Order ID</div>
+              <div class="item-width">User</div>
+              <div class="item-width">Date</div>
+              <div class="item-width">Time</div>
+              <div class="item-width">Amount</div>
+            </div>
+            <div class="flex flex-col gap-1">
+               <%
+                   ArrayList<Order> cans = db.getOrders(4,"no");
+                   if(cans.size()>0){
+                   for(int i=0;i<cans.size();i++){
+               %>
+              <a href="#"  class="list-item justify-between">
+                  <div class="item-width">#<%= cans.get(i).getId() %></div>
+                <div class="item-width line-clamp-1"><%= cans.get(i).getUser().getEmail() %></div>
+                <div class="item-width"><%= cans.get(i).getDate().substring(0,10) %></div>
+                <div class="item-width"><%= cans.get(i).getDate().substring(10,16) %></div>
+                <div class="item-width">LKR <%= cans.get(i).getTotal() %></div>
+              </a>
+              <%}}else{%>
+              <div class="list-item justify-center">No Records found</div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+                
+            </div>
     </div>
 
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
