@@ -16,7 +16,7 @@
           @apply flex justify-between text-center font-semibold text-sm;
         }
         .list-item {
-          @apply flex items-center border rounded-lg py-2 text-center text-sm hover:bg-gray-200 duration-300 ease-in-out;
+          @apply flex items-center border rounded-lg py-2 text-center text-xs hover:bg-gray-200 duration-300 ease-in-out;
         }
         .item-width {
           @apply w-[20%];
@@ -77,53 +77,51 @@
         </li>
       </ol>
     </nav>
+      
+        
+        <%
+            String type = request.getParameter("type");
+            int a = 6;
+            if(type!=null){
+                if(type.equals("new")) a=1;
+                else if(type.equals("progress")) a=2;
+                else if(type.equals("shipped")) a=3;
+                else if(type.equals("completed")) a=4;
+                else if(type.equals("canceled")) a=5;
+            }
+            ArrayList<Order> acc = db.getOrders(a,"no");
+            
+        %>
 
-    <div class="flex flex-col lg:flex-row gap-5">
-      <div class="lg:w-[50%] flex flex-col gap-5">
+      <div class="flex flex-col items-start md:flex-row gap-5">
 
-        <div class="box">
-          <div class="box-title">New Orders</div>
-          <div class="box-body">
-            <div class="list-header">
-              <div class="item-width">Order ID</div>
-              <div class="item-width">User</div>
-              <div class="item-width">Date</div>
-              <div class="item-width">Time</div>
-              <div class="item-width">Amount</div>
-            </div>
-            <div class="flex flex-col gap-1">
-               <%
-                   ArrayList<Order> news = db.getOrders(1,"no");
-                   if(news.size()>0){
-                   for(int i=0;i<news.size();i++){
-               %>
-              <a href="#"  class="list-item justify-between">
-                  <div class="item-width">#<%= news.get(i).getId() %></div>
-                <div class="item-width line-clamp-1"><%= news.get(i).getUser().getEmail() %></div>
-                <div class="item-width"><%= news.get(i).getDate().substring(0,10) %></div>
-                <div class="item-width"><%= news.get(i).getDate().substring(10,16) %></div>
-                <div class="item-width">LKR <%= news.get(i).getTotal() %></div>
-              </a>
-              <%}}else{%>
-              <div class="list-item justify-center">No Records found</div>
-              <% } %>
-            </div>
+        <div class="box md:w-[20%] max-md:w-full">
+          <div class="flex flex-row md:flex-col gap-2 md:gap-1  max-md:justify-between px-3 py-2 text-sm max-md:text-center">
+              <a href="./index.jsp" class="<%= a==6? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">All<span class="max-md:hidden"> Orders</span></a>
+              <a href="./index.jsp?type=new" class="<%= a==1? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">New<span class="max-md:hidden"> Orders</span></a>
+              <a href="./index.jsp?type=progress" class="<%= a==2? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Inprogress<span class="max-md:hidden"> Orders</span></a>
+              <a href="./index.jsp?type=shipped" class="<%= a==3? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Shipped<span class="max-md:hidden"> Orders</span>s</a>
+              <a href="./index.jsp?type=completed" class="<%= a==4? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Completed<span class="max-md:hidden"> Orders</span></a>
+              <a href="./index.jsp?type=canceled" class="<%= a==5? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Canceled<span class="max-md:hidden"> Orders</span></a>
           </div>
         </div>
+          
             
-       <div class="box">
-          <div class="box-title">Accepted Orders</div>
+       <div class="box w-full  md:w-[70%]">
+          <div class="box-title">Orders</div>
           <div class="box-body">
             <div class="list-header">
               <div class="item-width">Order ID</div>
               <div class="item-width">User</div>
               <div class="item-width">Date</div>
-              <div class="item-width">Time</div>
+              <div class="item-width max-md:hidden">Time</div>
+              <div class="item-width max-md:hidden">no of items</div>
               <div class="item-width">Amount</div>
+              <div class="item-width">status</div>
             </div>
             <div class="flex flex-col gap-1">
                <%
-                   ArrayList<Order> acc = db.getOrders(2,"no");
+                   
                    if(acc.size()>0){
                    for(int i=0;i<acc.size();i++){
                %>
@@ -131,8 +129,10 @@
                   <div class="item-width">#<%= acc.get(i).getId() %></div>
                 <div class="item-width line-clamp-1"><%= acc.get(i).getUser().getEmail() %></div>
                 <div class="item-width"><%= acc.get(i).getDate().substring(0,10) %></div>
-                <div class="item-width"><%= acc.get(i).getDate().substring(10,16) %></div>
+                <div class="item-width max-md:hidden"><%= acc.get(i).getDate().substring(10,16) %></div>
+                <div class="item-width max-md:hidden">5</div>
                 <div class="item-width">LKR <%= acc.get(i).getTotal() %></div>
+                <div class="item-width flex items-center justify-center"><div class="bg-green-200 text-green-400 py-1 px-2 rounded-full">Completed</div></div>
               </a>
               <%}}else{%>
               <div class="list-item justify-center">No Records found</div>
@@ -142,68 +142,7 @@
         </div>
             
       </div>
-            <div class="lg:w-[50%] flex flex-col gap-5">
-                <div class="box">
-          <div class="box-title">Shpped Orders</div>
-          <div class="box-body">
-            <div class="list-header">
-              <div class="item-width">Order ID</div>
-              <div class="item-width">User</div>
-              <div class="item-width">Date</div>
-              <div class="item-width">Time</div>
-              <div class="item-width">Amount</div>
-            </div>
-            <div class="flex flex-col gap-1">
-               <%
-                   ArrayList<Order> ship = db.getOrders(3,"no");
-                   if(ship.size()>0){
-                   for(int i=0;i<ship.size();i++){
-               %>
-              <a href="#"  class="list-item justify-between">
-                  <div class="item-width">#<%= ship.get(i).getId() %></div>
-                <div class="item-width line-clamp-1"><%= ship.get(i).getUser().getEmail() %></div>
-                <div class="item-width"><%= ship.get(i).getDate().substring(0,10) %></div>
-                <div class="item-width"><%= ship.get(i).getDate().substring(10,16) %></div>
-                <div class="item-width">LKR <%= ship.get(i).getTotal() %></div>
-              </a>
-              <%}}else{%>
-              <div class="list-item justify-center">No Records found</div>
-              <% } %>
-            </div>
-          </div>
-        </div>
-            <div class="box">
-          <div class="box-title">Cancelled Orders</div>
-          <div class="box-body">
-            <div class="list-header">
-              <div class="item-width">Order ID</div>
-              <div class="item-width">User</div>
-              <div class="item-width">Date</div>
-              <div class="item-width">Time</div>
-              <div class="item-width">Amount</div>
-            </div>
-            <div class="flex flex-col gap-1">
-               <%
-                   ArrayList<Order> cans = db.getOrders(4,"no");
-                   if(cans.size()>0){
-                   for(int i=0;i<cans.size();i++){
-               %>
-              <a href="#"  class="list-item justify-between">
-                  <div class="item-width">#<%= cans.get(i).getId() %></div>
-                <div class="item-width line-clamp-1"><%= cans.get(i).getUser().getEmail() %></div>
-                <div class="item-width"><%= cans.get(i).getDate().substring(0,10) %></div>
-                <div class="item-width"><%= cans.get(i).getDate().substring(10,16) %></div>
-                <div class="item-width">LKR <%= cans.get(i).getTotal() %></div>
-              </a>
-              <%}}else{%>
-              <div class="list-item justify-center">No Records found</div>
-              <% } %>
-            </div>
-          </div>
-        </div>
-                
-            </div>
-    </div>
+            
 
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
   </body>

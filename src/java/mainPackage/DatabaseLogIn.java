@@ -315,7 +315,10 @@ static public ArrayList<Order> getOrders(int type,String uid){
         String query;
         if(type==0){
             query = "SELECT * FROM orders WHERE uid="+uid;
-        }else{
+        }else if(type==6){
+            query = "SELECT * FROM orders";
+        }
+        else{
             query = "SELECT * FROM orders WHERE status="+type;
         }
         try{
