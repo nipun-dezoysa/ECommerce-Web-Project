@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Orders</title>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../../js/tailwindconfig.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .inputs {
+          @apply border rounded-lg p-2 outline-primary w-full placeholder:text-gray-400;
+        }
+        .image {
+          @apply block w-full file:text-gray-400 border border-gray-200 rounded-lg focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none file:bg-gray-50 file:border-0 file:me-4 file:py-2 file:px-2;
+        }
+        .remove {
+          @apply text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
+        }
+        .normal {
+          @apply text-white bg-primary hover:bg-primaryLight focus:ring-4 focus:outline-none focus:ring-primaryLight font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer;
+        }
+        .box {
+          @apply bg-white rounded-lg border flex flex-col;
+        }
+        .box-title {
+          @apply font-bold text-xl font-mono py-2 px-5 border-b;
+        }
+        .box-body {
+          @apply p-5 flex flex-col gap-3;
+        }
+        .input-lable {
+          @apply block mb-1 text-sm font-medium text-gray-900;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="flex flex-col lg:flex-row min-h-screen">
+      <div
+        class="bg-primary w-full lg:w-[19%] py-5 flex lg:flex-col lg:h-screen max-lg:items-center sticky top-0"
+      >
+        <div class="w-full flex flex-col items-center">
+          <a class="w-[70%]" href="../"
+            ><img class="w-[200px] lg:w-full" src="../../img/2.png" alt="logo"
+          /></a>
+          <p class="text-white font-mono max-lg:text-sm">Admin Dashboard</p>
+        </div>
+        <div class="px-5 text-white lg:mt-10 flex lg:flex-col">
+          <a
+            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
+            href="../index.jsp"
+            ><i class="fa-solid fa-compass text-2xl w-10"></i>
+            <div class="max-lg:hidden">Dashboard</div></a
+          >
+          <a
+            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
+            href="#"
+            ><i class="fa-solid fa-bag-shopping text-2xl w-10"></i>
+            <div class="max-lg:hidden">Orders</div></a
+          >
+          <a
+            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
+            href="../products/"
+            ><i class="fa-solid fa-tags text-2xl w-10"></i>
+            <div class="max-lg:hidden">Products</div></a
+          >
+          <a
+            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
+            href="#"
+            ><i class="fa-solid fa-person text-2xl w-10"></i>
+            <div class="max-lg:hidden">Customers</div></a
+          >
+          <a
+            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
+            href="#"
+            ><i class="fa-solid fa-user-tie text-2xl w-10"></i>
+            <div class="max-lg:hidden">Administration</div></a
+          >
+        </div>
+        <div class="px-5 text-white lg:mt-auto flex flex-col max-lg:hidden">
+          <a
+            class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg"
+            href="#"
+            ><i class="fa-solid fa-circle-info text-2xl w-10"></i>
+            <div>Admin Pannel v 1.0</div></a
+          >
+        </div>
+      </div>
+      <div class="bg-gray-200 w-full lg:w-[81%] flex flex-col">
+        <div class="bg-white py-5 px-10 flex justify-between">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-magnifying-glass gap-3"></i>
+            <input
+              class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0"
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search..."
+            />
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="flex flex-col justify-center">
+              <a class="font-semibold text-gray-500" href="#">Admin</a>
+              <a class="text-red-700 font-mono" href="../../adminSignOut"
+                >Log Out</a
+              >
+            </div>
+            <div
+              class="bg-gray-200 rounded-full w-12 h-12 flex items-center justify-center text-gray-400"
+            >
+              <i class="fa-regular fa-user"></i>
+            </div>
+          </div>
+        </div>
+        <div class="p-5 flex flex-col gap-5">
+          <!-- body strat here -->
+
+          <div class="flex flex-col md:flex-row gap-5 w-full items-start">
+            <div class="box w-full md:w-[70%]">
+              <div class="px-5 py-2 flex border-b">
+                <div>
+                  <div class="flex gap-2">
+                    <div class="font-semibold">
+                      Order <span class="text-gray-400">#22</span>
+                    </div>
+                    <div
+                      class="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1"
+                    >
+                      Completed
+                    </div>
+                  </div>
+                  <div class="text-xs">2024-04-16 15:16</div>
+                </div>
+              </div>
+              <div class="box-body">
+                <div
+                  class="flex justify-between text-sm font-semibold text-center"
+                >
+                  <div class="w-[10%]">SKU</div>
+                  <div class="w-[10%]">Name</div>
+                  <div class="w-[10%]">Color</div>
+                  <div class="w-[10%]">Size</div>
+                  <div class="w-[10%] max-md:hidden">Each Price</div>
+                  <div class="w-[10%]">Quentity</div>
+                  <div class="w-[10%] max-md:hidden">Discount</div>
+                  <div class="w-[10%]">Total</div>
+                </div>
+                <div class="gap-1 flex flex-col">
+                  <div
+                    class="flex justify-between text-xs text-center border py-2 rounded-lg"
+                  >
+                    <div class="w-[10%]">SKU</div>
+                    <div class="w-[10%]">Name</div>
+                    <div class="w-[10%]">Color</div>
+                    <div class="w-[10%]">Size</div>
+                    <div class="w-[10%] max-md:hidden">Each Price</div>
+                    <div class="w-[10%]">Quentity</div>
+                    <div class="w-[10%] max-md:hidden">Discount</div>
+                    <div class="w-[10%]">Total</div>
+                  </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-2 justify-between">
+                  <div class="w-full md:w-[60%] text-gray-400">
+                    <h1 class="font-semibold">Other Notes</h1>
+                    <p class="text-sm">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Eum perspiciatis pariatur distinctio quisquam quod atque
+                      veritatis cum aspernatur ipsa officiis minima voluptatem,
+                      alias ea soluta. Eum illum facere perferendis hic.
+                    </p>
+                  </div>
+                  <div class="w-full md:w-[30%]">
+                    <div
+                      class="text-gray-400 font-semibold text-sm flex justify-between"
+                    >
+                      <div>Subtotal</div>
+                      <div>LKR 22,500.00</div>
+                    </div>
+                    <div
+                      class="text-gray-400 font-semibold text-sm flex justify-between"
+                    >
+                      <div>Subtotal</div>
+                      <div>LKR 22,500.00</div>
+                    </div>
+                    <div
+                      class="text-gray-400 font-semibold flex justify-between border-t pt-2 mt-2"
+                    >
+                      <div>Subtotal</div>
+                      <div>LKR 22,500.00</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full md:w-[30%] flex flex-col gap-5">
+              <div class="box">
+                <div class="box-title">Shipping Details</div>
+                <div class="box-body text-sm">
+                  <div class="flex">
+                    <div class="w-[20%] font-semibold">Name:</div>
+                    <div>Nipun Avishka</div>
+                  </div>
+                  <div class="flex">
+                    <div class="w-[20%] font-semibold">Phone:</div>
+                    <div class="w-[80%]">Nipun Avishka</div>
+                  </div>
+                  <div class="flex">
+                    <div class="w-[20%] font-semibold">Email:</div>
+                    <div class="w-[80%]">Nipun Avishka</div>
+                  </div>
+                  <div class="flex">
+                    <div class="w-[20%] font-semibold">Address:</div>
+                    <div class="w-[80%]">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Quis, placeat! Nisi, repellendus fugit? Tenetur iure?
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="box">
+                <div class="box-title">Customer Details</div>
+                <div class="box-body">
+                  <a
+                    href="#"
+                    class="flex gap-2 items-center hover:bg-gray-200 p-2 rounded-lg duration-300 ease-in-out"
+                  >
+                    <div><i class="fa-regular fa-user text-3xl"></i></div>
+                    <div>
+                      <div class="font-semibold">Nipun Avishka</div>
+                      <div class="text-sm">nipunavishka123@gmail.com</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="box">
+                <div class="box-title">Status</div>
+                <div class="box-body">
+                  <form action="#">
+                    <select
+                      name="status"
+                      id="status"
+                      class="inputs"
+                    >
+                      <option value="2">Inprogress</option>
+                      <option value="3">Shipped</option>
+                      <option value="4">Completed</option>
+                      <option value="5">Canceled</option>
+                    </select>
+                    <input type="submit" class="bg-primary text-white p-2 w-full rounded-lg mt-2" value="Save Changes">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- body end here -->
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
