@@ -16,6 +16,10 @@ public class DatabaseLogIn {
 boolean adminlogin;
 static Statement st;
 
+public static void main(String args[])  //static method  
+{  
+    getOrder(15);
+}
 static void connectToDb(){
         String driver ="com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/shoetopia";
@@ -268,6 +272,65 @@ static void basicExecute(String query){
     
     public void addAddress(int uid,String fname,String lname,String email,String phone,String address,String town, String province){
         basicExecute("INSERT INTO abook (uid,fname,lname,email,phone,address,town,province) VALUES ("+uid+", '"+fname+"','"+lname+"','"+email+"','"+phone+"','"+address+"','"+town+"','"+province+"')");
+    }
+    
+    
+static public Order getOrder(int id){
+        connectToDb();
+        try{
+            ResultSet rs = st.executeQuery("SELECT * FROM orders WHERE oid="+id+";");
+            
+            if(rs.next()){
+                Order order = new Order(id,rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getString(9));
+                if(rs.getInt(2)!=0){
+                    int uid = rs.getInt(2);
+                    ResultSet us = st.executeQuery("SELECT * FROM users WHERE Id="+rs.getInt(2));
+                    us.next();
+                    order.setUser(new User(uid,us.getString(2)));
+                }
+                ResultSet im = st.executeQuery("SELECT * FROM items WHERE oid="+id+";");
+                ArrayList<OrderItem> items = new ArrayList<OrderItem>();
+                while(im.next()){
+                    System.out.print("yoo");
+                    String img = "demo.jpg";
+                    OrderItem it = new OrderItem(im.getInt(1),im.getInt(3),im.getString(4),im.getString(5),im.getString(6),im.getInt(7),im.getInt(8),im.getInt(9));
+//                    if(im.getInt(3)!=0){
+//                        ResultSet pr = st.executeQuery("SELECT * FROM products WHERE Id="+im.getInt(3));
+//                        pr.next();
+//                        img = pr.getString(2);
+//                        it.setImg(img);
+//                    }
+                    items.add(it);
+                }
+                order.setItems(items);
+                return order;
+            }
+        }catch (SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+static public ArrayList<Order> getOrders(int type,String uid){
+        connectToDb();
+        String query;
+        if(type==0){
+            query = "SELECT * FROM orders WHERE uid="+uid;
+        }else{
+            query = "SELECT * FROM orders WHERE status="+type;
+        }
+        try{
+            ResultSet rs = st.executeQuery("SELECT * FROM orders");
+            ArrayList<Order> orders = new ArrayList<Order>();
+            while(rs.next()){
+                Order o = getOrder(rs.getInt(1));
+                if(o!=null) orders.add(o);
+            }
+            return orders;
+            
+        }catch (SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
       
     

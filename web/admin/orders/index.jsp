@@ -1,5 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%
+    DatabaseLogIn db = new DatabaseLogIn();
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +10,19 @@
     <jsp:include page="../../WEB-INF/components/adminImports.jsp">
       <jsp:param name="path" value="../" />
     </jsp:include>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .list-header {
+          @apply flex justify-between text-center font-semibold text-sm;
+        }
+        .list-item {
+          @apply flex items-center border rounded-lg py-2 text-center text-sm hover:bg-gray-200 duration-300 ease-in-out;
+        }
+        .item-width {
+          @apply w-[20%];
+        }
+      }
+    </style>
   </head>
   <body>
     <jsp:include page="../../WEB-INF/components/adminHead.jsp">
@@ -67,155 +83,34 @@
         <div class="box">
           <div class="box-title">New Orders</div>
           <div class="box-body">
-            <div class="flex justify-between text-center font-semibold text-sm">
-              <div class="w-[20%]">Order ID</div>
-              <div class="w-[20%]">User</div>
-              <div class="w-[20%]">Date</div>
-              <div class="w-[20%]">Amount</div>
-              <div class="w-[20%]">Action</div>
+            <div class="list-header">
+              <div class="item-width">Order ID</div>
+              <div class="item-width">User</div>
+              <div class="item-width">Date</div>
+              <div class="item-width">Time</div>
+              <div class="item-width">Amount</div>
             </div>
             <div class="flex flex-col gap-1">
-              
-              <div
-                class="flex items-center border rounded-lg py-2 justify-between text-center font-semibold text-sm"
-              >
-                <div class="w-[20%]">#22</div>
-                <a href="#" class="w-[20%] line-clamp-1"
-                  >nipunavishka@gmail.com</a
-                >
-                <div class="w-[20%]">2024/02/15</div>
-                <div class="w-[20%]">LKR 18000.00</div>
-                <div class="w-[20%] flex justify-center">
-                  <a
-                    href="#"
-                    class="bg-primary px-2 py-1 rounded-lg text-white"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                  </a>
-                </div>
-              </div>
-              <div
-                class="flex items-center border rounded-lg py-2 justify-center text-center font-semibold text-sm"
-              >
-                No Records found
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="box">
-          <div class="box-title">Accepted Orders</div>
-          <div class="box-body">
-            <div class="flex justify-between text-center font-semibold text-sm">
-              <div class="w-[20%]">Order ID</div>
-              <div class="w-[20%]">User</div>
-              <div class="w-[20%]">Date</div>
-              <div class="w-[20%]">Amount</div>
-              <div class="w-[20%]">Action</div>
-            </div>
-            <div class="flex flex-col gap-1">
-              <div
-                class="flex items-center border rounded-lg py-2 justify-between text-center font-semibold text-sm"
-              >
-                <div class="w-[20%]">#22</div>
-                <a href="#" class="w-[20%] line-clamp-1"
-                  >nipunavishka@gmail.com</a
-                >
-                <div class="w-[20%]">2024/02/15</div>
-                <div class="w-[20%]">LKR 18000.00</div>
-                <div class="w-[20%] flex justify-center">
-                  <a
-                    href="#"
-                    class="bg-primary px-2 py-1 rounded-lg text-white"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                  </a>
-                </div>
-              </div>
-              <div
-                class="flex items-center border rounded-lg py-2 justify-center text-center font-semibold text-sm"
-              >
-                No Records found
-              </div>
+               <%
+                   ArrayList<Order> news = db.getOrders(1,"no");
+                   if(news.size()>0){
+                   for(int i=0;i<news.size();i++){
+               %>
+              <a href="#"  class="list-item justify-between">
+                  <div class="item-width">#<%= news.get(i).getId() %></div>
+                <div class="item-width line-clamp-1"><%= news.get(i).getUser().getEmail() %></div>
+                <div class="item-width"><%= news.get(i).getDate().substring(0,10) %></div>
+                <div class="item-width"><%= news.get(i).getDate().substring(10,16) %></div>
+                <div class="item-width">LKR <%= news.get(i).getTotal() %></div>
+              </a>
+              <%}}else{%>
+              <div class="list-item justify-center">No Records found</div>
+              <% } %>
             </div>
           </div>
         </div>
       </div>
-      <div class="lg:w-[50%] flex flex-col gap-5">
-        <div class="box">
-          <div class="box-title">Shipped Orders</div>
-          <div class="box-body">
-            <div class="flex justify-between text-center font-semibold text-sm">
-              <div class="w-[20%]">Order ID</div>
-              <div class="w-[20%]">User</div>
-              <div class="w-[20%]">Date</div>
-              <div class="w-[20%]">Amount</div>
-              <div class="w-[20%]">Action</div>
-            </div>
-            <div class="flex flex-col gap-1">
-              <div
-                class="flex items-center border rounded-lg py-2 justify-between text-center font-semibold text-sm"
-              >
-                <div class="w-[20%]">#22</div>
-                <a href="#" class="w-[20%] line-clamp-1"
-                  >nipunavishka@gmail.com</a
-                >
-                <div class="w-[20%]">2024/02/15</div>
-                <div class="w-[20%]">LKR 18000.00</div>
-                <div class="w-[20%] flex justify-center">
-                  <a
-                    href="#"
-                    class="bg-primary px-2 py-1 rounded-lg text-white"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                  </a>
-                </div>
-              </div>
-              <div
-                class="flex items-center border rounded-lg py-2 justify-center text-center font-semibold text-sm"
-              >
-                No Records found
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="box">
-          <div class="box-title">cancelled Orders</div>
-          <div class="box-body">
-            <div class="flex justify-between text-center font-semibold text-sm">
-              <div class="w-[20%]">Order ID</div>
-              <div class="w-[20%]">User</div>
-              <div class="w-[20%]">Date</div>
-              <div class="w-[20%]">Amount</div>
-              <div class="w-[20%]">Action</div>
-            </div>
-            <div class="flex flex-col gap-1">
-              <div
-                class="flex items-center border rounded-lg py-2 justify-between text-center font-semibold text-sm"
-              >
-                <div class="w-[20%]">#22</div>
-                <a href="#" class="w-[20%] line-clamp-1"
-                  >nipunavishka@gmail.com</a
-                >
-                <div class="w-[20%]">2024/02/15</div>
-                <div class="w-[20%]">LKR 18000.00</div>
-                <div class="w-[20%] flex justify-center">
-                  <a
-                    href="#"
-                    class="bg-primary px-2 py-1 rounded-lg text-white"
-                  >
-                    <i class="fa-solid fa-eye"></i>
-                  </a>
-                </div>
-              </div>
-              <div
-                class="flex items-center border rounded-lg py-2 justify-center text-center font-semibold text-sm"
-              >
-                No Records found
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="lg:w-[50%] flex flex-col gap-5"></div>
     </div>
 
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
