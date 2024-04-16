@@ -23,7 +23,7 @@
                 <jsp:param name="path" value="../"/>
             </jsp:include>   
 
-            <div class="wrapper">
+            <div class="main-container wrapper">
                 <div class="sidebar">
                     <h2>My Account</h2>
                     <ul>
