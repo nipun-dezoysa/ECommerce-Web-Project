@@ -125,7 +125,7 @@
                    if(acc.size()>0){
                    for(int i=0;i<acc.size();i++){
                %>
-              <a href="#"  class="list-item justify-between">
+               <a href="./order.jsp?id=<%= acc.get(i).getId() %>"  class="list-item justify-between">
                   <div class="item-width">#<%= acc.get(i).getId() %></div>
                 <div class="item-width line-clamp-1"><%= acc.get(i).getUser().getEmail() %></div>
                 <div class="item-width"><%= acc.get(i).getDate().substring(0,10) %></div>
@@ -135,7 +135,7 @@
                 <div class="item-width flex items-center justify-center"><div class="bg-green-200 text-green-400 py-1 px-2 rounded-full">Completed</div></div>
               </a>
               <%}}else{%>
-              <div class="list-item justify-center">No Records found</div>
+              <div class="list-item justify-center">No Records Found</div>
               <% } %>
             </div>
           </div>

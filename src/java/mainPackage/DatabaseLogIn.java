@@ -16,10 +16,10 @@ public class DatabaseLogIn {
 boolean adminlogin;
 static Statement st;
 
-public static void main(String args[])  //static method  
-{  
-    getOrder(15);
-}
+//public static void main(String args[])  //static method  
+//{  
+//    getOrder(15);
+//}
 static void connectToDb(){
         String driver ="com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/shoetopia";
@@ -275,7 +275,7 @@ static void basicExecute(String query){
     }
     
     
-static public Order getOrder(int id){
+ public Order getOrder(int id){
         connectToDb();
         try{
             ResultSet rs = st.executeQuery("SELECT * FROM orders WHERE oid="+id+";");
@@ -310,7 +310,7 @@ static public Order getOrder(int id){
         }
         return null;
     }
-static public ArrayList<Order> getOrders(int type,String uid){
+ public ArrayList<Order> getOrders(int type,String uid){
         connectToDb();
         String query;
         if(type==0){
