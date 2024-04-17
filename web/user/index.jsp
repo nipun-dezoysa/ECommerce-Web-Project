@@ -27,8 +27,8 @@
                 <div class="sidebar">
                     <h2>My Account</h2>
                     <ul>
-                        <li><a href="#"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
-                        <li><a href="#"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
+                        <li><a href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
+                        <li><a href="addressbook.jsp"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
                         <li><a href="#"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
                         <li><a href="#"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
                     </ul>
