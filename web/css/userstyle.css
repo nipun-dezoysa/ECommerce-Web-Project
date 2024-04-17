@@ -60,12 +60,17 @@ body{
 }
     
 .wrapper .sidebar ul li:hover a{
-  color: #fff;
+  color: #ffffff;
+}
+
+.wrapper .sidebar ul li a.active {
+  background: #405270;
+  color: #ffffff;
 }
 
 .wrapper .my_details{
   width: 100%;
-  background: #fff;
+  background: #ffffff;
   color: #000000;
   padding: 30px;
   line-height: 25px;
@@ -73,7 +78,7 @@ body{
 
 .wrapper .my_details .personal_information{
   padding: 20px;
-  background: #fff;
+  background: #ffffff;
   color: #000000;
   border-bottom: 1px solid #e0e4e8;
   margin: 20px;
@@ -82,7 +87,7 @@ body{
 
 .wrapper .my_details .email_address{
   padding: 20px;
-  background: #fff;
+  background: #ffffff;
   color: #000000;
   border-bottom: 1px solid #e0e4e8;
   margin: 20px;
@@ -91,7 +96,7 @@ body{
 
 .wrapper .my_details .password{
   padding: 20px;
-  background: #fff;
+  background: #ffffff;
   color: #000000;
   border-bottom: 1px solid #e0e4e8;
   margin: 20px;
@@ -149,7 +154,7 @@ body{
 
 .wrapper .my_addressbook{
   width: 100%;
-  background: #fff;
+  background: #ffffff;
   color: #000000;
   padding: 30px;
   line-height: 25px;
@@ -157,10 +162,50 @@ body{
 
 .wrapper .my_addressbook .address_book{
   padding: 20px;
-  background: #fff;
+  background: #ffffff;
   color: #000000;
   border-bottom: 1px solid #e0e4e8;
   margin: 20px;
   line-height: 25px;
 }
 
+.wrapper .my_orders{
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 300px;
+  margin-left: 300px;
+  background: #fff;
+  color: #000000;
+  padding: 30px;
+  line-height: 25px;
+}
+
+.wrapper .my_orders .orders{
+  padding: 20px;
+  background: #ffffff;
+  color: #000000;
+  border-bottom: 1px solid #e0e4e8;
+  margin: 20px;
+  line-height: 25px;
+}
+
+.ordernav {
+  overflow: hidden;
+}
+
+.ordernav a {
+  float: left;
+  color: #717171;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.ordernav a:hover {
+  color: #405270;
+}
+
+.ordernav a.active {
+  color: #405270;
+}
