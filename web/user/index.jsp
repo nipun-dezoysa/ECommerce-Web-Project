@@ -27,9 +27,9 @@
                 <div class="sidebar">
                     <h2>My Account</h2>
                     <ul>
-                        <li><a href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
+                        <li><a class="active" href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
                         <li><a href="addressbook.jsp"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
-                        <li><a href="#"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
+                        <li><a href="order.jsp"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
                         <li><a href="#"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
                     </ul>
                 </div>
@@ -43,10 +43,15 @@
                             <div class="column">
                                 <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
                             </div>
-                            <div class="column">
-                                <p>First Name<br>
+                            <form action="#" method="POST" class="column">
+                                <div class="flex gap-5">
+                                    <p>Last Name<br>
+                                    <input type="text" class="txt">
+                                    </p>
+                                    <p>Last Name<br>
                                     <input type="text" class="txt">
                                 </p>
+                                </div>
                                 <br>
                                 <p>Birth Date<br>
                                     <input type="date" class="txt">
@@ -58,12 +63,7 @@
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE"></p>
-                            </div>
-                            <div class="column">
-                                <p>Last Name<br>
-                                    <input type="text" class="txt">
-                                </p>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -75,17 +75,17 @@
                             <div class="column">
                                 <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
                             </div>
-                            <div class="column">
+                            <form action="#" method="POST" class="column">
                                 <p>Email Address<br>
-                                    <input type="text" class="txt">
+                                    <input type="text" name="email" class="txt">
                                 </p>
                                 <br>
                                 <p>Password<br>
-                                    <input type="password" class="txt">
+                                    <input type="password" name="password" class="txt">
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE"></p>
-                            </div>
+                            </form>
                             <div class="column">
                             </div>
                         </div>
@@ -99,22 +99,22 @@
                             <div class="column">
                                 <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
                             </div>
-                            <div class="column">
+                            <form class="column">
                                 <p>Current Password<br>
-                                    <input type="password" class="txt">
+                                    <input type="password" name="oldpassword" class="txt">
                                 </p>
                                 <br>
                                 <p>New Password<br>
-                                    <input type="password" class="txt"><br>
+                                    <input type="password" name="newpassword1" class="txt"><br>
                                 <p class="stxt">Make sure your password is 8 characters long and contains letters and numbers.</p>
                                 </p>
                                 <br>
                                 <p>Confirm Password<br>
-                                    <input type="password" class="txt">
+                                    <input type="password" name="newpassword2" class="txt">
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE"></p>
-                            </div>
+                            </form>
                             <div class="column">
                             </div>
                         </div>

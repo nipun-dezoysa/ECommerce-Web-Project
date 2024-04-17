@@ -57,11 +57,21 @@
             ArrayList<CartItem> cart = (ArrayList<CartItem>)session.getAttribute("cart");
         %>
         <div
+            id="cartno"  
           class="absolute top-[-7px] right-[-8px] text-xs font-bold w-5 h-5 flex items-center justify-center bg-green-300 rounded-full text-green-800"
         >
           <%= cart.size() %>
         </div>
-        <% } %>
+        <% }else{ %>
+        
+        <div
+            id="cartno"  
+          class="hidden absolute top-[-7px] right-[-8px] text-xs font-bold w-5 h-5 flex items-center justify-center bg-green-300 rounded-full text-green-800"
+        >
+          0
+        </div>
+        
+        <%}%>
       </a>
       <% if(session.getAttribute("user")==null){ %>
       <a

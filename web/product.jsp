@@ -95,10 +95,10 @@
       <div class="w-[40%] flex flex-col gap-1">
         <div class="flex items-center gap-3">
           <h1 class="text-4xl font-bold font-mono"><%= pr.getName() %></h1>
-          <form action="#" method="POST">
-            <input type="hidden" name="id" value="100" />
+          <form id="wishlist" action="#" method="POST" >
+            <input type="hidden" name="id" value="<%= pr.getId()%>" />
             <button type="submit">
-              <i class="fa-regular fa-heart text-2xl"></i>
+              <i id="wicon" class="fa-regular fa-heart text-2xl"></i>
             </button>
           </form>
         </div>
@@ -233,7 +233,7 @@
   toast: true,
   position: "top-end",
   showConfirmButton: false,
-  timer: 700,
+  timer: 1500,
   timerProgressBar: true,
   didOpen: (toast) => {
     toast.onmouseenter = Swal.stopTimer;
@@ -253,9 +253,12 @@
               contentType: false,
               success: function (response) {
                Toast.fire({
-  icon: "success",
-  title: "Item added successfully"
-}).then(()=> location.reload());
+                icon: "success",
+                title: "Item added successfully"
+               });
+               
+               document.getElementById("cartno").innerHTML = response;
+               document.getElementById("cartno").classList.remove('hidden');
                 
               },
               error: function (xhr, status, error) {
@@ -263,6 +266,43 @@
               },
             });
         });
+        
+        $("#wishlist").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+            $.ajax({
+              type: "POST",
+              url: "WishlistServlet",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                 if(response=="added"){
+                    document.getElementById("wicon").className = "fa-solid fa-heart text-2xl";
+                    Toast.fire({
+                        icon: "success",
+                        title: "Item added to Wishlist"
+                    });
+                 }else if(response=="removeds"){
+                    document.getElementById("wicon").className = "fa-regular fa-heart text-2xl";
+                    Toast.fire({
+                        icon: "success",
+                        title: "Item removed frm Wishlist"
+                    }); 
+                 }else{
+                    Toast.fire({
+                        icon: "warning",
+                        title: "You are not login."
+                    }); 
+                 }
+                
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+        });
+        
       });
     </script>
   </body>

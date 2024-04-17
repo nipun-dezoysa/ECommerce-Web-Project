@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class wishlist {
+public class Wishlist {
   
   // Retrieve all items from wishlist table
   public static List<WishlistItem> getAllItems() {
@@ -38,7 +38,7 @@ public class wishlist {
         }
       }
     } catch (ClassNotFoundException | SQLException ex) {
-      Logger.getLogger(wishlist.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(Wishlist.class.getName()).log(Level.SEVERE, null, ex);
     }
 
     return wishlistItems;
@@ -58,7 +58,7 @@ public class wishlist {
         pst.executeUpdate();
       }
     } catch (ClassNotFoundException | SQLException ex) {
-      Logger.getLogger(wishlist.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(Wishlist.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
 }

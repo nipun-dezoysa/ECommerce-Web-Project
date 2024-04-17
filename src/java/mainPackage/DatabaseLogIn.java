@@ -339,6 +339,41 @@ static void basicExecute(String query){
  public void changeStatus(int st,int id){
      basicExecute("UPDATE orders SET status="+st+" WHERE oid="+id);
  }
-      
-    
+ 
+ public boolean isExistWishlist(int uid,int pid){
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM wishlist WHERE uid="+uid+" AND pid="+pid);
+         if(rs.next()){
+             return true;
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return false;
+ }
+ 
+ public void addWishlist(int uid,int pid){
+      basicExecute("INSERT INTO wishlist (uid,pid) VALUES ("+uid+","+pid+")");
+ }
+ 
+ public void removeWishlist(int uid,int pid){
+      basicExecute("DELETE FROM wishlist WHERE uid="+uid+" AND pid="+pid);
+ }
+ 
+ public ArrayList<Product> getWishlist(int uid){
+     connectToDb();
+     ArrayList<Product> products = new ArrayList<>();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM wishlist WHERE uid="+uid);
+         
+         while(rs.next()){
+             products.add(getProduct(rs.getString(3)));
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return products;
+ }
+ 
 }
