@@ -1,5 +1,8 @@
+<%@page import="models.Product"%>
+<%@page import="models.User"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.CartItem"%>
+<%@page import="mainPackage.DatabaseLogIn"%>
 <% String path = request.getParameter("path"); if(path==null){ path="./"; } %>
 
 <!-- ----dont delete below line---- -->
@@ -39,12 +42,38 @@
         />
         <i class="fa-solid fa-magnifying-glass"></i>
       </div>
+        
+        
       <a
         href="<%=path%>wishlist.jsp"
-        class="flex items-center gap-2 hover:text-primaryLight"
+        class="flex items-center gap-2 hover:text-primaryLight relative"
       >
         <div class="text-2xl"><i class="fa-regular fa-heart"></i></div>
+        <% 
+            if(session.getAttribute("user")!=null){ 
+                DatabaseLogIn dbs = new DatabaseLogIn();
+                User u = (User)session.getAttribute("user");
+                ArrayList<Product> w = dbs.getWishlist(u.getId());
+        %>
+        <div
+            id="wishno"  
+          class="absolute top-[-7px] right-[-8px] text-xs font-bold w-5 h-5 flex items-center justify-center bg-green-300 rounded-full text-green-800"
+        >
+          <%= w.size() %>
+        </div>
+        <% }else{ %>
+        
+        <div
+            id="wishno"  
+          class="hidden absolute top-[-7px] right-[-8px] text-xs font-bold w-5 h-5 flex items-center justify-center bg-green-300 rounded-full text-green-800"
+        >
+          0
+        </div>
+        
+        <%}%>
       </a>
+        
+        
       <a
         href="<%=path%>cart.jsp"
         class="flex items-center gap-2 hover:text-primaryLight relative"
