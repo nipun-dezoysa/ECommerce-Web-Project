@@ -95,7 +95,7 @@
       <div class="w-[40%] flex flex-col gap-1">
         <div class="flex items-center gap-3">
           <h1 class="text-4xl font-bold font-mono"><%= pr.getName() %></h1>
-          <form id="wishlist" action="#" method="POST" >
+          <form id="wishlist" action="WishlistServlet" method="POST" >
             <input type="hidden" name="id" value="<%= pr.getId()%>" />
             <button type="submit">
               <i id="wicon" class="fa-regular fa-heart text-2xl"></i>
