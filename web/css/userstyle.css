@@ -147,3 +147,20 @@ body{
   clear: both;
 }
 
+.wrapper .my_addressbook{
+  width: 100%;
+  background: #fff;
+  color: #000000;
+  padding: 30px;
+  line-height: 25px;
+}
+
+.wrapper .my_addressbook .address_book{
+  padding: 20px;
+  background: #fff;
+  color: #000000;
+  border-bottom: 1px solid #e0e4e8;
+  margin: 20px;
+  line-height: 25px;
+}
+
