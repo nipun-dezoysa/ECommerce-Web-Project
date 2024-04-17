@@ -56,6 +56,15 @@ public class Order {
         DecimalFormat formatter = new DecimalFormat("#,###.00");
         return formatter.format(total);
     }
+    
+    public String getFTotal(){
+        double total = 0;
+        for(int i=0;i<items.size();i++){
+            total+= items.get(i).getTotal();
+        }
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
+        return formatter.format(total+30);
+    }
 
     public int getId() {
         return id;
