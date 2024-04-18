@@ -197,5 +197,14 @@ public class Product {
         return formatter.format(a);
     }
     
+    public String getTypeString(){
+        if(this.type==1){
+            return "Men Shoes";
+        }else if(this.type==1){
+            return "Women Shoes";
+        }else{
+            return "Kid Shoes";    
+        }
+    }
     
 }

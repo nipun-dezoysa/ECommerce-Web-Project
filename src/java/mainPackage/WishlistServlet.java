@@ -3,6 +3,7 @@ package mainPackage;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import models.Product;
 import models.User;
 
 
@@ -25,7 +27,7 @@ public class WishlistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+//          response.setContentType("application/json");
           String idString = request.getParameter("id");
           int id = Integer.parseInt(idString);
           
@@ -35,16 +37,18 @@ public class WishlistServlet extends HttpServlet {
           
           if(session.getAttribute("user")!=null){
               User user = (User)session.getAttribute("user");
+              ArrayList<Product> list = db.getWishlist(user.getId());
               if(db.isExistWishlist(user.getId(), id)){
                   db.removeWishlist(user.getId(), id);
-                  out.print("removeds");
+                  out.print("{\"st\": \"removeds\", \"qt\": \""+(list.size()-1)+"\"}");
               }else{
                   db.addWishlist(user.getId(), id);
-                  out.print("added");
+                  out.print("{\"st\": \"added\", \"qt\": \""+(list.size()+1)+"\"}");
               }
           }else{
-              out.print("notlogin");
+              out.print("{\"st\": \"notlogin\", \"qt\": \"1\"}");
           }
+          out.flush();
           
     }
     

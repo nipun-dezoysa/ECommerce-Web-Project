@@ -104,7 +104,7 @@
       </a>
       <% if(session.getAttribute("user")==null){ %>
       <a
-        href="signin.jsp"
+        href="<%=path%>signin.jsp"
         class="flex items-center gap-2 hover:text-primaryLight"
       >
         <div class="text-2xl"><i class="fa-solid fa-user"></i></div>

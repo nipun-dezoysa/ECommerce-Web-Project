@@ -305,7 +305,7 @@
           <!--all product item-->
         <% 
             DatabaseLogIn db = new DatabaseLogIn();
-            ArrayList<Product> prods = db.getAllProducts();
+            ArrayList<Product> prods = db.getAllProducts("");
             for(int i=0;i<prods.size();i++){
         %>
         <div class="flex w-full border rounded-lg items-center p-1">

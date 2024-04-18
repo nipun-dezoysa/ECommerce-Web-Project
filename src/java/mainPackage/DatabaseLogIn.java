@@ -163,9 +163,9 @@ static void basicExecute(String query){
             return pid;
     }
    
-      public ArrayList<Product> getAllProducts() {
-          connectToDb();
-            String Query ="SELECT * FROM `products`";
+    public ArrayList<Product> getAllProducts(String where) {
+            connectToDb();
+            String Query ="SELECT * FROM `products` "+where;
             ArrayList<Product> pl = new ArrayList<>();
             
             try {
@@ -405,6 +405,7 @@ static void basicExecute(String query){
      }
      return products;
  }
+
  
 
  //Retrive DATA USING BRAND
