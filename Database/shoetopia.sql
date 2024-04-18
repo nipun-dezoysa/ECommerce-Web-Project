@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2024 at 11:01 AM
+-- Generation Time: Apr 18, 2024 at 11:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `shoetopia`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `abook`
+--
+
+CREATE TABLE `abook` (
+  `aid` int(100) NOT NULL,
+  `uid` int(100) NOT NULL,
+  `fname` varchar(100) NOT NULL,
+  `lname` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `town` varchar(100) NOT NULL,
+  `province` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -50,6 +68,42 @@ CREATE TABLE `colors` (
   `cid` int(100) NOT NULL,
   `pid` int(100) NOT NULL,
   `ccode` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `id` int(11) NOT NULL,
+  `oid` int(11) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `name` varchar(100) NOT NULL,
+  `size` int(5) NOT NULL,
+  `color` varchar(100) NOT NULL,
+  `price` int(10) NOT NULL,
+  `discount` int(3) NOT NULL,
+  `quantity` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `oid` int(4) NOT NULL,
+  `uid` int(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `address` varchar(1000) NOT NULL,
+  `note` varchar(1000) NOT NULL,
+  `status` int(1) NOT NULL,
+  `date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -101,9 +155,28 @@ CREATE TABLE `users` (
   `phone_No` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(100) NOT NULL,
+  `uid` int(100) NOT NULL,
+  `pid` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `abook`
+--
+ALTER TABLE `abook`
+  ADD PRIMARY KEY (`aid`),
+  ADD KEY `fk_uidofabook` (`uid`);
 
 --
 -- Indexes for table `admin`
@@ -116,7 +189,22 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `colors`
   ADD PRIMARY KEY (`cid`),
-  ADD KEY `pid` (`pid`);
+  ADD KEY `fk_pidoncolors` (`pid`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oid` (`oid`),
+  ADD KEY `items_ibfk_2` (`pid`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`oid`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `products`
@@ -129,7 +217,7 @@ ALTER TABLE `products`
 --
 ALTER TABLE `sizes`
   ADD PRIMARY KEY (`sid`),
-  ADD KEY `pid` (`pid`);
+  ADD KEY `fk_pidonsizes` (`pid`);
 
 --
 -- Indexes for table `users`
@@ -138,8 +226,22 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_uiofwishlist` (`uid`),
+  ADD KEY `fk_pidofwishlist` (`pid`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `abook`
+--
+ALTER TABLE `abook`
+  MODIFY `aid` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -151,41 +253,85 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `colors`
 --
 ALTER TABLE `colors`
-  MODIFY `cid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `cid` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `oid` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sizes`
 --
 ALTER TABLE `sizes`
-  MODIFY `sid` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `sid` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `abook`
+--
+ALTER TABLE `abook`
+  ADD CONSTRAINT `fk_uidofabook` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `colors`
 --
 ALTER TABLE `colors`
-  ADD CONSTRAINT `colors_pid` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_pidoncolors` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `items`
+--
+ALTER TABLE `items`
+  ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`oid`) REFERENCES `orders` (`oid`) ON DELETE CASCADE,
+  ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `orders`
+--
+ALTER TABLE `orders`
+  ADD CONSTRAINT `uid` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `sizes`
 --
 ALTER TABLE `sizes`
-  ADD CONSTRAINT `sizes_ibfk_1` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `fk_pidonsizes` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `fk_pidofwishlist` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_uiofwishlist` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
