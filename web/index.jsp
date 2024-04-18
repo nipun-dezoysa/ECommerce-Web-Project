@@ -59,14 +59,16 @@
               success: function (response) {
                  var obj = JSON.parse(response);
                  if(obj.st=="added"){
-                    document.getElementById("picon"+id).className = "fa-solid fa-heart group-hover:mb-2 duration-300 ease-in-out";
+                    document.getElementById("picon"+id).classList.remove("fa-regular");
+                    document.getElementById("picon"+id).classList.add("fa-solid");
                     Toast.fire({
                         icon: "success",
                         title: "Item added to Wishlist"
                     });
                     document.getElementById("wishno").innerHTML = obj.qt;
                  }else if(obj.st=="removeds"){
-                    document.getElementById("picon"+id).className = "fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out";
+                    document.getElementById("picon"+id).classList.remove("fa-solid");
+                    document.getElementById("picon"+id).classList.add("fa-regular");
                     Toast.fire({
                         icon: "success",
                         title: "Item removed frm Wishlist"

@@ -4,7 +4,8 @@
     Product product = db.getProduct(request.getParameter("id"));
 %>
 <div
-  class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border"
+  id="card<%=product.getId()%>"
+  class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border ease-in-out"
 >
   <div class="w-[184px] h-[184px] relative overflow-hidden rounded-lg">
     <img src="./img/products/<%= product.getImg1() %>" alt="" class="w-full h-full" />
