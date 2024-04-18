@@ -27,6 +27,7 @@
         <!-- Display total number of items -->
         <div class="wishlist-summary">
             <h3><span id="count"><%= wishlistItems.size() %></span> Items in Your Wishlist</h3>
+
         </div><br>
         <div class="flex gap-5 flex-wrap">
             <% 

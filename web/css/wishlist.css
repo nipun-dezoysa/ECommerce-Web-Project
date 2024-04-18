@@ -35,21 +35,5 @@ height: auto;
 border-radius: 5px;
 }
 
-.product-details {
-text-align: center;
-border: 1px solid;
-}
 
-.remove-button {
-background-color: #ff6b6b;
-color: #fff;
-border: none;
-padding: 5px 10px;
-border-radius: 5px;
-cursor: pointer;
-transition: background-color 0.3s;
-}
 
-.remove-button:hover {
-background-color: #ff5252;
-}

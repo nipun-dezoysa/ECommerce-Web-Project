@@ -22,6 +22,8 @@
             <jsp:include page="../WEB-INF/components/nav.jsp" >
                 <jsp:param name="path" value="../"/>
             </jsp:include>   
+            
+            
 
             <div class="main-container wrapper">
                 <div class="sidebar">
@@ -43,26 +45,27 @@
                             <div class="column">
                                 <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
                             </div>
-                            <form action="#" method="POST" class="column">
+                            <form action="../updateUserDetails" method="post" class="column">
                                 <div class="flex gap-5">
-                                    <p>Last Name<br>
-                                    <input type="text" class="txt">
+                                    <p>First Name<br>
+                                        <input type="text" class="txt" name="fname">
                                     </p>
                                     <p>Last Name<br>
-                                    <input type="text" class="txt">
+                                    <input type="text" class="txt" name="lname">
                                 </p>
                                 </div>
                                 <br>
                                 <p>Birth Date<br>
-                                    <input type="date" class="txt">
+                                    <input type="date" class="txt" name="bday">
                                 </p>
                                 <br>
                                 <p>Phone Number<br>
-                                    <input type="number" class="txt"><br>
+                                    <input type="number" class="txt" name="tno"><br>
                                 <p class="stxt">Keep 9-digit format with no spaces and dashes.</p>
                                 </p>
                                 <br>
-                                <p><input type="submit" class="btn" value="SAVE"></p>
+                                <p><input type="submit" class="btn" value="SAVE" ></p>
+                                
                             </form>
                         </div>
                     </div>
@@ -75,7 +78,7 @@
                             <div class="column">
                                 <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
                             </div>
-                            <form action="#" method="POST" class="column">
+                            <form action="../updateEmail" method="POST" class="column">
                                 <p>Email Address<br>
                                     <input type="text" name="email" class="txt">
                                 </p>
@@ -85,6 +88,7 @@
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE"></p>
+                                
                             </form>
                             <div class="column">
                             </div>
@@ -99,7 +103,7 @@
                             <div class="column">
                                 <p class="gtext">Feel free to edit any of your details so your account is up to date.</p>
                             </div>
-                            <form class="column">
+                            <form class="column" action="../updatePassword"  method="post">
                                 <p>Current Password<br>
                                     <input type="password" name="oldpassword" class="txt">
                                 </p>
@@ -113,7 +117,7 @@
                                     <input type="password" name="newpassword2" class="txt">
                                 </p>
                                 <br>
-                                <p><input type="submit" class="btn" value="SAVE"></p>
+                                <p><input type="submit" class="btn" value="SAVE" ></p>
                             </form>
                             <div class="column">
                             </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 15, 2024 at 11:50 AM
+-- Generation Time: Apr 18, 2024 at 11:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -148,15 +148,12 @@ CREATE TABLE `sizes` (
 CREATE TABLE `users` (
   `Id` int(100) NOT NULL,
   `Email` varchar(100) NOT NULL,
-  `Password` varchar(100) NOT NULL
+  `Password` varchar(100) NOT NULL,
+  `first_name` varchar(100) DEFAULT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `birth_date` date DEFAULT NULL,
+  `phone_No` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`Id`, `Email`, `Password`) VALUES
-(16, 'nipun@gmail.com', 'nipun');
 
 -- --------------------------------------------------------
 
@@ -166,9 +163,8 @@ INSERT INTO `users` (`Id`, `Email`, `Password`) VALUES
 
 CREATE TABLE `wishlist` (
   `id` int(100) NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `price` int(100) NOT NULL,
-  `img01` varchar(100) NOT NULL
+  `uid` int(100) NOT NULL,
+  `pid` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -233,7 +229,9 @@ ALTER TABLE `users`
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_uiofwishlist` (`uid`),
+  ADD KEY `fk_pidofwishlist` (`pid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -261,19 +259,19 @@ ALTER TABLE `colors`
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oid` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `oid` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sizes`
@@ -285,7 +283,13 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -308,7 +312,7 @@ ALTER TABLE `colors`
 --
 ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`oid`) REFERENCES `orders` (`oid`) ON DELETE CASCADE,
-  ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE NO ACTION;
+  ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `orders`
@@ -321,6 +325,13 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `sizes`
   ADD CONSTRAINT `fk_pidonsizes` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `fk_pidofwishlist` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_uiofwishlist` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
