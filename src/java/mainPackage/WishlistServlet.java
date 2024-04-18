@@ -25,7 +25,7 @@ public class WishlistServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+//          response.setContentType("application/json");
           String idString = request.getParameter("id");
           int id = Integer.parseInt(idString);
           
@@ -37,14 +37,15 @@ public class WishlistServlet extends HttpServlet {
               User user = (User)session.getAttribute("user");
               if(db.isExistWishlist(user.getId(), id)){
                   db.removeWishlist(user.getId(), id);
-                  out.print("removeds");
+                  out.print("{st: 'removeds', qt: '"+db.getWishlisSize(id)+"'}");
               }else{
                   db.addWishlist(user.getId(), id);
-                  out.print("added");
+                  out.print("{st: 'added', qt: '"+db.getWishlisSize(id)+"'}");
               }
           }else{
-              out.print("notlogin");
+              out.print("{'st': 'notlogin', 'qt': '1'}");
           }
+          out.flush();
           
     }
     

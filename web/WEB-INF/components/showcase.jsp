@@ -8,8 +8,7 @@
   <div class="flex flex-wrap gap-2 justify-between">
     <% for(int i=0;i<6;i++){ %>
     <jsp:include page="./productCard.jsp">
-      <jsp:param name="name" value="Nike Air 2 Jordan" />
-      <jsp:param name="src" value="./img/demo.jpg" />
+      <jsp:param name="id" value="30" />
     </jsp:include>
     <% } %>
   </div>
