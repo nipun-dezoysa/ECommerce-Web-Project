@@ -195,7 +195,7 @@
                 class="text-gray-400 font-semibold flex justify-between border-t pt-2 mt-2"
               >
                 <div>Total</div>
-                <div>LKR <%= order.getTotal()+30 %></div>
+                <div>LKR <%= order.getFTotal() %></div>
               </div>
             </div>
           </div>

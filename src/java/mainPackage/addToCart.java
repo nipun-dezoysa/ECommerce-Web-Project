@@ -39,24 +39,25 @@ public class addToCart extends HttpServlet {
         
         if(session.getAttribute("cart")==null){
             cart.add(item);
-            response.getWriter().print("Item Added to the Cart");
+//            response.getWriter().print("Item Added to the Cart");
         }else{
             cart = (ArrayList<CartItem>)session.getAttribute("cart");
             boolean isExist = false;
             for(int i=0;i<cart.size();i++){
                 if(item.isEqual(cart.get(i))){
                     cart.get(i).setQuantity(item.getQuantity());
-                    response.getWriter().print("Item quentity updated");
+//                    response.getWriter().print("Item quentity updated");
                     isExist = true;
                     break;
                 }
             }
             if(!isExist){
                 cart.add(item);
-                response.getWriter().print("Item Added to the Cart");
+//                response.getWriter().print("Item Added to the Cart");
             }
         }
         session.setAttribute("cart", cart);
+        response.getWriter().print(cart.size());
         
         
     }

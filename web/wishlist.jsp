@@ -1,7 +1,14 @@
-<%@page import="mainPackage.wishlist"%>
-<%@page import="mainPackage.WishlistItem"%>
-<%@page import="java.util.List"%>
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+    if(session.getAttribute("user")==null){
+        session.setAttribute("logreq", "./wishlist.jsp");
+        response.sendRedirect("./signin.jsp");
+    }else{
+        DatabaseLogIn db = new DatabaseLogIn();
+        User user = (User)session.getAttribute("user");
+        ArrayList<Product> wishlistItems = db.getWishlist(user.getId());
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,17 +26,16 @@
         </div>
         <!-- Display total number of items -->
         <div class="wishlist-summary">
-            <% List<WishlistItem> wishlistItems = wishlist.getAllItems(); %>
-            <h3><%= wishlistItems.size() %> Items in Your Wishlist</h3>
+            <div class="md:text-lg font-semibold"><%= wishlistItems.size() %> Items in Your Wishlist</div>
         </div><br>
         <div class="wishlist-items">
             <% 
                 
-                for (WishlistItem item : wishlistItems) { 
+                for (Product item : wishlistItems) { 
             %>
             <div class="wishlist-item">
                 <div class="product-image">
-                    <img src="img/<%= item.getImg() %>" alt="<%= item.getName() %>" />
+                    <img src="./img/products/<%= item.getImg1() %>" alt="<%= item.getName() %>" />
                 </div>
                 <div class=" product-details">
                     <div class="flex justify-between items-center mt-0 p-1">
@@ -56,3 +62,4 @@
      
 </body>
 </html>
+<% } %>

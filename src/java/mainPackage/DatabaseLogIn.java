@@ -340,6 +340,7 @@ static void basicExecute(String query){
      basicExecute("UPDATE orders SET status="+st+" WHERE oid="+id);
  }
  
+
  public void updateUser(int id,String fname,String lname,String bday,String tno){
      basicExecute("UPDATE `users` SET `first_name`='"+fname+"',`last_name`='"+lname+"',`birth_date`='"+bday+"',`phone_No`='"+tno+"' WHERE Id ="+id+"");
  }
@@ -368,5 +369,58 @@ static void basicExecute(String query){
             return passworddb;
     }
       
-    
+
+ public boolean isExistWishlist(int uid,int pid){
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM wishlist WHERE uid="+uid+" AND pid="+pid);
+         if(rs.next()){
+             return true;
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return false;
+ }
+ 
+ public void addWishlist(int uid,int pid){
+      basicExecute("INSERT INTO wishlist (uid,pid) VALUES ("+uid+","+pid+")");
+ }
+ 
+ public void removeWishlist(int uid,int pid){
+      basicExecute("DELETE FROM wishlist WHERE uid="+uid+" AND pid="+pid);
+ }
+ 
+ public ArrayList<Product> getWishlist(int uid){
+     connectToDb();
+     ArrayList<Product> products = new ArrayList<>();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM wishlist WHERE uid="+uid);
+         
+         while(rs.next()){
+             products.add(getProduct(rs.getString(3)));
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return products;
+ }
+ 
+
+ //Retrive DATA USING BRAND
+ public ArrayList<Product> ProductsByBrand(String brand){
+     connectToDb();
+     ArrayList<Product> products = new ArrayList<>();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM products WHERE brand='"+brand+"'");
+         
+         while(rs.next()){
+             products.add(getProduct(rs.getString(1)));
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return products;
+ }
+
 }
