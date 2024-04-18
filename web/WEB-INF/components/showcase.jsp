@@ -6,7 +6,7 @@
     <a href="#" class="text-md">View all</a>
   </div>
   <div class="flex flex-wrap gap-2 justify-between">
-    <% for(int i=0;i<6;i++){ %>
+    <% for(int i=0;i<1;i++){ %>
     <jsp:include page="./productCard.jsp">
       <jsp:param name="id" value="30" />
     </jsp:include>

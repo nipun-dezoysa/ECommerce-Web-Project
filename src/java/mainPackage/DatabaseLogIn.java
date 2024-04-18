@@ -375,20 +375,6 @@ static void basicExecute(String query){
      }
      return products;
  }
- 
- public int getWishlisSize(int uid){
-     connectToDb();
-     int count = 0;
-     try{
-         ResultSet rs = st.executeQuery("SELECT COUNT(*) FROM wishlist WHERE uid="+uid);
-         
-         while(rs.next()){
-             count = rs.getInt(1);
-         }
-     }catch(SQLException ex){
-        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
-     }
-     return count;
- }
+
  
 }

@@ -58,7 +58,14 @@
     >
         <input type="hidden" name="id" value="<%= product.getId() %>"/>
         <button  type="submit">
-            <i id="picon<%= product.getId() %>" class="fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out"></i>
+            <%
+                String iconclass = "regular";
+                if(session.getAttribute("user")!=null){
+                    User user = (User)session.getAttribute("user");
+                    if(db.isExistWishlist(user.getId(), product.getId())) iconclass = "solid";
+                }
+            %>
+            <i id="picon<%= product.getId() %>" class="fa-<%= iconclass%> fa-heart group-hover:mb-2 duration-300 ease-in-out"></i>
         </button>
     </form>
   </div>

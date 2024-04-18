@@ -17,13 +17,13 @@
 
     <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
 
-    <jsp:include page="./WEB-INF/components/showcase.jsp">
-      <jsp:param name="title" value="NIKE" />
-    </jsp:include>
+    <%--<jsp:include page="./WEB-INF/components/showcase.jsp">--%>
+      <%--<jsp:param name="title" value="NIKE" />--%>
+    <%--</jsp:include>--%>
 
-    <jsp:include page="./WEB-INF/components/showcase.jsp">
-      <jsp:param name="title" value="POLGAHA SEREPPU" />
-    </jsp:include>
+    <%--<jsp:include page="./WEB-INF/components/showcase.jsp">--%>
+      <%--<jsp:param name="title" value="POLGAHA SEREPPU" />--%>
+    <%--</jsp:include>--%>
 
     <!-- contents end here -->
    
@@ -54,7 +54,6 @@
               processData: false,
               contentType: false,
               success: function (response) {
-                  alert(response);
                  var obj = JSON.parse(response);
                  if(obj.st=="added"){
                     document.getElementById("picon"+id).className = "fa-solid fa-heart group-hover:mb-2 duration-300 ease-in-out";
@@ -62,12 +61,14 @@
                         icon: "success",
                         title: "Item added to Wishlist"
                     });
+                    document.getElementById("wishno").innerHTML = obj.qt;
                  }else if(obj.st=="removeds"){
                     document.getElementById("picon"+id).className = "fa-regular fa-heart group-hover:mb-2 duration-300 ease-in-out";
                     Toast.fire({
                         icon: "success",
                         title: "Item removed frm Wishlist"
                     }); 
+                    document.getElementById("wishno").innerHTML = obj.qt;
                  }else{
                     Toast.fire({
                         icon: "warning",
