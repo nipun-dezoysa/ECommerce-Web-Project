@@ -376,7 +376,22 @@ static void basicExecute(String query){
      return products;
  }
  
- 
- 
+
+ //Retrive DATA USING BRAND
+ public ArrayList<Product> ProductsByBrand(String brand){
+     connectToDb();
+     ArrayList<Product> products = new ArrayList<>();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM products WHERE brand='"+brand+"'");
+         
+         while(rs.next()){
+             products.add(getProduct(rs.getString(1)));
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return products;
+ }
+
  
 }

@@ -26,7 +26,7 @@
         </div>
         <!-- Display total number of items -->
         <div class="wishlist-summary">
-            <h3><%= wishlistItems.size() %> Items in Your Wishlist</h3>
+            <div class="md:text-lg font-semibold"><%= wishlistItems.size() %> Items in Your Wishlist</div>
         </div><br>
         <div class="wishlist-items">
             <% 
