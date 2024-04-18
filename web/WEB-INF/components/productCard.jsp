@@ -66,7 +66,7 @@
                     if(db.isExistWishlist(user.getId(), product.getId())) iconclass = "solid";
                 }
             %>
-            <i id="picon<%= product.getId() %>" class="fa-<%= iconclass%> fa-heart group-hover:mb-2 duration-300 ease-in-out"></i>
+            <i class="fa-<%= iconclass%> fa-heart group-hover:mb-2 duration-300 ease-in-out picon<%= product.getId() %>"></i>
         </button>
     </form>
   </div>

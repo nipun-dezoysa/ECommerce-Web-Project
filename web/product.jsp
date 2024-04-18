@@ -105,7 +105,7 @@
                     if(db.isExistWishlist(user.getId(), pr.getId())) iconclass = "solid";
                 }
               %>
-              <i id="picon<%= pr.getId() %>" class="fa-<%= iconclass%> fa-heart text-2xl"></i>
+              <i class="fa-<%= iconclass%> fa-heart text-2xl picon<%= pr.getId() %>"></i>
             </button>
           </form>
         </div>
@@ -291,16 +291,22 @@
               success: function (response) {
                  var obj = JSON.parse(response);
                  if(obj.st=="added"){
-                    document.getElementById("picon"+id).classList.remove("fa-regular");
-                    document.getElementById("picon"+id).classList.add("fa-solid");
+                    var coll = document.getElementsByClassName("picon"+id);
+                    for(var i=0;i<coll.length;i++){
+                        coll[i].classList.remove("fa-regular");
+                        coll[i].classList.add("fa-solid");
+                    }
                     Toast.fire({
                         icon: "success",
                         title: "Item added to Wishlist"
                     });
                     document.getElementById("wishno").innerHTML = obj.qt;
                  }else if(obj.st=="removeds"){
-                    document.getElementById("picon"+id).classList.remove("fa-solid");
-                    document.getElementById("picon"+id).classList.add("fa-regular");
+                    var coll = document.getElementsByClassName("picon"+id);
+                    for(var i=0;i<coll.length;i++){
+                        coll[i].classList.remove("fa-solid");
+                        coll[i].classList.add("fa-regular");
+                    }
                     Toast.fire({
                         icon: "success",
                         title: "Item removed frm Wishlist"
