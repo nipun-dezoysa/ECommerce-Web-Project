@@ -340,6 +340,36 @@ static void basicExecute(String query){
      basicExecute("UPDATE orders SET status="+st+" WHERE oid="+id);
  }
  
+
+ public void updateUser(int id,String fname,String lname,String bday,String tno){
+     basicExecute("UPDATE `users` SET `first_name`='"+fname+"',`last_name`='"+lname+"',`birth_date`='"+bday+"',`phone_No`='"+tno+"' WHERE Id ="+id+"");
+ }
+ 
+ public void updateEmail(int id,String email){
+     basicExecute("UPDATE `users` SET `email`='"+email+"' WHERE Id ="+id+"");
+ }
+ 
+ public void updatePasswd(int id,String Password){
+     basicExecute("UPDATE `users` SET `PASSWORD`='"+Password+"' WHERE Id ="+id+"");
+ }
+ 
+   public String getPasswd(int id) {
+          connectToDb();
+            String Query ="SELECT PASSWORD FROM `users` WHERE Id="+id+"";
+            String passworddb = null;
+            try {
+                ResultSet resultSet= st.executeQuery(Query);
+                if (resultSet.next()) {
+                passworddb=resultSet.getString("Password");
+                }
+                st.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return passworddb;
+    }
+      
+
  public boolean isExistWishlist(int uid,int pid){
      connectToDb();
      try{
@@ -393,5 +423,4 @@ static void basicExecute(String query){
      return products;
  }
 
- 
 }

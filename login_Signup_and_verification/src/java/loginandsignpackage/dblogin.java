@@ -34,9 +34,9 @@ public class dblogin {
         */
         dblogin db1= new dblogin();
         
-        //db1.getData("kalpa", "dklsajk");
-        //db1.checkData("sanju", "123");
-        db1.connect();
+        db1.getData("'kalpa", "dklsajk");
+        //]db1.checkData("sanju", "123");
+        //db1.connect();
         
         
         
@@ -52,7 +52,7 @@ public class dblogin {
         
         String driver ="com.mysql.jdbc.Driver";
             String url = "jdbc:mysql://localhost:3306/login";
-            String query="INSERT INTO `std`(`uname`, `passwd`) VALUES ('" + name + "','" + passwd + "')";
+            String query="INSERT INTO `std`(`uname`, `passwd`) VALUES ('/" + name + "/','" + passwd + "')";
             try {
                 Class.forName(driver);
                 Connection con = DriverManager.getConnection(url,"root","");
