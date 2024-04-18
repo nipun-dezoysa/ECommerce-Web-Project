@@ -95,10 +95,17 @@
       <div class="w-[40%] flex flex-col gap-1">
         <div class="flex items-center gap-3">
           <h1 class="text-4xl font-bold font-mono"><%= pr.getName() %></h1>
-          <form id="wishlist" action="WishlistServlet" method="POST" >
+          <form class="wforms" action="WishlistServlet" method="POST" >
             <input type="hidden" name="id" value="<%= pr.getId()%>" />
             <button type="submit">
-              <i id="wicon" class="fa-regular fa-heart text-2xl"></i>
+              <%
+                String iconclass = "regular";
+                if(session.getAttribute("user")!=null){
+                    User user = (User)session.getAttribute("user");
+                    if(db.isExistWishlist(user.getId(), pr.getId())) iconclass = "solid";
+                }
+              %>
+              <i id="picon<%= pr.getId() %>" class="fa-<%= iconclass%> fa-heart text-2xl"></i>
             </button>
           </form>
         </div>
@@ -221,8 +228,12 @@
       </div>
     </div>
 
+    <%
+        String a = "WHERE Id!="+id;
+    %>
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="You may also like" />
+      <jsp:param name="specific" value="<%=a%>" />
     </jsp:include>
 
     <jsp:include page="./WEB-INF/components/footer.jsp" />
@@ -267,9 +278,10 @@
             });
         });
         
-        $("#wishlist").submit(function (e) {
+        $(".wforms").submit(function (e) {
           e.preventDefault();
           var formData = new FormData(this);
+          var id = formData.get("id");
             $.ajax({
               type: "POST",
               url: "WishlistServlet",
@@ -277,18 +289,23 @@
               processData: false,
               contentType: false,
               success: function (response) {
-                 if(response=="added"){
-                    document.getElementById("wicon").className = "fa-solid fa-heart text-2xl";
+                 var obj = JSON.parse(response);
+                 if(obj.st=="added"){
+                    document.getElementById("picon"+id).classList.remove("fa-regular");
+                    document.getElementById("picon"+id).classList.add("fa-solid");
                     Toast.fire({
                         icon: "success",
                         title: "Item added to Wishlist"
                     });
-                 }else if(response=="removeds"){
-                    document.getElementById("wicon").className = "fa-regular fa-heart text-2xl";
+                    document.getElementById("wishno").innerHTML = obj.qt;
+                 }else if(obj.st=="removeds"){
+                    document.getElementById("picon"+id).classList.remove("fa-solid");
+                    document.getElementById("picon"+id).classList.add("fa-regular");
                     Toast.fire({
                         icon: "success",
                         title: "Item removed frm Wishlist"
                     }); 
+                    document.getElementById("wishno").innerHTML = obj.qt;
                  }else{
                     Toast.fire({
                         icon: "warning",

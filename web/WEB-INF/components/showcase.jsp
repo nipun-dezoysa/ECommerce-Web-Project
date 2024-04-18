@@ -1,3 +1,8 @@
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%
+   DatabaseLogIn db = new DatabaseLogIn();
+   ArrayList<Product> plist = db.getAllProducts(request.getParameter("specific")+"  ORDER BY `Id` DESC LIMIT 5;");
+%>
 <div
   class="main-container py-5 overflow-hidden flex flex-col gap-2"
 >
@@ -6,9 +11,9 @@
     <a href="#" class="text-md">View all</a>
   </div>
   <div class="flex flex-wrap gap-2 justify-between">
-    <% for(int i=0;i<1;i++){ %>
+    <% for(Product pro : plist){ %>
     <jsp:include page="./productCard.jsp">
-      <jsp:param name="id" value="30" />
+      <jsp:param name="id" value="<%= pro.getId()%>" />
     </jsp:include>
     <% } %>
   </div>

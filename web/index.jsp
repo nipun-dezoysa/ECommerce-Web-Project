@@ -13,17 +13,20 @@
 
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="New Arrivals" />
+      <jsp:param name="specific" value="" />
     </jsp:include>
 
     <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
 
-    <%--<jsp:include page="./WEB-INF/components/showcase.jsp">--%>
-      <%--<jsp:param name="title" value="NIKE" />--%>
-    <%--</jsp:include>--%>
+    <jsp:include page="./WEB-INF/components/showcase.jsp">
+      <jsp:param name="title" value="NIKE" />
+      <jsp:param name="specific" value="WHERE brand = 'nike'" />
+    </jsp:include>
 
-    <%--<jsp:include page="./WEB-INF/components/showcase.jsp">--%>
-      <%--<jsp:param name="title" value="POLGAHA SEREPPU" />--%>
-    <%--</jsp:include>--%>
+    <jsp:include page="./WEB-INF/components/showcase.jsp">
+      <jsp:param name="title" value="Adidas" />
+      <jsp:param name="specific" value="WHERE brand = 'adidas'" />
+    </jsp:include>
 
     <!-- contents end here -->
    
