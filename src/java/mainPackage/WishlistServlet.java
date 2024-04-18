@@ -37,7 +37,7 @@ public class WishlistServlet extends HttpServlet {
               User user = (User)session.getAttribute("user");
               if(db.isExistWishlist(user.getId(), id)){
                   db.removeWishlist(user.getId(), id);
-                  response.sendRedirect("wishlist.jsp");
+                  out.print("removeds");
               }else{
                   db.addWishlist(user.getId(), id);
                   out.print("added");
