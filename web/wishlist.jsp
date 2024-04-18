@@ -35,7 +35,7 @@
             %>
             <div class="wishlist-item">
                 <div class="product-image">
-                    <img src="./img/<%= item.getImg1() %>" alt="<%= item.getName() %>" />
+                    <img src="./img/products/<%= item.getImg1() %>" alt="<%= item.getName() %>" />
                 </div>
                 <div class=" product-details">
                     <div class="flex justify-between items-center mt-0 p-1">
