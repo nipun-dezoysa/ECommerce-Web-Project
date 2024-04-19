@@ -49,7 +49,7 @@ static void basicExecute(String query){
     try {
         ResultSet rs = st.executeQuery("SELECT * FROM `users` WHERE Email = '" + email + "'");
         if(!rs.next()){
-            basicExecute("INSERT INTO `users`(`Email`, `Password`) VALUES  ('" + email + "','" + password + "')");
+            basicExecute("INSERT INTO `users`(`Email`, `Password` , `status`) VALUES  ('" + email + "','" + password + "', 1)");
             return 1;
         }
     } catch (SQLException ex) {
@@ -69,7 +69,10 @@ static void basicExecute(String query){
                 ResultSet resultSet= st.executeQuery(Query);
                 if (resultSet.next()) {
                     passwordc = resultSet.getString("Password");
-                    if(password.equals(passwordc)){
+                    if(resultSet.getInt(10)==0){
+                        user = new User(-2,"null");
+                    }
+                    else if(password.equals(passwordc)){
                         user = new User(resultSet.getInt("Id"),email) ;
                     } 
                     resultSet.close();
@@ -423,5 +426,59 @@ static void basicExecute(String query){
      }
      return products;
  }
-
+ 
+ public User getUser(String id){
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Id="+id);
+         if(rs.next()){
+             
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return null;
+ }
+ 
+ public ArrayList<User> getAllUsers(int a){
+     String query = "SELECT * FROM users";
+     if(a!=2){
+         query = "SELECT * FROM users WHERE status="+a;
+     }
+     connectToDb();
+     ArrayList<User> users = new ArrayList<>();
+     try{
+         ResultSet rs = st.executeQuery(query);
+         while(rs.next()){
+            users.add(new User(rs.getInt(1),rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getTimestamp(8),rs.getTimestamp(9),rs.getInt(10)));
+            
+         }
+        for(User user: users){
+            ResultSet ol = st.executeQuery("SELECT COUNT(*) FROM orders WHERE uid="+rs.getInt(1));
+            ol.next();
+            user.setOcount(ol.getInt(1));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return users;
+ }
+ 
+ public void changeUserStatus(String id){
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Id="+id);
+         if(rs.next()){
+            if(rs.getInt(10)==1){
+              basicExecute("UPDATE `users` SET `status`=0 WHERE Id ="+id);
+            }else{
+              basicExecute("UPDATE `users` SET `status`=1 WHERE Id ="+id);  
+            }
+         }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+ }
 }

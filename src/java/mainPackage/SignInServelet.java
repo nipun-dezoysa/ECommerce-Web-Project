@@ -39,7 +39,9 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 session.removeAttribute("logreq");
             }
         }
-        else{
+        else if(user.getId()==-2){
+            out.print("banned");
+        }else{
             out.print("bad");
         }
         

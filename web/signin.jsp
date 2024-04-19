@@ -110,7 +110,16 @@
                   icon: "error",
                   confirmButtonColor: "#1b2330",
                 });
-              }else{
+              }
+              else if(response == "banned") {
+                Swal.fire({
+                  title: "Banned Account!",
+                  text: "Your account is blocked. Contact Shoetopia to more details.",
+                  icon: "error",
+                  confirmButtonColor: "#1b2330",
+                });
+              }
+              else{
                   Swal.fire({
                   title: "Welcome back!",
                   text: "You're now signed in to your account.",

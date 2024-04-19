@@ -15,7 +15,7 @@ String path = request.getParameter("path");
             ><i class="fa-solid fa-compass text-2xl w-10"></i>
             <div class="max-lg:hidden">Dashboard</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>orders/"
             ><i class="fa-solid fa-bag-shopping text-2xl w-10"></i>
             <div class="max-lg:hidden">Orders</div></a
           >
@@ -23,7 +23,7 @@ String path = request.getParameter("path");
             ><i class="fa-solid fa-tags text-2xl w-10"></i>
             <div class="max-lg:hidden">Products</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>customers/"
             ><i class="fa-solid fa-person text-2xl w-10"></i>
             <div class="max-lg:hidden">Customers</div></a
           >
