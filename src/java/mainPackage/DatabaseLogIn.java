@@ -457,5 +457,21 @@ static void basicExecute(String query){
      }
      return users;
  }
-
+ 
+ public void changeUserStatus(String id){
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Id="+id);
+         if(rs.next()){
+            if(rs.getInt(10)==1){
+              basicExecute("UPDATE `users` SET `status`=0 WHERE Id ="+id);
+            }else{
+              basicExecute("UPDATE `users` SET `status`=1 WHERE Id ="+id);  
+            }
+         }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+ }
 }
