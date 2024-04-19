@@ -49,7 +49,7 @@ static void basicExecute(String query){
     try {
         ResultSet rs = st.executeQuery("SELECT * FROM `users` WHERE Email = '" + email + "'");
         if(!rs.next()){
-            basicExecute("INSERT INTO `users`(`Email`, `Password`) VALUES  ('" + email + "','" + password + "')");
+            basicExecute("INSERT INTO `users`(`Email`, `Password` , `status`) VALUES  ('" + email + "','" + password + "', 1)");
             return 1;
         }
     } catch (SQLException ex) {
@@ -422,6 +422,40 @@ static void basicExecute(String query){
         Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
      }
      return products;
+ }
+ 
+ public User getUser(String id){
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Id="+id);
+         if(rs.next()){
+             
+         }
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return null;
+ }
+ 
+ public ArrayList<User> getAllUsers(){
+     connectToDb();
+     ArrayList<User> users = new ArrayList<>();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM users");
+         while(rs.next()){
+            users.add(new User(rs.getInt(1),rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getTimestamp(8),rs.getTimestamp(9),rs.getInt(10)));
+            
+         }
+        for(User user: users){
+            ResultSet ol = st.executeQuery("SELECT COUNT(*) FROM orders WHERE uid="+rs.getInt(1));
+            ol.next();
+            user.setOcount(ol.getInt(1));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return users;
  }
 
 }
