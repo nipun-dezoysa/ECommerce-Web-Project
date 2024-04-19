@@ -80,8 +80,29 @@
       </ol>
     </nav>
       
+      <%
+            String type = request.getParameter("type");
+            int a = 2;
+            if(type!=null){
+                if(type.equals("active")) a=1;
+                else if(type.equals("blocked")) a=0;
+            }
+            ArrayList<User> users = db.getAllUsers(a);
+            
+        %>
+
+      <div class="flex flex-col items-start lg:flex-row gap-5">
+
+        <div class="box w-[15%] max-lg:w-full">
+          <div class="flex flex-row lg:flex-col gap-2 lg:gap-1  max-lg:justify-between px-3 py-2 text-sm max-lg:text-center">
+              <a href="./index.jsp" class="<%= a==2? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">All<span class="max-md:hidden"> Users</span></a>
+              <a href="./index.jsp?type=active" class="<%= a==1? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Active<span class="max-md:hidden"> Users</span></a>
+              <a href="./index.jsp?type=blocked" class="<%= a==0? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Blocked<span class="max-md:hidden"> Users</span></a>
+          </div>
+        </div>
       
-      <div class="box">
+      
+      <div class="box w-[85%] max-lg:w-full">
             <div class="box-title">Customers</div>
             <div class="box-body">
               <div class="list-header">
@@ -95,7 +116,7 @@
               </div>
               
               <%
-                  ArrayList<User> users = db.getAllUsers();
+                  
                   if(users.size()>0){
                   for(User user : users){
                       
@@ -121,7 +142,11 @@
                   </form>
                   <form action="#" class="block">
                     <input type="hidden" name="id" value="<%= user.getId() %>">
+                    <% if(user.getStatus()==1){ %>
                     <button class="border border-red-600 bg-red-600 py-1 px-2 flex gap-1 items-center rounded-lg text-white duration-300 hover:text-red-600 hover:bg-white"><i class="fa-solid fa-user-xmark"></i><div>Block</div></button>
+                    <%}else{%>
+                    <button class="border border-blue-600 bg-blue-600 py-1 px-2 flex gap-1 items-center rounded-lg text-white duration-300 hover:text-blue-600 hover:bg-white"><i class="fa-solid fa-user-plus"></i><div>Unblock</div></button>
+                    <%}%>
                   </form>
                 </div>
             </div>
@@ -131,8 +156,8 @@
             </div>
             <%}%>
           </div>
-      
-      
+      </div>
+      </div>
       <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
       
       <script>
@@ -141,7 +166,17 @@
         $(".reset").submit(function (e) {
           e.preventDefault();
             var formData = new FormData(this);
-            $.ajax({
+            Swal.fire({
+            title: "Are you sure?",
+            text: "Are you sure you want to reset user password?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, reset it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
               type: "POST",
               url: "../../resetPass",
               data: formData,
@@ -156,13 +191,26 @@
                 console.error(xhr.responseText);
               },
             });
+            }
+          });
+            
           
         });
         
         $(".block").submit(function (e) {
-          e.preventDefault();
+            e.preventDefault();
             var formData = new FormData(this);
-            $.ajax({
+            Swal.fire({
+            title: "Are you sure?",
+            text: "Are you sure you want to change user status?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, change it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
               type: "POST",
               url: "../../changeUserStatus",
               data: formData,
@@ -177,6 +225,9 @@
                 console.error(xhr.responseText);
               },
             });
+            }
+          });
+            
           
         });
       });

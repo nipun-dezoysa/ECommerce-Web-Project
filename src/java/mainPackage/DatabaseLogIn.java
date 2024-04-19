@@ -437,11 +437,15 @@ static void basicExecute(String query){
      return null;
  }
  
- public ArrayList<User> getAllUsers(){
+ public ArrayList<User> getAllUsers(int a){
+     String query = "SELECT * FROM users";
+     if(a!=2){
+         query = "SELECT * FROM users WHERE status="+a;
+     }
      connectToDb();
      ArrayList<User> users = new ArrayList<>();
      try{
-         ResultSet rs = st.executeQuery("SELECT * FROM users");
+         ResultSet rs = st.executeQuery(query);
          while(rs.next()){
             users.add(new User(rs.getInt(1),rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getTimestamp(8),rs.getTimestamp(9),rs.getInt(10)));
             
