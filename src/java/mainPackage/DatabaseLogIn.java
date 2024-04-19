@@ -69,7 +69,10 @@ static void basicExecute(String query){
                 ResultSet resultSet= st.executeQuery(Query);
                 if (resultSet.next()) {
                     passwordc = resultSet.getString("Password");
-                    if(password.equals(passwordc)){
+                    if(resultSet.getInt(10)==0){
+                        user = new User(-2,"null");
+                    }
+                    else if(password.equals(passwordc)){
                         user = new User(resultSet.getInt("Id"),email) ;
                     } 
                     resultSet.close();
