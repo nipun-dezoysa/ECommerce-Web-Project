@@ -95,7 +95,7 @@
 
       <div class="flex flex-col items-start md:flex-row gap-5">
 
-        <div class="box md:w-[20%] max-md:w-full">
+        <div class="box md:w-[15%] max-md:w-full">
           <div class="flex flex-row md:flex-col gap-2 md:gap-1  max-md:justify-between px-3 py-2 text-sm max-md:text-center">
               <a href="./index.jsp" class="<%= a==6? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">All<span class="max-md:hidden"> Orders</span></a>
               <a href="./index.jsp?type=new" class="<%= a==1? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">New<span class="max-md:hidden"> Orders</span></a>
@@ -107,7 +107,7 @@
         </div>
           
             
-       <div class="box w-full  md:w-[70%]">
+       <div class="box w-full  md:w-[85%]">
           <div class="box-title">Orders</div>
           <div class="box-body">
             <div class="list-header">

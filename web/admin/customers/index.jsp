@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Orders</title>
+    <title>Customers</title>
     <jsp:include page="../../WEB-INF/components/adminImports.jsp">
       <jsp:param name="path" value="../" />
     </jsp:include>
@@ -124,7 +124,7 @@
               %>  
               <div class="list-item justify-between">
                 <div class="w-[10%] max-md:w-[20%]">#<%= user.getId() %></div>
-                <a href="#" class="w-[20%] max-md:hidden"><%= user.getFullName() %></a>
+                <a href="./customer.jsp?id=<%= user.getId() %>" class="w-[20%] max-md:hidden"><%= user.getFullName() %></a>
                 <div class="w-[20%] max-md:w-[40%]"><%= user.getEmail() %></div>
                 <div class="w-[10%] max-md:hidden"><%= user.getOcount() %></div>
                 <div class="w-[10%] max-md:hidden flex items-center justify-center gap-1">
