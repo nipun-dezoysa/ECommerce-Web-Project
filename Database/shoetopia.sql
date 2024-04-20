@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2024 at 11:31 AM
+-- Generation Time: Apr 20, 2024 at 06:15 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -152,7 +152,10 @@ CREATE TABLE `users` (
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
   `birth_date` date DEFAULT NULL,
-  `phone_No` varchar(100) DEFAULT NULL
+  `phone_No` varchar(100) DEFAULT NULL,
+  `reg` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `login` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -313,12 +316,6 @@ ALTER TABLE `colors`
 ALTER TABLE `items`
   ADD CONSTRAINT `items_ibfk_1` FOREIGN KEY (`oid`) REFERENCES `orders` (`oid`) ON DELETE CASCADE,
   ADD CONSTRAINT `items_ibfk_2` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE SET NULL;
-
---
--- Constraints for table `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `uid` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `sizes`
