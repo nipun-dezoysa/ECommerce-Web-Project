@@ -110,8 +110,8 @@ if(id==null){
       </ol>
     </nav>
 
-    <div class="flex gap-5">
-      <div class="w-[40%] flex flex-col gap-5">
+    <div class="flex flex-col lg:flex-row gap-5">
+      <div class="lg:w-[40%] flex flex-col gap-5">
         <div class="box">
           <div class="py-2 px-5 border-b flex justify-between bg-gray-100">
             <div class="font-bold text-xl font-mono text-gray-600">
@@ -167,11 +167,21 @@ if(id==null){
             <div class="text-gray-400">
               Reset customer account password to default password.
             </div>
-            <div class="normal">Reset</div>
+            <form action="#" class="reset">
+               <input type="hidden" name="id" value="<%= user.getId() %>">
+               <button class="normal flex gap-2 items-center"><i class="fa-solid fa-lock-open"></i><div>Reset</div></button>
+            </form>  
           </div>
           <div class="flex justify-between">
             <div class="text-gray-400">Block customer account.</div>
-            <div class="remove">Block</div>
+            <form action="#" class="block">
+                    <input type="hidden" name="id" value="<%= user.getId() %>">
+                    <% if(user.getStatus()==1){ %>
+                    <button class="remove flex gap-2 items-center"><i class="fa-solid fa-user-xmark"></i><div>Block</div></button>
+                    <%}else{%>
+                    <button class="normal flex gap-2 items-center"><i class="fa-solid fa-user-plus"></i><div>Unblock</div></button>
+                    <%}%>
+                  </form>
           </div>
         </div>
         <div class="box">
@@ -199,13 +209,13 @@ if(id==null){
           </div>
         </div>
       </div>
-      <div class="w-[60%] flex flex-col gap-5">
+      <div class="lg:w-[60%] flex flex-col gap-5">
         <div class="box">
           <div class="box-title">Orders</div>
           <div class="box-body">
             <div class="list-header">
               <div class="item-width">Date</div>
-              <div class="item-width">Time</div>
+              <div class="item-width max-sm:hidden">Time</div>
               <div class="item-width">No of items</div>
               <div class="item-width">Amount</div>
               <div class="item-width">Status</div>
@@ -234,9 +244,9 @@ if(id==null){
                   }    
                 
             %>
-            <a href="../orders/order.jsp?id=<%= order.getId() %>" class="list-item">
+            <a href="../orders/order.jsp?id=<%= order.getId() %>" class="list-item justify-between">
               <div class="item-width"><%= order.getDate() %></div>
-              <div class="item-width"><%= order.getTime()%></div>
+              <div class="item-width max-sm:hidden"><%= order.getTime()%></div>
               <div class="item-width"><%= order.getItems().size() %></div>
               <div class="item-width">LKR <%= order.getFTotal() %></div>
               <div class="item-width">
@@ -259,7 +269,7 @@ if(id==null){
                 for(Address a : addr){
             %>  
             <div class="border py-3 px-5 rounded-lg flex flex-col gap-3">
-              <div class="flex gap-10">
+              <div class="flex gap-5 lg:gap-10 flex-wrap">
                 <div>
                   <div class="text-gray-400 font-semibold">First Name</div>
                   <div><%= a.getFname() %></div>
@@ -291,6 +301,79 @@ if(id==null){
     </div>
 
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
+    
+    <script>
+        
+      $(document).ready(function () {
+        $(".reset").submit(function (e) {
+          e.preventDefault();
+            var formData = new FormData(this);
+            Swal.fire({
+            title: "Are you sure?",
+            text: "Are you sure you want to reset user password?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, reset it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+              type: "POST",
+              url: "../../resetPass",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                console.log(response);
+//                alert(response);
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            }
+          });
+            
+          
+        });
+        
+        $(".block").submit(function (e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            Swal.fire({
+            title: "Are you sure?",
+            text: "Are you sure you want to change user status?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, change it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+              type: "POST",
+              url: "../../changeUserStatus",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                console.log(response);
+//                alert(response);
+                location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+            }
+          });
+            
+          
+        });
+      });
+    </script>
   </body>
 </html>
 <%}}%>
