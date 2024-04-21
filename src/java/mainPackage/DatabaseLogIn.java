@@ -288,10 +288,7 @@ static void basicExecute(String query){
             if(rs.next()){
                 Order order = new Order(id,rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getTimestamp(9));
                 if(rs.getInt(2)!=0){
-                    int uid = rs.getInt(2);
-                    ResultSet us = st.executeQuery("SELECT * FROM users WHERE Id="+rs.getInt(2));
-                    us.next();
-                    order.setUser(new User(uid,us.getString(2)));
+                    order.setUser(getUser(rs.getString(2)));
                 }
                 ResultSet im = st.executeQuery("SELECT * FROM items WHERE oid="+id+";");
                 ArrayList<OrderItem> items = new ArrayList<OrderItem>();

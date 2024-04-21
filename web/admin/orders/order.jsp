@@ -112,7 +112,7 @@
       
     <div class="flex flex-col md:flex-row gap-5 w-full items-start">
       <div class="box w-full md:w-[70%]">
-        <div class="px-5 py-2 flex border-b">
+        <div class="px-5 py-2 flex border-b bg-gray-100 text-gray-600">
           <div>
             <div class="flex gap-2">
               <div class="font-semibold">
@@ -238,7 +238,7 @@
             >
               <div><i class="fa-regular fa-user text-3xl"></i></div>
               <div>
-                <div class="font-semibold">Nipun Avishka</div>
+                <div class="font-semibold"><%= order.getUser().getFullName() %></div>
                 <div class="text-sm"><%= order.getUser().getEmail() %></div>
               </div>
             </a>
