@@ -7,6 +7,9 @@ package models;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -21,10 +24,10 @@ public class Order {
   String address;
   String note;
   int status;
-  String date;
+  Timestamp date;
   ArrayList<OrderItem> items;
 
-    public Order(int id, User user, String name, String email, String phone, String address, String note, int status, String date, ArrayList<OrderItem> items) {
+    public Order(int id, User user, String name, String email, String phone, String address, String note, int status, Timestamp date, ArrayList<OrderItem> items) {
         this.id = id;
         this.user = user;
         this.name = name;
@@ -37,7 +40,7 @@ public class Order {
         this.items = items;
     }
 
-    public Order(int id, String name, String email, String phone, String address, String note, int status, String date) {
+    public Order(int id, String name, String email, String phone, String address, String note, int status, Timestamp date) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -131,10 +134,16 @@ public class Order {
     }
 
     public String getDate() {
-        return date;
+        DateFormat f = new SimpleDateFormat("dd MMM yyyy");
+        return f.format(date);
+    }
+    
+    public String getTime() {
+        DateFormat f = new SimpleDateFormat("HH:mm");
+        return f.format(date);
     }
 
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

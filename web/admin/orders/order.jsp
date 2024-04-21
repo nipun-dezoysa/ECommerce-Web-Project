@@ -7,6 +7,9 @@
     }else{
     DatabaseLogIn db = new DatabaseLogIn(); 
     Order order = db.getOrder(Integer.parseInt(id));
+    if(order==null){
+        response.sendRedirect("./index.jsp"); 
+    }else{
 %>
 <!DOCTYPE html>
 <html>
@@ -141,7 +144,7 @@
                 <%= stt %>
               </div>
             </div>
-                <div class="text-xs"><%= order.getDate().substring(0,16) %></div>
+                <div class="text-xs"><%= order.getDate()+" "+order.getTime() %></div>
           </div>
         </div>
         <div class="box-body">
@@ -302,4 +305,4 @@
     
   </body>
 </html>
-<%}%>
+<%}}%>

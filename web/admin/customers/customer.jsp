@@ -1,8 +1,16 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%> <%@page
-import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %> <% String
-id = request.getParameter("id"); if(id==null){
-response.sendRedirect("./index.jsp"); }else{ DatabaseLogIn db = new
-DatabaseLogIn(); %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%> 
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %> 
+<% 
+    String id = request.getParameter("id"); 
+if(id==null){
+    response.sendRedirect("./index.jsp"); 
+}else{ 
+    DatabaseLogIn db = new DatabaseLogIn(); 
+    User user = db.getUser(id);
+    if(user==null){
+        response.sendRedirect("./index.jsp"); 
+    }else{
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -72,7 +80,7 @@ DatabaseLogIn(); %>
             <a
               href="./"
               class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
-              >Orders</a
+              >Customers</a
             >
           </div>
         </li>
@@ -107,10 +115,14 @@ DatabaseLogIn(); %>
         <div class="box">
           <div class="py-2 px-5 border-b flex justify-between bg-gray-100">
             <div class="font-bold text-xl font-mono text-gray-600">
-              Customer Details<span class="text-gray-400">#12</span>
+              Customer Details<span class="text-gray-400">#<%= id%></span>
             </div>
             <div class="flex items-center gap-2">
+              <% if(user.getStatus()==1){ %>
               <span class="flex w-3 h-3 bg-green-500 rounded-full"></span>Active
+              <%}else{%>
+              <span class="flex w-3 h-3 bg-red-500 rounded-full"></span>Blocked
+              <%}%>
             </div>
           </div>
           <div class="p-5 flex">
@@ -118,34 +130,34 @@ DatabaseLogIn(); %>
               <div class="flex gap-10">
                 <div>
                   <div class="text-gray-400 font-semibold">First Name</div>
-                  <div>Nipun</div>
+                  <div><%= (user.getFname()==null)? "not provided" : user.getFname() %></div>
                 </div>
                 <div>
                   <div class="text-gray-400 font-semibold">Last Name</div>
-                  <div>Nipun</div>
+                  <div><%= (user.getLname()==null)? "not provided" : user.getLname() %></div>
                 </div>
               </div>
               <div>
                 <div class="text-gray-400 font-semibold">Email</div>
-                <div>nipun123@gmail.com</div>
+                <div><%= user.getEmail() %></div>
               </div>
               <div>
                 <div class="text-gray-400 font-semibold">Birth Date</div>
-                <div>2001-02-15</div>
+                <div><%= (user.getBday()==null)? "not provided" : user.getBday() %></div>
               </div>
             </div>
             <div class="pl-5 border-l flex flex-col gap-3">
               <div>
                 <div class="text-gray-400 font-semibold">Phone Number</div>
-                <div>0715348561</div>
+                <div><%= (user.getPno()==null)? "not provided" : user.getPno() %></div>
               </div>
               <div>
                 <div class="text-gray-400 font-semibold">Last Login</div>
-                <div>2001-02-15</div>
+                <div><%= user.getLogDateTime() %></div>
               </div>
               <div>
                 <div class="text-gray-400 font-semibold">Registered Date</div>
-                <div>2001-02-15</div>
+                <div><%= user.getRegDateTime() %></div>
               </div>
             </div>
           </div>
@@ -198,49 +210,81 @@ DatabaseLogIn(); %>
               <div class="item-width">Amount</div>
               <div class="item-width">Status</div>
             </div>
-            <a href="#" class="list-item">
-              <div class="item-width">Date</div>
-              <div class="item-width">Time</div>
-              <div class="item-width">No of items</div>
-              <div class="item-width">Amount</div>
-              <div class="item-width">Status</div>
+            <%
+                ArrayList<Order> orders = db.getOrders(0, id);
+                if(orders.size()>0){
+                for(Order order : orders){
+                String c="";
+                  String stt = "";
+                  if(order.getStatus()==1){
+                      c="text-xs rounded-full bg-yellow-200 text-yellow-400 px-2 py-1";
+                      stt="New";
+                  }else if(order.getStatus()==2){
+                      c="text-xs rounded-full bg-purple-200 text-purple-400 px-2 py-1";
+                      stt="Processing";
+                  }else if(order.getStatus()==3){
+                      c="text-xs rounded-full bg-blue-200 text-blue-400 px-2 py-1";
+                      stt="Shipped";
+                  }else if(order.getStatus()==4){
+                      c="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1";
+                      stt="Completed";
+                  }else{
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Canceled";
+                  }    
+                
+            %>
+            <a href="../orders/order.jsp?id=<%= order.getId() %>" class="list-item">
+              <div class="item-width"><%= order.getDate() %></div>
+              <div class="item-width"><%= order.getTime()%></div>
+              <div class="item-width"><%= order.getItems().size() %></div>
+              <div class="item-width">LKR <%= order.getFTotal() %></div>
+              <div class="item-width">
+                  <div class="<%=c%>"><%=stt%></div>
+              </div>
             </a>
+            <%}}else{%>
             <div class="list-item justify-center">No Records Found</div>
+            <%}%>
           </div>
         </div>
 
         <div class="box">
           <div class="box-title">Address Book</div>
           <div class="box-body text-sm">
+              
+            <%
+                ArrayList<Address> addr = db.getAddresses(id);
+                if(addr.size()>0){
+                for(Address a : addr){
+            %>  
             <div class="border py-3 px-5 rounded-lg flex flex-col gap-3">
               <div class="flex gap-10">
                 <div>
                   <div class="text-gray-400 font-semibold">First Name</div>
-                  <div>Nipun</div>
+                  <div><%= a.getFname() %></div>
                 </div>
                 <div>
                   <div class="text-gray-400 font-semibold">Last Name</div>
-                  <div>Avishka</div>
+                  <div><%= a.getLname() %></div>
                 </div>
                 <div>
                   <div class="text-gray-400 font-semibold">Email</div>
-                  <div>nipunavishka123@gmail.com</div>
+                  <div><%= a.getEmail() %></div>
                 </div>
                 <div>
                   <div class="text-gray-400 font-semibold">Phone</div>
-                  <div>0715348561</div>
+                  <div><%= a.getPhone() %></div>
                 </div>
               </div>
               <div>
                 <div class="text-gray-400 font-semibold">Address</div>
-                <div>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Excepturi placeat libero, voluptates omnis explicabo dolorem
-                  accusantium. Architecto tenetur optio maiores et excepturi
-                  fuga quam, quos laboriosam commodi, quo nemo ex?
-                </div>
+                <div><%= a.getFullAddress() %></div>
               </div>
             </div>
+            <%}}else{%>
+            <div class="list-item justify-center">No Records Found</div>
+            <%}%>
           </div>
         </div>
       </div>
@@ -249,4 +293,4 @@ DatabaseLogIn(); %>
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
   </body>
 </html>
-<%}%>
+<%}}%>

@@ -284,7 +284,7 @@ static void basicExecute(String query){
             ResultSet rs = st.executeQuery("SELECT * FROM orders WHERE oid="+id+";");
             
             if(rs.next()){
-                Order order = new Order(id,rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getString(9));
+                Order order = new Order(id,rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getTimestamp(9));
                 if(rs.getInt(2)!=0){
                     int uid = rs.getInt(2);
                     ResultSet us = st.executeQuery("SELECT * FROM users WHERE Id="+rs.getInt(2));
@@ -432,7 +432,7 @@ static void basicExecute(String query){
      try{
          ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Id="+id);
          if(rs.next()){
-             
+             return new User(rs.getInt(1),rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getTimestamp(8),rs.getTimestamp(9),rs.getInt(10));
          }
      }catch(SQLException ex){
         Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
@@ -480,5 +480,20 @@ static void basicExecute(String query){
      }catch(SQLException ex){
         Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
      }
+ }
+ 
+ public ArrayList<Address> getAddresses(String id){
+     ArrayList<Address> addr = new ArrayList<>();
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM abook WHERE uid="+id);
+         while(rs.next()){
+             addr.add(new Address(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)));
+         }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return addr;
  }
 }

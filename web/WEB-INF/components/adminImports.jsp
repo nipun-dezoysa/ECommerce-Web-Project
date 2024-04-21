@@ -39,7 +39,7 @@
       @apply p-5 flex flex-col gap-3;
     }
     .input-lable {
-      @apply block mb-1 text-sm font-medium text-gray-900;
+      @apply block mb-1 text-sm font-medium text-gray-600;
     }
   }
 </style>

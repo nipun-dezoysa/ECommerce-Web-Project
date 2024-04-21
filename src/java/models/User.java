@@ -131,6 +131,12 @@ public class User {
         DateFormat f = new SimpleDateFormat("dd MMM yyyy");
         return f.format(login);
     }
-    
-    
+    public String getLogDateTime(){
+        DateFormat f = new SimpleDateFormat("dd MMM yyyy HH:mm");
+        return f.format(login);
+    }
+    public String getRegDateTime(){
+        DateFormat f = new SimpleDateFormat("dd MMM yyyy HH:mm");
+        return f.format(reg);
+    }
 }
