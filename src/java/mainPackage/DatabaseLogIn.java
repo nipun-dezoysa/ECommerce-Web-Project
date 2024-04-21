@@ -74,6 +74,8 @@ static void basicExecute(String query){
                     }
                     else if(password.equals(passwordc)){
                         user = new User(resultSet.getInt("Id"),email) ;
+                        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                        basicExecute("UPDATE users SET login='"+timestamp+"' WHERE Id="+resultSet.getInt("Id"));
                     } 
                     resultSet.close();
                 }
