@@ -187,25 +187,30 @@ if(id==null){
         <div class="box">
           <div class="box-title">Most Viewed</div>
           <div class="box-body">
+            <%
+                ArrayList<Product> viewed = db.getUserViewed(user.getId()+"");
+                for(Product a : viewed){
+            %>
             <div class="flex gap-3 font-semibold text-gray-400">
               <div>1.</div>
               <img
-                src="../../img/demo.jpg"
-                class="w-[100px] rounded-lg"
+                src="../../img/products/<%= a.getImg1() %>"
+                class="w-[100px] rounded-lg aspect-square"
                 alt=""
               />
               <div>
-                <div>Nike Air Force 1</div>
-                <div>#22</div>
+                <div><%= a.getName() %></div>
+                <div>#<%= a.getId() %></div>
                 <div>
-                  LKR 7,000
+                  LKR <%= a.getformatPrice() %>
                   <span class="bg-green-200 rounded-full px-2 text-green-400"
-                    >15%</span
+                    ><%= a.getDiscount() %>%</span
                   >
                 </div>
-                <div>View Count <span class="text-gray-600">22</span></div>
+                <div>View Count <span class="text-gray-600"><%= a.getViewCount() %></span></div>
               </div>
             </div>
+            <%}%>
           </div>
         </div>
       </div>

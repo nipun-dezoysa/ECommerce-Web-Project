@@ -24,6 +24,8 @@ public class Product {
     
     ArrayList<Color> colors;
     ArrayList<Size> sizes;
+    
+    int viewCount=0;
 
     public Product() {
         
@@ -206,5 +208,15 @@ public class Product {
             return "Kid Shoes";    
         }
     }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
+    }
+    
+    
     
 }

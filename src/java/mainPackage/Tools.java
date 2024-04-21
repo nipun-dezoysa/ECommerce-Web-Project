@@ -14,12 +14,12 @@ public class Tools {
     
     
     
-    public String convertToSQL(String input){
+    public static String convertToSQL(String input){
         String inputc=input.replace("\'", "\"*");
         return inputc.replace("\\", "/*");
     
     }
-    public String reversToText(String input){
+    public static String reversToText(String input){
         String inputc=input.replace("\"*", "\'");
         return inputc.replace("/*", "\\");
     

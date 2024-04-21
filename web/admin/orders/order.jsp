@@ -233,7 +233,7 @@
           <div class="box-title">Customer Details</div>
           <div class="box-body">
             <a
-              href="#"
+              href="../customers/customer.jsp?id=<%= order.getUser().getId() %>"
               class="flex gap-2 items-center hover:bg-gray-200 p-2 rounded-lg duration-300 ease-in-out"
             >
               <div><i class="fa-regular fa-user text-3xl"></i></div>

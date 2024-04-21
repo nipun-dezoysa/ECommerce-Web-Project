@@ -10,6 +10,11 @@
         Product pr = db.getProduct(id);
         if(pr==null)response.sendRedirect("./index.jsp");
         else{
+            if(session.getAttribute("user")==null) db.addview(0, pr.getId());
+            else{
+                User us = (User)session.getAttribute("user");
+                db.addview(us.getId(), pr.getId());
+            }
 %>       
 
 <!DOCTYPE html>
