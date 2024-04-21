@@ -132,7 +132,7 @@
                       stt="New";
                   }else if(acc.get(i).getStatus()==2){
                       c="text-xs rounded-full bg-purple-200 text-purple-400 px-2 py-1";
-                      stt="Inprogress";
+                      stt="Processing";
                   }else if(acc.get(i).getStatus()==3){
                       c="text-xs rounded-full bg-blue-200 text-blue-400 px-2 py-1";
                       stt="Shipped";
@@ -147,8 +147,8 @@
                <a href="./order.jsp?id=<%= acc.get(i).getId() %>"  class="list-item justify-between">
                   <div class="item-width">#<%= acc.get(i).getId() %></div>
                 <div class="item-width line-clamp-1"><%= acc.get(i).getUser().getEmail() %></div>
-                <div class="item-width"><%= acc.get(i).getDate().substring(0,10) %></div>
-                <div class="item-width max-md:hidden"><%= acc.get(i).getDate().substring(10,16) %></div>
+                <div class="item-width"><%= acc.get(i).getDate() %></div>
+                <div class="item-width max-md:hidden"><%= acc.get(i).getTime() %></div>
                 <div class="item-width max-md:hidden">5</div>
                 <div class="item-width">LKR <%= acc.get(i).getTotal() %></div>
                 <div class="item-width flex items-center justify-center"><div class="<%=c%>"><%=stt%></div></div>

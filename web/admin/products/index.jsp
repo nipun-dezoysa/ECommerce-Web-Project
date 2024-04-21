@@ -316,7 +316,7 @@
               alt="product"
             />
             <div >
-                <a href="#"class="font-semibold"><%= prods.get(i).getName() %></a>
+                <a href="../../product.jsp?id=<%= prods.get(i).getId() %>"class="font-semibold"><%= prods.get(i).getName() %></a>
               <div class="text-gray-400 text-sm">#<%= prods.get(i).getId() %></div>
             </div>
           </div>

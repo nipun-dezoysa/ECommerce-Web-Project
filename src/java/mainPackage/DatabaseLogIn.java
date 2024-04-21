@@ -74,6 +74,8 @@ static void basicExecute(String query){
                     }
                     else if(password.equals(passwordc)){
                         user = new User(resultSet.getInt("Id"),email) ;
+                        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+                        basicExecute("UPDATE users SET login='"+timestamp+"' WHERE Id="+resultSet.getInt("Id"));
                     } 
                     resultSet.close();
                 }
@@ -125,12 +127,12 @@ static void basicExecute(String query){
      
      
      public void addProduct(String name, String description ,String  brand ,int price ,int discount ,int type, String img1,String img2,String img3,String img4) {
-        String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+name+"','"+description+"','"+brand+"',"+price+","+discount+","+type+",1,'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
+        String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+name+"','"+Tools.convertToSQL(description)+"','"+brand+"',"+price+","+discount+","+type+",1,'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
         basicExecute(query);
     }
      
     public void productDetails(String pid, String name, String description ,String  brand ,String price ,String discount ,String type) {
-        basicExecute("UPDATE products SET name='"+name+"' , description='"+description+"' , brand='"+brand+"' , price="+price+" , discount="+discount+" , type="+type+"  WHERE id="+pid);
+        basicExecute("UPDATE products SET name='"+name+"' , description='"+Tools.convertToSQL(description)+"' , brand='"+brand+"' , price="+price+" , discount="+discount+" , type="+type+"  WHERE id="+pid);
     }
      
      public void addSizes(int size, int pid) {
@@ -174,7 +176,7 @@ static void basicExecute(String query){
             try {
                 ResultSet rs= st.executeQuery(Query);
                 while(rs.next()){
-                    Product p = new Product(rs.getInt("id"),rs.getString("name"),rs.getString("description"),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
+                    Product p = new Product(rs.getInt("id"),rs.getString("name"),Tools.reversToText(rs.getString("description")),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
                     pl.add(p);
                 }
                 st.close();
@@ -195,7 +197,7 @@ static void basicExecute(String query){
           try {
                 ResultSet rs= st.executeQuery(query);
                 if (rs.next()) {
-                    Product product = new Product(rs.getInt("id"),rs.getString("name"),rs.getString("description"),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
+                    Product product = new Product(rs.getInt("id"),rs.getString("name"),Tools.reversToText(rs.getString("description")),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
                     ResultSet srs= st.executeQuery("SELECT * FROM `sizes` WHERE pid="+id+";");
                     
                     ArrayList<Size> sizes = new ArrayList<>();
@@ -284,12 +286,9 @@ static void basicExecute(String query){
             ResultSet rs = st.executeQuery("SELECT * FROM orders WHERE oid="+id+";");
             
             if(rs.next()){
-                Order order = new Order(id,rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getString(9));
+                Order order = new Order(id,rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getInt(8),rs.getTimestamp(9));
                 if(rs.getInt(2)!=0){
-                    int uid = rs.getInt(2);
-                    ResultSet us = st.executeQuery("SELECT * FROM users WHERE Id="+rs.getInt(2));
-                    us.next();
-                    order.setUser(new User(uid,us.getString(2)));
+                    order.setUser(getUser(rs.getString(2)));
                 }
                 ResultSet im = st.executeQuery("SELECT * FROM items WHERE oid="+id+";");
                 ArrayList<OrderItem> items = new ArrayList<OrderItem>();
@@ -432,7 +431,7 @@ static void basicExecute(String query){
      try{
          ResultSet rs = st.executeQuery("SELECT * FROM users WHERE Id="+id);
          if(rs.next()){
-             
+             return new User(rs.getInt(1),rs.getString(2),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getTimestamp(8),rs.getTimestamp(9),rs.getInt(10));
          }
      }catch(SQLException ex){
         Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
@@ -481,4 +480,52 @@ static void basicExecute(String query){
         Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
      }
  }
+ 
+ public ArrayList<Address> getAddresses(String id){
+     ArrayList<Address> addr = new ArrayList<>();
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM abook WHERE uid="+id);
+         while(rs.next()){
+             addr.add(new Address(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8),rs.getString(9)));
+         }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return addr;
+ }
+ 
+ public void addview(int uid,int pid){
+     connectToDb();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM viewcount WHERE uid="+uid+" AND pid="+pid);
+         if(rs.next()){
+             basicExecute("UPDATE viewcount SET count="+(rs.getInt(4)+1)+" WHERE vid="+rs.getInt(1));
+         }else{
+             basicExecute("INSERT INTO viewcount (uid,pid,count) VALUES ("+uid+", "+pid+", 1)");
+         }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+ }
+ 
+ public ArrayList<Product> getUserViewed(String uid){
+     ArrayList<Product> list = new ArrayList<>();
+     try{
+         ResultSet rs = st.executeQuery("SELECT * FROM viewcount WHERE uid="+uid+" LIMIT 3");
+         int i =0;
+         while(rs.next()){
+            list.add(getProduct(rs.getString(3)));
+            list.get(i).setViewCount(rs.getInt(4));
+            i++;
+         }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return list;
+ }
+ 
 }
