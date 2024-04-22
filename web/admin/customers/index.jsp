@@ -136,18 +136,22 @@
                 </div>
                 <div class="w-[10%] max-md:hidden"><%= user.getLogDate() %></div>
                 <div class="w-[20%] max-md:w-[40%] flex justify-center gap-1">
+                  <% if(user.getStatus()==1){ %>  
                   <form action="#" class="reset">
                     <input type="hidden" name="id" value="<%= user.getId() %>">
                     <button class="border border-blue-600 bg-blue-600 py-1 px-2 flex gap-1 items-center rounded-lg text-white duration-300 hover:text-blue-600 hover:bg-white"><i class="fa-solid fa-lock-open"></i><div>Reset</div></button>
                   </form>
                   <form action="#" class="block">
                     <input type="hidden" name="id" value="<%= user.getId() %>">
-                    <% if(user.getStatus()==1){ %>
                     <button class="border border-red-600 bg-red-600 py-1 px-2 flex gap-1 items-center rounded-lg text-white duration-300 hover:text-red-600 hover:bg-white"><i class="fa-solid fa-user-xmark"></i><div>Block</div></button>
+                  </form> 
                     <%}else{%>
+                    <form action="#" class="block">
+                    <input type="hidden" name="id" value="<%= user.getId() %>">
                     <button class="border border-blue-600 bg-blue-600 py-1 px-2 flex gap-1 items-center rounded-lg text-white duration-300 hover:text-blue-600 hover:bg-white"><i class="fa-solid fa-user-plus"></i><div>Unblock</div></button>
+                    </form> 
                     <%}%>
-                  </form>
+                  
                 </div>
             </div>
             <%}}else{%>

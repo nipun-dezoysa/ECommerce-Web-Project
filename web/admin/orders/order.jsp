@@ -132,10 +132,17 @@
                       stt="Shipped";
                   }else if(order.getStatus()==4){
                       c="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1";
-                      stt="Completed";
-                  }else{
+                      stt="Delivered";
+                  }else if(order.getStatus()==5){
                       c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
                       stt="Canceled";
+                  }else if(order.getStatus()==6){
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Declined";
+                  }
+                  else{
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Returned";
                   }
               %>
               <div
@@ -247,20 +254,70 @@
         <div class="box">
           <div class="box-title">Status</div>
           <div class="box-body">
-              <form id="formss" action="../../orderStatus" method="POST">
-                  <input type="hidden" name="id" value="<%= order.getId() %>"/>
-              <select name="status" id="status" class="inputs">
-                <option value="2">Inprogress</option>
-                <option value="3">Shipped</option>
-                <option value="4">Completed</option>
-                <option value="5">Canceled</option>
-              </select>
-              <input
-                type="submit"
-                class="bg-primary text-white p-2 w-full rounded-lg mt-2"
-                value="Save Changes"
-              />
-            </form>
+              <ol class="relative border-s border-gray-700">
+                <%
+                    for(int i =0;i<order.getActivity().size();i++){
+                     String verb="";
+                     switch(order.getActivity().get(i).getStatus()){
+                         case 1: verb = "Order placed by customer."; break;
+                         case 2: verb = "Order Accepted."; break;
+                         case 3: verb = "Order Shipped."; break;
+                         case 4: verb = "Order delivered."; break;
+                         case 5: verb = "Order canceled by customer."; break;
+                         case 6: verb = "Order declined."; break;
+                         case 7: verb = "Order returned."; break;
+                     }
+                %>
+                <li class="ms-4">
+                    <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-gray-900"></div>
+                    <time class="mb-1 text-sm font-normal leading-none text-gray-500"><%= order.getActivity().get(i).getFDate() %></time>
+                    <h3 class="text-lg font-semibold text-gray-900"><%= verb %></h3>
+                </li>
+                <%}%>
+              </ol>
+              
+              <div>
+                  <%
+                  if(order.getStatus()<4){
+                     String lable = "";
+                     int value = 1;
+                     switch(order.getStatus()){
+                         case 1 : lable="Accept"; value=2; break;
+                         case 2 : lable="Mark As Shipped"; value=3; break;
+                         case 3 : lable="Mark As Delivered"; value=4; break;
+                     }
+                  %>
+                <form class="formss" action="../../orderStatus" method="POST">
+                    <input type="hidden" name="id" value="<%= order.getId() %>"/>
+                    <input type="hidden" name="status" value="<%= value %>"/>
+                    <input
+                      type="submit"
+                      class="bg-primary text-white p-2 w-full rounded-lg mt-2 hover:bg-primaryLight cursor-pointer"
+                      value="<%= lable %>"
+                    />
+                </form>
+                <%}%> 
+             
+                <%if(order.getStatus()==1 || order.getStatus()==4){
+                    String lable = "";
+                    int value = 1;
+                    switch(order.getStatus()){
+                         case 1 : lable="Declined"; value=6; break;
+                         case 4 : lable="Mark As Returned"; value=7; break;
+                     }
+                %>
+                <form class="formss" action="../../orderStatus" method="POST">
+                    <input type="hidden" name="id" value="<%= order.getId() %>"/>
+                    <input type="hidden" name="status" value="<%= value %>"/>
+                    <input
+                      type="submit"
+                      class="bg-red-800 text-white p-2 w-full rounded-lg mt-2 hover:bg-red-700 cursor-pointer"
+                      value="<%= lable %>"
+                    />
+                </form>
+                <%}%>
+              </div>
+                  
           </div>
         </div>
       </div>
@@ -269,7 +326,7 @@
     
     <script>    
       $(document).ready(function () {
-        $("#formss").submit(function (e) {
+        $(".formss").submit(function (e) {
           e.preventDefault();
           var formData = new FormData(this);
           Swal.fire({

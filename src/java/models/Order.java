@@ -26,6 +26,9 @@ public class Order {
   int status;
   Timestamp date;
   ArrayList<OrderItem> items;
+  ArrayList<Activity> activity;
+  
+  int itemCount=0;
 
     public Order(int id, User user, String name, String email, String phone, String address, String note, int status, Timestamp date, ArrayList<OrderItem> items) {
         this.id = id;
@@ -126,21 +129,17 @@ public class Order {
     }
 
     public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
+        return activity.get(activity.size()-1).getStatus();
     }
 
     public String getDate() {
         DateFormat f = new SimpleDateFormat("dd MMM yyyy");
-        return f.format(date);
+        return f.format(activity.get(0).getDate());
     }
     
     public String getTime() {
         DateFormat f = new SimpleDateFormat("HH:mm");
-        return f.format(date);
+        return f.format(activity.get(0).getDate());
     }
 
     public void setDate(Timestamp date) {
@@ -154,6 +153,24 @@ public class Order {
     public void setItems(ArrayList<OrderItem> items) {
         this.items = items;
     }
+
+    public int getItemCount() {
+        return itemCount;
+    }
+
+    public void setItemCount(int itemCount) {
+        this.itemCount = itemCount;
+    }
+
+    public ArrayList<Activity> getActivity() {
+        return activity;
+    }
+
+    public void setActivity(ArrayList<Activity> activity) {
+        this.activity = activity;
+    }
+    
+    
   
   
 }

@@ -115,7 +115,7 @@
               <div class="item-width">User</div>
               <div class="item-width">Date</div>
               <div class="item-width max-md:hidden">Time</div>
-              <div class="item-width max-md:hidden">no of items</div>
+              <div class="item-width max-md:hidden">No Of Items</div>
               <div class="item-width">Amount</div>
               <div class="item-width">status</div>
             </div>
@@ -138,10 +138,17 @@
                       stt="Shipped";
                   }else if(acc.get(i).getStatus()==4){
                       c="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1";
-                      stt="Completed";
-                  }else{
+                      stt="Delivered";
+                  }else if(acc.get(i).getStatus()==5){
                       c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
                       stt="Canceled";
+                  }else if(acc.get(i).getStatus()==6){
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Declined";
+                  }
+                  else{
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Returned";
                   }
                %>
                <a href="./order.jsp?id=<%= acc.get(i).getId() %>"  class="list-item justify-between">
@@ -149,7 +156,7 @@
                 <div class="item-width line-clamp-1"><%= acc.get(i).getUser().getEmail() %></div>
                 <div class="item-width"><%= acc.get(i).getDate() %></div>
                 <div class="item-width max-md:hidden"><%= acc.get(i).getTime() %></div>
-                <div class="item-width max-md:hidden">5</div>
+                <div class="item-width max-md:hidden"><%= acc.get(i).getItemCount() %></div>
                 <div class="item-width">LKR <%= acc.get(i).getTotal() %></div>
                 <div class="item-width flex items-center justify-center"><div class="<%=c%>"><%=stt%></div></div>
               </a>

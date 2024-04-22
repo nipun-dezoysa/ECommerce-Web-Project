@@ -189,10 +189,12 @@ if(id==null){
           <div class="box-body">
             <%
                 ArrayList<Product> viewed = db.getUserViewed(user.getId()+"");
+                int no=0;
                 for(Product a : viewed){
+                no++;
             %>
             <div class="flex gap-3 font-semibold text-gray-400">
-              <div>1.</div>
+              <div><%=no%>.</div>
               <img
                 src="../../img/products/<%= a.getImg1() %>"
                 class="w-[100px] rounded-lg aspect-square"

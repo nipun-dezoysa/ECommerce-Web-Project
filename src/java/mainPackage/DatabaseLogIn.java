@@ -260,6 +260,7 @@ static void basicExecute(String query){
                ResultSet rs = st.executeQuery("SELECT * FROM orders WHERE uid="+uid+" ORDER BY oid DESC");
                rs.next();
                int oid = rs.getInt("oid");
+                basicExecute("INSERT INTO activity (oid, status) VALUES ("+oid+",1)");
                 for(int i=0;i<items.size();i++){
                     Product pr = getProduct(items.get(i).getId()+"");
                     String[] gg = getColorSize(items.get(i).getColor(),items.get(i).getSize());
@@ -296,15 +297,16 @@ static void basicExecute(String query){
                     System.out.print("yoo");
                     String img = "demo.jpg";
                     OrderItem it = new OrderItem(im.getInt(1),im.getInt(3),im.getString(4),im.getString(5),im.getString(6),im.getInt(7),im.getInt(8),im.getInt(9));
-//                    if(im.getInt(3)!=0){
-//                        ResultSet pr = st.executeQuery("SELECT * FROM products WHERE Id="+im.getInt(3));
-//                        pr.next();
-//                        img = pr.getString(2);
-//                        it.setImg(img);
-//                    }
                     items.add(it);
                 }
                 order.setItems(items);
+                
+                ResultSet ac = st.executeQuery("SELECT * FROM activity WHERE oid="+id+";");
+                ArrayList<Activity> activity = new ArrayList<>();
+                while(ac.next()){
+                    activity.add(new Activity(ac.getInt(1),ac.getInt(2),ac.getInt(3),ac.getTimestamp(4)));
+                }
+                order.setActivity(activity);
                 return order;
             }
         }catch (SQLException ex) {
@@ -330,6 +332,11 @@ static void basicExecute(String query){
                 Order o = getOrder(rs.getInt(1));
                 if(o!=null) orders.add(o);
             }
+            for(int i=0;i<orders.size();i++){
+                ResultSet count = st.executeQuery("SELECT SUM(quantity) FROM `items` WHERE oid="+orders.get(i).getId());
+                count.next();
+                orders.get(i).setItemCount(count.getInt(1));
+            }
             return orders;
             
         }catch (SQLException ex) {
@@ -339,7 +346,7 @@ static void basicExecute(String query){
     }
  
  public void changeStatus(int st,int id){
-     basicExecute("UPDATE orders SET status="+st+" WHERE oid="+id);
+     basicExecute("INSERT INTO activity (oid, status) VALUES ("+id+","+st+")");
  }
  
 
