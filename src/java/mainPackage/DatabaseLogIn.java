@@ -319,11 +319,11 @@ static void basicExecute(String query){
         String query;
         if(type==0){
             query = "SELECT * FROM orders WHERE uid="+uid+" ORDER BY oid DESC";
-        }else if(type==6){
+        }else if(type==8){
             query = "SELECT * FROM orders ORDER BY oid DESC";
         }
         else{
-            query = "SELECT * FROM orders WHERE status="+type+" ORDER BY oid DESC";
+            query = "SELECT a.oid FROM activity a JOIN ( SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity GROUP BY oid ) latest_activity ON a.oid = latest_activity.oid AND a.date = latest_activity.latest_date AND a.id = latest_activity.latest_id WHERE status="+type+" ORDER BY oid DESC";
         }
         try{
             ResultSet rs = st.executeQuery(query);
@@ -331,11 +331,6 @@ static void basicExecute(String query){
             while(rs.next()){
                 Order o = getOrder(rs.getInt(1));
                 if(o!=null) orders.add(o);
-            }
-            for(int i=0;i<orders.size();i++){
-                ResultSet count = st.executeQuery("SELECT SUM(quantity) FROM `items` WHERE oid="+orders.get(i).getId());
-                count.next();
-                orders.get(i).setItemCount(count.getInt(1));
             }
             return orders;
             
