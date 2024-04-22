@@ -81,13 +81,15 @@
         
         <%
             String type = request.getParameter("type");
-            int a = 6;
+            int a = 8;
             if(type!=null){
                 if(type.equals("new")) a=1;
-                else if(type.equals("progress")) a=2;
+                else if(type.equals("processing")) a=2;
                 else if(type.equals("shipped")) a=3;
                 else if(type.equals("completed")) a=4;
                 else if(type.equals("canceled")) a=5;
+                else if(type.equals("declined")) a=6;
+                else if(type.equals("returned")) a=7;
             }
             ArrayList<Order> acc = db.getOrders(a,"no");
             
@@ -96,13 +98,15 @@
       <div class="flex flex-col items-start md:flex-row gap-5">
 
         <div class="box md:w-[15%] max-md:w-full">
-          <div class="flex flex-row md:flex-col gap-2 md:gap-1  max-md:justify-between px-3 py-2 text-sm max-md:text-center">
-              <a href="./index.jsp" class="<%= a==6? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">All<span class="max-md:hidden"> Orders</span></a>
+          <div class="flex flex-row md:flex-col gap-2 md:gap-1  max-md:justify-between px-1 md:px-3 py-2 max-md:text-xs text-sm max-md:text-center">
+              <a href="./index.jsp" class="<%= a==8? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">All<span class="max-md:hidden"> Orders</span></a>
               <a href="./index.jsp?type=new" class="<%= a==1? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">New<span class="max-md:hidden"> Orders</span></a>
-              <a href="./index.jsp?type=progress" class="<%= a==2? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Inprogress<span class="max-md:hidden"> Orders</span></a>
+              <a href="./index.jsp?type=processing" class="<%= a==2? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Inprogress<span class="max-md:hidden"> Orders</span></a>
               <a href="./index.jsp?type=shipped" class="<%= a==3? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Shipped<span class="max-md:hidden"> Orders</span>s</a>
               <a href="./index.jsp?type=completed" class="<%= a==4? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Completed<span class="max-md:hidden"> Orders</span></a>
               <a href="./index.jsp?type=canceled" class="<%= a==5? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Canceled<span class="max-md:hidden"> Orders</span></a>
+              <a href="./index.jsp?type=declined" class="<%= a==6? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Declined<span class="max-md:hidden"> Orders</span></a>
+              <a href="./index.jsp?type=returned" class="<%= a==7? "w-full bg-gray-100 p-2 rounded-lg font-semibold" : "w-full hover:bg-gray-100 hover:px-2 py-2 hover:rounded-lg hover:font-semibold  duration-300 ease-in-out" %>">Returned<span class="max-md:hidden"> Orders</span></a>
           </div>
         </div>
           
@@ -115,7 +119,7 @@
               <div class="item-width">User</div>
               <div class="item-width">Date</div>
               <div class="item-width max-md:hidden">Time</div>
-              <div class="item-width max-md:hidden">no of items</div>
+              <div class="item-width max-md:hidden">No Of Items</div>
               <div class="item-width">Amount</div>
               <div class="item-width">status</div>
             </div>
@@ -128,20 +132,27 @@
                    String c="";
                   String stt = "";
                   if(acc.get(i).getStatus()==1){
-                      c="text-xs rounded-full bg-yellow-200 text-yellow-400 px-2 py-1";
+                      c="bg-yellow-200 text-yellow-400";
                       stt="New";
                   }else if(acc.get(i).getStatus()==2){
-                      c="text-xs rounded-full bg-purple-200 text-purple-400 px-2 py-1";
+                      c="bg-purple-200 text-purple-400";
                       stt="Processing";
                   }else if(acc.get(i).getStatus()==3){
-                      c="text-xs rounded-full bg-blue-200 text-blue-400 px-2 py-1";
+                      c="bg-blue-200 text-blue-400";
                       stt="Shipped";
                   }else if(acc.get(i).getStatus()==4){
-                      c="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1";
-                      stt="Completed";
-                  }else{
-                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      c="bg-green-200 text-green-400";
+                      stt="Delivered";
+                  }else if(acc.get(i).getStatus()==5){
+                      c="bg-red-200 text-red-400";
                       stt="Canceled";
+                  }else if(acc.get(i).getStatus()==6){
+                      c="bg-red-200 text-red-400";
+                      stt="Declined";
+                  }
+                  else{
+                      c="bg-red-200 text-red-400";
+                      stt="Returned";
                   }
                %>
                <a href="./order.jsp?id=<%= acc.get(i).getId() %>"  class="list-item justify-between">
@@ -149,9 +160,9 @@
                 <div class="item-width line-clamp-1"><%= acc.get(i).getUser().getEmail() %></div>
                 <div class="item-width"><%= acc.get(i).getDate() %></div>
                 <div class="item-width max-md:hidden"><%= acc.get(i).getTime() %></div>
-                <div class="item-width max-md:hidden">5</div>
+                <div class="item-width max-md:hidden"><%= acc.get(i).getItems().size() %></div>
                 <div class="item-width">LKR <%= acc.get(i).getTotal() %></div>
-                <div class="item-width flex items-center justify-center"><div class="<%=c%>"><%=stt%></div></div>
+                <div class="item-width flex items-center justify-center md:px-5"><div class="md:w-full text-xs rounded-full px-2 py-1 <%=c%>"><%=stt%></div></div>
               </a>
               <%}}else{%>
               <div class="list-item justify-center">No Records Found</div>

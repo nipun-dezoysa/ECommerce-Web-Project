@@ -260,6 +260,7 @@ static void basicExecute(String query){
                ResultSet rs = st.executeQuery("SELECT * FROM orders WHERE uid="+uid+" ORDER BY oid DESC");
                rs.next();
                int oid = rs.getInt("oid");
+                basicExecute("INSERT INTO activity (oid, status) VALUES ("+oid+",1)");
                 for(int i=0;i<items.size();i++){
                     Product pr = getProduct(items.get(i).getId()+"");
                     String[] gg = getColorSize(items.get(i).getColor(),items.get(i).getSize());
@@ -296,15 +297,16 @@ static void basicExecute(String query){
                     System.out.print("yoo");
                     String img = "demo.jpg";
                     OrderItem it = new OrderItem(im.getInt(1),im.getInt(3),im.getString(4),im.getString(5),im.getString(6),im.getInt(7),im.getInt(8),im.getInt(9));
-//                    if(im.getInt(3)!=0){
-//                        ResultSet pr = st.executeQuery("SELECT * FROM products WHERE Id="+im.getInt(3));
-//                        pr.next();
-//                        img = pr.getString(2);
-//                        it.setImg(img);
-//                    }
                     items.add(it);
                 }
                 order.setItems(items);
+                
+                ResultSet ac = st.executeQuery("SELECT * FROM activity WHERE oid="+id+";");
+                ArrayList<Activity> activity = new ArrayList<>();
+                while(ac.next()){
+                    activity.add(new Activity(ac.getInt(1),ac.getInt(2),ac.getInt(3),ac.getTimestamp(4)));
+                }
+                order.setActivity(activity);
                 return order;
             }
         }catch (SQLException ex) {
@@ -317,11 +319,11 @@ static void basicExecute(String query){
         String query;
         if(type==0){
             query = "SELECT * FROM orders WHERE uid="+uid+" ORDER BY oid DESC";
-        }else if(type==6){
+        }else if(type==8){
             query = "SELECT * FROM orders ORDER BY oid DESC";
         }
         else{
-            query = "SELECT * FROM orders WHERE status="+type+" ORDER BY oid DESC";
+            query = "SELECT a.oid FROM activity a JOIN ( SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity GROUP BY oid ) latest_activity ON a.oid = latest_activity.oid AND a.date = latest_activity.latest_date AND a.id = latest_activity.latest_id WHERE status="+type+" ORDER BY oid DESC";
         }
         try{
             ResultSet rs = st.executeQuery(query);
@@ -339,7 +341,7 @@ static void basicExecute(String query){
     }
  
  public void changeStatus(int st,int id){
-     basicExecute("UPDATE orders SET status="+st+" WHERE oid="+id);
+     basicExecute("INSERT INTO activity (oid, status) VALUES ("+id+","+st+")");
  }
  
 
@@ -453,7 +455,7 @@ static void basicExecute(String query){
             
          }
         for(User user: users){
-            ResultSet ol = st.executeQuery("SELECT COUNT(*) FROM orders WHERE uid="+rs.getInt(1));
+            ResultSet ol = st.executeQuery("SELECT COUNT(*) FROM orders WHERE uid="+user.getId());
             ol.next();
             user.setOcount(ol.getInt(1));
         }

@@ -189,10 +189,12 @@ if(id==null){
           <div class="box-body">
             <%
                 ArrayList<Product> viewed = db.getUserViewed(user.getId()+"");
+                int no=0;
                 for(Product a : viewed){
+                no++;
             %>
             <div class="flex gap-3 font-semibold text-gray-400">
-              <div>1.</div>
+              <div><%=no%>.</div>
               <img
                 src="../../img/products/<%= a.getImg1() %>"
                 class="w-[100px] rounded-lg aspect-square"
@@ -242,11 +244,18 @@ if(id==null){
                       stt="Shipped";
                   }else if(order.getStatus()==4){
                       c="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1";
-                      stt="Completed";
-                  }else{
+                      stt="Delivered";
+                  }else if(order.getStatus()==5){
                       c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
                       stt="Canceled";
-                  }    
+                  }else if(order.getStatus()==6){
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Declined";
+                  }
+                  else{
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Returned";
+                  }   
                 
             %>
             <a href="../orders/order.jsp?id=<%= order.getId() %>" class="list-item justify-between">
