@@ -455,7 +455,7 @@ static void basicExecute(String query){
             
          }
         for(User user: users){
-            ResultSet ol = st.executeQuery("SELECT COUNT(*) FROM orders WHERE uid="+rs.getInt(1));
+            ResultSet ol = st.executeQuery("SELECT COUNT(*) FROM orders WHERE uid="+user.getId());
             ol.next();
             user.setOcount(ol.getInt(1));
         }

@@ -126,7 +126,7 @@
                       stt="New";
                   }else if(order.getStatus()==2){
                       c="text-xs rounded-full bg-purple-200 text-purple-400 px-2 py-1";
-                      stt="Inprogress";
+                      stt="Processing";
                   }else if(order.getStatus()==3){
                       c="text-xs rounded-full bg-blue-200 text-blue-400 px-2 py-1";
                       stt="Shipped";

@@ -18,7 +18,7 @@
           @apply flex justify-between text-center font-semibold text-sm;
         }
         .list-item {
-          @apply flex items-center  border rounded-lg py-2 text-center text-xs lg:text-sm hover:bg-gray-200 duration-300 ease-in-out;
+          @apply flex items-center  border rounded-lg py-2 text-center text-xs hover:bg-gray-200 duration-300 ease-in-out;
         }
         .item-width {
           @apply w-[18%];
@@ -156,7 +156,7 @@
             </div>
             <%}}else{%>
             <div class="list-item flex justify-center">
-              no user registered
+              no user found
             </div>
             <%}%>
           </div>

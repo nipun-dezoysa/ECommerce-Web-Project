@@ -244,11 +244,18 @@ if(id==null){
                       stt="Shipped";
                   }else if(order.getStatus()==4){
                       c="text-xs rounded-full bg-green-200 text-green-400 px-2 py-1";
-                      stt="Completed";
-                  }else{
+                      stt="Delivered";
+                  }else if(order.getStatus()==5){
                       c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
                       stt="Canceled";
-                  }    
+                  }else if(order.getStatus()==6){
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Declined";
+                  }
+                  else{
+                      c="text-xs rounded-full bg-red-200 text-red-400 px-2 py-1";
+                      stt="Returned";
+                  }   
                 
             %>
             <a href="../orders/order.jsp?id=<%= order.getId() %>" class="list-item justify-between">
