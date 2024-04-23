@@ -26,7 +26,7 @@ public class Product {
     ArrayList<Size> sizes;
     
     int viewCount=0;
-
+    int soldCount=0;
     public Product() {
         
     }
@@ -215,6 +215,14 @@ public class Product {
 
     public void setViewCount(int viewCount) {
         this.viewCount = viewCount;
+    }
+
+    public int getSoldCount() {
+        return soldCount;
+    }
+
+    public void setSoldCount(int soldCount) {
+        this.soldCount = soldCount;
     }
     
     
