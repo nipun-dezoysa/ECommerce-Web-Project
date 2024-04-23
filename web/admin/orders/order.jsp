@@ -252,7 +252,7 @@
           </div>
         </div>
         <div class="box">
-          <div class="box-title">Status</div>
+          <div class="box-title">Activity Log</div>
           <div class="box-body">
               <ol class="relative border-s border-gray-700">
                 <%

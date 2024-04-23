@@ -136,6 +136,7 @@
         %>
         
          <a 
+            data-aos="slide-up"
            href="./orders/order.jsp?id=<%= order.getId() %>"
            class="text-xs flex justify-between py-2 px-2 <%= colors[0] %> font-semibold rounded-lg hover:bg-gray-800 hover:text-white duration-300 ease-in-out"
           >
@@ -427,6 +428,10 @@
         chart.render();
       }
     </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
   </body>
 </html>
 
