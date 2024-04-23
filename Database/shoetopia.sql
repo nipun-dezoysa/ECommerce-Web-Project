@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 06:15 PM
+-- Generation Time: Apr 23, 2024 at 06:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,6 +42,19 @@ CREATE TABLE `abook` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `activity`
+--
+
+CREATE TABLE `activity` (
+  `id` int(4) NOT NULL,
+  `oid` int(4) NOT NULL,
+  `status` int(1) NOT NULL,
+  `date` timestamp(6) NOT NULL DEFAULT current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin`
 --
 
@@ -56,7 +69,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`Id`, `Email`, `Password`) VALUES
-(1, 'sanjeewa@gmail.com', '4321');
+(1, 'nipun123@gmail.com', '0000');
 
 -- --------------------------------------------------------
 
@@ -124,7 +137,8 @@ CREATE TABLE `products` (
   `img01` varchar(150) NOT NULL,
   `img02` varchar(150) NOT NULL,
   `img03` varchar(150) NOT NULL,
-  `img04` varchar(150) NOT NULL
+  `img04` varchar(150) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -161,6 +175,19 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `viewcount`
+--
+
+CREATE TABLE `viewcount` (
+  `vid` int(4) NOT NULL,
+  `uid` int(4) NOT NULL,
+  `pid` int(4) NOT NULL,
+  `count` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `wishlist`
 --
 
@@ -180,6 +207,13 @@ CREATE TABLE `wishlist` (
 ALTER TABLE `abook`
   ADD PRIMARY KEY (`aid`),
   ADD KEY `fk_uidofabook` (`uid`);
+
+--
+-- Indexes for table `activity`
+--
+ALTER TABLE `activity`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_oidinactivity` (`oid`);
 
 --
 -- Indexes for table `admin`
@@ -229,6 +263,13 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `viewcount`
+--
+ALTER TABLE `viewcount`
+  ADD PRIMARY KEY (`vid`),
+  ADD KEY `fk_pidonviewcount` (`pid`);
+
+--
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
@@ -245,6 +286,12 @@ ALTER TABLE `wishlist`
 --
 ALTER TABLE `abook`
   MODIFY `aid` int(100) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `activity`
+--
+ALTER TABLE `activity`
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -289,6 +336,12 @@ ALTER TABLE `users`
   MODIFY `Id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `viewcount`
+--
+ALTER TABLE `viewcount`
+  MODIFY `vid` int(4) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
@@ -303,6 +356,12 @@ ALTER TABLE `wishlist`
 --
 ALTER TABLE `abook`
   ADD CONSTRAINT `fk_uidofabook` FOREIGN KEY (`uid`) REFERENCES `users` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `activity`
+--
+ALTER TABLE `activity`
+  ADD CONSTRAINT `fk_oidinactivity` FOREIGN KEY (`oid`) REFERENCES `orders` (`oid`);
 
 --
 -- Constraints for table `colors`
@@ -322,6 +381,12 @@ ALTER TABLE `items`
 --
 ALTER TABLE `sizes`
   ADD CONSTRAINT `fk_pidonsizes` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `viewcount`
+--
+ALTER TABLE `viewcount`
+  ADD CONSTRAINT `fk_pidonviewcount` FOREIGN KEY (`pid`) REFERENCES `products` (`Id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `wishlist`
