@@ -321,6 +321,8 @@ static void basicExecute(String query){
             query = "SELECT * FROM orders WHERE uid="+uid+" ORDER BY oid DESC";
         }else if(type==8){
             query = "SELECT * FROM orders ORDER BY oid DESC";
+        }else if(type==9){
+            query = "SELECT * FROM orders ORDER BY oid DESC LIMIT 6";
         }
         else{
             query = "SELECT a.oid FROM activity a JOIN ( SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity GROUP BY oid ) latest_activity ON a.oid = latest_activity.oid AND a.date = latest_activity.latest_date AND a.id = latest_activity.latest_id WHERE status="+type+" ORDER BY oid DESC";
@@ -514,6 +516,7 @@ static void basicExecute(String query){
  }
  
  public ArrayList<Product> getUserViewed(String uid){
+     connectToDb();
      ArrayList<Product> list = new ArrayList<>();
      try{
          ResultSet rs = st.executeQuery("SELECT * FROM viewcount WHERE uid="+uid+" LIMIT 3");
@@ -528,6 +531,72 @@ static void basicExecute(String query){
         Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
      }
      return list;
+ }
+ 
+ public String[] getAllCounts(){
+    connectToDb();
+    String[] counts = {"000","000","000"};
+    try{
+        ResultSet rs = st.executeQuery("SELECT (SELECT COUNT(*) FROM orders), (SELECT COUNT(*) FROM products), (SELECT COUNT(*) FROM users);");
+        rs.next();
+        counts[0] = Tools.digitFormat(rs.getInt(1));
+        counts[1] = Tools.digitFormat(rs.getInt(2));
+        counts[2] = Tools.digitFormat(rs.getInt(3));
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+    return counts;
+ }
+ 
+ public double[] getOrdersCategoryCount(){
+    connectToDb();
+    double[] counts = {0.0,0.0,0.0,0.0,0.0,0.0,0.0};
+    try{
+        ResultSet rs = st.executeQuery("WITH last_records AS (SELECT a.* FROM activity a JOIN (SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity GROUP BY oid ) latest ON a.oid = latest.oid AND a.date = latest.latest_date AND a.id = latest.latest_id) SELECT COUNT(CASE WHEN status = 1 THEN 1 END) AS status_1,COUNT(CASE WHEN status = 2 THEN 1 END) AS status_2, COUNT(CASE WHEN status = 3 THEN 1 END) AS status_3,COUNT(CASE WHEN status = 4 THEN 1 END) AS status_4,COUNT(CASE WHEN status = 5 THEN 1 END) AS status_5,COUNT(CASE WHEN status = 6 THEN 1 END) AS status_6,COUNT(CASE WHEN status = 7 THEN 1 END) AS status_7,COUNT(*) AS total FROM last_records;");
+        rs.next();
+        for(int i=0;i<counts.length;i++){
+            counts[i] = Tools.percentValue(rs.getInt(i+1), rs.getInt(8));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+    return counts;
+ }
+ 
+ public ArrayList<Product> getHighestSold(){
+     ArrayList<Product> pr = new ArrayList<>();
+     try{
+        ResultSet rs = st.executeQuery("WITH last_order_status AS (SELECT a.oid, a.date, a.status FROM activity a JOIN (SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity GROUP BY oid) latest ON a.oid = latest.oid AND a.date = latest.latest_date AND a.id = latest.latest_id) SELECT i.pid, SUM(i.quantity) AS total FROM items i JOIN last_order_status los ON i.oid = los.oid WHERE los.status = 4 GROUP BY i.pid ORDER BY total DESC LIMIT 3;");
+        int i=0;
+        while(rs.next()){
+            pr.add(getProduct(rs.getString(1)));
+            pr.get(i).setSoldCount(rs.getInt(2));
+            i++;
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return pr;
+ }
+ 
+  public ArrayList<Product> getHighestViewed(){
+     ArrayList<Product> pr = new ArrayList<>();
+     try{
+        ResultSet rs = st.executeQuery("SELECT pid,SUM(count) as counts FROM `viewcount` GROUP BY pid ORDER BY counts DESC LIMIT 3;");
+        int i=0;
+        while(rs.next()){
+            pr.add(getProduct(rs.getString(1)));
+            pr.get(i).setViewCount(rs.getInt(2));
+            i++;
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return pr;
  }
  
 }

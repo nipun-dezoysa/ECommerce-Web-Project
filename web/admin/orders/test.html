@@ -148,56 +148,54 @@
 
           <div class="flex gap-5 items-start">
             <div
-              class="bg-white py-3 px-3 rounded-lg w-[220px] shadow flex items-center gap-2"
+              class="bg-white py-3 px-3 rounded-lg w-full md:w-[220px] shadow flex items-center gap-2 hover:bg-green-100 duration-300"
             >
               <div
-                class="bg-green-200 w-12 h-12 flex items-center justify-center rounded-full text-green-500"
+                class="bg-green-200 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full text-green-500"
               >
                 <i class="fa-solid fa-bag-shopping"></i>
               </div>
               <div>
-                <div class="text-lg font-semibold text-gray-500">
+                <div class="text-xs md:text-lg font-semibold text-gray-500">
                   Total Orders
                 </div>
-                <div class="text-2xl">100</div>
+                <div class="text-lg md:text-2xl">100</div>
               </div>
             </div>
             <div
-              class="bg-white py-3 px-3 rounded-lg w-[220px] shadow flex items-center gap-2"
+              class="bg-white py-3 px-3 rounded-lg w-full md:w-[220px] shadow flex items-center gap-2 hover:bg-blue-100 duration-300"
             >
               <div
-                class="bg-blue-200 w-12 h-12 flex items-center justify-center rounded-full text-blue-500"
+                class="bg-blue-200 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full text-blue-500"
               >
                 <i class="fa-solid fa-tags"></i>
               </div>
               <div>
-                <div class="text-lg font-semibold text-gray-500">
+                <div class="text-xs md:text-lg font-semibold text-gray-500">
                   Total Products
                 </div>
-                <div class="text-2xl">100</div>
+                <div class="text-lg md:text-2xl">100</div>
               </div>
             </div>
             <div
-              class="bg-white py-3 px-3 rounded-lg w-[220px] shadow flex items-center gap-2"
+              class="bg-white py-3 px-3 rounded-lg w-full md:w-[220px] shadow flex items-center gap-2 hover:bg-violet-100 duration-300"
             >
               <div
-                class="bg-violet-200 w-12 h-12 flex items-center justify-center rounded-full text-violet-500"
+                class="bg-violet-200 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full text-violet-500"
               >
                 <i class="fa-solid fa-person"></i>
               </div>
               <div>
-                <div class="text-lg font-semibold text-gray-500">
+                <div class="text-xs md:text-lg font-semibold text-gray-500">
                   Total Customers
                 </div>
-                <div class="text-2xl">100</div>
+                <div class="text-lg md:text-2xl">100</div>
               </div>
             </div>
           </div>
 
-          <div class="flex gap-5">
-            <div
-              class="w-full bg-white rounded-lg shadow p-4 md:p-6"
-            >
+          <div class="flex gap-2">
+            <div class="w-[60%] bg-white rounded-lg shadow p-4 md:p-6">
               <div class="flex justify-between mb-5">
                 <div>
                   <h5
@@ -205,9 +203,7 @@
                   >
                     $12,423
                   </h5>
-                  <p
-                    class="text-base font-normal text-gray-500"
-                  >
+                  <p class="text-base font-normal text-gray-500">
                     Sales this week
                   </p>
                 </div>
@@ -233,11 +229,10 @@
                 </div>
               </div>
               <div id="grid-chart"></div>
-              
             </div>
 
             <div
-              class=" w-[30%] bg-white rounded-lg shadow p-4 flex flex-col justify-between"
+              class="w-[25%] bg-white rounded-lg shadow p-4 md:p-6 flex flex-col justify-between"
             >
               <div class="flex justify-between items-start w-full">
                 <div class="flex-col items-center">
@@ -245,7 +240,7 @@
                     <h5
                       class="text-xl font-bold leading-none text-gray-900 me-1"
                     >
-                      Website traffic
+                      Orders Summary
                     </h5>
                   </div>
                 </div>
@@ -253,6 +248,79 @@
 
               <!-- Line Chart -->
               <div class="" id="pie-chart"></div>
+            </div>
+
+            <div
+              class="w-[30%] bg-white rounded-lg shadow pt-6 flex flex-col gap-7 overflow-hidden"
+            >
+              <h5
+                class="text-xl font-bold leading-none text-gray-900 me-1 px-4"
+              >
+                Recent Orders
+              </h5>
+              <div class="px-4 flex flex-col gap-2 justify-center">
+                <div
+                  class="text-xs flex justify-between py-2 px-2 bg-green-100 text-green-500 font-semibold rounded-lg hover:bg-gray-800 hover:text-white duration-300 ease-in-out"
+                >
+                  <div class="w-[10%]">#17</div>
+                  <div class="w-[50%]">nipunavishka@gmail.com</div>
+                  <div class="w-[40%] text-end">LKR 5,000.00</div>
+                </div>
+                
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <div
+              class="w-[30%] bg-white rounded-lg shadow pt-6 pb-2 px-4 flex flex-col gap-5 overflow-hidden"
+            >
+              <h5 class="text-xl font-bold leading-none text-gray-900">
+                Most Sold Products
+              </h5>
+              <div>
+                <a href="#" class="flex gap-2 font-semibold hover:bg-gray-200 px-1 py-2 rounded-lg duration-700">
+                  <div class="text-gray-400">1.</div>
+                  <img
+                    src="../../img/demo.jpg"
+                    class="w-[100px] rounded-lg"
+                    alt=""
+                  />
+                  <div>
+                    <h1 class="text-xl">Nike Air Jordan 1</h1>
+                    <div class="text-gray-400">Nike</div>
+                    <div>LKR 7000.00 <span class="bg-green-200 text-green-400 px-2 rounded-full">15%</span></div>
+                  <div>23 Items sold</div>
+                  </div>
+                </a>
+                
+              </div>
+            </div>
+
+            <div
+              class="w-[30%] bg-white rounded-lg shadow pt-6 pb-2 px-4 flex flex-col gap-5 overflow-hidden"
+            >
+              <h5 class="text-xl font-bold leading-none text-gray-900">
+                Most Sold Products
+              </h5>
+              <div>
+                <a href="#" class="flex gap-2 font-semibold hover:bg-gray-200 px-1 py-2 rounded-lg duration-700">
+                  <div class="text-gray-400">1.</div>
+                  <img
+                    src="../../img/demo.jpg"
+                    class="w-[100px] rounded-lg"
+                    alt=""
+                  />
+                  <div>
+                    <h1 class="text-xl">Nike Air Jordan 1</h1>
+                    <div class="text-gray-400">Nike</div>
+                    <div>LKR 7000.00 <span class="bg-green-200 text-green-400 px-2 rounded-full">15%</span></div>
+                  <div>23 Items sold</div>
+                  </div>
+                </a>
+                
+              </div>
             </div>
           </div>
 
@@ -276,18 +344,23 @@
         },
         series: [
           {
-            name: "Developer Edition",
+            name: "Orders",
             data: [1500, 1418, 1456, 1526, 1356, 1256],
             color: "#1A56DB",
           },
           {
-            name: "Designer Edition",
+            name: "Cancel Orders",
             data: [643, 413, 765, 412, 1423, 1731],
-            color: "#7E3BF2",
+            color: "#C41E3A",
+          },
+          {
+            name: "Delivered Orders",
+            data: [700, 823, 715, 700, 1023, 1531],
+            color: "#0BDA51",
           },
         ],
         chart: {
-          height: "100%",
+          height: "200",
           maxWidth: "100%",
           type: "area",
           fontFamily: "Inter, sans-serif",
@@ -368,7 +441,7 @@
           series: [52.8, 26.8, 20.4],
           colors: ["#1C64F2", "#16BDCA", "#9061F9"],
           chart: {
-            height: "80%",
+            height: "90%",
             width: "100%",
             type: "pie",
           },
@@ -387,7 +460,7 @@
               },
             },
           },
-          labels: ["Direct", "Organic search", "Referrals"],
+          labels: ["Orders", "Processing", "Shipped"],
           dataLabels: {
             enabled: true,
             style: {
