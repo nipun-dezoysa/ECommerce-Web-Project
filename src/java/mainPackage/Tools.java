@@ -5,6 +5,9 @@
  */
 package mainPackage;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import models.Order;
 
 /**
@@ -76,5 +79,29 @@ public class Tools {
                   
         String[] d = {c,stt};
         return d;          
+    }
+    public static String getStringVal(ArrayList<Integer> a){
+        String val = "["+a.get(0);
+        for(int i=1;i<a.size();i++){
+            val+=","+a.get(i);
+        }
+        val+="]";
+        return val;
+    }
+    
+    public static String getWeekDays(){
+        ArrayList<String> week = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM");
+        LocalDate today = LocalDate.now();
+        for (int i = 6; i >= 0; i--) {
+            LocalDate pastDate = today.minusDays(i);
+            week.add(pastDate.format(formatter));
+        }
+        String val = "['"+week.get(0);
+        for(int i=1;i<week.size();i++){
+            val+="','"+week.get(i);
+        }
+        val+="']";
+        return val;
     }
 }

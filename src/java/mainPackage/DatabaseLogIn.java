@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -598,5 +599,40 @@ static void basicExecute(String query){
      }
      return pr;
  }
+  
+  
+  public String getWeekOrders(int a){
+      ArrayList<Integer> week = new ArrayList<>();
+      try{
+        ResultSet rs = st.executeQuery("SELECT COUNT(CASE WHEN status = "+a+" AND DATE(date) = CURRENT_DATE - INTERVAL 6 DAY THEN 1 END),COUNT(CASE WHEN status = "+a+" AND DATE(date) = CURRENT_DATE - INTERVAL 5 DAY THEN 1 END),COUNT(CASE WHEN status = "+a+" AND DATE(date) = CURRENT_DATE - INTERVAL 4 DAY THEN 1 END),COUNT(CASE WHEN status = "+a+" AND DATE(date) = CURRENT_DATE - INTERVAL 3 DAY THEN 1 END),COUNT(CASE WHEN status = "+a+" AND DATE(date) = CURRENT_DATE - INTERVAL 2 DAY THEN 1 END),COUNT(CASE WHEN status = "+a+" AND DATE(date) = CURRENT_DATE - INTERVAL 1 DAY THEN 1 END),COUNT(CASE WHEN status = "+a+" AND DATE(date) = CURRENT_DATE THEN 1 END) FROM activity WHERE date >= CURRENT_DATE - INTERVAL 7 DAY;");
+        rs.next();
+        for(int i=1;i<=7;i++){
+           week.add(rs.getInt(i));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+      return Tools.getStringVal(week);
+  }
+  
+  public String getWeekSales(){
+     double a=0;
+     ArrayList<Order> orders = new ArrayList<>();
+     try{
+        ResultSet rs = st.executeQuery("WITH last_order_status AS ( SELECT a.oid, a.date, a.status FROM activity a JOIN ( SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity WHERE date >= CURRENT_DATE - INTERVAL 7 DAY GROUP BY oid ) latest ON a.oid = latest.oid AND a.date = latest.latest_date AND a.id = latest.latest_id ) SELECT oid FROM last_order_status WHERE status = 4;");
+        while(rs.next()){
+            orders.add(getOrder(rs.getInt(1)));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     for(Order order : orders){
+         a+=order.calculateTotal();
+     }
+     DecimalFormat formatter = new DecimalFormat("#,###.00");
+     return formatter.format(a);
+  }
  
 }

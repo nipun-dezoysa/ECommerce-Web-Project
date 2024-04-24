@@ -54,22 +54,22 @@ public class Order {
         this.date = date;
     }
     
-    public String getTotal(){
+    public double calculateTotal(){
         double total = 0;
         for(int i=0;i<items.size();i++){
             total+= items.get(i).getTotal();
         }
+        return total;
+    }
+    
+    public String getTotal(){
         DecimalFormat formatter = new DecimalFormat("#,###.00");
-        return formatter.format(total);
+        return formatter.format(calculateTotal());
     }
     
     public String getFTotal(){
-        double total = 0;
-        for(int i=0;i<items.size();i++){
-            total+= items.get(i).getTotal();
-        }
         DecimalFormat formatter = new DecimalFormat("#,###.00");
-        return formatter.format(total+30);
+        return formatter.format(calculateTotal()+30);
     }
 
     public int getId() {
