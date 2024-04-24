@@ -77,30 +77,11 @@
         <div class="flex justify-between mb-5">
           <div>
             <h5 class="leading-none text-3xl font-bold text-gray-900 pb-2">
-              $12,423
+              LKR <%= db.getWeekSales() %>
             </h5>
             <p class="text-base font-normal text-gray-500">Sales this week</p>
           </div>
-          <div
-            class="flex items-center px-2.5 py-0.5 text-base font-semibold text-green-500 text-center"
-          >
-            23%
-            <svg
-              class="w-3 h-3 ms-1"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 10 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 13V1m0 0L1 5m4-4 4 4"
-              />
-            </svg>
-          </div>
+          
         </div>
         <div id="grid-chart"></div>
       </div>
@@ -142,7 +123,7 @@
           >
             <div class="w-[10%]">#<%= order.getId() %></div>
             <div class="w-[50%]"><%= order.getUser().getEmail() %></div>
-            <div class="w-[40%] text-end">LKR <%= order.getFTotal() %></div>
+            <div class="w-[40%] text-end">LKR <%= order.getTotal() %></div>
           </a>
         <%}%>
         </div>
@@ -240,17 +221,17 @@
         series: [
           {
             name: "Orders",
-            data: [1500, 1418, 1456, 1526, 1356, 1256],
+            data: <%= db.getWeekOrders(1) %>,
             color: "#1A56DB",
           },
           {
             name: "Cancel Orders",
-            data: [643, 413, 765, 412, 1423, 1731],
+            data: <%= db.getWeekOrders(7) %>,
             color: "#C41E3A",
           },
           {
             name: "Delivered Orders",
-            data: [700, 823, 715, 700, 1023, 1531],
+            data: <%= db.getWeekOrders(4) %>,
             color: "#0BDA51",
           },
         ],
@@ -291,15 +272,7 @@
           width: 6,
         },
         xaxis: {
-          categories: [
-            "01 February",
-            "02 February",
-            "03 February",
-            "04 February",
-            "05 February",
-            "06 February",
-            "07 February",
-          ],
+          categories: <%= Tools.getWeekDays() %>,
           labels: {
             show: false,
           },
@@ -314,7 +287,7 @@
           show: false,
           labels: {
             formatter: function (value) {
-              return "$" + value;
+              return value;
             },
           },
         },
