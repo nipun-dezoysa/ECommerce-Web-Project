@@ -88,44 +88,26 @@ static void basicExecute(String query){
             return user;
     }
     
-    public void adminSignIn(String email, String password) {
+    public boolean adminSignIn(String email, String password) {
         connectToDb();
             String Query ="SELECT `Id`, `Email`, `Password` FROM `admin` WHERE Email = '" + email + "'";
-            System.out.println("log email: " + email);
-            System.out.println("log passwd: " + password);
-            
             try {
-                String emailc="";
-                String passwordc="";
-                
                 ResultSet resultSet= st.executeQuery(Query);
                 if (resultSet.next()) {
-                    emailc = resultSet.getString("Email");
-                    passwordc = resultSet.getString("Password");
-                    System.out.println("Username: " + emailc);
-                    System.out.println("Password: " + passwordc);
-                    if(password.equals(passwordc) && email.equals(emailc)){
-                        adminlogin = true;
-                        System.out.println("Password correct");
+                    if(password.equals(resultSet.getString("Password"))){
+                        return true;
                         
                     } 
                     resultSet.close();
                     st.close();
                 
-    }           else{
-                        System.out.println("This is not correct password or username");
-                       
-                }
+                }          
             
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
             }
+        return false;    
     }
-     public boolean adminislogin(){
-        return adminlogin;
-    }
-     
-     
      
      public void addProduct(String name, String description ,String  brand ,int price ,int discount ,int type, String img1,String img2,String img3,String img4) {
         String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+name+"','"+Tools.convertToSQL(description)+"','"+brand+"',"+price+","+discount+","+type+",1,'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
@@ -633,6 +615,10 @@ static void basicExecute(String query){
      }
      DecimalFormat formatter = new DecimalFormat("#,###.00");
      return formatter.format(a);
+  }
+  
+  public void removeAddress(String id){
+      basicExecute("DELETE FROM abook WHERE aid="+id);
   }
  
 }

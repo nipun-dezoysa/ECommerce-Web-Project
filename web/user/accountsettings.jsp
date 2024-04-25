@@ -19,7 +19,6 @@
         </jsp:include>
     </head>
     <body>
-        <div class="frameBox">
             <jsp:include page="../WEB-INF/components/nav.jsp" >
                 <jsp:param name="path" value="../"/>
             </jsp:include>   
@@ -31,7 +30,7 @@
                         <li><a href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
                         <li><a href="addressbook.jsp"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
                         <li><a href="order.jsp"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
-                        <li><a class="active" href="accountsettings.jsp"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
+                        <li class="bg-[#405270] text-white"><div><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</div></li>
                     </ul>
                 </div>
 
@@ -76,6 +75,5 @@
 
             <jsp:include page="../WEB-INF/components/footer.jsp" />
 
-        </div>
     </body>
 </html>
