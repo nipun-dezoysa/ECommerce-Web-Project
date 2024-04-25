@@ -8,6 +8,7 @@ package mainPackage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,18 +22,12 @@ import models.userUpdate;
  * @author sanjeewa
  */
 @WebServlet(name = "updatePassword", urlPatterns = {"/updatePassword"})
+@MultipartConfig(
+    fileSizeThreshold = 1024 * 1024,  // 1 MB
+    maxFileSize = 1024 * 1024 * 10,   // 10 MB
+    maxRequestSize = 1024 * 1024 * 50 // 50 MB
+)
 public class updatePassword extends HttpServlet {
-
-    
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -42,18 +37,18 @@ public class updatePassword extends HttpServlet {
         int id = user.getId();
         String passwdold=request.getParameter("oldpassword");
         String passwdnew=request.getParameter("newpassword1");
+        String passwdnew2=request.getParameter("newpassword2");
         userUpdate upwd = new userUpdate();
-        int status=upwd.updatePasswd(passwdold, passwdnew, id);
-        response.sendRedirect("signin.jsp");
+        if(upwd.updatePasswd(passwdold, passwdnew,passwdnew2, id)){
+            session.removeAttribute("user");
+            session.setAttribute("logreq", "./user/");
+            response.getWriter().print("ok");
+        }else{
+            response.getWriter().print("bad");
+        }
         
         
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

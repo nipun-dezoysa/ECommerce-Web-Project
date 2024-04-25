@@ -12,37 +12,32 @@ import mainPackage.DatabaseLogIn;
  */
 public class userUpdate {
     //DatabaseLogIn db = DatabaseLogIn();
-    public int updateEmail(String email ,String password,int id){
-        int status;
+    public boolean updateEmail(String email ,String password,int id){
         DatabaseLogIn db = new DatabaseLogIn();
         String passworddb=db.getPasswd(id);
         if(password.equals(passworddb)){
             db.updateEmail(id, email);
-            status=1;
+            return true;
         
         }
         else{
-            status=0;
+            return false;
             
         }
-        return status;
     
     }
-    public int updatePasswd(String passwordold ,String passwordnew,int id){
-        int status;
+    public boolean updatePasswd(String passwordold ,String passwordnew,String passwordnew2,int id){
         DatabaseLogIn db = new DatabaseLogIn();
         String passworddb=db.getPasswd(id);
-        if(passwordold.equals(passworddb)){
+        if(passwordold.equals(passworddb) && passwordnew.equals(passwordnew2)){
             db.updatePasswd(id, passwordnew);
-            status=1;
+            return true;
         
         }
         else{
-            status=0;
+            return false;
             
         }
-        return status;
-    
     }
     
 }

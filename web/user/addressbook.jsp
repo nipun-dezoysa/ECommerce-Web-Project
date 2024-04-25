@@ -3,7 +3,16 @@
     Created on : Apr 17, 2024, 9:34:00 AM
     Author     : Ravindu
 --%>
-
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%
+    if(session.getAttribute("user")==null){
+        session.setAttribute("logreq", "./user/addressbook.jsp");
+        response.sendRedirect("../signin.jsp");
+    }else{
+        User user = (User)session.getAttribute("user");
+        DatabaseLogIn db = new DatabaseLogIn();  
+        ArrayList<Address> address = db.getAddresses(user.getId()+"");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,9 +46,38 @@
 
                 <div class="w_box">
                     <h1>My Address Book</h1>
-                    <div class="address_book">
+                    <div class="address_book flex flex-col gap-3">
+                        <%
+                            if(address.size()==0){
+                        %>
                         <p class="gtext">You currently don't have any saved delivery addresses. Add an address here to be pre-filled for quicker checkout.</p>
-                        
+                        <%
+                            }else{
+                                for(Address ads : address){
+                        %>
+                        <div class="flex border rounded-lg px-5 py-2 relative justify-between">
+                            <div class="w-[20%]">
+                              <div class="text-gray-400">Name</div>
+                              <div><%= ads.getFname()+" "+ads.getLname() %></div>
+                            </div>
+                            <div class="w-[20%]">
+                              <div class="text-gray-400">Email</div>
+                              <div><%= ads.getEmail() %></div>
+                            </div>
+                            <div class="w-[20%]">
+                              <div class="text-gray-400">Phone</div>
+                              <div><%= ads.getPhone() %></div>
+                            </div>
+                            <div class="w-[40%]">
+                              <div class="text-gray-400 ">Address</div>
+                              <div><%= ads.getFullAddress() %></div>
+                            </div>
+                            <form class="absolute top-[-12px] right-[-10px] text-2xl hover:text-red-600" action="#">
+                                <input type="hidden" name="id" value="<%= ads.getId() %>"/>
+                                <button type="submit"><i class="fa-solid fa-circle-xmark"></i></button>
+                            </form>
+                        </div>
+                        <%}}%>
                     </div>
                 </div>
 
@@ -50,3 +88,4 @@
         </div>
     </body>
 </html>
+<%}%>
