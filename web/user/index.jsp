@@ -3,6 +3,16 @@
     Created on : Apr 16, 2024, 8:49:43 PM
     Author     : Ravindu
 --%>
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%
+    if(session.getAttribute("user")==null){
+        session.setAttribute("logreq", "./user/");
+        response.sendRedirect("../signin.jsp");
+    }else{
+        User user = (User)session.getAttribute("user");
+        DatabaseLogIn db = new DatabaseLogIn();  
+        User details = db.getUser(user.getId()+"");
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,7 +39,7 @@
                 <div class="sidebar">
                     <h2>My Account</h2>
                     <ul>
-                        <li><a class="active" href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
+                        <li class="bg-[#405270] text-white"><div><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</div></li>
                         <li><a href="addressbook.jsp"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
                         <li><a href="order.jsp"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
                         <li><a href="#"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
@@ -48,19 +58,19 @@
                             <form action="../updateUserDetails" method="post" class="column">
                                 <div class="flex gap-5">
                                     <p>First Name<br>
-                                        <input type="text" class="txt" name="fname">
+                                        <input type="text" class="txt" name="fname" placeholder="first name" value="<%= details.getFname()==null?"":details.getFname() %>">
                                     </p>
                                     <p>Last Name<br>
-                                    <input type="text" class="txt" name="lname">
+                                    <input type="text" class="txt" name="lname" placeholder="last name" value="<%= details.getLname()==null?"":details.getLname() %>">
                                 </p>
                                 </div>
                                 <br>
                                 <p>Birth Date<br>
-                                    <input type="date" class="txt" name="bday">
+                                    <input type="date" class="txt" name="bday" value="<%= details.getBday()==null?"":details.getBday() %>">
                                 </p>
                                 <br>
                                 <p>Phone Number<br>
-                                    <input type="number" class="txt" name="tno"><br>
+                                    <input type="number" class="txt" name="tno" value="<%= details.getPno()==null?"":details.getPno() %>"><br>
                                 <p class="stxt">Keep 9-digit format with no spaces and dashes.</p>
                                 </p>
                                 <br>
@@ -80,11 +90,11 @@
                             </div>
                             <form action="../updateEmail" method="POST" class="column">
                                 <p>Email Address<br>
-                                    <input type="text" name="email" class="txt">
+                                    <input type="text" name="email" class="txt" value="<%= details.getEmail() %>">
                                 </p>
                                 <br>
                                 <p>Password<br>
-                                    <input type="password" name="password" class="txt">
+                                    <input type="password" name="password" class="txt" autocomplete="off">
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE"></p>
@@ -105,16 +115,16 @@
                             </div>
                             <form class="column" action="../updatePassword"  method="post">
                                 <p>Current Password<br>
-                                    <input type="password" name="oldpassword" class="txt">
+                                    <input type="password" name="oldpassword" class="txt" autocomplete="off">
                                 </p>
                                 <br>
                                 <p>New Password<br>
-                                    <input type="password" name="newpassword1" class="txt"><br>
+                                    <input type="password" name="newpassword1" class="txt" autocomplete="off"><br>
                                 <p class="stxt">Make sure your password is 8 characters long and contains letters and numbers.</p>
                                 </p>
                                 <br>
                                 <p>Confirm Password<br>
-                                    <input type="password" name="newpassword2" class="txt">
+                                    <input type="password" name="newpassword2" class="txt" autocomplete="off">
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE" ></p>
@@ -133,3 +143,4 @@
 
     </body>
 </html>
+<%}%>

@@ -127,7 +127,6 @@
             cols="30"
             rows="5"
             placeholder="Enter your note here..."
-            required
           ></textarea>
         </div>
         <div>

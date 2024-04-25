@@ -29,7 +29,7 @@
                     <h2>My Account</h2>
                     <ul>
                         <li><a href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
-                        <li><a class="active" href="addressbook.jsp"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
+                        <li class="bg-[#405270] text-white"><div><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</div></li>
                         <li><a href="order.jsp"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
                         <li><a href="#"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
                     </ul>
@@ -39,10 +39,7 @@
                     <h1>My Address Book</h1>
                     <div class="address_book">
                         <p class="gtext">You currently don't have any saved delivery addresses. Add an address here to be pre-filled for quicker checkout.</p>
-                        <br>
-                        <textarea name="add" id="" cols="50" rows="10"></textarea>
-                        <br><br>
-                        <p><input type="submit" class="btn" value="SAVE"></p>
+                        
                     </div>
                 </div>
 

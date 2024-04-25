@@ -35,6 +35,8 @@ public class placeOrder extends HttpServlet {
         String note = request.getParameter("note");
         String add = request.getParameter("add");
         
+        if(note==null)note="";
+        
         HttpSession session = request.getSession(true);
         DatabaseLogIn db = new DatabaseLogIn();
         PrintWriter out = response.getWriter();
