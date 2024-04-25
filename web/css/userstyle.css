@@ -68,7 +68,7 @@ body{
   color: #ffffff;
 }
 
-.wrapper .my_details{
+.wrapper .w_box{
   width: 100%;
   background: #ffffff;
   color: #000000;
@@ -76,7 +76,7 @@ body{
   line-height: 25px;
 }
 
-.wrapper .my_details .personal_information{
+.wrapper .w_box .personal_information{
   padding: 20px;
   background: #ffffff;
   color: #000000;
@@ -85,7 +85,7 @@ body{
   line-height: 25px;
 }
 
-.wrapper .my_details .email_address{
+.wrapper .w_box .email_address{
   padding: 20px;
   background: #ffffff;
   color: #000000;
@@ -94,7 +94,7 @@ body{
   line-height: 25px;
 }
 
-.wrapper .my_details .password{
+.wrapper .w_box .password{
   padding: 20px;
   background: #ffffff;
   color: #000000;
@@ -152,15 +152,7 @@ body{
   clear: both;
 }
 
-.wrapper .my_addressbook{
-  width: 100%;
-  background: #ffffff;
-  color: #000000;
-  padding: 30px;
-  line-height: 25px;
-}
-
-.wrapper .my_addressbook .address_book{
+.wrapper .w_box .address_book{
   padding: 20px;
   background: #ffffff;
   color: #000000;
@@ -169,15 +161,7 @@ body{
   line-height: 25px;
 }
 
-.wrapper .my_orders{
-  width: 100%;
-  background: #ffffff;
-  color: #000000;
-  padding: 30px;
-  line-height: 25px;
-}
-
-.wrapper .my_orders .orders{
+.wrapper .w_box .orders{
   padding: 20px;
   background: #ffffff;
   color: #000000;
@@ -205,4 +189,41 @@ body{
 
 .ordernav a.active {
   color: #405270;
+}
+
+.wrapper .w_box .del_account{
+  padding: 20px;
+  background: #fff;
+  color: #000000;
+  border-bottom: 1px solid #e0e4e8;
+  margin: 20px;
+  line-height: 25px;
+}
+
+.wrapper .w_box .logout{
+  padding: 20px;
+  background: #fff;
+  color: #000000;
+  border-bottom: 1px solid #e0e4e8;
+  margin: 20px;
+  line-height: 25px;
+}
+
+.dbtn {
+  background-color: #717171;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 15px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  
+}
+
+.dbtn:hover {
+  background-color: #D2042D;
+  color: white;
+  cursor: pointer;
 }
