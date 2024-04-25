@@ -74,8 +74,8 @@
       </div>
     </div>
 
-    <div class="flex gap-2">
-      <div class="w-[60%] bg-white rounded-lg shadow p-4 md:p-6">
+    <div class="flex flex-col lg:flex-row gap-2 max-lg:flex-wrap">
+      <div class="w-full lg:w-[60%] bg-white rounded-lg shadow p-4 md:p-6">
         <div class="flex justify-between mb-5">
           <div>
             <h5 class="leading-none text-3xl font-bold text-gray-900 pb-2">
@@ -89,7 +89,7 @@
       </div>
 
       <div
-        class="w-[25%] bg-white rounded-lg shadow p-4 md:p-6 flex flex-col justify-between"
+        class="w-full md:w-[300px] lg:w-[25%] bg-white rounded-lg shadow p-4 md:p-6 flex flex-col justify-between"
       >
         <div class="flex justify-between items-start w-full">
           <div class="flex-col items-center">
@@ -106,7 +106,7 @@
       </div>
 
       <div
-        class="w-[30%] bg-white rounded-lg shadow pt-6 flex flex-col gap-7 overflow-hidden"
+        class="w-full md:w-[300px] lg:w-[30%] bg-white rounded-lg shadow pt-6 pb-2 lg:pb-0 flex flex-col gap-7 overflow-hidden"
       >
         <h5 class="text-xl font-bold leading-none text-gray-900 me-1 px-4">
           Recent Orders
@@ -132,9 +132,9 @@
       </div>
     </div>
 
-    <div class="flex gap-2">
+    <div class="flex flex-col lg:flex-row gap-2">
       <div
-        class="w-[30%] bg-white rounded-lg shadow pt-6 pb-2 px-4 flex flex-col gap-5 overflow-hidden"
+        class="lg:w-[30%] bg-white rounded-lg shadow pt-6 pb-2 px-4 flex flex-col gap-5 overflow-hidden"
       >
         <h5 class="text-xl font-bold leading-none text-gray-900">
           Most Sold Products
@@ -169,7 +169,7 @@
       </div>
 
       <div
-        class="w-[30%] bg-white rounded-lg shadow pt-6 pb-2 px-4 flex flex-col gap-5 overflow-hidden"
+        class="lg:w-[30%] bg-white rounded-lg shadow pt-6 pb-2 px-4 flex flex-col gap-5 overflow-hidden"
       >
         <h5 class="text-xl font-bold leading-none text-gray-900">
           Most Viewed Products

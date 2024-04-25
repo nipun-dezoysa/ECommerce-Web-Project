@@ -5,7 +5,7 @@ String path = request.getParameter("path");
   
     
     <div class="flex flex-col lg:flex-row min-h-screen">
-      <div class="bg-primary w-full lg:w-[19%] py-5 flex lg:flex-col lg:h-screen max-lg:items-center sticky top-0">
+      <div class="bg-primary w-full lg:w-[19%] py-5 flex lg:flex-col lg:h-screen max-lg:items-center sticky top-0 z-50">
         <div class="w-full flex flex-col items-center">
           <a class="w-[70%]" href="../"><img class="w-[200px] lg:w-full" src="<%=path%>../img/2.png" alt="logo" /></a>
           <p class="max-lg:hidden text-white font-mono max-lg:text-sm">Admin Dashboard</p>

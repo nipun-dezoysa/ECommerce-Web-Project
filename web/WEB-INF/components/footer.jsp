@@ -1,15 +1,15 @@
 <footer class="mt-auto">
   <div class="bg-primary pt-2 pb-10 text-white">
     <div
-      class="bg-primary py-10 text-white flex flex-col items-center justify-center"
+      class="bg-primary py-5 text-white flex flex-col items-center justify-center"
     >
-      <h1 class="text-3xl font-bold mb-10">Subscribe to get our updates</h1>
+      <h1 class="text-xl lg:text-3xl font-bold mb-5 ">Subscribe to get our updates</h1>
       <form action="#">
-        <div class="flex">
+        <div class="flex lg:w-[500px]">
           <input
             type="email"
             placeholder="Enter your email address..."
-            class="bg-white text-white px-2 rounded-l-lg px-4 py-2 focus:outline-none w-96 mr-3 rounded-r-lg"
+            class="bg-white text-white px-2 rounded-l-lg px-4 py-2 focus:outline-none w-full mr-3 rounded-r-lg"
           />
           <button
             type="submit"

@@ -49,7 +49,7 @@
                         <%
                             if(address.size()==0){
                         %>
-                        <p class="gtext">You currently don't have any saved delivery addresses. Add an address here to be pre-filled for quicker checkout.</p>
+                        <p class="gtext">You currently don't have any saved delivery addresses. Add an address in place-order page to be pre-filled for quicker checkout.</p>
                         <%
                             }else{
                                 for(Address ads : address){
