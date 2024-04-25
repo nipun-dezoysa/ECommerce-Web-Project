@@ -616,5 +616,9 @@ static void basicExecute(String query){
      DecimalFormat formatter = new DecimalFormat("#,###.00");
      return formatter.format(a);
   }
+  
+  public void removeAddress(String id){
+      basicExecute("DELETE FROM abook WHERE aid="+id);
+  }
  
 }
