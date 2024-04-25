@@ -52,19 +52,19 @@
                             <form id="details" action="../updateUserDetails" method="post" class="column">
                                 <div class="flex gap-5">
                                     <p>First Name<br>
-                                        <input type="text" class="txt" name="fname" placeholder="first name" value="<%= details.getFname()==null?"":details.getFname() %>">
+                                        <input type="text" class="txt" name="fname" placeholder="first name" value="<%= details.getFname()==null?"":details.getFname() %>" required>
                                     </p>
                                     <p>Last Name<br>
-                                    <input type="text" class="txt" name="lname" placeholder="last name" value="<%= details.getLname()==null?"":details.getLname() %>">
+                                    <input type="text" class="txt" name="lname" placeholder="last name" value="<%= details.getLname()==null?"":details.getLname() %>" required>
                                 </p>
                                 </div>
                                 <br>
                                 <p>Birth Date<br>
-                                    <input type="date" class="txt" name="bday" value="<%= details.getBday()==null?"":details.getBday() %>">
+                                    <input type="date" class="txt" name="bday" value="<%= details.getBday()==null?"":details.getBday() %>" required>
                                 </p>
                                 <br>
                                 <p>Phone Number<br>
-                                    <input type="number" class="txt" name="tno" value="<%= details.getPno()==null?"":details.getPno() %>"><br>
+                                    <input type="number" class="txt" name="tno" value="<%= details.getPno()==null?"":details.getPno() %>" required><br>
                                 <p class="stxt">Keep 9-digit format with no spaces and dashes.</p>
                                 </p>
                                 <br>
@@ -84,11 +84,11 @@
                             </div>
                             <form id="emailup" action="../updateEmail" method="POST" class="column">
                                 <p>Email Address<br>
-                                    <input type="text" name="email" class="txt" value="<%= details.getEmail() %>">
+                                    <input type="text" name="email" class="txt" value="<%= details.getEmail() %>" required>
                                 </p>
                                 <br>
                                 <p>Password<br>
-                                    <input type="password" name="password" class="txt" autocomplete="off">
+                                    <input type="password" name="password" class="txt" autocomplete="off" required>
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE CHANGES"></p>
@@ -109,16 +109,16 @@
                             </div>
                             <form id="passwordup" class="column" action="../updatePassword"  method="post">
                                 <p>Current Password<br>
-                                    <input type="password" name="oldpassword" class="txt" autocomplete="off">
+                                    <input type="password" name="oldpassword" class="txt" autocomplete="off" required>
                                 </p>
                                 <br>
                                 <p>New Password<br>
-                                    <input type="password" name="newpassword1" class="txt" autocomplete="off"><br>
+                                    <input type="password" name="newpassword1" class="txt" autocomplete="off" required><br>
                                 <p class="stxt">Make sure your password is 8 characters long and contains letters and numbers.</p>
                                 </p>
                                 <br>
                                 <p>Confirm Password<br>
-                                    <input type="password" name="newpassword2" class="txt" autocomplete="off">
+                                    <input type="password" name="newpassword2" class="txt" autocomplete="off" required>
                                 </p>
                                 <br>
                                 <p><input type="submit" class="btn" value="SAVE" ></p>
