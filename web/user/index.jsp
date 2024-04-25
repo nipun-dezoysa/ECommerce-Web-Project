@@ -28,7 +28,6 @@
         </jsp:include>
     </head>
     <body>
-        <div class="frameBox">
             <jsp:include page="../WEB-INF/components/nav.jsp" >
                 <jsp:param name="path" value="../"/>
             </jsp:include>   
@@ -137,7 +136,7 @@
 
             <jsp:include page="../WEB-INF/components/footer.jsp" />
 
-        </div>
+
 
     </body>
 </html>
