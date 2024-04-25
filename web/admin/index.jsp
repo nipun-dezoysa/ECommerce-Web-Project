@@ -1,11 +1,13 @@
 <%@page import="mainPackage.DatabaseLogIn,mainPackage.Tools, models.*, java.util.ArrayList" %> 
-<!--<a% String admin = (String)session.getAttribute("admin"); if(admin == null){ %a>-->
+<% String admin = (String)session.getAttribute("admin"); 
+    if(admin == null){
+%>
 
-<%--<jsp:include page="../WEB-INF/components/adminLogin.jsp" />--%>
+<jsp:include page="../WEB-INF/components/adminLogin.jsp">
+    <jsp:param name="path" value="../"/>
+</jsp:include>
 
-<!--<a%}else{%a>--> 
-
-<%
+<%}else{
     DatabaseLogIn db = new DatabaseLogIn();
     String[] counts = db.getAllCounts();
 %>
@@ -408,4 +410,4 @@
   </body>
 </html>
 
-<!--<a% } %a>-->
+<% } %>

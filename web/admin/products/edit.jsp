@@ -1,3 +1,9 @@
+<% String admin = (String)session.getAttribute("admin"); 
+    if(admin == null){
+%>
+
+<jsp:include page="../../WEB-INF/components/adminLogin.jsp"/>
+<%}else{%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
 <% 
@@ -606,4 +612,5 @@
 	}
     
     }
+}
 %> 
