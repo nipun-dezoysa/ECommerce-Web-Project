@@ -23,8 +23,6 @@
                 <jsp:param name="path" value="../"/>
             </jsp:include>   
             
-            
-
             <div class="main-container wrapper">
                 <div class="sidebar">
                     <h2>My Account</h2>
@@ -32,10 +30,10 @@
                         <li><a class="active" href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
                         <li><a href="addressbook.jsp"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
                         <li><a href="order.jsp"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
-                        <li><a href="#"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
+                        <li><a href="accountsettings.jsp"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
                     </ul>
                 </div>
-                <div class="my_details">
+                <div class="w_box">
                     <h1>My Details</h1>
                     <div class="personal_information">
                         <h2>Personal Information</h2>

@@ -31,11 +31,11 @@
                         <li><a href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
                         <li><a href="addressbook.jsp"><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</a></li>
                         <li><a class="active" href="order.jsp"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
-                        <li><a href="#"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
+                        <li><a href="accountsettings.jsp"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
                     </ul>
                 </div>
 
-                <div class="my_orders">
+                <div class="w_box">
                     <h1>My Orders</h1>
                     <br>
                     <div class="orders">
