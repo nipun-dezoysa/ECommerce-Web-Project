@@ -120,7 +120,7 @@
           <a class="hover:text-primaryLight" href="<%=path%>user">Account</a>
           <button
             id="logout"
-            class="font-bold font-mono hover:text-primaryLight"
+            class="logoutss font-bold font-mono hover:text-primaryLight"
           >
             logout
           </button>
