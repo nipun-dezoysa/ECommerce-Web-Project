@@ -88,6 +88,16 @@ static void basicExecute(String query){
             return user;
     }
     
+    public boolean deleteUser(String id,String password){
+        User user = signIn(id,password);
+        if(user.getId()==-1){
+            return false;
+        }else{
+            basicExecute("DELETE FROM users WHERE Email='"+id+"'");
+            return true;
+        }
+    }
+    
     public boolean adminSignIn(String email, String password) {
         connectToDb();
             String Query ="SELECT `Id`, `Email`, `Password` FROM `admin` WHERE Email = '" + email + "'";

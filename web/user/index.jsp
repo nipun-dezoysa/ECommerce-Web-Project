@@ -131,7 +131,9 @@
             </div>
 
 
-            <jsp:include page="../WEB-INF/components/footer.jsp" />
+            <jsp:include page="../WEB-INF/components/footer.jsp" >
+            <jsp:param name="path" value="../"/>
+            </jsp:include> 
 
             <script>    
       $(document).ready(function () {

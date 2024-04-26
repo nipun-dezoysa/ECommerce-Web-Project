@@ -3,7 +3,14 @@
     Created on : Apr 25, 2024, 3:34:14 PM
     Author     : Ravindu
 --%>
-
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%
+    if(session.getAttribute("user")==null){
+        session.setAttribute("logreq", "./user/accountsettings.jsp");
+        response.sendRedirect("../signin.jsp");
+    }else{
+        User user = (User)session.getAttribute("user"); 
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -47,7 +54,7 @@
                             </div>
                             <div class="column">
                                 <br>
-                                <p><input type="submit" class="dbtn" value="LOGOUT"></p>
+                                <p><input type="submit" class="logoutss dbtn" value="LOGOUT"></p>
                             </div>
                         </div>
                     </div>
@@ -60,20 +67,59 @@
                             <div class="column">
                                 <p class="gtext">Please note that once you proceed with deleting your account, you cannot recover any data or information associated with it.</p>
                             </div>
-                            <div class="column">
+                            <form id="delete" class="column">
                                 <br>
                                 <p>Password<br>
-                                    <input type="password" class="txt">
+                                    <input type="password" name="password" class="txt">
                                 </p>
                                 <br>
+                                <input type="hidden" name="id" value="<%= user.getEmail() %>"/>
                                 <p><input type="submit" class="dbtn" value="DELETE"></p>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <jsp:include page="../WEB-INF/components/footer.jsp" />
+            <jsp:include page="../WEB-INF/components/footer.jsp">
+            <jsp:param name="path" value="../"/>
+            </jsp:include> 
+        
+        <script>
+    $(document).ready(function () {
+      $("#delete").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+          Swal.fire({
+            title: "Are you sure?",
+            text: "Are you sure you want to delete your account?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $.ajax({
+              type: "POST",
+              url: "../deleteUser",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                  if(response=="ok")location.reload();
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+              });
+            }
+          });
+            
+        });
+    });
+  </script>
 
     </body>
 </html>
+<%}%>

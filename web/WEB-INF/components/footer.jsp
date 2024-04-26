@@ -1,3 +1,4 @@
+<% String path = request.getParameter("path"); if(path==null){ path="./"; } %>
 <footer class="mt-auto">
   <div class="bg-primary pt-2 pb-10 text-white">
     <div
@@ -205,10 +206,10 @@
 
 <script>
     $(document).ready(function () {
-      $("#logout").click(function () {
+      $(".logoutss").click(function () {
         $.ajax({
           type: "GET",
-          url: "SignOutServelet",
+          url: "<%= path %>SignOutServelet",
           success: function (response) {
             location.reload();
           },
