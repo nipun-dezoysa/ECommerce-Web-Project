@@ -551,7 +551,7 @@ static void basicExecute(String query){
  public ArrayList<Product> getHighestSold(){
      ArrayList<Product> pr = new ArrayList<>();
      try{
-        ResultSet rs = st.executeQuery("WITH last_order_status AS (SELECT a.oid, a.date, a.status FROM activity a JOIN (SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity GROUP BY oid) latest ON a.oid = latest.oid AND a.date = latest.latest_date AND a.id = latest.latest_id) SELECT i.pid, SUM(i.quantity) AS total FROM items i JOIN last_order_status los ON i.oid = los.oid WHERE los.status = 4 GROUP BY i.pid ORDER BY total DESC LIMIT 3;");
+        ResultSet rs = st.executeQuery("WITH last_order_status AS (SELECT a.oid, a.date, a.status FROM activity a JOIN (SELECT oid, MAX(date) AS latest_date, MAX(id) AS latest_id FROM activity GROUP BY oid) latest ON a.oid = latest.oid AND a.date = latest.latest_date AND a.id = latest.latest_id) SELECT i.pid, SUM(i.quantity) AS total FROM items i JOIN last_order_status los ON i.oid = los.oid WHERE los.status = 4 AND i.pid!='null' GROUP BY i.pid ORDER BY total DESC LIMIT 3;");
         int i=0;
         while(rs.next()){
             pr.add(getProduct(rs.getString(1)));
