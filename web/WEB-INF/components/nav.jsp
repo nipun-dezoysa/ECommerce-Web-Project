@@ -42,6 +42,9 @@
           type="text"
           name="search"
           id="search"
+          <%if(request.getParameter("search")!=null){%>
+          value="<%= request.getParameter("search") %>"
+          <%}%>
           placeholder="Search Product"
           required
         />
@@ -154,6 +157,9 @@
           type="text"
           name="search"
           id="search"
+          <%if(request.getParameter("search")!=null){%>
+          value="<%= request.getParameter("search") %>"
+          <%}%>
           placeholder="Search Product"
           required
         />

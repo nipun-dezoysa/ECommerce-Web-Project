@@ -13,7 +13,9 @@
     <jsp:include page="./WEB-INF/components/Imports.jsp" />
   </head>
   <body>
-    <jsp:include page="./WEB-INF/components/nav.jsp" />
+    <jsp:include page="./WEB-INF/components/nav.jsp">
+        <jsp:param name="search" value="<%=request.getParameter("search")%>"/>
+    </jsp:include>
 
     <!-- content starts here-->
 
@@ -45,10 +47,13 @@
                 name="category"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               >
-                <option selected value="any">Any Category</option>
-                <option value="mens">Men's Shoes</option>
-                <option value="womens">Women's Shoes</option>
-                <option value="kids">Kid's Shoes</option>
+                <%
+                    String cat = (request.getParameter("category")!=null)? request.getParameter("category") : "any";
+                %>
+                <option value="any" <%= cat.equals("any")? "selected" : ""%>>Any Category</option>
+                <option value="mens" <%= cat.equals("mens")? "selected" : ""%>>Men's Shoes</option>
+                <option value="womens" <%= cat.equals("womens")? "selected" : ""%>>Women's Shoes</option>
+                <option value="kids" <%= cat.equals("kids")? "selected" : ""%>>Kid's Shoes</option>
               </select>
             </div>
             <div>
@@ -62,12 +67,15 @@
                 name="color"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               >
-                <option selected value="any">Any color</option>
+                <%
+                    String col = (request.getParameter("color")!=null)? request.getParameter("color") : "any";
+                %>
+                <option value="any" <%= col.equals("any")? "selected" : ""%> >Any color</option>
                 <%
                     ArrayList<String> colors = db.getAllColors();
                     for(String color:colors){
                 %>
-                <option value="<%= color %>"><%= color %></option>
+                <option value="<%= color %>" <%= col.equals(color)? "selected" : ""%> ><%= color %></option>
                 <%}%>
               </select>
             </div>
@@ -82,12 +90,15 @@
                 name="brand"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               >
-                <option selected value="any">Any Brand</option>
+                <%
+                    String bra = (request.getParameter("brand")!=null)? request.getParameter("brand") : "any";
+                %>
+                <option value="any" <%= bra.equals("any")? "selected" : ""%>>Any Brand</option>
                 <%
                     ArrayList<String> brands = db.getAllBrands();
                     for(String color:brands){
                 %>
-                <option value="<%= color %>"><%= color %></option>
+                <option value="<%= color %>" <%= bra.equals(color)? "selected" : ""%>  ><%= color %></option>
                 <%}%>
               </select>
             </div>
@@ -126,6 +137,9 @@
             </button>
           </form>
           <div class="lg:w-[75%] lg:px-5 flex flex-col ">
+            <% if(list.size()==0){ %>
+            <div class="bg-gray-100 p-2 border-primary border-t-2 text-gray-400">No products were found matching your selection.</div>
+            <%}else{ %>
             <p class="text-sm text-gray-400">Showing <%= list.size() %> results</p>
             <div class="flex flex-wrap gap-2 py-4 max-md:justify-around">
                 <% for(Product pro : list){ %>
@@ -134,6 +148,7 @@
                     </jsp:include>
                 <% } %>
             </div>
+            <%}%>
             <!-- Pagination -->
 <!--            <nav class="flex items-center gap-x-1 justify-center">
               <button
