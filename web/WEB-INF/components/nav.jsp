@@ -33,18 +33,20 @@
       </div>
     </div>
     <div class="flex items-center gap-5 max-sm:gap-3 relative">
-      <div
+      <form
+        action="search.jsp"
         class="max-lg:hidden block flex items-center w-[200px] rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6"
       >
         <input
           class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0 p-0"
           type="text"
-          name="search"
+          name="keyword"
           id="search"
           placeholder="Search Product"
+          required
         />
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
         
         
       <a
