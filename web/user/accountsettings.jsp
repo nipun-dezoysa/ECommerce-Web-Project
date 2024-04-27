@@ -18,9 +18,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Account Settings</title>
         <link rel="stylesheet" href="../css/userstyle.css" type="text/css"/>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css"
-              integrity="sha512-U9Y1sGB3sLIpZm3ePcrKbXVhXlnQNcuwGQJ2WjPjnp6XHqVTdgIlbaDzJXJIAuCTp3y22t+nhI4B88F/5ldjFA=="
-              crossorigin="anonymous" referrerpolicy="no-referrer" />
         <jsp:include page="../WEB-INF/components/Imports.jsp">
             <jsp:param name="path" value="../"/>
         </jsp:include>
@@ -54,7 +51,7 @@
                             </div>
                             <div class="column">
                                 <br>
-                                <p><input type="submit" class="logoutss dbtn" value="LOGOUT"></p>
+                                <p><input type="submit" class="logoutss dbtn bg-[#717171]" value="LOGOUT"></p>
                             </div>
                         </div>
                     </div>
@@ -74,7 +71,7 @@
                                 </p>
                                 <br>
                                 <input type="hidden" name="id" value="<%= user.getEmail() %>"/>
-                                <p><input type="submit" class="dbtn" value="DELETE"></p>
+                                <p><input type="submit" class="dbtn bg-[#717171]" value="DELETE"></p>
                             </form>
                         </div>
                     </div>

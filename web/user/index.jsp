@@ -68,7 +68,7 @@
                                 <p class="stxt">Keep 9-digit format with no spaces and dashes.</p>
                                 </p>
                                 <br>
-                                <p><input type="submit" class="btn" value="SAVE CHANGES" ></p>
+                                <p><input type="submit" class="btn bg-[#717171]" value="SAVE CHANGES" ></p>
                                 
                             </form>
                         </div>
@@ -91,7 +91,7 @@
                                     <input type="password" name="password" class="txt" autocomplete="off" required>
                                 </p>
                                 <br>
-                                <p><input type="submit" class="btn" value="SAVE CHANGES"></p>
+                                <p><input type="submit" class="btn bg-[#717171]" value="SAVE CHANGES"></p>
                                 
                             </form>
                             <div class="column">
@@ -121,7 +121,7 @@
                                     <input type="password" name="newpassword2" class="txt" autocomplete="off" required>
                                 </p>
                                 <br>
-                                <p><input type="submit" class="btn" value="SAVE" ></p>
+                                <p><input type="submit" class="btn bg-[#717171]" value="SAVE" ></p>
                             </form>
                             <div class="column">
                             </div>
