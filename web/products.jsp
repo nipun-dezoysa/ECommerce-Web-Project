@@ -1,9 +1,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%@page import="mainPackage.DatabaseLogIn,mainPackage.Tools, models.*, java.util.ArrayList" %>
 <%
-    String query = "SELECT * FROM products";
+    String query = Tools.makeProductsQuery(request.getParameter("search"),request.getParameter("category"),request.getParameter("brand"));
     DatabaseLogIn db = new DatabaseLogIn();
-    ArrayList<Product> list = db.getAllProducts("  ORDER BY `Id` DESC;");
+    ArrayList<Product> list = Tools.filterList(db.getAllProducts(query+"  ORDER BY `Id` DESC;"),request.getParameter("color"),request.getParameter("size"));
+    
 %>
 <!DOCTYPE html>
 <html>
@@ -17,12 +18,21 @@
     <!-- content starts here-->
 
     <div class="main-container mb-5">
-        <h1 class="text-3xl my-10">Displaying results for "call of duty 4".</h1>
+        <% if(request.getParameter("search")!=null){ %>
+        <h1 class="text-3xl my-10">Displaying results for "<%=request.getParameter("search")%>".</h1>
+        <% }else{ %>
+        <h1 class="text-3xl my-10"><%= (request.getParameter("brand")!=null)? request.getParameter("brand") : "All" %> Shoes.</h1>
+        <% } %>
         <div class="flex flex-row w-full items-start">
           <form
             id="filter"
             class="w-[25%] border p-5 rounded-lg shadow flex flex-col gap-3"
           >
+              
+              <% if(request.getParameter("search")!=null){%>
+              <input type="hidden" name="search" value="<%=request.getParameter("search")%>"/>
+              <%}%>
+              
             <h2 class="text-lg font-semibold">Shop by</h2>
             <div>
               <label
@@ -35,10 +45,10 @@
                 name="category"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               >
-                <option selected>Any country</option>
-                <option value="men">Men's Shoes</option>
-                <option value="women">Men's Shoes</option>
-                <option value="kid">Men's Shoes</option>
+                <option selected value="any">Any Category</option>
+                <option value="mens">Men's Shoes</option>
+                <option value="womens">Women's Shoes</option>
+                <option value="kids">Kid's Shoes</option>
               </select>
             </div>
             <div>
@@ -52,10 +62,13 @@
                 name="color"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               >
-                <option selected>Any color</option>
-                <option value="men">Men's Shoes</option>
-                <option value="women">Men's Shoes</option>
-                <option value="kid">Men's Shoes</option>
+                <option selected value="any">Any color</option>
+                <%
+                    ArrayList<String> colors = db.getAllColors();
+                    for(String color:colors){
+                %>
+                <option value="<%= color %>"><%= color %></option>
+                <%}%>
               </select>
             </div>
             <div>
@@ -69,10 +82,13 @@
                 name="brand"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               >
-                <option selected>Any Brand</option>
-                <option value="men">Men's Shoes</option>
-                <option value="women">Men's Shoes</option>
-                <option value="kid">Men's Shoes</option>
+                <option selected value="any">Any Brand</option>
+                <%
+                    ArrayList<String> brands = db.getAllBrands();
+                    for(String color:brands){
+                %>
+                <option value="<%= color %>"><%= color %></option>
+                <%}%>
               </select>
             </div>
             <div>
@@ -80,32 +96,26 @@
                 >Size</label
               >
               <div class="flex flex-wrap gap-1">
+                
+                <%
+                    ArrayList<String> sizes = db.getAllSizes();
+                    for(int i=0;i<sizes.size();i++){
+                %>
                 <div>
                   <input
                     type="radio"
                     name="size"
-                    id="size"
+                    id="size<%= i %>"
                     class="hidden peer"
+                    value="<%= sizes.get(i) %>"
                   />
                   <label
-                    for="size"
+                    for="size<%= i %>"
                     class="peer-checked:bg-primary peer-checked:text-white hover:bg-primary hover:text-white duration-300 p-2.5 block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
-                    >44</label
+                    ><%= sizes.get(i) %></label
                   >
                 </div>
-                <div>
-                  <input
-                    type="radio"
-                    name="size"
-                    id="size"
-                    class="hidden peer"
-                  />
-                  <label
-                    for="size"
-                    class="peer-checked:bg-primary peer-checked:text-white hover:bg-primary hover:text-white duration-300 p-2.5 block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
-                    >44</label
-                  >
-                </div>
+                <%}%>
               </div>
             </div>
             <button
@@ -116,8 +126,8 @@
             </button>
           </form>
           <div class="w-[75%] px-5 flex flex-col">
-            <p class="text-sm text-gray-400">Showing 1–12 of 28 results</p>
-            <div class="flex flex-wrap gap-2 justify-between py-4">
+            <p class="text-sm text-gray-400">Showing <%= list.size() %> results</p>
+            <div class="flex flex-wrap gap-2 py-4">
                 <% for(Product pro : list){ %>
                     <jsp:include page="./WEB-INF/components/productCard.jsp">
                     <jsp:param name="id" value="<%= pro.getId()%>" />
@@ -125,7 +135,7 @@
                 <% } %>
             </div>
             <!-- Pagination -->
-            <nav class="flex items-center gap-x-1 justify-center">
+<!--            <nav class="flex items-center gap-x-1 justify-center">
               <button
                 type="button"
                 class="min-h-[38px] min-w-[38px] py-2 px-2.5 inline-flex justify-center items-center gap-x-1.5 text-sm rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
@@ -182,7 +192,7 @@
                   <path d="m9 18 6-6-6-6"></path>
                 </svg>
               </button>
-            </nav>
+            </nav>-->
             <!-- End Pagination -->
           </div>
         </div>
@@ -191,6 +201,26 @@
     <!-- contents end here -->
    
     <jsp:include page="./WEB-INF/components/footer.jsp" />
+    
+    <script>
+        $(document).ready(function () {
+  $("#filter").submit(function (e) {  
+    e.preventDefault();
+    var formData = new FormData(this);
+    if (formData.get("category") == "any") {
+      formData.delete("category");
+    }
+    if (formData.get("color") == "any") {
+      formData.delete("color");
+    }
+    if (formData.get("brand") == "any") {
+      formData.delete("brand");
+    }
+    const asString = new URLSearchParams(formData).toString();
+    location.href = "./products.jsp?" + asString;
+  });
+});
+    </script>
   </body>
 </html>
 

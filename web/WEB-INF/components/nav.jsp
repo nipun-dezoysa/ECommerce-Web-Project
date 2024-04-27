@@ -24,23 +24,23 @@
         <img class="h-[30px] lg:h-[40px]" src="<%=path%>img/1.png" alt="" />
       </a>
       <div class="flex gap-4 max-lg:hidden">
-        <a href="#" class="hover:text-primaryLight font-semibold">NEW</a>
-        <a href="#" class="hover:text-primaryLight font-semibold">MEN</a>
-        <a href="#" class="hover:text-primaryLight font-semibold">WOMEN</a>
-        <a href="#" class="hover:text-primaryLight font-semibold">KIDS</a>
-        <a href="#" class="hover:text-primaryLight font-thin">NIKE</a>
-        <a href="#" class="hover:text-primaryLight font-thin">ADIDAS</a>
+        <a href="<%=path%>products.jsp" class="hover:text-primaryLight font-semibold">All</a>
+        <a href="<%=path%>products.jsp?category=mens" class="hover:text-primaryLight font-semibold">MEN</a>
+        <a href="<%=path%>products.jsp?category=womens" class="hover:text-primaryLight font-semibold">WOMEN</a>
+        <a href="<%=path%>products.jsp?category=kids" class="hover:text-primaryLight font-semibold">KIDS</a>
+        <a href="<%=path%>products.jsp?brand=Nike" class="hover:text-primaryLight font-thin">NIKE</a>
+        <a href="<%=path%>products.jsp?brand=Adidas" class="hover:text-primaryLight font-thin">ADIDAS</a>
       </div>
     </div>
     <div class="flex items-center gap-5 max-sm:gap-3 relative">
       <form
-        action="search.jsp"
+        action="products.jsp"
         class="max-lg:hidden block flex items-center w-[200px] rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6"
       >
         <input
           class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0 p-0"
           type="text"
-          name="keyword"
+          name="search"
           id="search"
           placeholder="Search Product"
           required
@@ -145,32 +145,32 @@
   <div class="py-4 overflow-y-auto">
       <ul class="space-y-2 font-medium">
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="<%=path%>products.jsp" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <span class="flex-1 ms-3 whitespace-nowrap">All Products</span>
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="<%=path%>products.jsp?category=mens" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <span class="flex-1 ms-3 whitespace-nowrap">Men's Shoes</span>
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="<%=path%>products.jsp?category=womens" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <span class="flex-1 ms-3 whitespace-nowrap">Women's Shoes</span>
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="<%=path%>products.jsp?category=kids" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <span class="flex-1 ms-3 whitespace-nowrap">Kid's Shoes</span>
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="<%=path%>products.jsp?brand=Nike" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <span class="flex-1 ms-3 whitespace-nowrap">Nike</span>
             </a>
          </li>
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="<%=path%>products.jsp?brand=Adidas" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <span class="flex-1 ms-3 whitespace-nowrap">Adidas</span>
             </a>
          </li>

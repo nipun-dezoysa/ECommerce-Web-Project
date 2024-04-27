@@ -169,8 +169,8 @@ static void basicExecute(String query){
             try {
                 ResultSet rs= st.executeQuery(Query);
                 while(rs.next()){
-                    Product p = new Product(rs.getInt("id"),rs.getString("name"),Tools.reversToText(rs.getString("description")),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
-                    pl.add(p);
+//                    Product p = new Product(rs.getInt("id"),rs.getString("name"),Tools.reversToText(rs.getString("description")),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
+                    pl.add(getProduct(rs.getString("id")));
                 }
                 st.close();
             } catch (SQLException ex) {
@@ -631,4 +631,46 @@ static void basicExecute(String query){
       basicExecute("DELETE FROM abook WHERE aid="+id);
   }
  
+  public ArrayList<String> getAllColors(){
+      connectToDb();
+      ArrayList<String> list = new ArrayList<>();
+      try{
+        ResultSet rs = st.executeQuery("SELECT ccode FROM `colors` GROUP BY ccode;");
+        while(rs.next()){
+            list.add(rs.getString(1));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return list;
+  }
+  public ArrayList<String> getAllBrands(){
+      connectToDb();
+      ArrayList<String> list = new ArrayList<>();
+      try{
+        ResultSet rs = st.executeQuery("SELECT brand FROM `products` GROUP BY brand;");
+        while(rs.next()){
+            list.add(rs.getString(1));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return list;
+  }
+  public ArrayList<String> getAllSizes(){
+      connectToDb();
+      ArrayList<String> list = new ArrayList<>();
+      try{
+        ResultSet rs = st.executeQuery("SELECT size FROM `sizes` GROUP BY size;");
+        while(rs.next()){
+            list.add(rs.getString(1));
+        }
+         
+     }catch(SQLException ex){
+        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+     }
+     return list;
+  }
 }

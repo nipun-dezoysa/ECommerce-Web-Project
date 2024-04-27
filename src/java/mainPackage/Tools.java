@@ -8,7 +8,7 @@ package mainPackage;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import models.Order;
+import models.*;
 
 /**
  *
@@ -103,5 +103,48 @@ public class Tools {
         }
         val+="']";
         return val;
+    }
+    
+    public static String makeProductsQuery(String name,String type,String brand){
+        String query="";
+        if(name!=null||type!=null||brand!=null){
+            query+="WHERE ";
+            if(name!=null){
+                query+="name LIKE '%"+name+"%'";
+                if(type!=null||brand!=null)query+=" AND ";
+            }
+            if(brand!=null){
+                query+="brand LIKE '%"+brand+"%'";
+                if(type!=null)query+=" AND ";
+            }
+            if(type!=null){
+                if(type.equals("mens"))query+="type=1";
+                else if(type.equals("womens"))query+="type=2";
+                else query+="type=3";
+            }
+        }
+        
+        return query;
+    }
+    
+    public static ArrayList<Product> filterList(ArrayList<Product> list,String color,String size){
+        ArrayList<Product> result = new ArrayList<>();
+        for(Product a : list){
+            boolean cc = false;
+            boolean ss = false;
+            if(color!=null){
+                for(Color c : a.getColors()){
+                    if(c.getValue().equals(color))cc=true;
+                }
+            }else cc=true;
+            
+            if(size!=null){
+                for(Size s : a.getSizes()){
+                    if(s.getValue().equals(size))ss=true;
+                }
+            }else ss=true;
+            if(cc && ss)result.add(a);
+        }
+        return result;
     }
 }
