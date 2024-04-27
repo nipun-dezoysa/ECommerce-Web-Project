@@ -145,6 +145,22 @@
   <div class="py-4 overflow-y-auto">
       <ul class="space-y-2 font-medium">
          <li>
+            <form
+        action="products.jsp"
+        class="bg-white block flex items-center w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6"
+      >
+        <input
+          class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0 p-0"
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search Product"
+          required
+        />
+        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+         </li>
+         <li>
             <a href="<%=path%>products.jsp" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <span class="flex-1 ms-3 whitespace-nowrap">All Products</span>
             </a>

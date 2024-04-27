@@ -7,7 +7,7 @@
   id="card<%=product.getId()%>"
   class="rounded-xl overflow-hidden bg-white p-2 hover:shadow-md duration-300 shrink-0 border ease-in-out"
 >
-  <div class="w-[185px] lg:w-[210px] h-[184px] relative overflow-hidden rounded-lg flex flex-col justify-center">
+  <div class="w-[190px] lg:w-[210px] h-[184px] relative overflow-hidden rounded-lg flex flex-col justify-center">
     <img src="./img/products/<%= product.getImg1() %>" alt="" class="w-full h-auto" />
     <div
       class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-200 rounded-md flex justify-center items-center duration-300 ease-in-out"
