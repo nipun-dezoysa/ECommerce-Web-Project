@@ -23,10 +23,10 @@
         <% }else{ %>
         <h1 class="text-3xl my-10"><%= (request.getParameter("brand")!=null)? request.getParameter("brand") : "All" %> Shoes.</h1>
         <% } %>
-        <div class="flex flex-row w-full items-start">
+        <div class="flex flex-col max-lg:flex-col-reverse lg:flex-row  w-full items-start">
           <form
             id="filter"
-            class="w-[25%] border p-5 rounded-lg shadow flex flex-col gap-3"
+            class="w-full lg:w-[25%] border p-5 rounded-lg shadow flex flex-col gap-3"
           >
               
               <% if(request.getParameter("search")!=null){%>
@@ -125,9 +125,9 @@
               Filter
             </button>
           </form>
-          <div class="w-[75%] px-5 flex flex-col">
+          <div class="lg:w-[75%] lg:px-5 flex flex-col ">
             <p class="text-sm text-gray-400">Showing <%= list.size() %> results</p>
-            <div class="flex flex-wrap gap-2 py-4">
+            <div class="flex flex-wrap gap-2 py-4 max-md:justify-around">
                 <% for(Product pro : list){ %>
                     <jsp:include page="./WEB-INF/components/productCard.jsp">
                     <jsp:param name="id" value="<%= pro.getId()%>" />
