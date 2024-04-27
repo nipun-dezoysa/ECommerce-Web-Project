@@ -1,3 +1,10 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
+<%
+    String query = "SELECT * FROM products";
+    DatabaseLogIn db = new DatabaseLogIn();
+    ArrayList<Product> list = db.getAllProducts("  ORDER BY `Id` DESC;");
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,7 +18,7 @@
 
     <div class="main-container mb-5">
         <h1 class="text-3xl my-10">Displaying results for "call of duty 4".</h1>
-        <div class="flex w-full">
+        <div class="flex flex-row w-full items-start">
           <form
             id="filter"
             class="w-[25%] border p-5 rounded-lg shadow flex flex-col gap-3"
@@ -109,8 +116,14 @@
             </button>
           </form>
           <div class="w-[75%] px-5 flex flex-col">
-            <p class="text-sm text-gray-400">Showing 1?12 of 28 results</p>
-            <div></div>
+            <p class="text-sm text-gray-400">Showing 1–12 of 28 results</p>
+            <div class="flex flex-wrap gap-2 justify-between py-4">
+                <% for(Product pro : list){ %>
+                    <jsp:include page="./WEB-INF/components/productCard.jsp">
+                    <jsp:param name="id" value="<%= pro.getId()%>" />
+                    </jsp:include>
+                <% } %>
+            </div>
             <!-- Pagination -->
             <nav class="flex items-center gap-x-1 justify-center">
               <button
