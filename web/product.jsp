@@ -41,11 +41,13 @@
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
               checked
             />
-            <img
-              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+                <img
+              class="w-full h-auto"
               src="./img/products/<%= pr.getImg1() %>"
               alt="product image"
             />
+            </div>
           </div>
           <div class="h-[24%] relative group" onclick="chnge(1)">
             <input
@@ -53,11 +55,13 @@
               name="imggroup"
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
-            <img
-              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+                <img
+              class="w-full h-auto"
               src="./img/products/<%= pr.getImg2() %>"
               alt="product image"
             />
+            </div>
           </div>
           <div class="h-[24%] relative group" onclick="chnge(2)">
             <input
@@ -65,11 +69,13 @@
               name="imggroup"
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
-            <img
-              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+                <img
+              class="w-full h-auto"
               src="./img/products/<%= pr.getImg3() %>"
               alt="product image"
             />
+            </div>
           </div>
           <div class="h-[24%] relative group" onclick="chnge(3)">
             <input
@@ -77,21 +83,24 @@
               name="imggroup"
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
-            <img
-              class="h-full aspect-square rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out"
+            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+                <img
+              class="w-full h-auto"
               src="./img/products/<%= pr.getImg4() %>"
               alt="product image"
             />
+            </div>
           </div>
         </div>
 
         <!-- cover pics -->
         <div class="h-full overflow-hidden rounded-xl">
           <div id="sl" class="h-[400%] w-full duration-700 ease-in-out">
-            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg1() %>" alt="product image" />
-            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg2() %>" alt="product image" />
-            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg3() %>" alt="product image" />
-            <img class="h-[25%] aspect-square" src="./img/products/<%= pr.getImg4() %>" alt="product image" />
+              <div class="h-[25%] aspect-square flex items-center overflow-hidden"><img class="w-full h-auto" src="./img/products/<%= pr.getImg1() %>" alt="product image" /></div>
+              <div class="h-[25%] aspect-square flex items-center overflow-hidden"><img class="w-full h-auto" src="./img/products/<%= pr.getImg2() %>" alt="product image" /></div>
+              <div class="h-[25%] aspect-square flex items-center overflow-hidden"><img class="w-full h-auto" src="./img/products/<%= pr.getImg3() %>" alt="product image" /></div>
+              <div class="h-[25%] aspect-square flex items-center overflow-hidden"><img class="w-full h-auto" src="./img/products/<%= pr.getImg4() %>" alt="product image" /></div>
+            
           </div>
         </div>
       </div>
