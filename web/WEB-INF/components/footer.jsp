@@ -25,8 +25,9 @@
       <div class="-mx-4 flex flex-wrap justify-between">
         <div class="px-2 my-4 w-full sm:w-auto">
           <div>
-            <h2 class="inline-block text-2xl font-bold mb-3">Contact Us</h2>
-
+              <a href="contactus.jsp" >
+            <h2 class="inline-block text-2xl font-bold mb-3 hover:text-blue-400">Contact Us</h2>
+              
           </div>
           <ul class="leading-8">
             <li class="flex items-center">
@@ -95,19 +96,19 @@
               </div>
             </div>
           </ul>
+        </a> 
         </div>
 
         <div class="px-2 my-4 w-full sm:w-auto">
           <div>
-            <h2 class="inline-block text-2xl font-bold mb-3">Category</h2>
+              <a href="products.jsp">
+            <h2 class="inline-block text-2xl font-bold mb-3 hover:text-blue-400">Category</h2>
+              </a>
           </div>
           <ul class="leading-8">
-            <li><a href="#" class="hover:text-blue-400">Category 1</a></li>
-            <li><a href="#" class="hover:text-blue-400">Category 2</a></li>
-            <li><a href="#" class="hover:text-blue-400">Category 3</a></li>
-            <li><a href="#" class="hover:text-blue-400">Category 4</a></li>
-            <li><a href="#" class="hover:text-blue-400">Category 5</a></li>
-            <li><a href="#" class="hover:text-blue-400">Category 6</a></li>
+            <li><a href="products.jsp?category=mens" class="hover:text-blue-400">Men's Shoes</a></li>
+            <li><a href="products.jsp?category=womens" class="hover:text-blue-400">Women's Shoes</a></li>
+            <li><a href="products.jsp?category=kids" class="hover:text-blue-400">Kid's Shoes</a></li>
           </ul>
         </div>
 
@@ -132,8 +133,7 @@
             <li><a href="#" class="hover:text-blue-400">Product List</a></li>
             <li><a href="#" class="hover:text-blue-400">Order Tracking</a></li>
             <li><a href="#" class="hover:text-blue-400">Product Guide</a></li>
-            <li><a href="#" class="hover:text-blue-400">Shopping Cart</a></li>
-            <li><a href="#" class="hover:text-blue-400">Tech Blog</a></li>
+            <li><a href="cart.jsp" class="hover:text-blue-400">Shopping Cart</a></li>
           </ul>
         </div>
         <div class="px-2 my-4 w-full sm:w-auto">
