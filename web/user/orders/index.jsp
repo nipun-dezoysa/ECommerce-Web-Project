@@ -92,8 +92,11 @@
                               <div class="py-2 px-5 flex flex-col w-full gap-2">
                                   
                                 <%
-                                    for(OrderItem item : order.getItems()){
+                                    for(int i=0;i<order.getItems().size();i++){
+                                       OrderItem item = order.getItems().get(i);
                                        Product pr = db.getProduct(item.getPid()+"");
+                                       String iconclass = "regular";
+                                       if(db.isExistWishlist(user.getId(), item.getPid())) iconclass = "solid";
                                 %>
                                 <div class="flex justify-between items-center">
                                   <div class="flex gap-5 w-[40%]">
@@ -111,17 +114,28 @@
                                   <div class="text-gray-400 w-[20%]">Price: LKR <%= item.getformatPrice() %></div>
                                   <div class="text-gray-400 w-[10%]">Qt: <%= item.getQuantity() %></div>
                                   <div class="flex flex-col gap-2 text-sm">
-                                      <a class="bg-primary text-white text-center rounded-full py-2 px-4 hover:bg-primaryLight duration-300" href="#">Add to wishlist</a>
+                                      <form class="wforms">
+                                          <input type="hidden" name="id" value="<%= item.getPid() %>"/>
+                                          <button type="submit" class="bg-primary text-white text-center rounded-full py-2 px-4 hover:bg-primaryLight duration-300">
+                                              <i class="fa-<%= iconclass%> fa-heart group-hover:mb-2 duration-300 ease-in-out picon<%= item.getPid() %>"></i>
+                                              Add to wishlist
+                                          </button>
+                                      </form>
+                                      
                                       <a class="bg-primary text-white text-center rounded-full py-2 px-4 hover:bg-primaryLight duration-300" href="../../product.jsp?id=<%= item.getPid() %>">Buy now</a>
                                   </div>
                                 </div>
+                                <%if(i+1<order.getItems().size()){%>
                                 <hr>
-                                <%}%>
+                                <%}}%>
                                 
                               </div>
                             </div>
-                            <% } %>
-                            
+                            <% } 
+                               if(orders.size()==0){
+                            %>
+                            <div class="text-center text-gray-400 pt-2 text-lg">There is no orders.</div>
+                            <%}%>
                         </div>
                     </div>
                 </div>
@@ -132,6 +146,72 @@
             <jsp:param name="path" value="../../"/>
             </jsp:include> 
 
+                            
+            <script>
+        
+        const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+        $(document).ready(function () {
+        $(".wforms").submit(function (e) {
+          e.preventDefault();
+          var formData = new FormData(this);
+          var id = formData.get("id");
+            $.ajax({
+              type: "POST",
+              url: "../../WishlistServlet",
+              data: formData,
+              processData: false,
+              contentType: false,
+              success: function (response) {
+                 var obj = JSON.parse(response);
+                 if(obj.st=="added"){
+                    var coll = document.getElementsByClassName("picon"+id);
+                    for(var i=0;i<coll.length;i++){
+                        coll[i].classList.remove("fa-regular");
+                        coll[i].classList.add("fa-solid");
+                    }
+                    Toast.fire({
+                        icon: "success",
+                        title: "Item added to Wishlist"
+                    });
+                    document.getElementById("wishno").innerHTML = obj.qt;
+                 }else if(obj.st=="removeds"){
+                    var coll = document.getElementsByClassName("picon"+id);
+                    for(var i=0;i<coll.length;i++){
+                        coll[i].classList.remove("fa-solid");
+                        coll[i].classList.add("fa-regular");
+                    }
+                    Toast.fire({
+                        icon: "success",
+                        title: "Item removed frm Wishlist"
+                    }); 
+                    document.getElementById("wishno").innerHTML = obj.qt;
+                 }else{
+                    Toast.fire({
+                        icon: "warning",
+                        title: "You are not login."
+                    }); 
+                 }
+                
+              },
+              error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+              },
+            });
+        });
+        
+      });
+    </script>                
+                            
     </body>
 </html>
 <%}%>

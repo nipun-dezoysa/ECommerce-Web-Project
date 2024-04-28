@@ -38,7 +38,7 @@
                     <ul>
                         <li><a href="index.jsp"><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My Details</a></li>
                         <li class="bg-[#405270] text-white"><div><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address Book</div></li>
-                        <li><a href="order.jsp"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
+                        <li><a href="./orders/"><i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders</a></li>
                         <li><a href="accountsettings.jsp"><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a></li>
                     </ul>
                 </div>
