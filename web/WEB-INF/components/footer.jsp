@@ -22,10 +22,10 @@
       </form>
     </div>
     <div class="container px-10 mx-auto">
-      <div class="-mx-4 flex flex-wrap justify-between">
+      <div class="flex flex-wrap justify-between">
         <div class="px-2 my-4 w-full sm:w-auto">
+          <a href="contactus.jsp" >
           <div>
-              <a href="contactus.jsp" >
             <h2 class="inline-block text-2xl font-bold mb-3 hover:text-blue-400">Contact Us</h2>
               
           </div>
@@ -97,6 +97,7 @@
             </div>
           </ul>
         </a> 
+            <img class="block w-[200px] mt-4" src="./img/2.png"/>
         </div>
 
         <div class="px-2 my-4 w-full sm:w-auto">
@@ -192,7 +193,7 @@
         </div>
       </div>
   <div
-    class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+    class="w-full mx-auto max-w-screen-xl md:flex md:items-center md:justify-between border-t-2 border-primaryLight pt-2"
   >
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
       >Copyright @2024
