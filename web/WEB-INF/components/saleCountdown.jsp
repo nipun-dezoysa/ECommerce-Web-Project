@@ -1,5 +1,5 @@
 
-<div class="bg-yellow-500 text-black flex justify-evenly items-center font-mono p-5">
+<div class="bg-yellow-500 text-black flex justify-evenly items-center font-mono p-5 ">
   <div class="flex flex-col items-center">
     <h1 class="text-4xl font-bold">Flash Sale Ends In</h1>
     <div class="flex gap-5 font-semibold" id="countdown">
@@ -17,7 +17,7 @@
       </div>
       <div class="flex flex-col items-center">
         <div>Seconds</div>
-        <div class="text-3xl" id="seconds">00</div>
+        <div class="text-3xl   animate-ping" id="seconds">00</div>
       </div>
     </div>
   </div>
