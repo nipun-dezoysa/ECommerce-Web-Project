@@ -133,8 +133,7 @@
             <li><a href="#" class="hover:text-blue-400">Product List</a></li>
             <li><a href="#" class="hover:text-blue-400">Order Tracking</a></li>
             <li><a href="#" class="hover:text-blue-400">Product Guide</a></li>
-            <li><a href="#" class="hover:text-blue-400">Shopping Cart</a></li>
-            <li><a href="#" class="hover:text-blue-400">Tech Blog</a></li>
+            <li><a href="cart.jsp" class="hover:text-blue-400">Shopping Cart</a></li>
           </ul>
         </div>
         <div class="px-2 my-4 w-full sm:w-auto">
