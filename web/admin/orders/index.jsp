@@ -1,3 +1,4 @@
+<%@page import="mainPackage.Tools"%>
 <% String admin = (String)session.getAttribute("admin"); 
     if(admin == null){
 %>
@@ -134,32 +135,7 @@
                    
                    if(acc.size()>0){
                    for(int i=0;i<acc.size();i++){
-                       
-                   String c="";
-                  String stt = "";
-                  if(acc.get(i).getStatus()==1){
-                      c="bg-yellow-200 text-yellow-400";
-                      stt="New";
-                  }else if(acc.get(i).getStatus()==2){
-                      c="bg-purple-200 text-purple-400";
-                      stt="Processing";
-                  }else if(acc.get(i).getStatus()==3){
-                      c="bg-blue-200 text-blue-400";
-                      stt="Shipped";
-                  }else if(acc.get(i).getStatus()==4){
-                      c="bg-green-200 text-green-400";
-                      stt="Delivered";
-                  }else if(acc.get(i).getStatus()==5){
-                      c="bg-red-200 text-red-400";
-                      stt="Canceled";
-                  }else if(acc.get(i).getStatus()==6){
-                      c="bg-red-200 text-red-400";
-                      stt="Declined";
-                  }
-                  else{
-                      c="bg-red-200 text-red-400";
-                      stt="Returned";
-                  }
+                   String[]cc = Tools.getOrderColor(acc.get(i));
                %>
                <a href="./order.jsp?id=<%= acc.get(i).getId() %>"  class="list-item justify-between">
                   <div class="item-width">#<%= acc.get(i).getId() %></div>
@@ -168,7 +144,7 @@
                 <div class="item-width max-md:hidden"><%= acc.get(i).getTime() %></div>
                 <div class="item-width max-md:hidden"><%= acc.get(i).getItems().size() %></div>
                 <div class="item-width">LKR <%= acc.get(i).getTotal() %></div>
-                <div class="item-width flex items-center justify-center md:px-5"><div class="md:w-full text-xs rounded-full px-2 py-1 <%=c%>"><%=stt%></div></div>
+                <div class="item-width flex items-center justify-center md:px-5"><div class="md:w-full text-xs rounded-full px-2 py-1 <%=cc[0]%>"><%=cc[1]%></div></div>
               </a>
               <%}}else{%>
               <div class="list-item justify-center">No Records Found</div>

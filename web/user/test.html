@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>My Orders</title>
+    <link rel="stylesheet" href="../css/userstyle.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css"
+      integrity="sha512-U9Y1sGB3sLIpZm3ePcrKbXVhXlnQNcuwGQJ2WjPjnp6XHqVTdgIlbaDzJXJIAuCTp3y22t+nhI4B88F/5ldjFA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../js/tailwindconfig.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <style type="text/tailwindcss">
+      @layer utilities {
+        body {
+          @apply flex justify-center;
+        }
+        .frameBox {
+          @apply relative w-full max-w-[1920px] min-h-screen flex flex-col;
+        }
+        .main-container {
+          @apply lg:px-[100px] md:px-[50px] px-5 w-full;
+        }
+        .inputs {
+          @apply border rounded-lg p-2 outline-primary w-full placeholder:text-gray-400;
+        }
+        .input-lable {
+          @apply block mb-1 text-sm font-medium text-gray-900;
+        }
+        .input-row {
+          @apply flex gap-2;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ----dont delete below line---- -->
+    <div class="frameBox">
+      <!-- ----dont delete above line---- -->
+
+      <!--navbar code starts here-->
+      <div
+        class="bg-primary py-1 font-mono text-white flex justify-center z-50"
+      >
+        Just arrived. Hurry up!
+      </div>
+      <div
+        class="sticky top-0 text-primary bg-white flex justify-between items-center py-3 main-container border-b z-40"
+      >
+        <button
+          class="lg:hidden text-white bg-primary hover:bg-primaryLight focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none"
+          type="button"
+          data-drawer-target="drawer-navigation"
+          data-drawer-show="drawer-navigation"
+          aria-controls="drawer-navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="flex gap-10 items-center">
+          <a href="../index.jsp">
+            <img class="h-[30px] lg:h-[40px]" src="../img/1.png" alt="" />
+          </a>
+          <div class="flex gap-4 max-lg:hidden">
+            <a
+              href="../products.jsp"
+              class="hover:text-primaryLight font-semibold"
+              >All</a
+            >
+            <a
+              href="../products.jsp?category=mens"
+              class="hover:text-primaryLight font-semibold"
+              >MEN</a
+            >
+            <a
+              href="../products.jsp?category=womens"
+              class="hover:text-primaryLight font-semibold"
+              >WOMEN</a
+            >
+            <a
+              href="../products.jsp?category=kids"
+              class="hover:text-primaryLight font-semibold"
+              >KIDS</a
+            >
+            <a
+              href="../products.jsp?brand=Nike"
+              class="hover:text-primaryLight font-thin"
+              >NIKE</a
+            >
+            <a
+              href="../products.jsp?brand=Adidas"
+              class="hover:text-primaryLight font-thin"
+              >ADIDAS</a
+            >
+          </div>
+        </div>
+        <div class="flex items-center gap-5 max-sm:gap-3 relative">
+          <form
+            action="products.jsp"
+            class="max-lg:hidden block flex items-center w-[200px] rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6"
+          >
+            <input
+              class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0 p-0"
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search Product"
+              required
+            />
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+          </form>
+
+          <a
+            href="../wishlist.jsp"
+            class="flex items-center gap-2 hover:text-primaryLight relative"
+          >
+            <div class="text-2xl"><i class="fa-regular fa-heart"></i></div>
+
+            <div
+              id="wishno"
+              class="absolute top-[-7px] right-[-8px] text-xs font-bold w-5 h-5 flex items-center justify-center bg-green-300 rounded-full text-green-800"
+            >
+              0
+            </div>
+          </a>
+
+          <a
+            href="../cart.jsp"
+            class="flex items-center gap-2 hover:text-primaryLight relative"
+          >
+            <div class="text-2xl">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+
+            <div
+              id="cartno"
+              class="absolute top-[-7px] right-[-8px] text-xs font-bold w-5 h-5 flex items-center justify-center bg-green-300 rounded-full text-green-800"
+            >
+              1
+            </div>
+          </a>
+
+          <div class="flex items-center gap-2 max-lg:hidden">
+            <div class="text-2xl"><i class="fa-solid fa-user"></i></div>
+            <div class="text-sm flex flex-col max-sm:hidden">
+              <a class="hover:text-primaryLight" href="../user">Account</a>
+              <button
+                id="logout"
+                class="logoutss font-bold font-mono hover:text-primaryLight"
+              >
+                logout
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--navbar code end here-->
+
+      <div
+        id="drawer-navigation"
+        class="fixed top-0 left-0 z-50 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
+        tabindex="-1"
+        aria-labelledby="drawer-navigation-label"
+      >
+        <h5
+          id="drawer-navigation-label"
+          class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400"
+        >
+          Menu
+        </h5>
+        <button
+          type="button"
+          data-drawer-hide="drawer-navigation"
+          aria-controls="drawer-navigation"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <span class="sr-only">Close menu</span>
+        </button>
+        <div class="py-4 overflow-y-auto">
+          <ul class="space-y-2 font-medium">
+            <li>
+              <form
+                action="products.jsp"
+                class="bg-white block flex items-center w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:outline-none focus:ring-primaryLight sm:text-sm sm:leading-6"
+              >
+                <input
+                  class="focus:outline-none w-full placeholder:text-gray-400 border-0 focus:ring-0 p-0"
+                  type="text"
+                  name="search"
+                  id="search"
+                  placeholder="Search Product"
+                  required
+                />
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+              </form>
+            </li>
+            <li>
+              <a
+                href="../products.jsp"
+                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span class="flex-1 ms-3 whitespace-nowrap">All Products</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="../products.jsp?category=mens"
+                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span class="flex-1 ms-3 whitespace-nowrap">Men's Shoes</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="../products.jsp?category=womens"
+                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span class="flex-1 ms-3 whitespace-nowrap">Women's Shoes</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="../products.jsp?category=kids"
+                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span class="flex-1 ms-3 whitespace-nowrap">Kid's Shoes</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="../products.jsp?brand=Nike"
+                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span class="flex-1 ms-3 whitespace-nowrap">Nike</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="../products.jsp?brand=Adidas"
+                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <span class="flex-1 ms-3 whitespace-nowrap">Adidas</span>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="./user/"
+                class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <i class="fa-solid fa-user"></i>
+                <span class="flex-1 ms-3 whitespace-nowrap">Account</span>
+              </a>
+            </li>
+            <li>
+              <div
+                href="#"
+                class="logoutss cursor-pointer flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="flex-1 ms-3 whitespace-nowrap">Logout</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- clear all the lines after this -->
+
+      <div class="main-container wrapper">
+        <div class="sidebar">
+          <h2>My Orders</h2>
+          <ul>
+            <li>
+              <a href="index.jsp"
+                ><i class="fa-solid fa-circle-user"></i>&nbsp;&nbsp;My
+                Details</a
+              >
+            </li>
+            <li>
+              <a href="addressbook.jsp"
+                ><i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;My Address
+                Book</a
+              >
+            </li>
+            <li class="bg-[#405270] text-white">
+              <div>
+                <i class="fa-solid fa-bag-shopping"></i>&nbsp;&nbsp;My Orders
+              </div>
+            </li>
+            <li>
+              <a href="accountsettings.jsp"
+                ><i class="fa-solid fa-gear"></i>&nbsp;&nbsp;Account Settings</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="w_box">
+          <h1>My Orders</h1>
+          <br />
+          <div class="orders">
+            <div class="ordernav">
+              <a class="active" href="#">All</a>
+              <a href="#">To Pay</a>
+              <a href="#">To Ship</a>
+              <a href="#">To Receive</a>
+            </div>
+            <hr />
+            <div class="flex flex-col gap-2 mt-3">
+              <div
+                class="border border-gray-300 rounded-lg overflow-hidden flex flex-col items-start"
+              >
+                <div class="py-2 px-5 bg-gray-100 border-b flex gap-10 w-full">
+                  <div class="font-semibold">
+                    <div class="text-gray-400">Order Placed</div>
+                    <div>June 2, 2023</div>
+                  </div>
+                  <div class="font-semibold">
+                    <div class="text-gray-400">Total</div>
+                    <div>LKR 11,200.00</div>
+                  </div>
+                  <div class="font-semibold ml-auto flex flex-col items-end">
+                    <div class="text-gray-400">Order #12</div>
+                    <a
+                      href="#"
+                      class="underline text-primaryLight hover:text-primary"
+                      >View order details</a
+                    >
+                  </div>
+                </div>
+                <div
+                  class="mx-5 my-2 bg-violet-200 text-violet-500 px-2 rounded-full"
+                >
+                  Processing
+                </div>
+                <div class="py-2 px-5 flex flex-col w-full gap-2">
+                  <div class="flex justify-between items-center">
+                    <div class="flex gap-5">
+                      <div
+                        class="w-[100px] h-[100px] bg-gray-300 rounded-lg overflow-hidden flex items-center justify-center"
+                      >
+                      <img class="w-full h-auto" src="../img/demo.jpg" alt="">
+                    </div>
+                      <div class="flex flex-col justify-evenly">
+                        <div class="font-semibold">Nike Air Max 90</div>
+                        <div class="text-gray-400">Size: 9.5</div>
+                        <div class="text-gray-400">Color: White</div>
+                      </div>
+                    </div>
+                    <div class="text-gray-400">Price: LKR 2,000.00</div>
+                    <div class="text-gray-400">Qt: 1</div>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <a class="bg-primary text-white text-center rounded-full py-2 px-4 hover:bg-primaryLight duration-300" href="#">Add to wishlist</a>
+                        <a class="bg-primary text-white text-center rounded-full py-2 px-4 hover:bg-primaryLight duration-300" href="#">Buy now</a>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="mt-auto">
+        <div class="bg-primary pt-2 pb-10 text-white">
+          <div
+            class="bg-primary py-5 text-white flex flex-col items-center justify-center"
+          >
+            <h1 class="text-xl lg:text-3xl font-bold mb-5">
+              Subscribe to get our updates
+            </h1>
+            <form action="#">
+              <div class="flex lg:w-[500px]">
+                <input
+                  type="email"
+                  placeholder="Enter your email address..."
+                  class="bg-white text-white px-2 rounded-l-lg px-4 py-2 focus:outline-none w-full mr-3 rounded-r-lg"
+                />
+                <button
+                  type="submit"
+                  class="bg-blue-500 hover:bg-blue-600 font-bold py-2 px-4 rounded-r-lg focus:outline-none rounded-l-lg"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="container px-10 mx-auto">
+            <div class="flex flex-wrap justify-between">
+              <div class="px-2 my-4 w-full sm:w-auto">
+                <a href="contactus.jsp">
+                  <div>
+                    <h2
+                      class="inline-block text-2xl font-bold mb-3 hover:text-blue-400"
+                    >
+                      Contact Us
+                    </h2>
+                  </div>
+                  <ul class="leading-8">
+                    <li class="flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-4 h-4 mr-2 mb-0"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                        />
+                      </svg>
+                      0112 555555
+                    </li>
+
+                    <li class="flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-4 h-4 mr-2 mb-0"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                        />
+                      </svg>
+                      <span> info.shoetopia.com</span>
+                    </li>
+                    <div>
+                      <div class="mb-0 mt-0">
+                        <li class="flex items-center mb-0">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="w-4 h-4 mr-2"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                            />
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                            />
+                          </svg>
+                          <address>NO 45, main street,</address>
+                        </li>
+                      </div>
+
+                      <div class="ml-6 pt-0">
+                        <address>Homagama.</address>
+                      </div>
+                    </div>
+                  </ul>
+                </a>
+                <img class="block w-[200px] mt-4" src="../img/2.png" />
+              </div>
+
+              <div class="px-2 my-4 w-full sm:w-auto">
+                <div>
+                  <a href="products.jsp">
+                    <h2
+                      class="inline-block text-2xl font-bold mb-3 hover:text-blue-400"
+                    >
+                      Category
+                    </h2>
+                  </a>
+                </div>
+                <ul class="leading-8">
+                  <li>
+                    <a
+                      href="products.jsp?category=mens"
+                      class="hover:text-blue-400"
+                      >Men's Shoes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="products.jsp?category=womens"
+                      class="hover:text-blue-400"
+                      >Women's Shoes</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="products.jsp?category=kids"
+                      class="hover:text-blue-400"
+                      >Kid's Shoes</a
+                    >
+                  </li>
+                </ul>
+              </div>
+
+              <div class="px-2 my-4 w-full sm:w-auto">
+                <div>
+                  <h2 class="inline-block text-2xl font-bold mb-3">Supports</h2>
+                </div>
+                <ul class="leading-8">
+                  <li><a href="#" class="hover:text-blue-400">About Us</a></li>
+                  <li>
+                    <a href="#" class="hover:text-blue-400">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-400">Return Policy</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-400">Help Center</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-400">Store Locations</a>
+                  </li>
+                  <li><a href="#" class="hover:text-blue-400">Careers</a></li>
+                </ul>
+              </div>
+              <div class="px-2 my-4 w-full sm:w-auto">
+                <div>
+                  <h2 class="inline-block text-2xl font-bold mb-3">Links</h2>
+                </div>
+                <ul class="leading-8">
+                  <li>
+                    <a href="#" class="hover:text-blue-400">Product List</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-400">Order Tracking</a>
+                  </li>
+                  <li>
+                    <a href="#" class="hover:text-blue-400">Product Guide</a>
+                  </li>
+                  <li>
+                    <a href="cart.jsp" class="hover:text-blue-400"
+                      >Shopping Cart</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="px-2 my-4 w-full sm:w-auto">
+                <div>
+                  <h2 class="inline-block text-2xl font-bold mb-3">
+                    Follow Us
+                  </h2>
+                </div>
+                <ul class="leading-8">
+                  <li class="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="mr-2"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-facebook"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"
+                      /></svg
+                    ><a href="#" class="hover:text-blue-400">Facebook</a>
+                  </li>
+
+                  <li class="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      class="mr-2"
+                      fill="currentColor"
+                      class="bi bi-instagram"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                      /></svg
+                    ><a href="#" class="hover:text-blue-400">Instergram</a>
+                  </li>
+
+                  <li class="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      class="mr-2"
+                      fill="currentColor"
+                      class="bi bi-twitter-x"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                      /></svg
+                    ><a href="#" class="hover:text-blue-400">Twitter</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div
+              class="w-full mx-auto max-w-screen-xl md:flex md:items-center md:justify-between border-t-2 border-primaryLight pt-2"
+            >
+              <span
+                class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+                >Copyright @2024
+                <a href="../" class="hover:underline">Shoetopia</a>. All Rights
+                Reserved.
+              </span>
+              <ul
+                class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+              >
+                <li>
+                  <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline me-4 md:me-6"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- dont delete below line -->
+    </div>
+    <!-- dont delete above line -->
+
+    <script>
+      $(document).ready(function () {
+        $(".logoutss").click(function () {
+          $.ajax({
+            type: "GET",
+            url: "../SignOutServelet",
+            success: function (response) {
+              location.reload();
+            },
+            error: function (xhr, status, error) {
+              console.error(xhr.responseText);
+            },
+          });
+        });
+      });
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>

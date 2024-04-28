@@ -80,6 +80,45 @@ public class Tools {
         String[] d = {c,stt};
         return d;          
     }
+    
+    public static String[] getOrderColorUser(Order a){
+        String c="";
+        String stt = "";
+        switch (a.getStatus()) {
+            case 1:
+                c="bg-purple-200 text-purple-400";
+                stt="Processing";
+                break;
+            case 2:
+                c="bg-purple-200 text-purple-400";
+                stt="Processing";
+                break;
+            case 3:
+                c="bg-blue-200 text-blue-400";
+                stt="Shipped";
+                break;
+            case 4:
+                c="bg-green-200 text-green-400";
+                stt="Delivered";
+                break;
+            case 5:
+                c="bg-red-200 text-red-400";
+                stt="Canceled";
+                break;
+            case 6:
+                c="bg-red-200 text-red-400";
+                stt="Declined";
+                break;
+            default:
+                c="bg-red-200 text-red-400";
+                stt="Returned";
+                break;
+        }
+                  
+        String[] d = {c,stt};
+        return d;
+    }
+    
     public static String getStringVal(ArrayList<Integer> a){
         String val = "["+a.get(0);
         for(int i=1;i<a.size();i++){
@@ -146,5 +185,22 @@ public class Tools {
             if(cc && ss)result.add(a);
         }
         return result;
+    }
+    
+    public static ArrayList<Order> filterOrders(ArrayList<Order> list ,String type){
+         ArrayList<Order> result = new ArrayList<>();
+         int st = 8;
+         if(type != null){
+             if(type.equals("toship")) st=2;
+             else if(type.equals("toreceive")) st=3;
+             else if(type.equals("delivered")) st=4;
+         }
+         for(Order a:list){
+             if(st==8)result.add(a);
+             else if(st==2 && a.getStatus()<=2)result.add(a);
+             else if(st==3 && a.getStatus()==3)result.add(a);
+             else if(st==4 && (a.getStatus()==4 || a.getStatus()==7))result.add(a);
+         }
+         return result;
     }
 }
