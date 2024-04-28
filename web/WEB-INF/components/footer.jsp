@@ -97,7 +97,7 @@
             </div>
           </ul>
         </a> 
-            <img class="block w-[200px] mt-4" src="./img/2.png"/>
+            <img class="block w-[200px] mt-4" src="<%=path%>img/2.png"/>
         </div>
 
         <div class="px-2 my-4 w-full sm:w-auto">
