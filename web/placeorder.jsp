@@ -7,12 +7,8 @@
         session.setAttribute("logreq", "./placeorder.jsp");
         response.sendRedirect("./signin.jsp");
     }else{
-        ArrayList<CartItem> cart;
-         if(session.getAttribute("cart")==null){
-             cart = new ArrayList<CartItem>();
-         }else{
-             cart = (ArrayList<CartItem>)session.getAttribute("cart");
-         }
+        ArrayList<CartItem> cart = (ArrayList<CartItem>)session.getAttribute("cart");
+        if(cart.size()==0)response.sendRedirect("./cart.jsp");
         DatabaseLogIn db = new DatabaseLogIn();   
         DecimalFormat formatter = new DecimalFormat("#,###.00");
 %>
