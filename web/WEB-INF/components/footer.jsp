@@ -192,14 +192,7 @@
         </div>
       </div>
       <hr />
-      <div class="flex justify-between w-full">
-        <span>Copyright @ 2024 shoetopia. All Rights Reserved.</span>
-        <span>Privacy Policy | Terms and Conditions | Sitemap</span>
-      </div>
-    </div>
-  </div>
-</footer>
-<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+     <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
   <div
     class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
   >
@@ -226,6 +219,10 @@
     </ul>
   </div>
 </footer>
+    </div>
+  </div>
+</footer>
+
 <!-- dont delete below line -->
 </div>
 <!-- dont delete above line -->
