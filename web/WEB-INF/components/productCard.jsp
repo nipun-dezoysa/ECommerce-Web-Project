@@ -10,7 +10,7 @@
   <div class="w-[190px] lg:w-[210px] h-[184px] relative overflow-hidden rounded-lg flex flex-col justify-center">
     <img src="./img/products/<%= product.getImg1() %>" alt="" class="w-full h-auto" />
     <div
-      class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-200 rounded-md flex justify-center items-center duration-300 ease-in-out"
+      class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
     >
       <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
       <div class="absolute invisible group-hover:visible text-sm text-gray-400">
@@ -44,7 +44,7 @@
     <div>
       <div class="flex text-xs gap-1">
         <div class="text-gray-600 line-through">LKR <%=product.getformatPrice() %></div>
-        <div class="bg-green-200 px-1 rounded-lg text-green-600"><%= product.getDiscount() %>%</div>
+        <div class="bg-green-200 px-2 rounded-lg text-green-600"><%= product.getDiscount() %>%</div>
       </div>
       <div class="text-lg font-semibold">LKR <%=product.getformatDis() %></div>
     </div>

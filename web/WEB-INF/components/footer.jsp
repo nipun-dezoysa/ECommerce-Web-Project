@@ -191,14 +191,12 @@
           </ul>
         </div>
       </div>
-      <hr />
-     <footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
   <div
     class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
   >
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-      >© 2024
-      <a href="https://flowbite.com/" class="hover:underline">Shoetopia?</a>.
+      >Copyright @2024
+      <a href="<%=path%>" class="hover:underline">Shoetopia</a>.
       All Rights Reserved.
     </span>
     <ul
@@ -218,7 +216,6 @@
       </li>
     </ul>
   </div>
-</footer>
     </div>
   </div>
 </footer>
@@ -243,5 +240,8 @@
       });
     });
   </script>
-          
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>

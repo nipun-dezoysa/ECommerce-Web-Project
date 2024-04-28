@@ -1,5 +1,5 @@
 
-<div class="bg-yellow-500 text-black flex justify-evenly items-center font-mono p-5 ">
+<div class="bg-yellow-500 text-black flex flex-col md:flex-row justify-evenly gap-3 items-center font-mono p-5 overflow-hidden">
   <div class="flex flex-col items-center">
     <h1 class="text-4xl font-bold">Flash Sale Ends In</h1>
     <div class="flex gap-5 font-semibold" id="countdown">
@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <div class="flex gap-5">
+  <div data-aos="slide-left" class="flex gap-5">
     <div><img src="./img/nikelogo.png" alt="" /></div>
     <div><img src="./img/jordan.png" alt="" /></div>
     <div><img src="./img/adidas.png" alt="" /></div>

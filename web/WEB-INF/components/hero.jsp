@@ -33,10 +33,7 @@
 </div>
 
 <div class="flex flex-col items-center justify-center font-bold mb-5">
-  <a class="px-5 py-3 bg-rose-800 rounded-lg text-white animate-bounce" href="#">Shop Now</a>
+  <a class="px-5 pt-2 pb-2 bg-rose-900 rounded-lg text-white duration-300" href="#">Shop Now</a>
 </div>
 
-<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+
