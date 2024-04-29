@@ -201,12 +201,12 @@
           var formData = new FormData(this);
           Swal.fire({
             title: "Are you sure?",
-            text: "Are you sure you want to change the status of order?",
+            text: "Are you sure you want to cancel the following order?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, change it!"
+            confirmButtonText: "Yes, cancel it!"
           }).then((result) => {
             if (result.isConfirmed) {
               $.ajax({
