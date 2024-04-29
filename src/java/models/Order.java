@@ -208,18 +208,18 @@ public class Order {
     public ArrayList<Stepper> getStepper(){
         ArrayList<Stepper> st = new ArrayList<>();
         for(Activity ac : activity){
-            if(ac.getStatus()==1)st.add(new Stepper("Placed","blue","",ac.getDate()));
-            else if(ac.getStatus()==3)st.add(new Stepper("Shipped","blue","",ac.getDate()));
-            else if(ac.getStatus()==4)st.add(new Stepper("Delivered","blue","",ac.getDate()));
-            else if(ac.getStatus()==5)st.add(new Stepper("Canceled by you","red","",ac.getDate()));
-            else if(ac.getStatus()==6)st.add(new Stepper("Declained","red","",ac.getDate()));
-            else if(ac.getStatus()==7)st.add(new Stepper("Returned","red","",ac.getDate()));
+            if(ac.getStatus()==1)st.add(new Stepper("Placed","blue","fa-cart-shopping",ac.getDate()));
+            else if(ac.getStatus()==3)st.add(new Stepper("Shipped","blue","fa-truck",ac.getDate()));
+            else if(ac.getStatus()==4)st.add(new Stepper("Delivered","blue","fa-check",ac.getDate()));
+            else if(ac.getStatus()==5)st.add(new Stepper("Canceled by you","red","fa-xmark",ac.getDate()));
+            else if(ac.getStatus()==6)st.add(new Stepper("Declained","red","fa-xmark",ac.getDate()));
+            else if(ac.getStatus()==7)st.add(new Stepper("Returned","red","fa-rotate-left",ac.getDate()));
         }
         if(activity.get(activity.size()-1).getStatus()<=3){
             if(activity.get(activity.size()-1).getStatus()<3){
-                st.add(new Stepper("Shipped","gray","",new Timestamp(activity.get(0).getDate().getTime()+ (24L * 60L * 60L * 1000L * 2))));
+                st.add(new Stepper("Shipped","gray","fa-truck",new Timestamp(activity.get(0).getDate().getTime()+ (24L * 60L * 60L * 1000L * 2))));
             }
-            st.add(new Stepper("Delivered","gray","",new Timestamp(st.get(1).getTime().getTime()+ (24L * 60L * 60L * 1000L * 2))));
+            st.add(new Stepper("Delivered","gray","fa-check",new Timestamp(st.get(1).getTime().getTime()+ (24L * 60L * 60L * 1000L * 2))));
         }
         return st;
     }

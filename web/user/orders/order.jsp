@@ -2,7 +2,7 @@
 <%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
 <%  String id = request.getParameter("id");
     if(session.getAttribute("user")==null){
-        session.setAttribute("logreq", "./user/orders/order.jsp");
+        session.setAttribute("logreq", "./user/orders/order.jsp?id="+id);
         response.sendRedirect("../../signin.jsp");
     }else if(id==null)response.sendRedirect("./index.jsp");
     else{
@@ -45,7 +45,6 @@
                       Order Details #<%=order.getId() %>
                       <%
                         String[] colors = Tools.getOrderColorUser(order);
-                        String[] dates = order.getDeliverDates();
                       %>
                       <span class="<%= colors[0] %> text-sm px-2 rounded-full"
                         ><%= colors[1] %></span
@@ -71,7 +70,7 @@
                               <span
                                 class="size-7 flex justify-center items-center flex-shrink-0 bg-<%= st.get(i).getColor() %>-200 font-medium text-<%= st.get(i).getColor() %>-600 rounded-full"
                               >
-                                <i class="fa-solid fa-cart-shopping"></i>
+                                  <i class="fa-solid <%= st.get(i).getIcon() %>"></i>
                               </span>
                               <div
                                   class="mt-2 w-[2px] h-full md:mt-0 md:ms-2 md:w-full md:h-[2px] md:flex-1 bg-<%= i+1==st.size()? "gray" : st.get(i+1).getColor() %>-200 group-last:hidden"
@@ -97,7 +96,7 @@
                                     Product pr = db.getProduct(item.getPid()+"");
                             %>
                             <div class="flex justify-between items-center mt-2 mb-5">
-                                <div class="flex gap-2 w-[40%]">
+                                <a class="flex gap-2 w-[40%]" href="../../product.jsp?id=<%= item.getPid() %>">
                                   <div
                                     class="w-[100px] h-[100px] bg-gray-300 rounded-lg overflow-hidden flex items-center justify-center"
                                   >
@@ -112,7 +111,7 @@
                                       <div class="text-gray-400">Size: <%= item.getSize() %></div>
                                       <div class="text-gray-400">Color: <%= item.getColor() %></div>
                                   </div>
-                                </div>
+                                </a>
                                 <div class="text-gray-400 w-[30%] flex flex-col">
                                   <div>Price: LKR <%= item.getformatPrice() %></div>
                                   <div>Discount: <%= item.getDiscount() %>%</div>

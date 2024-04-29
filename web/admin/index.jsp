@@ -222,12 +222,12 @@
         },
         series: [
           {
-            name: "Orders",
+            name: "Placed Orders",
             data: <%= db.getWeekOrders(1) %>,
             color: "#1A56DB",
           },
           {
-            name: "Cancel Orders",
+            name: "Returned Orders",
             data: <%= db.getWeekOrders(7) %>,
             color: "#C41E3A",
           },
