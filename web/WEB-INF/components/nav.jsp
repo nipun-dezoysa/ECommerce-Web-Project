@@ -44,6 +44,8 @@
           id="search"
           <%if(request.getParameter("search")!=null){%>
           value="<%= request.getParameter("search") %>"
+          <%}else{%>
+          value=""
           <%}%>
           placeholder="Search Product"
           required

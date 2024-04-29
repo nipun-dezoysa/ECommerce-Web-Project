@@ -287,8 +287,6 @@ static void basicExecute(String query){
                 ResultSet im = st.executeQuery("SELECT * FROM items WHERE oid="+id+";");
                 ArrayList<OrderItem> items = new ArrayList<OrderItem>();
                 while(im.next()){
-                    System.out.print("yoo");
-                    String img = "demo.jpg";
                     OrderItem it = new OrderItem(im.getInt(1),im.getInt(3),im.getString(4),im.getString(5),im.getString(6),im.getInt(7),im.getInt(8),im.getInt(9));
                     items.add(it);
                 }

@@ -170,6 +170,59 @@ public class Order {
         this.activity = activity;
     }
     
+   String Fdate(Timestamp a){
+        DateFormat f = new SimpleDateFormat("dd MMM yyyy");
+        return f.format(a);
+    }
+    
+    public String[] getDeliverDates(){
+        String[] dates = new String[5];
+        dates[0] = getDate();
+        Timestamp deliver=null;
+        Timestamp ship=null;
+        for(Activity ac : activity){
+            if(ac.getStatus()==3)ship=ac.getDate();
+            if(ac.getStatus()==4)deliver=ac.getDate();
+        }
+        if(ship==null){
+            ship = new Timestamp(activity.get(0).getDate().getTime()+ (24L * 60L * 60L * 1000L * 2));
+            dates[1] = "Est."+Fdate(ship);
+            dates[3] = "gray";
+        }else{
+           dates[1] = Fdate(ship);
+           dates[3] = "blue";
+        }
+        if(deliver==null){
+            deliver= new Timestamp(ship.getTime()+ (24L * 60L * 60L * 1000L * 4));
+            dates[2] = "Est. "+Fdate(deliver);
+            dates[4] = "gray";
+        }else{
+            dates[2] = Fdate(deliver);
+            dates[4] = "blue";
+        }
+        
+        
+        return dates;
+    }
+    
+    public ArrayList<Stepper> getStepper(){
+        ArrayList<Stepper> st = new ArrayList<>();
+        for(Activity ac : activity){
+            if(ac.getStatus()==1)st.add(new Stepper("Placed","blue","",ac.getDate()));
+            else if(ac.getStatus()==3)st.add(new Stepper("Shipped","blue","",ac.getDate()));
+            else if(ac.getStatus()==4)st.add(new Stepper("Delivered","blue","",ac.getDate()));
+            else if(ac.getStatus()==5)st.add(new Stepper("Canceled by you","red","",ac.getDate()));
+            else if(ac.getStatus()==6)st.add(new Stepper("Declained","red","",ac.getDate()));
+            else if(ac.getStatus()==7)st.add(new Stepper("Returned","red","",ac.getDate()));
+        }
+        if(activity.get(activity.size()-1).getStatus()<=3){
+            if(activity.get(activity.size()-1).getStatus()<3){
+                st.add(new Stepper("Shipped","gray","",new Timestamp(activity.get(0).getDate().getTime()+ (24L * 60L * 60L * 1000L * 2))));
+            }
+            st.add(new Stepper("Delivered","gray","",new Timestamp(st.get(1).getTime().getTime()+ (24L * 60L * 60L * 1000L * 2))));
+        }
+        return st;
+    }
     
   
   
