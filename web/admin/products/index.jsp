@@ -72,8 +72,8 @@
     <div class="box">
       <div class="box-title">New Product</div>
       <form id="pform" class="box-body" enctype="multipart/form-data">
-        <div class="flex gap-3">
-          <div class="w-[70%] flex flex-col gap-3">
+        <div class="flex flex-col lg:flex-row gap-3">
+          <div class="w-full lg:w-[70%] flex flex-col gap-3">
             <div>
               <div class="input-lable">Name</div>
               <input
@@ -147,7 +147,7 @@
               <div class="input-lable">Images</div>
               <div class="flex gap-3">
                 <div
-                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="cimg"
@@ -172,7 +172,7 @@
                 </div>
 
                 <div
-                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="1img"
@@ -197,7 +197,7 @@
                 </div>
 
                 <div
-                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="2img"
@@ -222,7 +222,7 @@
                 </div>
 
                 <div
-                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="3img"
@@ -248,7 +248,7 @@
               </div>
             </div>
           </div>
-          <div class="w-[30%] flex flex-col gap-3">
+          <div class="w-full lg:w-[30%] flex flex-col gap-3">
             <div class="w-full flex flex-col gap-1">
               <div class="input-lable">Sizes</div>
               <div class="w-full flex flex-wrap gap-1" id="sblock"></div>
@@ -296,14 +296,14 @@
     <div class="box">
       <div class="box-title">All Products</div>
       <div class="box-body">
-        <div class="flex w-full font-semibold rounded-lg">
+        <div class="max-md:hidden flex w-full font-semibold rounded-lg">
           
-          <div class="w-[25%]  text-center"></div>
-          <div class="w-[65%] flex gap-2">
-          <div class="w-[25%] text-center">Brand</div>
+          <div class="w-[30%] md:w-[25%]  text-center"></div>
+          <div class="w-[65%]  flex gap-2">
+          <div class="w-[25%] text-center max-md:hidden">Brand</div>
           <div class="w-[25%] text-center">Price</div>
-          <div class="w-[25%] text-center">Discount</div> 
-          <div class="w-[25%] text-center">Availability</div>
+          <div class="w-[25%] text-center max-md:hidden">Discount</div> 
+          <div class="w-[25%] text-center max-md:hidden">Availability</div>
           </div>
           
           <div class="w-[20%] text-center"></div>
@@ -316,7 +316,7 @@
             for(int i=0;i<prods.size();i++){
         %>
         <div class="flex w-full border rounded-lg items-center p-1">
-          <div class="w-[25%] flex gap-1 items-center">
+          <div class="w-[70%] md:w-[25%] flex gap-1 items-center">
             <img
               class="w-[70px] aspect-square block rounded-lg"
               src="../../img/products/<%= prods.get(i).getImg1() %>"
@@ -327,13 +327,13 @@
               <div class="text-gray-400 text-sm">#<%= prods.get(i).getId() %></div>
             </div>
           </div>
-          <div class="flex gap-2 w-[65%]">
+          <div class="flex gap-2 w-[30%] md:w-[65%] max-md:hidden">
             <div class="w-[25%] text-center"><%= prods.get(i).getBrand() %></div>
             <div class="w-[25%] text-center">LKR <%= prods.get(i).getPrice() %></div>
             <div class="w-[25%] text-center"><%= prods.get(i).getDiscount() %>%</div>
             <div class="w-[25%] text-center">available</div>
           </div>
-          <div class="flex justify-end gap-2 w-[20%]">
+          <div class="flex justify-end gap-2 w-[30%] md:w-[20%]">
             <a class="normal" type="button" href="edit.jsp?id=<%= prods.get(i).getId() %>"><i class="fa-solid fa-pen-to-square"></i></a>
             <form class="dform" id="d<%= prods.get(i).getId() %>" action="deleteProduct" method="POST">
                 <input type="hidden" name="id" value="<%= prods.get(i).getId() %>"/>
