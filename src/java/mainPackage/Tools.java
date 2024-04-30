@@ -203,4 +203,14 @@ public class Tools {
          }
          return result;
     }
+    
+    public static String getAddressArray(ArrayList<Address> ads){
+        String result="[";
+        
+        for(Address a: ads){
+            result+="{fname:'"+a.getFname()+"',lname:'"+a.getLname()+"',email:'"+a.getEmail()+"',phone:'"+a.getPhone()+"',addr:'"+a.getAddress()+"',city:'"+a.getTown()+"',provi:'"+a.getProvince()+"'},";
+        }
+        
+        return result+"]";
+    }
 }

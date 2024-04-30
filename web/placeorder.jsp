@@ -1,3 +1,4 @@
+<%@page import="mainPackage.Tools"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="mainPackage.DatabaseLogIn, models.*, java.util.ArrayList" %>
 <% 
@@ -11,6 +12,8 @@
         if(cart.size()==0)response.sendRedirect("./cart.jsp");
         DatabaseLogIn db = new DatabaseLogIn();   
         DecimalFormat formatter = new DecimalFormat("#,###.00");
+        User user = (User)session.getAttribute("user");
+        ArrayList<Address> addr = db.getAddresses(user.getId()+"");
 %>
 <!DOCTYPE html>
 <html>
@@ -28,8 +31,10 @@
         <div class="flex justify-between">
           <h1 class="font-semibold text-2xl">Shipping Details</h1>
           <select class="text-gray-400 outline-none border-none focus:ring-0">
-            <option value="1">Choose from address book</option>
-            <option value="2">test</option>
+            <option disabled hidden selected>Choose from address book</option>
+            <% for(int i=0;i<addr.size();i++){%>
+            <option value="<%= i %>"><%= addr.get(i).getAddress().substring(0,25)+"..." %></option>
+            <%}%>
           </select>
         </div>
         <div class="input-row">
@@ -193,8 +198,15 @@
 
     <script>
       $(document).ready(function () {
+        var address = <%= Tools.getAddressArray(addr) %>;
         $('select').on('change', function() {
-            alert( this.value );
+            $('#firstname').val(address[this.value].fname);
+            $('#lastname').val(address[this.value].lname);
+            $('#email').val(address[this.value].email);
+            $('#phone').val(address[this.value].phone);
+            $('#address').val(address[this.value].addr);
+            $('#city').val(address[this.value].city);
+            $('#province').val(address[this.value].provi);
         });
         
         $("#order").submit(function (e) {
