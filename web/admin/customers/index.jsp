@@ -80,7 +80,7 @@
             </svg>
             <span
               class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400"
-              >Orders</span
+              >Customers</span
             >
           </div>
         </li>
@@ -132,7 +132,7 @@
               <div class="list-item justify-between">
                 <div class="w-[10%] max-md:w-[20%]">#<%= user.getId() %></div>
                 <a href="./customer.jsp?id=<%= user.getId() %>" class="w-[20%] max-md:hidden"><%= user.getFullName() %></a>
-                <div class="w-[20%] max-md:w-[40%]"><%= user.getEmail() %></div>
+                <a href="./customer.jsp?id=<%= user.getId() %>" class="w-[20%] max-md:w-[40%]"><%= user.getEmail() %></a>
                 <div class="w-[10%] max-md:hidden"><%= user.getOcount() %></div>
                 <div class="w-[10%] max-md:hidden flex items-center justify-center gap-1">
                     <% if(user.getStatus()==1){ %>
