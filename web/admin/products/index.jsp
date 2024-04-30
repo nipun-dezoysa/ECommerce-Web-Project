@@ -156,7 +156,7 @@
                     alt="product"
                   />
                   <div
-                    class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                    class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                   >
                     Select Image
                   </div>
@@ -181,7 +181,7 @@
                     alt="product"
                   />
                   <div
-                    class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                    class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                   >
                     Select Image
                   </div>
@@ -206,7 +206,7 @@
                     alt="product"
                   />
                   <div
-                    class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                    class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                   >
                     Select Image
                   </div>
@@ -231,7 +231,7 @@
                     alt="product"
                   />
                   <div
-                    class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                    class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                   >
                     Select Image
                   </div>

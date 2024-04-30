@@ -104,8 +104,8 @@
       </ol>
     </nav>
 
-    <div class="flex gap-3">
-      <div class="w-[70%] flex flex-col gap-3">
+    <div class="flex flex-col md:flex-row gap-3">
+      <div class="w-full md:w-[70%] flex flex-col gap-3">
           <form id="mainform"  method="POST" class="box w-full">
           <input type="hidden" name="pid" value="<%= id %>"/>
           <div class="box-title">Product Details</div>
@@ -197,7 +197,7 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img01" />
@@ -208,7 +208,7 @@
                   alt="product"
                 />
                 <div
-                  class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                  class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                 >
                   Select Image
                 </div>
@@ -236,7 +236,7 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img02" />
@@ -247,7 +247,7 @@
                   alt="product"
                 />
                 <div
-                  class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                  class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                 >
                   Select Image
                 </div>
@@ -275,7 +275,7 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img03" />
@@ -286,7 +286,7 @@
                   alt="product"
                 />
                 <div
-                  class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                  class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                 >
                   Select Image
                 </div>
@@ -314,7 +314,7 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[25%] md:w-[150px] aspect-square flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img04" />
@@ -325,7 +325,7 @@
                   alt="product"
                 />
                 <div
-                  class="absolute bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
+                  class="absolute bottom-[-100%] md:bottom-[-25%] text-center w-full p-1 bg-gray-200 font-mono group-hover:bottom-0 duration-300 ease-in-out"
                 >
                   Select Image
                 </div>
@@ -353,7 +353,7 @@
         </div>
       </div>
 
-      <div class="w-[30%] flex flex-col gap-3">
+      <div class="w-full md:w-[30%] flex flex-col gap-3">
         <div class="box">
           <div class="box-title">Sizes</div>
           <div class="box-body">
