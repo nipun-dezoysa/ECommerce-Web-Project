@@ -4,7 +4,7 @@
     Author     : samee
 --%>   
         
-<section class=" overflow-hidden bg-center bg-no-repeat bg-[url('./img/hero.jpg')] bg-gray-700 bg-blend-multiply">
+<section class=" overflow-hidden bg-center bg-no-repeat bg-[url('./img/hero.jpg')] bg-gray-600 bg-blend-multiply">
   <div
     class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
   >
@@ -17,7 +17,7 @@
       </h1>
       <p
         data-aos="slide-up"
-        class="max-w-2xl mb-6 font-mono font-light lg:mb-8 md:text-lg lg:text-xl text-gray-400"
+        class="max-w-2xl mb-6 font-mono font-light lg:mb-8 md:text-lg lg:text-xl text-gray-200"
       >
         Discover the perfect pair of shoes to elevate your look. From sneakers
         to heels, we have it all.
@@ -44,7 +44,7 @@
       <a
         data-aos="slide-up"
         href="#"
-        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border rounded-lg focus:ring-4 text-white border-gray-700 hover:bg-gray-700 focus:ring-gray-800"
+        class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border-2 rounded-lg focus:ring-4 text-white border-gray-200 hover:bg-gray-700 focus:ring-gray-800"
       >
         Sign Up
       </a>

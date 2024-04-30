@@ -16,8 +16,7 @@
     </jsp:include>
 
     
-    <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
-     <jsp:include page="./WEB-INF/components/heroSecond.jsp" />
+    <jsp:include page="./WEB-INF/components/collection.jsp" />
 
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="NIKE" />
@@ -29,7 +28,9 @@
       <jsp:param name="specific" value="WHERE brand = 'adidas'" />
     </jsp:include>
      
-     <jsp:include page="./WEB-INF/components/collection.jsp" />
+     
+     <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
+     <jsp:include page="./WEB-INF/components/heroSecond.jsp" />
      
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="Men's Shoes" />
