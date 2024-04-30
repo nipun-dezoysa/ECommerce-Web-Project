@@ -19,8 +19,8 @@
   <body>
     <jsp:include page="./WEB-INF/components/nav.jsp" />
 
-    <div class="main-container flex justify-evenly py-5">
-      <div class="w-[60%] flex flex-col gap-3">
+    <div class="main-container flex flex-col lg:flex-row gap-3 justify-evenly py-5">
+      <div class="w-full lg:w-[60%] flex flex-col gap-3">
         <div
           class="w-full font-semibold border shadow border-gray-300 rounded-lg flex items-center p-5 justify-between text-sm"
         >
@@ -39,13 +39,15 @@
         <div
           class="w-full border shadow border-gray-300 rounded-lg flex items-center py-2 px-4 gap-5"
         >
-          <img class="w-[100px] rounded-lg aspect-square" src="./img/products/<%= product.getImg1() %>" alt="" />
+            <div class="w-[120px] rounded-lg aspect-square overflow-hidden flex items-center justify-center">
+                <img class="w-full h-auto"  src="./img/products/<%= product.getImg1() %>" alt="" />
+            </div>
           <div class="w-full h-full flex flex-col">
             <div class="flex justify-between font-semibold text-xl">
                 <a href="./product.jsp?id=<%= cart.get(i).getId() %>" class="text-gray-600 hover:text-gray-800"><%= product.getName() %></a>
               <div class="text-gray-300">SKU <%= product.getId() %></div>
             </div>
-            <div class="flex w-full h-full justify-between">
+            <div class="flex flex-col lg:flex-row w-full h-full justify-between">
               <div class="flex flex-col justify-end">
                 
                 <% if(product.getDiscount()>0 && product.getDiscount()<=100){ %>  
@@ -130,7 +132,7 @@
 
 <% } %>
       </div>
-      <div class="w-[30%]">
+      <div class="w-full lg:w-[30%]">
         <form
           action="./placeorder.jsp"  
           method="POST"
