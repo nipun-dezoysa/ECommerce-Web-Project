@@ -6,16 +6,16 @@
 
 <section>
   <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-    <header>
-      <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Product Collection</h2>
+    <header >
+      <h2 data-aos="fade-right" class="text-xl font-bold text-gray-900 sm:text-3xl">Product Collection</h2>
 
-      <p class="mt-4 max-w-md text-gray-500">
+      <p data-aos="fade-left" class="mt-4 max-w-md text-gray-500">
         Stride into our shoe haven. Explore diverse styles, perfect fits, and endless comfort. Start your ultimate footwear journey now!
       </p>
     </header>
 
     <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <li>
+      <li data-aos="slide-up">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
             src="img/colectionpic1.jpg"
@@ -37,7 +37,7 @@
         </a>
       </li>
 
-      <li>
+      <li data-aos="slide-down">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic2.jpg"
@@ -59,7 +59,7 @@
         </a>
       </li>
 
-      <li>
+      <li data-aos="slide-up">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic3.jpg"
@@ -81,7 +81,7 @@
         </a>
       </li>
 
-      <li>
+      <li data-aos="slide-down">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic4.jpg"
