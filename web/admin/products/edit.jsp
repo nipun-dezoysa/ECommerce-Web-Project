@@ -197,13 +197,13 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img01" />
                 <img
                   id="1img"
-                  class="w-full h-full"
+                  class="w-full h-auto"
                   src="../../img/products/<%= pr.getImg1() %>"
                   alt="product"
                 />
@@ -236,13 +236,13 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img02" />
                 <img
                   id="2img"
-                  class="w-full h-full"
+                  class="w-full h-auto"
                   src="../../img/products/<%= pr.getImg2() %>"
                   alt="product"
                 />
@@ -275,13 +275,13 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img03" />
                 <img
                   id="3img"
-                  class="w-full h-full"
+                  class="w-full h-auto"
                   src="../../img/products/<%= pr.getImg3() %>"
                   alt="product"
                 />
@@ -314,13 +314,13 @@
                 action="#"
                 method="POST"
                 enctype="multipart/form-data"
-                class="imgclass w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                class="imgclass w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
               >
                 <input type="hidden" name="pid" value="<%= id %>" />
                 <input type="hidden" name="choice" value="img04" />
                 <img
                   id="4img"
-                  class="w-full h-full"
+                  class="w-full h-auto"
                   src="../../img/products/<%= pr.getImg4() %>"
                   alt="product"
                 />
