@@ -34,7 +34,7 @@ int no = Integer.parseInt(request.getParameter("no"));
           >
         </div>
         <div class="px-5 text-white lg:mt-auto flex flex-col max-lg:hidden">
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="https://github.com/nipun-dezoysa"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg duration-300" href="https://github.com/nipun-dezoysa"
             ><i class="fa-solid fa-circle-info text-lg lg:text-2xl lg:w-10"></i>
               <div>Admin Pannel v 1.0</div></a
           >

@@ -163,7 +163,7 @@ static void basicExecute(String query){
    
     public ArrayList<Product> getAllProducts(String where) {
             connectToDb();
-            String Query ="SELECT * FROM `products` "+where;
+            String Query ="SELECT * FROM `products` "+where+" ORDER BY Id DESC";
             ArrayList<Product> pl = new ArrayList<>();
             
             try {

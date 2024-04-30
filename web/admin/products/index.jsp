@@ -147,11 +147,11 @@
               <div class="input-lable">Images</div>
               <div class="flex gap-3">
                 <div
-                  class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="cimg"
-                    class="w-full h-full"
+                    class="w-full h-auto"
                     src="../../img/demo.jpg"
                     alt="product"
                   />
@@ -172,11 +172,11 @@
                 </div>
 
                 <div
-                  class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="1img"
-                    class="w-full h-full"
+                    class="w-full h-auto"
                     src="../../img/demo.jpg"
                     alt="product"
                   />
@@ -197,11 +197,11 @@
                 </div>
 
                 <div
-                  class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="2img"
-                    class="w-full h-full"
+                    class="w-full h-auto"
                     src="../../img/demo.jpg"
                     alt="product"
                   />
@@ -222,11 +222,11 @@
                 </div>
 
                 <div
-                  class="w-[150px] h-[150px] overflow-hidden rounded-lg font-semibold relative group"
+                  class="w-[150px] h-[150px] flex flex-col items-center justify-center overflow-hidden rounded-lg font-semibold relative group"
                 >
                   <img
                     id="3img"
-                    class="w-full h-full"
+                    class="w-full h-auto"
                     src="../../img/demo.jpg"
                     alt="product"
                   />
@@ -381,21 +381,40 @@
             return;
           } else {
             var formData = new FormData(this);
-            $.ajax({
+            Swal.fire({
+  title: "New Product!",
+  text: "Do you want to add this product?",
+  icon: "info",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Add product"
+}).then((result) => {
+  if (result.isConfirmed) {
+      $.ajax({
               type: "POST",
               url: "../../addProduct",
               data: formData,
               processData: false,
               contentType: false,
               success: function (response) {
-                console.log(response);
-//                alert(response);
-                location.reload();
+                Swal.fire({
+  title: "New Product!",
+  text: "Product successfully added to the inevtory.",
+  icon: "success",
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Ok"
+}).then((result) => {
+                location.reload();});
               },
               error: function (xhr, status, error) {
                 console.error(xhr.responseText);
               },
             });
+  }
+});
+            
           }
         });
         
