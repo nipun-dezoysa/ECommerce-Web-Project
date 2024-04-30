@@ -1,6 +1,7 @@
 
 <% 
 String path = request.getParameter("path");
+int no = Integer.parseInt(request.getParameter("no"));
 %>
   
     
@@ -10,30 +11,30 @@ String path = request.getParameter("path");
           <a class="w-[70%]" href="../"><img class="w-[200px] lg:w-full" src="<%=path%>../img/2.png" alt="logo" /></a>
           <p class="max-lg:hidden text-white font-mono max-lg:text-sm">Admin Dashboard</p>
         </div>
-        <div class="px-5 text-white lg:mt-10 flex lg:flex-col max-lg:items-start">
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>index.jsp"
+        <div class="px-5 text-white lg:mt-10 flex lg:flex-col max-lg:items-start  gap-1">
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg duration-300 <%= no==1 ? "bg-primaryLight" : "" %>" href="<%=path%>index.jsp"
             ><i class="fa-solid fa-compass text-lg lg:text-2xl lg:w-10"></i>
             <div class="max-lg:hidden">Dashboard</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>orders/"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg duration-300 <%= no==2 ? "bg-primaryLight" : "" %>" href="<%=path%>orders/"
             ><i class="fa-solid fa-bag-shopping text-lg lg:text-2xl lg:w-10"></i>
             <div class="max-lg:hidden">Orders</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>products/"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg duration-300 <%= no==3 ? "bg-primaryLight" : "" %>" href="<%=path%>products/"
             ><i class="fa-solid fa-tags text-lg lg:text-2xl lg:w-10"></i>
             <div class="max-lg:hidden">Products</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="<%=path%>customers/"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg duration-300 <%= no==4 ? "bg-primaryLight" : "" %>" href="<%=path%>customers/"
             ><i class="fa-solid fa-person text-lg lg:text-2xl lg:w-10"></i>
             <div class="max-lg:hidden">Customers</div></a
           >
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg duration-300 <%= no==5 ? "bg-primaryLight" : "" %>" href="#"
             ><i class="fa-solid fa-user-tie text-lg lg:text-2xl lg:w-10"></i>
             <div class="max-lg:hidden">Administration</div></a
           >
         </div>
         <div class="px-5 text-white lg:mt-auto flex flex-col max-lg:hidden">
-          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="#"
+          <a class="flex items-center py-2 px-3 hover:bg-primaryLight rounded-lg" href="https://github.com/nipun-dezoysa"
             ><i class="fa-solid fa-circle-info text-lg lg:text-2xl lg:w-10"></i>
               <div>Admin Pannel v 1.0</div></a
           >

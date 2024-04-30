@@ -20,7 +20,7 @@ if(id==null){
 <!DOCTYPE html>
 <html>
   <head>
-    <title>user</title>
+    <title>Customer</title>
     <jsp:include page="../../WEB-INF/components/adminImports.jsp">
       <jsp:param name="path" value="../" />
     </jsp:include>
@@ -41,6 +41,7 @@ if(id==null){
   <body>
     <jsp:include page="../../WEB-INF/components/adminHead.jsp">
       <jsp:param name="path" value="../" />
+      <jsp:param name="no" value="4" />
     </jsp:include>
 
     <nav class="flex" aria-label="Breadcrumb">

@@ -24,6 +24,7 @@
   <body>
     <jsp:include page="../WEB-INF/components/adminHead.jsp">
       <jsp:param name="path" value="" />
+      <jsp:param name="no" value="1" />
     </jsp:include>
 
     <div class="flex gap-5 items-start">

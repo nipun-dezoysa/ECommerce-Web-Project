@@ -6,6 +6,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="<%=path%>../js/tailwindconfig.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link rel="icon" type="image/x-icon" href="<%=path%>../img/favicon.ico" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"

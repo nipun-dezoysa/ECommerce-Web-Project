@@ -41,6 +41,7 @@
   <body>
     <jsp:include page="../../WEB-INF/components/adminHead.jsp">
       <jsp:param name="path" value="../" />
+      <jsp:param name="no" value="2" />
     </jsp:include>
       
       <nav class="flex" aria-label="Breadcrumb">
@@ -162,8 +163,8 @@
         </div>
         <div class="box-body">
           <div class="flex justify-between text-sm font-semibold text-center">
-            <div class="w-[10%]">SKU</div>
-            <div class="w-[10%]">Name</div>
+            <div class="w-[7%]">SKU</div>
+            <div class="w-[13%]">Name</div>
             <div class="w-[10%]">Color</div>
             <div class="w-[10%]">Size</div>
             <div class="w-[10%] max-md:hidden">Each Price</div>
@@ -176,14 +177,14 @@
             <div
               class="flex justify-between text-xs text-center border py-2 rounded-lg"
             >
-                <div class="w-[10%]"><%= order.getItems().get(i).getPid() %></div>
-              <div class="w-[10%]"><%= order.getItems().get(i).getName() %></div>
+                <div class="w-[7%]"><%= order.getItems().get(i).getPid() %></div>
+              <div class="w-[13%]"><%= order.getItems().get(i).getName() %></div>
               <div class="w-[10%]"><%= order.getItems().get(i).getColor() %></div>
               <div class="w-[10%]"><%= order.getItems().get(i).getSize() %></div>
-              <div class="w-[10%] max-md:hidden"><%= order.getItems().get(i).getformatPrice() %></div>
+              <div class="w-[10%] max-md:hidden">LKR <%= order.getItems().get(i).getformatPrice() %></div>
               <div class="w-[10%]"><%= order.getItems().get(i).getQuantity() %></div>
-              <div class="w-[10%] max-md:hidden"><%= order.getItems().get(i).getDiscount() %></div>
-              <div class="w-[10%]"><%= order.getItems().get(i).getformatTotal() %></div>
+              <div class="w-[10%] max-md:hidden"><%= order.getItems().get(i).getDiscount() %>%</div>
+              <div class="w-[10%]">LKR <%= order.getItems().get(i).getformatTotal() %></div>
             </div>
             <%}%>
           </div>
