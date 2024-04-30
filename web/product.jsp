@@ -29,19 +29,19 @@
     <jsp:include page="./WEB-INF/components/nav.jsp" />
 
     <!-- product images -->
-    <div class="main-container flex p-5 h-[500px] gap-5 justify-center">
-      <div class="flex h-full gap-1 shrink-0">
+    <div class="main-container p-5 flex flex-col md:flex-row max-lg:w-full lg:h-[500px] gap-5 justify-center">
+      <div class="flex flex-col max-lg:flex-col-reverse lg:flex-row max-md:w-full max-lg:w-[500px] lg:h-full gap-1 shrink-0">
 
         <!-- side pics -->
-        <div class="flex h-full flex-col justify-between">
-          <div class="h-[24%] relative group" onclick="chnge(0)">
+        <div class="flex flex-row lg:flex-col max-lg:w-full lg:h-full justify-between">
+          <div class="max-lg:w-[24%] lg:h-[24%] relative group" onclick="chnge(0)">
             <input
               type="radio"
               name="imggroup"
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
               checked
             />
-            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+            <div class="max-lg:w-full lg:h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
                 <img
               class="w-full h-auto"
               src="./img/products/<%= pr.getImg1() %>"
@@ -49,13 +49,13 @@
             />
             </div>
           </div>
-          <div class="h-[24%] relative group" onclick="chnge(1)">
+          <div class="max-lg:w-[24%] lg:h-[24%] relative group" onclick="chnge(1)">
             <input
               type="radio"
               name="imggroup"
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
-            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+            <div class="max-lg:w-full lg:h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
                 <img
               class="w-full h-auto"
               src="./img/products/<%= pr.getImg2() %>"
@@ -63,13 +63,13 @@
             />
             </div>
           </div>
-          <div class="h-[24%] relative group" onclick="chnge(2)">
+          <div class="max-lg:w-[24%] lg:h-[24%] relative group" onclick="chnge(2)">
             <input
               type="radio"
               name="imggroup"
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
-            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+            <div class="max-lg:w-full lg:h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
                 <img
               class="w-full h-auto"
               src="./img/products/<%= pr.getImg3() %>"
@@ -77,13 +77,13 @@
             />
             </div>
           </div>
-          <div class="h-[24%] relative group" onclick="chnge(3)">
+          <div class="max-lg:w-[24%] lg:h-[24%] relative group" onclick="chnge(3)">
             <input
               type="radio"
               name="imggroup"
               class="peer h-full w-full absolute opacity-0 cursor-pointer"
             />
-            <div class="h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
+            <div class="max-lg:w-full lg:h-full aspect-square flex items-center overflow-hidden rounded-xl group-hover:border-4 peer-checked:border-8 border-gray-300 cursor-pointer duration-300 ease-in-out">
                 <img
               class="w-full h-auto"
               src="./img/products/<%= pr.getImg4() %>"
@@ -94,7 +94,7 @@
         </div>
 
         <!-- cover pics -->
-        <div class="h-full overflow-hidden rounded-xl">
+        <div class="max-lg:w-full lg:h-full aspect-square overflow-hidden rounded-xl">
           <div id="sl" class="h-[400%] w-full duration-700 ease-in-out">
               <div class="h-[25%] aspect-square flex items-center overflow-hidden"><img class="w-full h-auto" src="./img/products/<%= pr.getImg1() %>" alt="product image" /></div>
               <div class="h-[25%] aspect-square flex items-center overflow-hidden"><img class="w-full h-auto" src="./img/products/<%= pr.getImg2() %>" alt="product image" /></div>
@@ -106,7 +106,7 @@
       </div>
 
       <!-- product details -->
-      <div class="w-[40%] flex flex-col gap-1">
+      <div class="w-full md:w-[40%] flex flex-col gap-1">
         <div class="flex items-center gap-3">
           <h1 class="text-4xl font-bold font-mono"><%= pr.getName() %></h1>
           <form class="wforms" action="WishlistServlet" method="POST" >
