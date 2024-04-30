@@ -10,14 +10,13 @@
       <h2 class="text-xl font-bold text-gray-900 sm:text-3xl">Product Collection</h2>
 
       <p class="mt-4 max-w-md text-gray-500">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque praesentium cumque iure
-        dicta incidunt est ipsam, officia dolor fugit natus?
+        Stride into our shoe haven. Explore diverse styles, perfect fits, and endless comfort. Start your ultimate footwear journey now!
       </p>
     </header>
 
     <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <li>
-        <a href="#" class="group block overflow-hidden">
+        <a href="products.jsp" class="group block overflow-hidden">
           <img
             src="img/colectionpic1.jpg"
             alt=""
@@ -26,20 +25,20 @@
 
           <div class="relative bg-white pt-3">
             <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Basic Tee
+              Jordan
             </h3>
 
             <p class="mt-2">
               <span class="sr-only"> Regular Price </span>
 
-              <span class="tracking-wider text-gray-900"> £24.00 GBP </span>
+              <span class="tracking-wider text-gray-900"> UP to 20% Discounts </span>
             </p>
           </div>
         </a>
       </li>
 
       <li>
-        <a href="#" class="group block overflow-hidden">
+        <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic2.jpg"
             alt=""
@@ -48,20 +47,20 @@
 
           <div class="relative bg-white pt-3">
             <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Basic Tee
+              Nike
             </h3>
 
             <p class="mt-2">
               <span class="sr-only"> Regular Price </span>
 
-              <span class="tracking-wider text-gray-900"> £24.00 GBP </span>
+              <span class="tracking-wider text-gray-900"> UP to 25% Discounts </span>
             </p>
           </div>
         </a>
       </li>
 
       <li>
-        <a href="#" class="group block overflow-hidden">
+        <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic3.jpg"
             alt=""
@@ -70,20 +69,20 @@
 
           <div class="relative bg-white pt-3">
             <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Basic Tee
+              Adidas
             </h3>
 
             <p class="mt-2">
               <span class="sr-only"> Regular Price </span>
 
-              <span class="tracking-wider text-gray-900"> £24.00 GBP </span>
+              <span class="tracking-wider text-gray-900"> UP to 15% Discounts </span>
             </p>
           </div>
         </a>
       </li>
 
       <li>
-        <a href="#" class="group block overflow-hidden">
+        <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic4.jpg"
             alt=""
@@ -92,13 +91,13 @@
 
           <div class="relative bg-white pt-3">
             <h3 class="text-xs text-gray-700 group-hover:underline group-hover:underline-offset-4">
-              Basic Tee
+              New Balance
             </h3>
 
             <p class="mt-2">
               <span class="sr-only"> Regular Price </span>
 
-              <span class="tracking-wider text-gray-900"> £24.00 GBP </span>
+              <span class="tracking-wider text-gray-900"> UP to 40% Discounts </span>
             </p>
           </div>
         </a>
