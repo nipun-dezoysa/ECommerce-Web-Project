@@ -8,16 +8,16 @@
     <jsp:include page="./WEB-INF/components/nav.jsp" />
 
     <!-- content starts here-->
-
     <jsp:include page="./WEB-INF/components/hero.jsp" />
-    <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
-     <jsp:include page="./WEB-INF/components/heroSecond.jsp" />
+    
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="New Arrivals" />
       <jsp:param name="specific" value="" />
     </jsp:include>
 
     
+    <jsp:include page="./WEB-INF/components/saleCountdown.jsp" />
+     <jsp:include page="./WEB-INF/components/heroSecond.jsp" />
 
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="NIKE" />
@@ -27,6 +27,11 @@
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="Adidas" />
       <jsp:param name="specific" value="WHERE brand = 'adidas'" />
+    </jsp:include>
+     
+    <jsp:include page="./WEB-INF/components/showcase.jsp">
+      <jsp:param name="title" value="Men's Shoes" />
+      <jsp:param name="specific" value="WHERE type=1" />
     </jsp:include>
 
     <!-- contents end here -->
