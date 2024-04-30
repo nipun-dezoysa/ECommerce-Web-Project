@@ -23,12 +23,13 @@
 
     <!-- content starts here-->
 
-    <form id="order" class="main-container flex justify-evenly py-5">
-      <div class="w-[60%] flex flex-col gap-3">
+    <form id="order" class="main-container flex flex-col gap-2 lg:flex-row justify-evenly py-5">
+      <div class="w-full lg:w-[60%] flex flex-col gap-3">
         <div class="flex justify-between">
           <h1 class="font-semibold text-2xl">Shipping Details</h1>
           <select class="text-gray-400 outline-none border-none focus:ring-0">
-            <option value="">Choose from address book</option>
+            <option value="1">Choose from address book</option>
+            <option value="2">test</option>
           </select>
         </div>
         <div class="input-row">
@@ -132,7 +133,7 @@
           >
         </div>
       </div>
-      <div class="w-[27%]">
+      <div class="w-full lg:w-[27%]">
         <div
           class="border shadow border-gray-300 rounded-lg flex flex-col gap-3 p-5"
         >
@@ -192,6 +193,10 @@
 
     <script>
       $(document).ready(function () {
+        $('select').on('change', function() {
+            alert( this.value );
+        });
+        
         $("#order").submit(function (e) {
           e.preventDefault();
           var formData = new FormData(this);
