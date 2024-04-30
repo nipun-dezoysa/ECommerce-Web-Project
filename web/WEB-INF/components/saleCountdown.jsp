@@ -1,6 +1,6 @@
 
 <div class="bg-blue-200 text-black flex flex-col md:flex-row justify-evenly gap-3 items-center font-mono p-5 overflow-hidden shadow">
-  <div data-aos="slide-right" class="flex flex-col items-center">
+  <div data-aos="fade-right" class="flex flex-col items-center">
     <h1 class="text-4xl font-bold">Flash Sale Ends In</h1>
     <div class="flex gap-5 font-semibold" id="countdown">
       <div class="flex flex-col items-center">
@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <div data-aos="slide-left" class="flex gap-5">
+  <div data-aos="fade-left" class="flex gap-5">
     <div><img src="./img/nikelogo.png" alt="" /></div>
     <div><img src="./img/jordan.png" alt="" /></div>
     <div><img src="./img/adidas.png" alt="" /></div>
@@ -30,7 +30,7 @@
 </div>
 
 <script>
-  var flashSaleEndTime = new Date("2024-05-01T00:00:00Z").getTime();
+  var flashSaleEndTime = new Date("2024-06-01T00:00:00Z").getTime();
 
   var countdownInterval = setInterval(function () {
     var now = new Date().getTime();

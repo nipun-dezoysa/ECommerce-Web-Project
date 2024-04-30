@@ -247,6 +247,7 @@
     %>
     <jsp:include page="./WEB-INF/components/showcase.jsp">
       <jsp:param name="title" value="You may also like" />
+      <jsp:param name="link" value="./products.jsp" />
       <jsp:param name="specific" value="<%=a%>" />
     </jsp:include>
 

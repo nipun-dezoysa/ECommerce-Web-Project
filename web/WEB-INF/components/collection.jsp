@@ -15,7 +15,7 @@
     </header>
 
     <ul class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <li data-aos="slide-up">
+      <li data-aos="zoom-in-up">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
             src="img/colectionpic1.jpg"
@@ -37,7 +37,7 @@
         </a>
       </li>
 
-      <li data-aos="slide-down">
+      <li data-aos="zoom-in-down">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic2.jpg"
@@ -59,7 +59,7 @@
         </a>
       </li>
 
-      <li data-aos="slide-up">
+      <li data-aos="zoom-in-up">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic3.jpg"
@@ -81,7 +81,7 @@
         </a>
       </li>
 
-      <li data-aos="slide-down">
+      <li data-aos="zoom-in-down">
         <a href="products.jsp" class="group block overflow-hidden">
           <img
               src="img/colectionpic4.jpg"

@@ -10,20 +10,20 @@
   >
     <div class="mr-auto place-self-center lg:col-span-9">
       <h1
-        data-aos="slide-up"
+        data-aos="fade-up"
         class="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white"
       >
         Trendy Shoes for Every Style
       </h1>
       <p
-        data-aos="slide-up"
+        data-aos="fade-up"
         class="max-w-2xl mb-6 font-mono font-light lg:mb-8 md:text-lg lg:text-xl text-gray-200"
       >
         Discover the perfect pair of shoes to elevate your look. From sneakers
         to heels, we have it all.
       </p>
       <a
-        data-aos="slide-up"
+        data-aos="fade-up"
         href="#"
         class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-900"
       >
@@ -42,7 +42,7 @@
         </svg>
       </a>
       <a
-        data-aos="slide-up"
+        data-aos="fade-up"
         href="#"
         class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border-2 rounded-lg focus:ring-4 text-white border-gray-200 hover:bg-gray-700 focus:ring-gray-800"
       >
@@ -50,7 +50,7 @@
       </a>
     </div>
     <div class="hidden lg:mt-0 lg:col-span-3 lg:flex">
-        <img data-aos="slide-up" src="./img/mockup.png" alt="mockup" />
+        <img data-aos="fade-up" src="./img/mockup.png" alt="mockup" />
     </div>
   </div>
 </section>
