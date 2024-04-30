@@ -13,7 +13,7 @@
       class="absolute overflow-hidden group top-1 right-1 w-6 h-6 hover:top-0 hover:right-0 hover:w-full hover:h-full hover:rounded-none bg-gray-100 rounded-md flex justify-center items-center duration-300 ease-in-out"
     >
       <i class="fa-solid fa-info text-sm group-hover:hidden"></i>
-      <div class="absolute invisible group-hover:visible text-sm text-gray-400">
+      <div class="absolute invisible group-hover:visible text-sm text-gray-400 flex flex-col items-center">
           <div class="flex gap-5 items-center">
               <div>
                   <div class="font-semibold">Colors</div>
@@ -34,7 +34,7 @@
                   <%}%>
               </div>
           </div>
-          <div class="font-semibold mt-2 text-center"><%= product.getTypeString() %></div>
+          <div class="font-semibold mt-2 text-center"><%= product.getTypeString()+" - "+product.getBrand() %></div>
       </div>
     </div>
   </div>
