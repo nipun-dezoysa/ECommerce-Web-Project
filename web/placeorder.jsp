@@ -27,7 +27,7 @@
       <div class="w-[60%] flex flex-col gap-3">
         <div class="flex justify-between">
           <h1 class="font-semibold text-2xl">Shipping Details</h1>
-          <select class="text-gray-400">
+          <select class="text-gray-400 outline-none border-none focus:ring-0">
             <option value="">Choose from address book</option>
           </select>
         </div>
