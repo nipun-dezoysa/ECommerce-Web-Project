@@ -97,7 +97,7 @@
             </div>
 
             <div class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-gray-900 dark:border-gray-700 dark:hover:border-transparent">
-                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev3.png" alt="">
+                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev3.jpg" alt="">
 
                 <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize group-hover:text-white">Sameera Jayakodi</h1>
 
@@ -134,7 +134,7 @@
             </div>
 
             <div class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-gray-900 dark:border-gray-700 dark:hover:border-transparent">
-                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev3.png" alt="">
+                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev4.jpg" alt="">
 
                 <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize group-hover:text-white">Sanjeewa Dilshan</h1>
 
@@ -171,7 +171,7 @@
             </div>
             
                         <div class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-gray-900 dark:border-gray-700 dark:hover:border-transparent">
-                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev3.png" alt="">
+                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev5.jpg" alt="">
 
                 <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize group-hover:text-white">Ravindu Induwara</h1>
 
@@ -207,7 +207,7 @@
                 </div>
             </div>
                         <div class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-gray-900 dark:border-gray-700 dark:hover:border-transparent">
-                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev3.png" alt="">
+                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev6.jpg" alt="">
 
                 <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize group-hover:text-white">Dilshan Perera</h1>
 
@@ -243,7 +243,7 @@
                 </div>
             </div>
                         <div class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-gray-900 dark:border-gray-700 dark:hover:border-transparent">
-                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev3.png" alt="">
+                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev7.jpg" alt="">
 
                 <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize group-hover:text-white">Jithendra Jayaward</h1>
 
@@ -279,7 +279,7 @@
                 </div>
             </div>
                         <div class="flex flex-col items-center p-8 transition-colors duration-300 transform border cursor-pointer rounded-xl hover:border-transparent group hover:bg-gray-900 dark:border-gray-700 dark:hover:border-transparent">
-                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev3.png" alt="">
+                <img class="object-cover w-32 h-32 rounded-full ring-4 ring-gray-300" src="img/team/dev8.jpg" alt="">
 
                 <h1 class="mt-4 text-2xl font-semibold text-gray-700 capitalize group-hover:text-white">Ashan</h1>
 
