@@ -152,7 +152,9 @@
             class="flex gap-2 font-semibold hover:bg-gray-200 px-1 py-2 rounded-lg duration-700"
           >
             <div class="text-gray-400"><%=s%>.</div>
-            <img src="../img/products/<%=pr.getImg1() %>" class="w-[100px] rounded-lg aspect-square" alt="" />
+            <div class="w-[100px] rounded-lg aspect-square flex justify-center items-center overflow-hidden">
+                <img src="../img/products/<%=pr.getImg1() %>" class="w-full h-auto"  alt="" />
+            </div>
             <div>
               <h1 class="text-lg"><%= pr.getName() %></h1>
               <div class="text-gray-400"><%= pr.getBrand() %></div>
@@ -187,7 +189,10 @@
             class="flex gap-2 font-semibold hover:bg-gray-200 px-1 py-2 rounded-lg duration-700"
           >
             <div class="text-gray-400"><%=v%>.</div>
-            <img src="../img/products/<%=pr.getImg1() %>" class="w-[100px] rounded-lg aspect-square" alt="" />
+            <div class="w-[100px] rounded-lg aspect-square flex justify-center items-center overflow-hidden">
+                <img src="../img/products/<%=pr.getImg1() %>" class="w-full h-auto"  alt="" />
+            </div>
+            
             <div>
               <h1 class="text-lg"><%= pr.getName() %></h1>
               <div class="text-gray-400"><%= pr.getBrand() %></div>
