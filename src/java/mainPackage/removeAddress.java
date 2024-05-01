@@ -22,6 +22,7 @@ public class removeAddress extends HttpServlet {
             DatabaseLogIn db = new DatabaseLogIn();
             String id = request.getParameter("id");
             db.removeAddress(id);
+            db.closeDb();
             response.getWriter().print("ok");
     }
     @Override

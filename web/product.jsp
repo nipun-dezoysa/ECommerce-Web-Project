@@ -347,6 +347,7 @@
 </html>
 
 <%        }
+db.closeDb();
 	}  
     catch (NumberFormatException e)  
 	{

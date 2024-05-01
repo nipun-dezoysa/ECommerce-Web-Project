@@ -28,8 +28,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         String password= request.getParameter("password");
         PrintWriter out=response.getWriter();
         
-        DatabaseLogIn db1= new DatabaseLogIn();
-        User user = db1.signIn(email, password);
+        DatabaseLogIn db= new DatabaseLogIn();
+        User user = db.signIn(email, password);
         if(user.getId()>0){
             session.setAttribute("user", user);
             if(session.getAttribute("logreq")==null){
@@ -44,6 +44,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         }else{
             out.print("bad");
         }
+        db.closeDb();
         
 }
 

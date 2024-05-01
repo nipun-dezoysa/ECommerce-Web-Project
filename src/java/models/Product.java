@@ -202,7 +202,7 @@ public class Product {
     public String getTypeString(){
         if(this.type==1){
             return "Men's Shoes";
-        }else if(this.type==1){
+        }else if(this.type==2){
             return "Women's Shoes";
         }else{
             return "Kid's Shoes";    

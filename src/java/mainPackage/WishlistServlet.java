@@ -49,6 +49,7 @@ public class WishlistServlet extends HttpServlet {
               out.print("{\"st\": \"notlogin\", \"qt\": \"1\"}");
           }
           out.flush();
+          db.closeDb();
           
     }
     

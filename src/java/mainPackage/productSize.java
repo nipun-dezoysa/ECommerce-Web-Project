@@ -33,7 +33,7 @@ public class productSize extends HttpServlet {
         }else{
             db.addSizes(Integer.parseInt(value), Integer.parseInt(pid));
         }
-        
+        db.closeDb();
         PrintWriter out = response.getWriter();
         out.print(value);
         

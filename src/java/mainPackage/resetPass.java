@@ -31,6 +31,7 @@ public class resetPass extends HttpServlet {
         String id = request.getParameter("id");
         DatabaseLogIn db = new DatabaseLogIn();
         db.updatePasswd(Integer.parseInt(id), "0000");
+        db.closeDb();
         response.getWriter().print("reset");
     }
 

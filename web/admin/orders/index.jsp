@@ -160,4 +160,5 @@
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
   </body>
 </html>
+<% db.closeDb(); %>
 <%}%>

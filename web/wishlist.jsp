@@ -110,4 +110,4 @@
      
 </body>
 </html>
-<% } %>
+<% db.closeDb(); } %>

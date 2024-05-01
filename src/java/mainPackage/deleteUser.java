@@ -31,6 +31,7 @@ public class deleteUser extends HttpServlet {
         }else{
             response.getWriter().print("bad");
         }
+        db.closeDb();
     }
 
     @Override

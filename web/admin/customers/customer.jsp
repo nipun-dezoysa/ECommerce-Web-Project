@@ -397,4 +397,6 @@ if(id==null){
     </script>
   </body>
 </html>
-<%}}}%>
+<%}
+db.closeDb();
+}}%>

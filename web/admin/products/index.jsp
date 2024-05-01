@@ -342,7 +342,7 @@
           </div>
         </div>
         <% } %>  
-          
+        <% db.closeDb(); %>
       </div>
     </div>
 

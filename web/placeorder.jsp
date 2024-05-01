@@ -250,4 +250,5 @@
     </script>
   </body>
 </html>
+<% db.closeDb(); %>
 <% } %>

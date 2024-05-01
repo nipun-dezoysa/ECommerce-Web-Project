@@ -26,6 +26,7 @@ public class deleteProduct extends HttpServlet {
         db.deleteProduct(id);
         PrintWriter out = response.getWriter();
         out.print(id);
+        db.closeDb();
         
     }
 

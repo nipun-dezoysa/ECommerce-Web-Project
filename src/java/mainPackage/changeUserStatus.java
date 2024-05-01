@@ -32,6 +32,7 @@ public class changeUserStatus extends HttpServlet {
         DatabaseLogIn db = new DatabaseLogIn();
         db.changeUserStatus(id);
         response.getWriter().print("updated");
+        db.closeDb();
     }
 
     @Override

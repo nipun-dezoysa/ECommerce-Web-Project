@@ -34,6 +34,14 @@ static void connectToDb(){
         }
 }
 
+public void closeDb(){
+    try{
+        st.close();
+    } catch ( SQLException ex) {
+       Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+    }
+}
+
 static void basicExecute(String query){
     connectToDb();
     try {
@@ -80,7 +88,6 @@ static void basicExecute(String query){
                     } 
                     resultSet.close();
                 }
-                st.close();
             
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
@@ -108,8 +115,6 @@ static void basicExecute(String query){
                         return true;
                         
                     } 
-                    resultSet.close();
-                    st.close();
                 
                 }          
             
@@ -120,7 +125,7 @@ static void basicExecute(String query){
     }
      
      public void addProduct(String name, String description ,String  brand ,int price ,int discount ,int type, String img1,String img2,String img3,String img4) {
-        String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+name+"','"+Tools.convertToSQL(description)+"','"+brand+"',"+price+","+discount+","+type+",1,'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
+        String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+Tools.convertToSQL(name)+"','"+Tools.convertToSQL(description)+"','"+brand+"',"+price+","+discount+","+type+",1,'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
         basicExecute(query);
     }
      
@@ -154,7 +159,6 @@ static void basicExecute(String query){
                 if (resultSet.next()) {
                 pid=resultSet.getInt("id");
                 }
-                st.close();
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -172,7 +176,6 @@ static void basicExecute(String query){
 //                    Product p = new Product(rs.getInt("id"),rs.getString("name"),Tools.reversToText(rs.getString("description")),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
                     pl.add(getProduct(rs.getString("id")));
                 }
-                st.close();
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -190,7 +193,7 @@ static void basicExecute(String query){
           try {
                 ResultSet rs= st.executeQuery(query);
                 if (rs.next()) {
-                    Product product = new Product(rs.getInt("id"),rs.getString("name"),Tools.reversToText(rs.getString("description")),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
+                    Product product = new Product(rs.getInt("id"),Tools.reversToText(rs.getString("name")),Tools.reversToText(rs.getString("description")),rs.getString("brand"),rs.getInt("price"),rs.getInt("discount"),rs.getInt("type"),rs.getInt("availability"),rs.getString("img01"),rs.getString("img02"),rs.getString("img03"),rs.getString("img04"));
                     ResultSet srs= st.executeQuery("SELECT * FROM `sizes` WHERE pid="+id+";");
                     
                     ArrayList<Size> sizes = new ArrayList<>();
@@ -359,7 +362,6 @@ static void basicExecute(String query){
                 if (resultSet.next()) {
                 passworddb=resultSet.getString("Password");
                 }
-                st.close();
             } catch (SQLException ex) {
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
             }

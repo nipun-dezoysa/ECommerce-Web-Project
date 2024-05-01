@@ -64,6 +64,7 @@
                 DatabaseLogIn dbs = new DatabaseLogIn();
                 User u = (User)session.getAttribute("user");
                 ArrayList<Product> w = dbs.getWishlist(u.getId());
+                dbs.closeDb();
         %>
         <div
             id="wishno"  

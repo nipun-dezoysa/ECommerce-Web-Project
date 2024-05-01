@@ -40,6 +40,7 @@ public class updateUserDetails extends HttpServlet {
         String tno=request.getParameter("tno");
         DatabaseLogIn db= new DatabaseLogIn();
         db.updateUser(id, fname, lname, bday, tno);
+        db.closeDb();
         response.getWriter().print("ok");
     }
 

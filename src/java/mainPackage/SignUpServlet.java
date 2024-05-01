@@ -28,15 +28,16 @@ public class SignUpServlet extends HttpServlet {
         String password= request.getParameter("password");
         
         PrintWriter out = response.getWriter();
-        DatabaseLogIn db1= new DatabaseLogIn();
+        DatabaseLogIn db= new DatabaseLogIn();
         
-        int a = db1.signUp(email, password);
+        int a = db.signUp(email, password);
         if(a==1){
             out.print("ok");
         }
         else{
             out.print("bad");
         }
+        db.closeDb();
     }
 
 }

@@ -35,7 +35,7 @@ public class productDetails extends HttpServlet {
         
         db.productDetails(pid, name, description, brand, price, discount, type);
         
-        
+        db.closeDb();
         PrintWriter out = response.getWriter();
         out.print(pid);
         

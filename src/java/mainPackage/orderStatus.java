@@ -35,6 +35,7 @@ public class orderStatus extends HttpServlet {
         DatabaseLogIn db = new DatabaseLogIn();
         db.changeStatus(status, id);
         response.getWriter().print("ok");
+        db.closeDb();
     }
     @Override
     public String getServletInfo() {

@@ -48,6 +48,7 @@ public class adminSignIn extends HttpServlet {
             }
             
         }
+        db3.closeDb();
         
         
     }

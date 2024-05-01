@@ -57,10 +57,8 @@ public class placeOrder extends HttpServlet {
         }else{
             out.print("no");
         }
-        
-        
-        
-        
+        db.closeDb();
+      
     }
 
     @Override

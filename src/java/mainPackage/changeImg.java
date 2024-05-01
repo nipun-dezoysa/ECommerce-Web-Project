@@ -46,7 +46,7 @@ public class changeImg extends HttpServlet {
         }
         PrintWriter out = response.getWriter();
         out.print(fileName);
-        
+        db.closeDb();
         
     }
 

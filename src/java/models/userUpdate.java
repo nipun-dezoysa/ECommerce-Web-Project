@@ -17,10 +17,12 @@ public class userUpdate {
         String passworddb=db.getPasswd(id);
         if(password.equals(passworddb)){
             db.updateEmail(id, email);
+            db.closeDb();
             return true;
         
         }
         else{
+            db.closeDb();
             return false;
             
         }
@@ -31,10 +33,12 @@ public class userUpdate {
         String passworddb=db.getPasswd(id);
         if(passwordold.equals(passworddb) && passwordnew.equals(passwordnew2)){
             db.updatePasswd(id, passwordnew);
+            db.closeDb();
             return true;
         
         }
         else{
+            db.closeDb();
             return false;
             
         }

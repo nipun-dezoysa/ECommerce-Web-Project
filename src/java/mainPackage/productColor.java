@@ -33,7 +33,7 @@ public class productColor extends HttpServlet {
         }else{
             db.addColors( Integer.parseInt(pid),value);
         }
-        
+        db.closeDb();
         PrintWriter out = response.getWriter();
         out.print(value);
         

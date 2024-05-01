@@ -232,4 +232,5 @@
                                        
     </body>
 </html>
+<% db.closeDb(); %>
 <%}}%>

@@ -246,4 +246,5 @@
       
   </body>
 </html>
+<% db.closeDb(); %>
 <%}%>
