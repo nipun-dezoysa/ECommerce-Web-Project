@@ -49,9 +49,7 @@ public class adminSignIn extends HttpServlet {
                 response.getWriter().print("no");
             }
             
-        }
-        
-        
+        }  
         
     }
 

@@ -335,7 +335,7 @@ void basicExecute(String query){
                 Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
+}
  
  public void changeStatus(int st,int id){
      basicExecute("INSERT INTO activity (oid, status) VALUES ("+id+","+st+")");
