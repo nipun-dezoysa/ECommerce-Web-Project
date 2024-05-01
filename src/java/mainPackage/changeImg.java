@@ -42,6 +42,7 @@ public class changeImg extends HttpServlet {
             Files.copy(img.getInputStream(), uploadPath.resolve(fileName));
             db.changeImg(pid, choice, fileName);
         } catch (IOException e) {
+            db.closeDb();
             return;
         }
         PrintWriter out = response.getWriter();

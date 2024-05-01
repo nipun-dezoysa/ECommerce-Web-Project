@@ -24,7 +24,7 @@
       </p>
       <a
         data-aos="fade-up"
-        href="#"
+        href="./products.jsp"
         class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-900"
       >
         Explore Collection
@@ -43,7 +43,7 @@
       </a>
       <a
         data-aos="fade-up"
-        href="#"
+        href="./signup.jsp"
         class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center border-2 rounded-lg focus:ring-4 text-white border-gray-200 hover:bg-gray-700 focus:ring-gray-800"
       >
         Sign Up

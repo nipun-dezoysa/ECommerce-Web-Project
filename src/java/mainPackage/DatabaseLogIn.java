@@ -15,13 +15,13 @@ import models.*;
 
 public class DatabaseLogIn {
 boolean adminlogin;
-static Statement st;
+Statement st;
 
 //public static void main(String args[])  //static method  
 //{  
 //    getOrder(15);
 //}
-static void connectToDb(){
+void connectToDb(){
         String driver ="com.mysql.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/shoetopia";
         
@@ -38,11 +38,12 @@ public void closeDb(){
     try{
         st.close();
     } catch ( SQLException ex) {
+       System.out.print("statement close error - admin msg");
        Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
 
-static void basicExecute(String query){
+void basicExecute(String query){
     connectToDb();
     try {
         st.executeUpdate(query);

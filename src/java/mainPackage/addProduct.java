@@ -85,8 +85,9 @@ public class addProduct extends HttpServlet {
         for(int x=0;x<colors.length;x++){
             db5.addColors(pid, colors[x]);
         }
-        out.print("Product added successfully");
         db5.closeDb();
+        out.print("Product added successfully");
+        
     }
    
     //generete unique file name to each uploaded image

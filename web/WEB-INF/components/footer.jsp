@@ -102,14 +102,14 @@
 
         <div class="px-2 my-4 w-full sm:w-auto">
           <div>
-              <a href="products.jsp">
+              <a href="<%=path%><%=path%>products.jsp">
             <h2 class="inline-block text-2xl font-bold mb-3 hover:text-blue-400">Category</h2>
               </a>
           </div>
           <ul class="leading-8">
-            <li><a href="products.jsp?category=mens" class="hover:text-blue-400">Men's Shoes</a></li>
-            <li><a href="products.jsp?category=womens" class="hover:text-blue-400">Women's Shoes</a></li>
-            <li><a href="products.jsp?category=kids" class="hover:text-blue-400">Kid's Shoes</a></li>
+            <li><a href="<%=path%>products.jsp?category=mens" class="hover:text-blue-400">Men's Shoes</a></li>
+            <li><a href="<%=path%>products.jsp?category=womens" class="hover:text-blue-400">Women's Shoes</a></li>
+            <li><a href="<%=path%>products.jsp?category=kids" class="hover:text-blue-400">Kid's Shoes</a></li>
           </ul>
         </div>
 
@@ -118,9 +118,9 @@
             <h2 class="inline-block text-2xl font-bold mb-3">Supports</h2>
           </div>
           <ul class="leading-8">
-            <li><a href="aboutus.jsp" class="hover:text-blue-400">About Us</a></li>
-            <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
-            <li><a href="#" class="hover:text-blue-400">Return Policy</a></li>
+            <li><a href="<%=path%>aboutus.jsp" class="hover:text-blue-400">About Us</a></li>
+            <li><a href="<%=path%>FAQ.jsp" class="hover:text-blue-400">Privacy Policy</a></li>
+            <li><a href="<%=path%>FAQ.jsp" class="hover:text-blue-400">Return Policy</a></li>
             <li><a href="#" class="hover:text-blue-400">Help Center</a></li>
             <li><a href="#" class="hover:text-blue-400">Store Locations</a></li>
             <li><a href="#" class="hover:text-blue-400">Careers</a></li>
@@ -131,10 +131,10 @@
             <h2 class="inline-block text-2xl font-bold mb-3">Links</h2>
           </div>
           <ul class="leading-8">
-            <li><a href="#" class="hover:text-blue-400">Product List</a></li>
-            <li><a href="#" class="hover:text-blue-400">Order Tracking</a></li>
-            <li><a href="#" class="hover:text-blue-400">Product Guide</a></li>
-            <li><a href="cart.jsp" class="hover:text-blue-400">Shopping Cart</a></li>
+            <li><a href="<%=path%>products.jsp" class="hover:text-blue-400">Product List</a></li>
+            <li><a href="<%=path%>user/orders/" class="hover:text-blue-400">Order Tracking</a></li>
+            <li><a href="<%=path%>FAQ.jsp" class="hover:text-blue-400">Product Guide</a></li>
+            <li><a href="<%=path%>cart.jsp" class="hover:text-blue-400">Shopping Cart</a></li>
           </ul>
         </div>
         <div class="px-2 my-4 w-full sm:w-auto">
@@ -204,16 +204,16 @@
       class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
     >
       <li>
-        <a href="#" class="hover:underline me-4 md:me-6">About</a>
+        <a href="<%=path%>aboyus.jsp" class="hover:underline me-4 md:me-6">About</a>
       </li>
       <li>
         <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
       </li>
       <li>
-        <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+        <a href="<%=path%>FAQ.jsp" class="hover:underline me-4 md:me-6">FAQ</a>
       </li>
       <li>
-        <a href="#" class="hover:underline">Contact</a>
+        <a href="<%=path%>contactus.jsp" class="hover:underline">Contact</a>
       </li>
     </ul>
   </div>

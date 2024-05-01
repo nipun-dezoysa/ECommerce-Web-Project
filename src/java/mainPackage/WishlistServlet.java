@@ -40,16 +40,19 @@ public class WishlistServlet extends HttpServlet {
               ArrayList<Product> list = db.getWishlist(user.getId());
               if(db.isExistWishlist(user.getId(), id)){
                   db.removeWishlist(user.getId(), id);
+                  db.closeDb();
                   out.print("{\"st\": \"removeds\", \"qt\": \""+(list.size()-1)+"\"}");
               }else{
                   db.addWishlist(user.getId(), id);
+                  db.closeDb();
                   out.print("{\"st\": \"added\", \"qt\": \""+(list.size()+1)+"\"}");
               }
           }else{
+              db.closeDb();
               out.print("{\"st\": \"notlogin\", \"qt\": \"1\"}");
           }
           out.flush();
-          db.closeDb();
+          
           
     }
     

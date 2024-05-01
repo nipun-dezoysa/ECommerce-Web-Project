@@ -40,15 +40,17 @@ public class adminSignIn extends HttpServlet {
             //database functions
             if(db3.adminSignIn(email, password)){
                 session.setAttribute("admin", email);
+                db3.closeDb();
                 response.getWriter().print("ok");
             
             }
             else{
+                db3.closeDb();
                 response.getWriter().print("no");
             }
             
         }
-        db3.closeDb();
+        
         
         
     }

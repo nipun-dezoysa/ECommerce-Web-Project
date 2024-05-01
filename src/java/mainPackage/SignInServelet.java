@@ -30,6 +30,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         
         DatabaseLogIn db= new DatabaseLogIn();
         User user = db.signIn(email, password);
+        db.closeDb();
         if(user.getId()>0){
             session.setAttribute("user", user);
             if(session.getAttribute("logreq")==null){
@@ -44,7 +45,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         }else{
             out.print("bad");
         }
-        db.closeDb();
+        
         
 }
 

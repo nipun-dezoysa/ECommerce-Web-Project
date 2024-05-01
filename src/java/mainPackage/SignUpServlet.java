@@ -32,12 +32,14 @@ public class SignUpServlet extends HttpServlet {
         
         int a = db.signUp(email, password);
         if(a==1){
+            db.closeDb();
             out.print("ok");
         }
         else{
+            db.closeDb();
             out.print("bad");
         }
-        db.closeDb();
+        
     }
 
 }
