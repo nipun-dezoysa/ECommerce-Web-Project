@@ -118,7 +118,7 @@
             <h2 class="inline-block text-2xl font-bold mb-3">Supports</h2>
           </div>
           <ul class="leading-8">
-            <li><a href="#" class="hover:text-blue-400">About Us</a></li>
+            <li><a href="aboutus.jsp" class="hover:text-blue-400">About Us</a></li>
             <li><a href="#" class="hover:text-blue-400">Privacy Policy</a></li>
             <li><a href="#" class="hover:text-blue-400">Return Policy</a></li>
             <li><a href="#" class="hover:text-blue-400">Help Center</a></li>
