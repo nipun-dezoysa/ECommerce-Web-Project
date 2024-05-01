@@ -16,7 +16,7 @@ import models.*;
 public class DatabaseLogIn {
 boolean adminlogin;
 Statement st;
-
+Connection con;
 //public static void main(String args[])  //static method  
 //{  
 //    getOrder(15);
@@ -27,21 +27,23 @@ void connectToDb(){
         
         try {
             Class.forName(driver);
-            Connection con = DriverManager.getConnection(url,"root",""); 
+            con = DriverManager.getConnection(url,"root",""); 
             st = con.createStatement();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
 
-public void closeDb(){
-    try{
-        st.close();
-    } catch ( SQLException ex) {
-       System.out.print("statement close error - admin msg");
-       Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+public void closeDb() {
+        if (con != null) {
+            try {
+                st.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
-}
 
 void basicExecute(String query){
     connectToDb();
