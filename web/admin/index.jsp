@@ -346,7 +346,7 @@
                 const sum = w.globals.seriesTotals.reduce((a, b) => {
                   return a + b
                 }, 0)
-                return sum + '%'
+                return (Math.round(sum * 100) / 100) + '%'
               },
             },
             value: {
@@ -354,7 +354,7 @@
               fontFamily: "Inter, sans-serif",
               offsetY: -20,
               formatter: function (value) {
-                return value + "%"
+                return (Math.round(value * 100) / 100) + "%"
               },
             },
           },
@@ -378,14 +378,14 @@
     yaxis: {
       labels: {
         formatter: function (value) {
-          return value + "%"
+          return (Math.round(value * 100) / 100) + "%"
         },
       },
     },
     xaxis: {
       labels: {
         formatter: function (value) {
-          return value  + "%"
+          return (Math.round(value * 100) / 100)  + "%"
         },
       },
       axisTicks: {
