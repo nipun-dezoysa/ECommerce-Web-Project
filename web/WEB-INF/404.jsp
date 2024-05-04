@@ -11,7 +11,7 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <title>JSP Page</title>
+  <title>Not Found</title>
   <jsp:include page="./components/Imports.jsp" />
   <style>
     /* Custom CSS for transitions and animations */
