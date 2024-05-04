@@ -121,7 +121,7 @@
                 <div class="w-[10%] max-md:hidden">Last login</div>
                 <div class="w-[20%] max-md:w-[40%]">Actions</div>
               </div>
-              
+              <div class="flex flex-col gap-1">
               <%
                   
                   if(users.size()>0){
@@ -166,6 +166,7 @@
               no user found
             </div>
             <%}%>
+            </div>
           </div>
       </div>
       </div>

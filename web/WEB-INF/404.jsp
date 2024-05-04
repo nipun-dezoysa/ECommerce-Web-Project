@@ -12,7 +12,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <title>JSP Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <jsp:include page="./components/Imports.jsp" />
   <style>
     /* Custom CSS for transitions and animations */
     .animate-fadeIn {
@@ -30,16 +30,16 @@
   </style>
 </head>
 
-<body class="flex flex-col h-screen justify-center items-center bg-gray-100">
-  <div class="flex flex-col items-center animate-fadeIn">
-    <img class="h-auto max-w-xl dark:shadow-gray-800 w-20 animate-bounce" src="nike.png" alt="nike" />
-
+<body>
+  <jsp:include page="./components/nav.jsp" />
+  <div class="flex flex-col items-center animate-fadeIn py-10">
     <h1 class="text-[120px] font-extrabold text-gray-700 -mt-10">404</h1>
     <p class="text-2xl font-medium text-gray-600 mb-6">Page Not Found</p>
-    <a href="./img/nike.png" class="px-4 py-2 font-medium text-white bg-gray-900 rounded-md hover:bg-indigo-600 transition-all duration-200 ease-in-out">
+    <a href="http://localhost:8080/ECommerce_Web_Project/index.jsp" class="px-4 py-2 font-medium text-white bg-gray-900 rounded-md hover:bg-indigo-600 transition-all duration-200 ease-in-out">
       Go Back
     </a>
   </div>
+  <jsp:include page="./components/footer.jsp" />
 </body>
 
 </html>
