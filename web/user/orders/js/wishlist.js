@@ -16,7 +16,7 @@ $(document).ready(function () {
     var id = formData.get("id");
     $.ajax({
       type: "POST",
-      url: "WishlistServlet",
+      url: "../../WishlistServlet",
       data: formData,
       processData: false,
       contentType: false,
