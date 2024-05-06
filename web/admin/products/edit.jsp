@@ -423,7 +423,6 @@
         </div>
       </div>
     </div>
-    <script src="../../js/productEdit.js"></script>
     <script src="./js/edit.js"></script>
     <jsp:include page="../../WEB-INF/components/adminBottom.jsp" />
   </body>
