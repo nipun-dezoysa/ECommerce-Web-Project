@@ -74,10 +74,8 @@ public class addProduct extends HttpServlet {
         
         DatabaseLogIn db5= new DatabaseLogIn();
         
-        db5.addProduct(name, description, brand, priceint, discountint,Integer.parseInt(type),fileName1,fileName2,fileName3,fileName4);
+        int pid = db5.addProduct(name, description, brand, priceint, discountint,Integer.parseInt(type),fileName1,fileName2,fileName3,fileName4);
        
-        int pid = db5.getpid(name);
-        
         for(int x=0;x<sizes.length;x++){
             db5.addSizes(Integer.parseInt(sizes[x]), pid);
         }

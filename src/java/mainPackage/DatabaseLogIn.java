@@ -121,9 +121,20 @@ void basicExecute(String query){
         return false;    
     }
      
-     public void addProduct(String name, String description ,String  brand ,int price ,int discount ,int type, String img1,String img2,String img3,String img4) {
+    public int addProduct(String name, String description ,String  brand ,int price ,int discount ,int type, String img1,String img2,String img3,String img4) {
         String query="INSERT INTO `products`(`name`, `description`, `brand`, `price`, `discount`, `type`, `availability`, `img01`, `img02`, `img03`, `img04`) VALUES ('"+Tools.convertToSQL(name)+"','"+Tools.convertToSQL(description)+"','"+brand+"',"+price+","+discount+","+type+",1,'"+img1+"','"+img2+"','"+img3+"','"+img4+"')";
         basicExecute(query);
+        String Query ="SELECT `Id` FROM `products` WHERE name = '"+name+"' ORDER BY Id DESC";
+            int pid=-1;
+            try(Statement st = con.createStatement();ResultSet resultSet = st.executeQuery(Query)) {
+                
+                if (resultSet.next()) {
+                pid=resultSet.getInt("id");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return pid;
     }
      
     public void productDetails(String pid, String name, String description ,String  brand ,String price ,String discount ,String type) {
@@ -144,21 +155,6 @@ void basicExecute(String query){
     }
     public void removeColor(String id){
           basicExecute("DELETE FROM `colors` WHERE cid="+id+";");
-    }
-    
-    
-      public int getpid(String name) {
-            String Query ="SELECT `Id` FROM `products` WHERE name = '"+name+"'";
-            int pid=-1;
-            try(Statement st = con.createStatement();ResultSet resultSet = st.executeQuery(Query)) {
-                
-                if (resultSet.next()) {
-                pid=resultSet.getInt("id");
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(DatabaseLogIn.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            return pid;
     }
    
     public ArrayList<Product> getAllProducts(String where) {
