@@ -12,17 +12,17 @@ const options = {
   series: [
     {
       name: "Placed Orders",
-      data: placed,
+      data: placedss,
       color: "#1A56DB",
     },
     {
       name: "Returned Orders",
-      data: returned,
+      data: returnedss,
       color: "#C41E3A",
     },
     {
       name: "Delivered Orders",
-      data: delivered,
+      data: deliveredss,
       color: "#0BDA51",
     },
   ],
@@ -63,7 +63,7 @@ const options = {
     width: 6,
   },
   xaxis: {
-    categories: categories,
+    categories: categoriess,
     labels: {
       show: false,
     },

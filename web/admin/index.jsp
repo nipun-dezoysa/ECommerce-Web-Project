@@ -215,10 +215,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-        const placed = <%= db.getWeekOrders(1) %>;
-        const returned = <%= db.getWeekOrders(7) %>;
-        const delivered = <%= db.getWeekOrders(4) %>;
-        const categories = <%= Tools.getWeekDays() %>;
+        const placedss = <%= db.getWeekOrders(1) %>;
+        const returnedss = <%= db.getWeekOrders(7) %>;
+        const deliveredss = <%= db.getWeekOrders(4) %>;
+        const categoriess = <%= Tools.getWeekDays() %>;
         <%
           double[] summ = db.getOrdersCategoryCount();
         %>
